@@ -1,0 +1,54 @@
+schema: spec-driven
+
+context: |
+  Tech stack: Astro 6, TypeScript, Node >=22.12; clinic site; docs/ + Astro src.
+  SDD: OpenSpec under openspec/; see AGENTS.md.
+  Verify: npm run build, npm run check.
+
+strict_tdd: false
+
+testing:
+  strict_tdd_mode: disabled
+  detected: "2026-05-01"
+  test_runner:
+    command: "npm run check"
+    framework: "astro check"
+  layers:
+    unit:
+      available: false
+      tool: "-"
+    integration:
+      available: false
+      tool: "-"
+    e2e:
+      available: false
+      tool: "-"
+  coverage:
+    available: false
+    command: "-"
+  quality_tools:
+    linter:
+      available: false
+      command: "-"
+    type_checker:
+      available: true
+      command: "npm run check"
+    formatter:
+      available: false
+      command: "-"
+
+rules:
+  proposal:
+    - Include rollback plan for risky changes
+  specs:
+    - Use Given/When/Then and RFC 2119 keywords
+  design:
+    - Document architecture decisions
+  tasks:
+    - Group by phase; hierarchical numbering
+  apply:
+    - Follow docs/ and AGENTS.md
+  verify:
+    - Run build and astro check
+  archive:
+    - Warn before destructive merges

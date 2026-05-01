@@ -1,0 +1,79 @@
+---
+import LanguageSwitcher from '../components/LanguageSwitcher.astro';
+import { locales, type Locale } from '../i18n/config';
+
+interface Props {
+	lang: Locale;
+	title: string;
+	description: string;
+}
+
+const { lang, title, description } = Astro.props;
+
+const origin = Astro.site?.origin ?? Astro.url.origin;
+---
+
+<!doctype html>
+<html lang={lang}>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content={description} />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<link rel="canonical" href={`${origin}/${lang}/`} />
+		{
+			locales.map((code) => (
+				<link rel="alternate" hreflang={code} href={`${origin}/${code}/`} />
+			))
+		}
+		<link rel="alternate" hreflang="x-default" href={`${origin}/es/`} />
+	</head>
+	<body>
+		<header class="site-header">
+			<p class="site-header__placeholder">WebAJ - cabecera (placeholder)</p>
+			<LanguageSwitcher lang={lang} />
+		</header>
+		<main class="site-main">
+			<slot />
+		</main>
+		<footer class="site-footer">
+			<p>Pie (placeholder) - enlaces legales y CTA en fases posteriores.</p>
+		</footer>
+	</body>
+</html>
+
+<style is:global>
+	html,
+	body {
+		margin: 0;
+		min-height: 100%;
+		font-family: system-ui, sans-serif;
+		line-height: 1.5;
+		color: #1a1a1a;
+		background: #fafafa;
+	}
+	.site-header,
+	.site-footer {
+		padding: 1rem 1.25rem;
+		background: #fff;
+		border-bottom: 1px solid #e8e8e8;
+	}
+	.site-footer {
+		border-top: 1px solid #e8e8e8;
+		border-bottom: none;
+		margin-top: 2rem;
+	}
+	.site-header__placeholder {
+		margin: 0 0 0.75rem;
+		font-size: 0.875rem;
+		color: #555;
+	}
+	.site-main {
+		padding: 1.25rem;
+		max-width: 48rem;
+		margin: 0 auto;
+	}
+</style>

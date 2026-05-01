@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { locales, type Locale } from '../../i18n/config';
+import { homeStubs } from '../../i18n/home-stubs';
+
+export function getStaticPaths() {
+	return locales.map((lang) => ({ params: { lang } }));
+}
+
+const param = Astro.params.lang as Locale;
+const { title, heading, lead } = homeStubs[param];
+---
+
+<BaseLayout lang={param} {title} description={lead}>
+	<h1>{heading}</h1>
+	<p>{lead}</p>
+</BaseLayout>

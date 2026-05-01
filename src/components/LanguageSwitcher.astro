@@ -1,0 +1,47 @@
+---
+import { locales, localeLabels, type Locale } from '../i18n/config';
+
+interface Props {
+	lang: Locale;
+}
+
+const { lang } = Astro.props;
+---
+
+<nav class="lang-switcher" aria-label="Language">
+	<ul>
+		{
+			locales.map((code) => (
+				<li>
+					{code === lang ? (
+						<span class="current" aria-current="true">
+							{localeLabels[code]}
+						</span>
+					) : (
+						<a href={`/${code}/`} hreflang={code} lang={code}>
+							{localeLabels[code]}
+						</a>
+					)}
+				</li>
+			))
+		}
+	</ul>
+</nav>
+
+<style>
+	.lang-switcher ul {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem 1rem;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	.lang-switcher a {
+		color: inherit;
+	}
+	.lang-switcher .current {
+		font-weight: 600;
+		text-decoration: underline;
+	}
+</style>

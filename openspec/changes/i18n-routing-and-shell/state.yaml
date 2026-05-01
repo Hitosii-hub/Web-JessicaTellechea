@@ -1,0 +1,6 @@
+# OpenSpec change DAG state (orchestrator / recovery)
+version: 1
+change_id: i18n-routing-and-shell
+current_phase: done
+updated: "2026-05-01"
+notes: "Implemented; verify-report.md added; npm run build and npm run check pass."
