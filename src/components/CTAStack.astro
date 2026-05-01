@@ -1,0 +1,57 @@
+---
+import type { Locale } from '../i18n/config';
+
+interface Props {
+	lang: Locale;
+}
+
+const { lang } = Astro.props;
+
+const digits = import.meta.env.PUBLIC_WHATSAPP_E164?.replace(/\D/g, '') ?? '';
+const waHref = digits ? `https://wa.me/${digits}` : '';
+
+const copy = {
+	es: {
+		valoracion: 'Solicitar valoracion',
+		reserva: 'Reservar cita',
+		whatsapp: 'WhatsApp',
+		waMissing: 'WhatsApp: configure PUBLIC_WHATSAPP_E164 en .env',
+	},
+	en: {
+		valoracion: 'Request an assessment',
+		reserva: 'Book appointment',
+		whatsapp: 'WhatsApp',
+		waMissing: 'WhatsApp: set PUBLIC_WHATSAPP_E164 in .env',
+	},
+	ca: {
+		valoracion: 'Sol·licitar valoracio',
+		reserva: 'Reservar cita',
+		whatsapp: 'WhatsApp',
+		waMissing: 'WhatsApp: configureu PUBLIC_WHATSAPP_E164 al .env',
+	},
+	fr: {
+		valoracion: 'Demander une evaluation',
+		reserva: 'Prendre rendez-vous',
+		whatsapp: 'WhatsApp',
+		waMissing: 'WhatsApp: definissez PUBLIC_WHATSAPP_E164 dans .env',
+	},
+} as const;
+
+const t = copy[lang];
+---
+
+<div class="cta-stack">
+	<a class="cta-stack__primary" href={`/${lang}/contacto/`}>{t.valoracion}</a>
+	<div class="cta-stack__secondary">
+		<a href={`/${lang}/reservar-cita/`}>{t.reserva}</a>
+		{
+			waHref ? (
+				<a href={waHref} target="_blank" rel="noopener noreferrer">
+					{t.whatsapp}
+				</a>
+			) : (
+				<span class="form-stack__hint">{t.waMissing}</span>
+			)
+		}
+	</div>
+</div>

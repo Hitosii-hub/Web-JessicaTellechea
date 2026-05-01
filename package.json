@@ -10,9 +10,12 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
+    "lint:encoding": "node scripts/check-utf8.mjs",
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.2",
+    "@fontsource-variable/inter": "^5.2.8",
     "astro": "^6.2.1"
   },
   "devDependencies": {
