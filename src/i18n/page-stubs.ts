@@ -1,4 +1,4 @@
-import type { Locale } from './config';
+﻿import type { Locale } from './config';
 
 export type PageStub = {
 	title: string;
@@ -6,7 +6,7 @@ export type PageStub = {
 	lead: string;
 };
 
-/** Dynamic pillar/utility segments only (blog and contacto have dedicated routes). */
+/** Dynamic pillar/utility segments only (blog has a dedicated route tree). */
 export type StubSegment = 'facial' | 'corporal' | 'capilar' | 'criterio-medico' | 'reservar-cita';
 
 export const stubSegments: StubSegment[] = [

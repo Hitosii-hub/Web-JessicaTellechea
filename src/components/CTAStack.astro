@@ -1,5 +1,6 @@
 ---
 import type { Locale } from '../i18n/config';
+import { href } from '../i18n/route-registry';
 
 interface Props {
 	lang: Locale;
@@ -41,9 +42,9 @@ const t = copy[lang];
 ---
 
 <div class="cta-stack">
-	<a class="cta-stack__primary" href={`/${lang}/contacto/`}>{t.valoracion}</a>
+	<a class="cta-stack__primary" href={href(lang, 'contact')}>{t.valoracion}</a>
 	<div class="cta-stack__secondary">
-		<a href={`/${lang}/reservar-cita/`}>{t.reserva}</a>
+		<a href={href(lang, 'booking')}>{t.reserva}</a>
 		{
 			waHref ? (
 				<a href={waHref} target="_blank" rel="noopener noreferrer">

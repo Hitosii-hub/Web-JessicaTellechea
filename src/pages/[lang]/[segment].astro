@@ -1,38 +1,82 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { locales, type Locale } from '../../i18n/config';
-import {
-	stubSegments,
-	pageStubsBySegment,
-	type StubSegment,
-} from '../../i18n/page-stubs';
+import { contactPageMeta } from '../../i18n/contact-page';
+import { pageStubsBySegment } from '../../i18n/page-stubs';
+import { iaKeyFromPath, type IaKey, segmentFor, stubRecordKeyFromIaKey } from '../../i18n/route-registry';
 import CTAStack from '../../components/CTAStack.astro';
+import ValoracionForm from '../../components/ValoracionForm.astro';
 
 export function getStaticPaths() {
+	const pathKeys: Exclude<IaKey, 'home' | 'blog'>[] = [
+		'facial',
+		'corporal',
+		'capilar',
+		'trust',
+		'contact',
+		'booking',
+	];
 	const paths: { params: { lang: Locale; segment: string } }[] = [];
 	for (const lang of locales) {
-		for (const segment of stubSegments) {
-			paths.push({ params: { lang, segment } });
+		for (const key of pathKeys) {
+			paths.push({ params: { lang, segment: segmentFor(lang, key) } });
 		}
 	}
 	return paths;
 }
 
 const lang = Astro.params.lang as Locale;
-const segment = Astro.params.segment as StubSegment;
-const { title, heading, lead } = pageStubsBySegment[segment][lang];
-const showCta = ['facial', 'corporal', 'capilar', 'criterio-medico'].includes(segment);
+const segment = Astro.params.segment as string;
+const iaKey = iaKeyFromPath(lang, segment);
+
+if (!iaKey) {
+	return Astro.redirect(`/${lang}/`, 302);
+}
+
+let title: string;
+let heading: string;
+let lead: string;
+let showCta = false;
+let bookingBlock = false;
+
+if (iaKey === 'contact') {
+	const meta = contactPageMeta[lang];
+	title = meta.title;
+	heading = meta.heading;
+	lead = meta.intro;
+} else {
+	const stubKey = stubRecordKeyFromIaKey(iaKey);
+	if (!stubKey) {
+		return Astro.redirect(`/${lang}/`, 302);
+	}
+	const stub = pageStubsBySegment[stubKey][lang];
+	title = stub.title;
+	heading = stub.heading;
+	lead = stub.lead;
+	showCta = ['facial', 'corporal', 'capilar', 'criterio-medico'].includes(stubKey);
+	bookingBlock = iaKey === 'booking';
+}
 ---
 
 <BaseLayout lang={lang} title={title} description={lead}>
-	<h1>{heading}</h1>
-	<p>{lead}</p>
-	{showCta ? <CTAStack lang={lang} /> : null}
 	{
-		segment === 'reservar-cita' ? (
-			<div class="booking-embed-placeholder" data-booking-embed>
-				<strong>Placeholder</strong> — aqui ira el embed o enlace profundo al proveedor de agenda (tercero).
-			</div>
-		) : null
+		iaKey === 'contact' ? (
+			<>
+				<h1>{heading}</h1>
+				<p>{lead}</p>
+				<ValoracionForm lang={lang} />
+			</>
+		) : (
+			<>
+				<h1>{heading}</h1>
+				<p>{lead}</p>
+				{showCta ? <CTAStack lang={lang} /> : null}
+				{bookingBlock ? (
+					<div class="booking-embed-placeholder" data-booking-embed>
+						<strong>Placeholder</strong> — aqui ira el embed o enlace profundo al proveedor de agenda (tercero).
+					</div>
+				) : null}
+			</>
+		)
 	}
 </BaseLayout>

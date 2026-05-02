@@ -1,17 +1,14 @@
 ---
 import type { Locale } from '../i18n/config';
 import { primaryNavItems } from '../i18n/nav';
+import { href, type IaKey } from '../i18n/route-registry';
 
 interface Props {
 	lang: Locale;
-	pathSegment?: string;
+	currentIaKey: IaKey;
 }
 
-const { lang, pathSegment = '' } = Astro.props;
-
-function hrefFor(seg: string) {
-	return seg ? `/${lang}/${seg}/` : `/${lang}/`;
-}
+const { lang, currentIaKey } = Astro.props;
 ---
 
 <nav class="primary-nav" aria-label="Principal">
@@ -20,8 +17,8 @@ function hrefFor(seg: string) {
 			primaryNavItems.map((item) => (
 				<li>
 					<a
-						href={hrefFor(item.segment)}
-						aria-current={pathSegment === item.segment ? 'page' : undefined}
+						href={href(lang, item.iaKey)}
+						aria-current={currentIaKey === item.iaKey ? 'page' : undefined}
 					>
 						{item.label[lang]}
 					</a>
