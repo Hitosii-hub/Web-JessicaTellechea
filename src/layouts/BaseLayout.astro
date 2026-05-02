@@ -3,6 +3,7 @@ import { ClientRouter } from 'astro:transitions';
 import LanguageSwitcher from '../components/LanguageSwitcher.astro';
 import PrimaryNav from '../components/PrimaryNav.astro';
 import { locales, type Locale } from '../i18n/config';
+import { href, iaKeyFromPath, isBookingPath, type IaKey } from '../i18n/route-registry';
 import '../styles/global.css';
 
 interface Props {
@@ -18,18 +19,35 @@ const pathname = Astro.url.pathname.replace(/\/+$/, '') || '/';
 const parts = pathname.split('/').filter(Boolean);
 const pathWithinLocale = parts.length > 1 ? `${parts.slice(1).join('/')}/` : '';
 
-let pathSegment = '';
-if (parts.length > 1) {
-	pathSegment = parts[1] === 'blog' ? 'blog' : parts[1];
+let currentIaKey: IaKey = 'home';
+let useLegacyLocalePaths = false;
+
+if (parts.length <= 1) {
+	currentIaKey = 'home';
+} else if (parts[0] !== lang) {
+	useLegacyLocalePaths = true;
+} else if (parts[1] === 'blog' && parts.length > 2) {
+	currentIaKey = 'blog';
+	useLegacyLocalePaths = true;
+} else if (parts[1] === 'blog') {
+	currentIaKey = 'blog';
+} else {
+	const ik = iaKeyFromPath(lang, parts[1]);
+	if (ik) currentIaKey = ik;
+	else useLegacyLocalePaths = true;
 }
 
 const siteRoot = Astro.site ? new URL(Astro.site) : Astro.url;
 const origin = siteRoot.origin;
 
 function pageUrl(locale: string) {
+	const loc = locale as Locale;
+	if (!useLegacyLocalePaths) {
+		return `${origin}${href(loc, currentIaKey)}`;
+	}
 	return pathWithinLocale
-		? `${origin}/${locale}/${pathWithinLocale.replace(/\/+$/, '')}/`
-		: `${origin}/${locale}/`;
+		? `${origin}/${loc}/${pathWithinLocale.replace(/\/+$/, '')}/`
+		: `${origin}/${loc}/`;
 }
 
 function ogLocale(code: Locale): string {
@@ -39,7 +57,7 @@ function ogLocale(code: Locale): string {
 	return 'es_ES';
 }
 
-const bookingRoute = parts.includes('reservar-cita');
+const bookingRoute = isBookingPath(pathname);
 const robots = bookingRoute ? 'noindex,follow' : undefined;
 const ogDefault = ogImage ?? new URL('/og-placeholder.svg', siteRoot).href;
 ---
@@ -74,8 +92,13 @@ const ogDefault = ogImage ?? new URL('/og-placeholder.svg', siteRoot).href;
 	<body>
 		<header class="site-header">
 			<p class="site-header__placeholder">WebAJ — cabecera (placeholder)</p>
-			<PrimaryNav lang={lang} pathSegment={pathSegment} />
-			<LanguageSwitcher lang={lang} pathWithinLocale={pathWithinLocale} />
+			<PrimaryNav lang={lang} currentIaKey={currentIaKey} />
+			<LanguageSwitcher
+				lang={lang}
+				currentIaKey={currentIaKey}
+				pathWithinLocale={pathWithinLocale}
+				useLegacyLocalePaths={useLegacyLocalePaths}
+			/>
 		</header>
 		<main class="site-main">
 			<slot />

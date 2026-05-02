@@ -1,108 +1,66 @@
 ---
-
 import { locales, localeLabels, type Locale } from '../i18n/config';
-
-
+import { href, type IaKey } from '../i18n/route-registry';
 
 interface Props {
-
 	lang: Locale;
-
+	currentIaKey: IaKey;
 	/** Path after locale, with trailing slash (e.g. `facial/`, `blog/post/`). */
-
 	pathWithinLocale?: string;
-
+	/** Legal pages and deep blog: keep same tail across locales. */
+	useLegacyLocalePaths?: boolean;
 }
 
-
-
-const { lang, pathWithinLocale = '' } = Astro.props;
-
-
+const {
+	lang,
+	currentIaKey,
+	pathWithinLocale = '',
+	useLegacyLocalePaths = false,
+} = Astro.props;
 
 function localeHref(code: string) {
-
+	if (!useLegacyLocalePaths) {
+		return href(code as Locale, currentIaKey);
+	}
 	const tail = pathWithinLocale.replace(/^\/+/, '');
-
 	return tail ? `/${code}/${tail}` : `/${code}/`;
-
 }
-
 ---
 
-
-
 <nav class="lang-switcher" aria-label="Language">
-
 	<ul>
-
 		{
-
 			locales.map((code) => (
-
 				<li>
-
 					{code === lang ? (
-
 						<span class="current" aria-current="true">
-
 							{localeLabels[code]}
-
 						</span>
-
 					) : (
-
 						<a href={localeHref(code)} hreflang={code} lang={code}>
-
 							{localeLabels[code]}
-
 						</a>
-
 					)}
-
 				</li>
-
 			))
-
 		}
-
 	</ul>
-
 </nav>
 
-
-
 <style>
-
 	.lang-switcher ul {
-
 		display: flex;
-
 		flex-wrap: wrap;
-
 		gap: 0.75rem 1rem;
-
 		list-style: none;
-
 		margin: 0;
-
 		padding: 0;
-
 	}
-
 	.lang-switcher a {
-
 		color: inherit;
-
 	}
-
 	.lang-switcher .current {
-
 		font-weight: 600;
-
 		text-decoration: underline;
-
 	}
-
 </style>
-

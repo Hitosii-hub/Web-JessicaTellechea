@@ -11,6 +11,7 @@
     "preview": "astro preview",
     "check": "astro check",
     "lint:encoding": "node scripts/check-utf8.mjs",
+    "verify:routes": "node scripts/verify-route-registry.mjs",
     "astro": "astro"
   },
   "dependencies": {
