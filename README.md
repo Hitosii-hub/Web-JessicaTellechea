@@ -2,7 +2,7 @@
 
 This repository holds **durable product and IA documentation** for the AJ public clinic website, and hosts the **implementation** of the site as an **Astro + TypeScript** project (content and UI maintained from code, with optional interactive islands—for example React—where needed).
 
-Deployment target remains **IONOS**, using whatever build output fits the chosen hosting plan (static export vs Node-backed runtime—see `docs/stack-and-deployment-context.md`).
+Deployment target is **IONOS Hosting Plus** (shared hosting): **static** Astro build output (`dist/`); see `docs/stack-and-deployment-context.md`.
 
 Agent-assisted workflows (Cursor, Claude Code, etc.) are expected for implementation. **Coding-agent conventions:** see [AGENTS.md](AGENTS.md).
 
@@ -91,6 +91,8 @@ Run from the project root (after `npm install`):
 - Homes live at **`/es/`**, **`/en/`**, **`/ca/`**, **`/fr/`** (see `src/pages/[lang]/` and `docs/seo-and-localization.md`).
 - **`/`** uses `Astro.redirect` in dev; **static build** emits an HTML redirect (`meta refresh` + link) to `/es/`. For production, you MAY replace this with a host-level 302 rule.
 - Set **`SITE_URL`** in a local `.env` (see `.env.example`); `astro.config.mjs` reads it via Vite `loadEnv` for Astro `site` (canonical and `hreflang`). If unset, a placeholder is used for local builds.
+- **`/robots.txt`** is emitted at build from `src/pages/robots.txt.ts` (booking `Disallow` lines follow `src/i18n/route-registry.ts`; `Sitemap` uses the same origin as `site`).
+- **`PUBLIC_BOOKING_URL`** (iframe `src` on booking routes), **`PUBLIC_FORM_POST_URL`**, **`PUBLIC_WHATSAPP_E164`**: see `.env.example`; values are baked into the static build at build time where used.
 
 Official docs: [https://docs.astro.build](https://docs.astro.build) · Community: [https://astro.build/chat](https://astro.build/chat).
 
