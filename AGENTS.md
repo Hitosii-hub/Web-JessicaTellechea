@@ -14,14 +14,14 @@ Ship the public clinic site **aligned with `docs/`**. Prefer small, reviewable c
 ## Authority order
 
 1. **`docs/*.md`** - business rules, IA, messaging, SEO/i18n.
-2. **`docs/stack-and-deployment-context.md`** - Astro + TypeScript, IONOS, static vs Node (TBD).
+2. **`docs/stack-and-deployment-context.md`** - Astro + TypeScript, IONOS Hosting Plus, static `dist/` deployment.
 3. **PDF dossier** under `docs/initial-dossier/` - business intent only; not a build recipe (may describe legacy workflows).
 
 ## Minimum read before UI, routes, or copy
 
 1. `docs/site-architecture.md` - URLs, nav, conversion, booking visibility.
 2. `docs/content-and-messaging.md` - tone, CTAs, service framing.
-3. `docs/stack-and-deployment-context.md` - stack, hosting, forms TBD.
+3. `docs/stack-and-deployment-context.md` - stack, hosting (static on IONOS), form vendor TBD.
 4. `docs/project-brief.md` - legal scope, booking `noindex`, owner decisions.
 
 Full index: README, section **Document map**.
