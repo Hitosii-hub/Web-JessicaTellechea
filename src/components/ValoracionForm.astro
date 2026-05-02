@@ -1,0 +1,90 @@
+---
+import type { Locale } from '../i18n/config';
+
+interface Props {
+	lang: Locale;
+}
+
+const { lang } = Astro.props;
+
+const action = import.meta.env.PUBLIC_FORM_POST_URL as string | undefined;
+
+const ui = {
+	es: {
+		name: 'Nombre',
+		email: 'Email',
+		phone: 'Telefono (opcional)',
+		message: 'Mensaje',
+		send: 'Enviar solicitud',
+		noBackend:
+			'Configura PUBLIC_FORM_POST_URL en .env (Formspree, Getform, etc.) para activar el envio.',
+		privacyNote: 'No enviamos datos a terceros hasta que el endpoint este configurado.',
+	},
+	en: {
+		name: 'Name',
+		email: 'Email',
+		phone: 'Phone (optional)',
+		message: 'Message',
+		send: 'Send request',
+		noBackend: 'Set PUBLIC_FORM_POST_URL in .env (e.g. Formspree) to enable submission.',
+		privacyNote: 'Nothing is sent to third parties until an endpoint is configured.',
+	},
+	ca: {
+		name: 'Nom',
+		email: 'Correu',
+		phone: 'Telefon (opcional)',
+		message: 'Missatge',
+		send: 'Enviar sol·licitud',
+		noBackend: 'Configureu PUBLIC_FORM_POST_URL al .env per activar l enviament.',
+		privacyNote: 'Sense endpoint no s envia res a tercers.',
+	},
+	fr: {
+		name: 'Nom',
+		email: 'Email',
+		phone: 'Telephone (optionnel)',
+		message: 'Message',
+		send: 'Envoyer la demande',
+		noBackend:
+			'Ajoutez PUBLIC_FORM_POST_URL dans .env (ex. Formspree) pour activer l envoi.',
+		privacyNote: 'Sans endpoint configure, aucun envoi vers des tiers.',
+	},
+} as const;
+
+const t = ui[lang];
+---
+
+<form
+	class="form-stack"
+	method="post"
+	action={action ?? '#'}
+	enctype="application/x-www-form-urlencoded"
+>
+	{action ? null : <input type="hidden" name="_disabled" value="1" />}
+	<input type="hidden" name="lang" value={lang} />
+	<input type="hidden" name="_subject" value={`[WebAJ] Valoracion ${lang}`} />
+
+	<label>
+		{t.name}
+		<input type="text" name="name" required autocomplete="name" disabled={!action} />
+	</label>
+	<label>
+		{t.email}
+		<input type="email" name="email" required autocomplete="email" disabled={!action} />
+	</label>
+	<label>
+		{t.phone}
+		<input type="tel" name="phone" autocomplete="tel" disabled={!action} />
+	</label>
+	<label>
+		{t.message}
+		<textarea name="message" required disabled={!action} />
+	</label>
+
+	<div class="form-stack__actions">
+		<button class="cta-stack__primary" type="submit" disabled={!action}>
+			{t.send}
+		</button>
+	</div>
+	{action ? null : <p class="form-stack__hint">{t.noBackend}</p>}
+	<p class="form-stack__hint">{t.privacyNote}</p>
+</form>

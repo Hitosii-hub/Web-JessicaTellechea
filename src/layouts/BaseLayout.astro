@@ -1,16 +1,47 @@
 ---
+import { ClientRouter } from 'astro:transitions';
 import LanguageSwitcher from '../components/LanguageSwitcher.astro';
+import PrimaryNav from '../components/PrimaryNav.astro';
 import { locales, type Locale } from '../i18n/config';
+import '../styles/global.css';
 
 interface Props {
 	lang: Locale;
 	title: string;
 	description: string;
+	ogImage?: string;
 }
 
-const { lang, title, description } = Astro.props;
+const { lang, title, description, ogImage } = Astro.props;
 
-const origin = Astro.site?.origin ?? Astro.url.origin;
+const pathname = Astro.url.pathname.replace(/\/+$/, '') || '/';
+const parts = pathname.split('/').filter(Boolean);
+const pathWithinLocale = parts.length > 1 ? `${parts.slice(1).join('/')}/` : '';
+
+let pathSegment = '';
+if (parts.length > 1) {
+	pathSegment = parts[1] === 'blog' ? 'blog' : parts[1];
+}
+
+const siteRoot = Astro.site ? new URL(Astro.site) : Astro.url;
+const origin = siteRoot.origin;
+
+function pageUrl(locale: string) {
+	return pathWithinLocale
+		? `${origin}/${locale}/${pathWithinLocale.replace(/\/+$/, '')}/`
+		: `${origin}/${locale}/`;
+}
+
+function ogLocale(code: Locale): string {
+	if (code === 'ca') return 'ca_ES';
+	if (code === 'fr') return 'fr_FR';
+	if (code === 'en') return 'en_GB';
+	return 'es_ES';
+}
+
+const bookingRoute = parts.includes('reservar-cita');
+const robots = bookingRoute ? 'noindex,follow' : undefined;
+const ogDefault = ogImage ?? new URL('/og-placeholder.svg', siteRoot).href;
 ---
 
 <!doctype html>
@@ -19,61 +50,61 @@ const origin = Astro.site?.origin ?? Astro.url.origin;
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="description" content={description} />
+		{robots ? <meta name="robots" content={robots} /> : null}
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+		<meta property="og:locale" content={ogLocale(lang)} />
+		{locales
+			.filter((code) => code !== lang)
+			.map((code) => (
+				<meta property="og:locale:alternate" content={ogLocale(code)} />
+			))}
+		<meta property="og:image" content={ogDefault} />
+		<meta name="twitter:card" content="summary_large_image" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
-		<link rel="canonical" href={`${origin}/${lang}/`} />
-		{
-			locales.map((code) => (
-				<link rel="alternate" hreflang={code} href={`${origin}/${code}/`} />
-			))
-		}
-		<link rel="alternate" hreflang="x-default" href={`${origin}/es/`} />
+		<link rel="canonical" href={pageUrl(lang)} />
+		{locales.map((code) => <link rel="alternate" hreflang={code} href={pageUrl(code)} />)}
+		<link rel="alternate" hreflang="x-default" href={pageUrl('es')} />
+		<ClientRouter />
 	</head>
 	<body>
 		<header class="site-header">
-			<p class="site-header__placeholder">WebAJ - cabecera (placeholder)</p>
-			<LanguageSwitcher lang={lang} />
+			<p class="site-header__placeholder">WebAJ — cabecera (placeholder)</p>
+			<PrimaryNav lang={lang} pathSegment={pathSegment} />
+			<LanguageSwitcher lang={lang} pathWithinLocale={pathWithinLocale} />
 		</header>
 		<main class="site-main">
 			<slot />
 		</main>
 		<footer class="site-footer">
-			<p>Pie (placeholder) - enlaces legales y CTA en fases posteriores.</p>
+			<nav class="site-footer__legal" aria-label="Legal">
+				<a href={`/${lang}/privacidad/`}>{
+					lang === 'en'
+						? 'Privacy'
+						: lang === 'fr'
+							? 'Confidentialite'
+							: lang === 'ca'
+								? 'Privacitat'
+								: 'Privacidad'
+				}</a>
+				<a href={`/${lang}/cookies/`}>Cookies</a>
+				<a href={`/${lang}/aviso-legal/`}>{
+					lang === 'en'
+						? 'Legal notice'
+						: lang === 'fr'
+							? 'Mentions legales'
+							: lang === 'ca'
+								? 'Avís legal'
+								: 'Aviso legal'
+				}</a>
+			</nav>
+			<p class="site-footer__note">
+				Textos legales en borrador — revision profesional antes del lanzamiento.
+			</p>
 		</footer>
 	</body>
 </html>
-
-<style is:global>
-	html,
-	body {
-		margin: 0;
-		min-height: 100%;
-		font-family: system-ui, sans-serif;
-		line-height: 1.5;
-		color: #1a1a1a;
-		background: #fafafa;
-	}
-	.site-header,
-	.site-footer {
-		padding: 1rem 1.25rem;
-		background: #fff;
-		border-bottom: 1px solid #e8e8e8;
-	}
-	.site-footer {
-		border-top: 1px solid #e8e8e8;
-		border-bottom: none;
-		margin-top: 2rem;
-	}
-	.site-header__placeholder {
-		margin: 0 0 0.75rem;
-		font-size: 0.875rem;
-		color: #555;
-	}
-	.site-main {
-		padding: 1.25rem;
-		max-width: 48rem;
-		margin: 0 auto;
-	}
-</style>

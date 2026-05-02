@@ -1,0 +1,55 @@
+---
+import type { Locale } from '../i18n/config';
+import { primaryNavItems } from '../i18n/nav';
+
+interface Props {
+	lang: Locale;
+	pathSegment?: string;
+}
+
+const { lang, pathSegment = '' } = Astro.props;
+
+function hrefFor(seg: string) {
+	return seg ? `/${lang}/${seg}/` : `/${lang}/`;
+}
+---
+
+<nav class="primary-nav" aria-label="Principal">
+	<ul>
+		{
+			primaryNavItems.map((item) => (
+				<li>
+					<a
+						href={hrefFor(item.segment)}
+						aria-current={pathSegment === item.segment ? 'page' : undefined}
+					>
+						{item.label[lang]}
+					</a>
+				</li>
+			))
+		}
+	</ul>
+</nav>
+
+<style>
+	.primary-nav ul {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem 1.25rem;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	.primary-nav a {
+		color: inherit;
+		text-decoration: none;
+		font-weight: 500;
+	}
+	.primary-nav a:hover {
+		text-decoration: underline;
+	}
+	.primary-nav a[aria-current='page'] {
+		text-decoration: underline;
+		font-weight: 700;
+	}
+</style>
