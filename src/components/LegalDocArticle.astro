@@ -1,0 +1,40 @@
+---
+import type { Locale } from '../i18n/config';
+import type { LegalPageModel } from '../i18n/legal-types';
+import { legalCrossLinks } from '../i18n/legal-copy';
+
+interface Props {
+	lang: Locale;
+	page: LegalPageModel;
+	current: 'privacidad' | 'cookies' | 'aviso-legal';
+}
+
+const navAria: Record<Locale, string> = {
+	es: 'Otras paginas legales',
+	en: 'Other legal pages',
+	ca: 'Altres pagines legals',
+	fr: 'Autres pages juridiques',
+};
+
+const { lang, page, current } = Astro.props;
+const links = legalCrossLinks(lang);
+---
+
+<article class="legal-prose">
+	<h1>{page.title}</h1>
+	{
+		page.sections.map((s) => (
+			<section class="legal-prose__section" id={s.id}>
+				<h2>{s.heading}</h2>
+				{s.paragraphs.map((p) => (
+					<p>{p}</p>
+				))}
+			</section>
+		))
+	}
+	<nav class="legal-prose__cross" aria-label={navAria[lang]}>
+		{current !== 'privacidad' ? <a href={links.privacidad.href}>{links.privacidad.label}</a> : null}
+		{current !== 'cookies' ? <a href={links.cookies.href}>{links.cookies.label}</a> : null}
+		{current !== 'aviso-legal' ? <a href={links.avisoLegal.href}>{links.avisoLegal.label}</a> : null}
+	</nav>
+</article>

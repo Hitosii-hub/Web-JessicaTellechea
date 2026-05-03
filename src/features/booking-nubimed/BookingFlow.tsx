@@ -144,6 +144,7 @@ export default function BookingFlow({ lang, presetSpecialtySlug }: BookingFlowPr
 	const [retDob, setRetDob] = useState('');
 	const [retEmail, setRetEmail] = useState('');
 	const [privacyOk, setPrivacyOk] = useState(false);
+	const [marketingOk, setMarketingOk] = useState(false);
 	const [validationErr, setValidationErr] = useState<string | null>(null);
 	const [submitErr, setSubmitErr] = useState<string | null>(null);
 	const [submitting, setSubmitting] = useState(false);
@@ -353,6 +354,7 @@ export default function BookingFlow({ lang, presetSpecialtySlug }: BookingFlowPr
 		setSelectedSlot(null);
 		setProfessionalId(null);
 		setPrivacyOk(false);
+		setMarketingOk(false);
 		setValidationErr(null);
 		setSubmitErr(null);
 		setNpNombre('');
@@ -812,24 +814,6 @@ export default function BookingFlow({ lang, presetSpecialtySlug }: BookingFlowPr
 						</div>
 					)}
 
-					<label class="booking-flow__choice booking-flow__privacy">
-						<input type="checkbox" checked={privacyOk} onChange={(e) => setPrivacyOk((e.target as HTMLInputElement).checked)} />
-						{strings.privacyCheckbox}
-					</label>
-
-					<p class="booking-flow__notice booking-flow__recaptcha-disclosure">
-						{strings.recaptchaIntro}{' '}
-						<a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
-							{strings.recaptchaPrivacyLink}
-						</a>
-						{' '}
-						{strings.recaptchaAndTerms}{' '}
-						<a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer">
-							{strings.recaptchaTermsLink}
-						</a>
-						{strings.recaptchaLegalSuffix}
-					</p>
-
 					{validationErr ? (
 						<p class="booking-flow__banner" role="alert">
 							{validationErr}
@@ -862,11 +846,42 @@ export default function BookingFlow({ lang, presetSpecialtySlug }: BookingFlowPr
 						<p>{strings.confirmIntro}</p>
 						<p>{strings.confirmBackHint}</p>
 						<p class="booking-flow__notice">{strings.confirmDisclaimer}</p>
+						<div class="booking-flow__legal-block">
+							<h3 class="booking-flow__legal-block-title">{strings.bookingLegalSummaryHeading}</h3>
+							<p class="booking-flow__legal-summary-body">{strings.bookingLegalSummaryBody}</p>
+							<p class="booking-flow__legal-policy-link">
+								<a href={`/${lang}/privacidad/`} target="_blank" rel="noopener noreferrer">
+									{strings.privacyPolicyLinkLabel}
+								</a>
+							</p>
+						</div>
+						<label class="booking-flow__choice booking-flow__privacy">
+							<input type="checkbox" checked={privacyOk} onChange={(e) => setPrivacyOk((e.target as HTMLInputElement).checked)} />
+							<span>{strings.privacyCheckbox}</span>
+						</label>
+						<label class="booking-flow__choice">
+							<input type="checkbox" checked={marketingOk} onChange={(e) => setMarketingOk((e.target as HTMLInputElement).checked)} />
+							<span>{strings.marketingCheckbox}</span>
+						</label>
 						{submitErr ? (
-							<p class="booking-flow__banner" role="alert">
+							<p class="booking-flow__banner booking-flow__banner--compact" role="alert">
 								{submitErr}
 							</p>
 						) : null}
+						<div class="booking-flow__recaptcha-wrap">
+							<p class="booking-flow__notice booking-flow__recaptcha-disclosure">
+								{strings.recaptchaIntro}{' '}
+								<a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
+									{strings.recaptchaPrivacyLink}
+								</a>
+								{' '}
+								{strings.recaptchaAndTerms}{' '}
+								<a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer">
+									{strings.recaptchaTermsLink}
+								</a>
+								{strings.recaptchaLegalSuffix}
+							</p>
+						</div>
 						<div class="booking-flow__actions booking-flow__actions--split">
 							<button type="button" class="booking-flow__btn-secondary" disabled={submitting} onClick={() => setConfirmOpen(false)}>
 								{strings.previous}
