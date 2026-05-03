@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import LegalDocArticle from '../../components/LegalDocArticle.astro';
 import { locales, type Locale } from '../../i18n/config';
 import { legalPages } from '../../i18n/legal-copy';
 
@@ -9,12 +10,9 @@ export function getStaticPaths() {
 
 const lang = Astro.params.lang as Locale;
 const page = legalPages.cookies[lang];
-const description = page.paragraphs[0] ?? page.title;
+const description = page.sections[0]?.paragraphs[0] ?? page.title;
 ---
 
 <BaseLayout lang={lang} title={`WebAJ — ${page.title}`} description={description}>
-	<article class="legal-prose">
-		<h1>{page.title}</h1>
-		{page.paragraphs.map((p) => <p>{p}</p>)}
-	</article>
+	<LegalDocArticle lang={lang} page={page} current="cookies" />
 </BaseLayout>
