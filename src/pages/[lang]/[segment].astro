@@ -6,6 +6,7 @@ import { pageStubsBySegment } from '../../i18n/page-stubs';
 import { iaKeyFromPath, type IaKey, segmentFor, stubRecordKeyFromIaKey } from '../../i18n/route-registry';
 import CTAStack from '../../components/CTAStack.astro';
 import ValoracionForm from '../../components/ValoracionForm.astro';
+import BookingFlow from '../../features/booking-nubimed/BookingFlow';
 
 export function getStaticPaths() {
 	const pathKeys: Exclude<IaKey, 'home' | 'blog'>[] = [
@@ -27,6 +28,7 @@ export function getStaticPaths() {
 
 const lang = Astro.params.lang as Locale;
 const segment = Astro.params.segment as string;
+const presetSpecialtySlug = Astro.url.searchParams.get('preset');
 const iaKey = iaKeyFromPath(lang, segment);
 
 if (!iaKey) {
@@ -72,8 +74,8 @@ if (iaKey === 'contact') {
 				<p>{lead}</p>
 				{showCta ? <CTAStack lang={lang} /> : null}
 				{bookingBlock ? (
-					<div class="booking-embed-placeholder" data-booking-embed>
-						<strong>Placeholder</strong> — aqui ira el embed o enlace profundo al proveedor de agenda (tercero).
+					<div class="booking-flow-root" data-booking-flow>
+						<BookingFlow client:load lang={lang} presetSpecialtySlug={presetSpecialtySlug} />
 					</div>
 				) : null}
 			</>
