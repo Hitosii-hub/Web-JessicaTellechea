@@ -1,0 +1,6 @@
+# OpenSpec change DAG state (orchestrator / recovery)
+version: 1
+change_id: nubimed-booking-client-flow
+current_phase: archived
+updated: "2026-05-03"
+notes: "Archived to openspec/changes/archive/2026-05-03-nubimed-booking-client-flow. Main spec: openspec/specs/web-booking-nubimed-client/spec.md. Residual: task 4.3 gate, O.1 Vitest optional."
