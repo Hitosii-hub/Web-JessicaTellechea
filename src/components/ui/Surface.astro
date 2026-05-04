@@ -1,0 +1,20 @@
+---
+interface Props {
+	variant?: 'raised' | 'plain';
+	class?: string;
+}
+
+const { variant = 'raised', class: className } = Astro.props;
+---
+
+<div
+	class:list={[
+		'rounded-[length:var(--radius-md)] border border-[color:var(--color-border)]',
+		variant === 'raised'
+			? 'bg-[color:var(--color-surface)] shadow-[var(--shadow-sm)]'
+			: 'bg-[color:var(--color-bg)]',
+		className,
+	]}
+>
+	<slot />
+</div>

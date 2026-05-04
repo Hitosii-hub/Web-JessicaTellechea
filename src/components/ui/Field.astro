@@ -1,0 +1,35 @@
+---
+interface Props {
+	label: string;
+	fieldId: string;
+	hint?: string;
+	error?: string;
+	class?: string;
+}
+
+const { label, fieldId, hint, error, class: className } = Astro.props;
+
+const hintId = hint ? `${fieldId}-hint` : undefined;
+const errId = error ? `${fieldId}-err` : undefined;
+---
+
+<div class:list={['grid gap-[length:var(--space-xs)]', className]}>
+	<label class="text-sm font-medium text-[color:var(--color-text)]" for={fieldId}>{label}</label>
+	<div class="min-h-0">
+		<slot />
+	</div>
+	{
+		hint ? (
+			<p id={hintId} class="text-xs text-[color:var(--color-muted)]">
+				{hint}
+			</p>
+		) : null
+	}
+	{
+		error ? (
+			<p id={errId} role="alert" class="text-sm text-[color:var(--color-danger)]">
+				{error}
+			</p>
+		) : null
+	}
+</div>

@@ -1,0 +1,6 @@
+@import "@fontsource-variable/inter/wght.css";
+@import "tailwindcss";
+@import "./theme.css";
+@import "./base.css";
+@import "./components.css";
+@import "./utilities.css";

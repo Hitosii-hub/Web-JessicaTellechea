@@ -1,0 +1,28 @@
+---
+interface Props {
+	level?: 1 | 2 | 3 | 4 | 5 | 6;
+	display?: boolean;
+	class?: string;
+}
+
+const { level = 2, display = false, class: className } = Astro.props;
+
+const tags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
+const Tag = tags[level - 1] ?? 'h2';
+
+const displayCls =
+	'text-[clamp(2rem,5vw,3rem)] font-semibold tracking-tight text-[color:var(--color-text)]';
+
+const bodyCls: Record<1 | 2 | 3 | 4 | 5 | 6, string> = {
+	1: 'text-3xl font-semibold text-[color:var(--color-text)] md:text-4xl',
+	2: 'text-2xl font-semibold text-[color:var(--color-text)] md:text-3xl',
+	3: 'text-xl font-semibold text-[color:var(--color-text)]',
+	4: 'text-lg font-semibold text-[color:var(--color-text)]',
+	5: 'text-base font-semibold text-[color:var(--color-text)]',
+	6: 'text-sm font-semibold uppercase tracking-wide text-[color:var(--color-muted)]',
+};
+---
+
+<Tag class:list={[display ? displayCls : bodyCls[level], className]}>
+	<slot />
+</Tag>

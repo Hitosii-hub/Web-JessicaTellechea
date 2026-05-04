@@ -1,0 +1,45 @@
+---
+interface Props {
+	variant?: 'primary' | 'secondary' | 'ghost';
+	size?: 'sm' | 'md' | 'lg';
+	type?: 'button' | 'submit';
+	disabled?: boolean;
+	class?: string;
+}
+
+const {
+	variant = 'primary',
+	size = 'md',
+	type = 'button',
+	disabled = false,
+	class: className,
+	...rest
+} = Astro.props;
+
+const base =
+	'motion-safe:transition-colors motion-safe:duration-[length:var(--duration-fast)] inline-flex cursor-pointer items-center justify-center rounded-[length:var(--radius-sm)] font-semibold outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:[outline-color:var(--color-accent)] disabled:pointer-events-none disabled:opacity-[0.45]';
+
+const variants: Record<NonNullable<Props['variant']>, string> = {
+	primary:
+		'border border-transparent bg-[color:var(--color-accent)] text-[color:var(--color-on-accent)] hover:bg-[color:var(--color-accent-muted)]',
+	secondary:
+		'border border-[color:var(--color-border)] bg-[color:var(--color-surface)] text-[color:var(--color-text)] hover:border-[color:var(--color-accent-muted)] hover:text-[color:var(--color-accent)]',
+	ghost:
+		'border border-transparent bg-transparent text-[color:var(--color-text)] hover:bg-[color:var(--color-neutral)]',
+};
+
+const sizes: Record<NonNullable<Props['size']>, string> = {
+	sm: 'min-h-9 px-[length:var(--space-sm)] py-[length:var(--space-xs)] text-sm',
+	md: 'min-h-10 px-[length:var(--space-md)] py-[length:var(--space-sm)] text-base',
+	lg: 'min-h-11 px-[length:var(--space-lg)] py-[length:var(--space-md)] text-lg',
+};
+---
+
+<button
+	type={type}
+	disabled={disabled}
+	class:list={[base, variants[variant], sizes[size], className]}
+	{...rest}
+>
+	<slot />
+</button>

@@ -1,0 +1,19 @@
+---
+interface Props {
+	gap?: 'xs' | 'sm' | 'md' | 'lg';
+	class?: string;
+}
+
+const { gap = 'md', class: className } = Astro.props;
+
+const gaps = {
+	xs: 'gap-[length:var(--space-xs)]',
+	sm: 'gap-[length:var(--space-sm)]',
+	md: 'gap-[length:var(--space-md)]',
+	lg: 'gap-[length:var(--space-lg)]',
+} as const;
+---
+
+<div class:list={['flex flex-col', gaps[gap], className]}>
+	<slot />
+</div>
