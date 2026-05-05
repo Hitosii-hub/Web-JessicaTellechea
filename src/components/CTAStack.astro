@@ -13,26 +13,30 @@ const waHref = digits ? `https://wa.me/${digits}` : '';
 
 const copy = {
 	es: {
-		valoracion: 'Solicitar valoracion',
-		reserva: 'Reservar cita',
+		valoracion: 'SOLICITAR VALORACIÓN',
+		trust: 'Criterio médico',
+		reserva: 'RESERVAR CITA',
 		whatsapp: 'WhatsApp',
 		waMissing: 'WhatsApp: configure PUBLIC_WHATSAPP_E164 en .env',
 	},
 	en: {
-		valoracion: 'Request an assessment',
-		reserva: 'Book appointment',
+		valoracion: 'SOLICITAR VALORACIÓN',
+		trust: 'Medical criteria',
+		reserva: 'BOOK APPOINTMENT',
 		whatsapp: 'WhatsApp',
 		waMissing: 'WhatsApp: set PUBLIC_WHATSAPP_E164 in .env',
 	},
 	ca: {
-		valoracion: 'Sol·licitar valoracio',
-		reserva: 'Reservar cita',
+		valoracion: 'SOLICITAR VALORACIÓN',
+		trust: 'Criteri mèdic',
+		reserva: 'RESERVAR CITA',
 		whatsapp: 'WhatsApp',
 		waMissing: 'WhatsApp: configureu PUBLIC_WHATSAPP_E164 al .env',
 	},
 	fr: {
-		valoracion: 'Demander une evaluation',
-		reserva: 'Prendre rendez-vous',
+		valoracion: 'SOLICITAR VALORACIÓN',
+		trust: 'Critère médical',
+		reserva: 'PRENDRE RENDEZ-VOUS',
 		whatsapp: 'WhatsApp',
 		waMissing: 'WhatsApp: definissez PUBLIC_WHATSAPP_E164 dans .env',
 	},
@@ -42,8 +46,9 @@ const t = copy[lang];
 ---
 
 <div class="cta-stack">
-	<a class="cta-stack__primary" href={href(lang, 'contact')}>{t.valoracion}</a>
+	<a class="cta-stack__primary" href={href(lang, 'booking')}>{t.valoracion}</a>
 	<div class="cta-stack__secondary">
+		<a href={href(lang, 'trust')}>{t.trust}</a>
 		<a href={href(lang, 'booking')}>{t.reserva}</a>
 		{
 			waHref ? (

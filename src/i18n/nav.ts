@@ -24,3 +24,11 @@ export const primaryNavItems: NavItem[] = [
 	{ iaKey: 'blog', label: { es: 'Blog', en: 'Blog', ca: 'Blog', fr: 'Blog' } },
 	{ iaKey: 'contact', label: { es: 'Contacto', en: 'Contact', ca: 'Contacte', fr: 'Contact' } },
 ];
+
+/** Header RESERVAR CITA — uppercase compact pattern per interview spec §1. */
+export const headerBookingCta: Record<Locale, string> = {
+	es: 'RESERVAR CITA',
+	en: 'BOOK APPOINTMENT',
+	ca: 'RESERVAR CITA',
+	fr: 'PRENDRE RENDEZ-VOUS',
+};

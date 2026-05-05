@@ -1,10 +1,13 @@
 ---
 import { ClientRouter } from 'astro:transitions';
 import CookieConsent from '../components/CookieConsent';
-import LanguageSwitcher from '../components/LanguageSwitcher.astro';
+import LanguagePicker from '../components/LanguagePicker';
 import PrimaryNav from '../components/PrimaryNav.astro';
-import { locales, type Locale } from '../i18n/config';
+import { locales, localeLabels, localeRegionLine, type Locale } from '../i18n/config';
+import { languageModalCopy } from '../i18n/language-modal';
 import { legalFooterLabels, legalFooterPublicationNote } from '../i18n/legal-nav';
+import { localeEquivalentHref } from '../i18n/locale-hrefs';
+import { headerBookingCta } from '../i18n/nav';
 import { href, iaKeyFromPath, isBookingPath, type IaKey } from '../i18n/route-registry';
 import '../styles/app.css';
 
@@ -13,9 +16,11 @@ interface Props {
 	title: string;
 	description: string;
 	ogImage?: string;
+	/** Marketing home: translucent header over hero + full-bleed main. */
+	shell?: 'default' | 'marketing';
 }
 
-const { lang, title, description, ogImage } = Astro.props;
+const { lang, title, description, ogImage, shell = 'default' } = Astro.props;
 const footerLegal = legalFooterLabels(lang);
 const footerNote = legalFooterPublicationNote(lang);
 
@@ -64,6 +69,19 @@ function ogLocale(code: Locale): string {
 const bookingRoute = isBookingPath(pathname);
 const robots = bookingRoute ? 'noindex,follow' : undefined;
 const ogDefault = ogImage ?? new URL('/og-placeholder.svg', siteRoot).href;
+
+const bookingHref = href(lang, 'booking');
+const langPickerItems = locales.map((code) => ({
+	locale: code,
+	label: localeLabels[code],
+	region: localeRegionLine[code],
+	href: localeEquivalentHref(code, {
+		currentIaKey,
+		pathWithinLocale,
+		useLegacyLocalePaths,
+	}),
+	suggested: code === 'es' || code === 'ca',
+}));
 ---
 
 <!doctype html>
@@ -93,28 +111,66 @@ const ogDefault = ogImage ?? new URL('/og-placeholder.svg', siteRoot).href;
 		<link rel="alternate" hreflang="x-default" href={pageUrl('es')} />
 		<ClientRouter />
 	</head>
-	<body>
+	<body class:list={[shell === 'marketing' ? 'site-body--marketing' : undefined]}>
 		<header class="site-header">
-			<p class="site-header__placeholder">WebAJ — cabecera (placeholder)</p>
-			<PrimaryNav lang={lang} currentIaKey={currentIaKey} />
-			<LanguageSwitcher
-				lang={lang}
-				currentIaKey={currentIaKey}
-				pathWithinLocale={pathWithinLocale}
-				useLegacyLocalePaths={useLegacyLocalePaths}
-			/>
+			<div class="site-header__inner">
+				<a class="site-header__logo" href={href(lang, 'home')}>
+					<img
+						class="site-header__logo-img"
+						src="/logo-aj.svg"
+						alt="WebAJ"
+						width="1024"
+						height="725"
+						decoding="async"
+						loading="eager"
+						fetchpriority="high"
+					/>
+				</a>
+				<div class="site-header__nav-slot">
+					<PrimaryNav lang={lang} currentIaKey={currentIaKey} bookingHref={bookingHref} />
+				</div>
+				<div class="site-header__actions">
+					<a class="site-header__booking site-header__booking--desktop" href={bookingHref}>
+						{headerBookingCta[lang]}
+					</a>
+					<LanguagePicker
+						client:load
+						current={lang}
+						items={langPickerItems}
+						copy={languageModalCopy[lang]}
+					/>
+				</div>
+			</div>
 		</header>
-		<main class="site-main">
+		<main class:list={['site-main', shell === 'marketing' && 'site-main--bleed']}>
 			<slot />
 		</main>
 		<footer class="site-footer">
-			<nav class="site-footer__legal" aria-label="Legal">
-				<a href={`/${lang}/privacidad/`}>{footerLegal.privacy}</a>
-				<a href={`/${lang}/cookies/`}>{footerLegal.cookies}</a>
-				<a href={`/${lang}/aviso-legal/`}>{footerLegal.legalNotice}</a>
-			</nav>
-			<p class="site-footer__note">{footerNote}</p>
+			<div class="site-footer__inner">
+				<nav class="site-footer__legal" aria-label="Legal">
+					<a href={`/${lang}/privacidad/`}>{footerLegal.privacy}</a>
+					<a href={`/${lang}/cookies/`}>{footerLegal.cookies}</a>
+					<a href={`/${lang}/aviso-legal/`}>{footerLegal.legalNotice}</a>
+				</nav>
+				<p class="site-footer__note">{footerNote}</p>
+			</div>
 		</footer>
+		<script is:inline>
+			(() => {
+				const body = document.body;
+				const SCROLLED_CLASS = 'site-body--scrolled';
+				if (!body) return;
+
+				const syncHeaderState = () => {
+					if (window.scrollY > 0) body.classList.add(SCROLLED_CLASS);
+					else body.classList.remove(SCROLLED_CLASS);
+				};
+
+				syncHeaderState();
+				window.addEventListener('scroll', syncHeaderState, { passive: true });
+				document.addEventListener('astro:page-load', syncHeaderState);
+			})();
+		</script>
 		<CookieConsent client:load lang={lang} />
 	</body>
 </html>

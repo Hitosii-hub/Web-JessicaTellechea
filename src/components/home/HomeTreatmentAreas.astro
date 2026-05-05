@@ -1,0 +1,37 @@
+---
+import type { Locale } from '../../i18n/config';
+import { homeContent } from '../../i18n/home-content';
+import { href, type IaKey } from '../../i18n/route-registry';
+import Heading from '../ui/Heading.astro';
+
+interface Props {
+	lang: Locale;
+}
+
+const { lang } = Astro.props;
+const c = homeContent[lang].specialties;
+
+const pillars: IaKey[] = ['facial', 'corporal', 'capilar'];
+---
+
+<section class="home-specialties">
+	<div class="home-specialties__inner">
+		<div class="home-specialties__head">
+			<Heading level={2} serif>{c.h2}</Heading>
+		</div>
+		<div class="home-specialties__grid">
+			{
+				c.cards.map((card, index) => (
+					<a class="home-specialties__card" href={href(lang, pillars[index])}>
+						<div class="home-specialties__visual" aria-hidden="true" />
+						<div class="home-specialties__body">
+							<span class="home-specialties__tag">{card.tag}</span>
+							<h3 class="home-specialties__title">{card.title}</h3>
+							<span class="home-specialties__link">{c.linkCta}</span>
+						</div>
+					</a>
+				))
+			}
+		</div>
+	</div>
+</section>

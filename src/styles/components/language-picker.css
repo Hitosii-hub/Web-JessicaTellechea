@@ -1,0 +1,191 @@
+.language-picker {
+	position: relative;
+	display: inline-flex;
+}
+
+.language-picker__trigger {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 44px;
+	min-width: 44px;
+	padding: 0.35rem;
+	font-family: var(--font-sans-ui);
+	color: var(--color-text);
+	background: transparent;
+	border: none;
+	border-radius: var(--radius-editorial);
+	cursor: pointer;
+}
+
+.language-picker__trigger:hover {
+	color: var(--color-accent);
+	background: color-mix(in srgb, var(--color-neutral) 55%, transparent);
+}
+
+.language-picker__trigger:focus-visible {
+	outline: 2px solid var(--color-accent);
+	outline-offset: 2px;
+}
+
+.language-picker__globe {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	line-height: 0;
+	color: inherit;
+}
+
+.language-picker__globe-svg {
+	display: block;
+}
+
+.language-picker__trigger-label {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+.language-picker__modal {
+	margin: auto;
+	padding: 0;
+	max-width: calc(100vw - 2rem);
+	max-height: calc(100vh - 2rem);
+	border: none;
+	background: transparent;
+}
+
+.language-picker__modal::backdrop {
+	background: rgb(15 14 12 / 38%);
+}
+
+.language-picker__surface {
+	width: min(640px, 100%);
+	max-height: min(640px, 100vh - 2rem);
+	overflow: auto;
+	padding: var(--space-lg);
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-editorial);
+	box-shadow: var(--shadow-sm);
+}
+
+.language-picker__tabs {
+	display: flex;
+	gap: var(--space-sm);
+	margin-bottom: var(--space-md);
+	border-bottom: 1px solid var(--color-border);
+	padding-bottom: var(--space-sm);
+}
+
+.language-picker__tab {
+	padding: 0.35rem 0.5rem;
+	font: inherit;
+	font-weight: 600;
+	font-size: 0.875rem;
+	color: var(--color-muted);
+	background: transparent;
+	border: none;
+	border-bottom: 2px solid transparent;
+	cursor: pointer;
+}
+
+.language-picker__tab--active {
+	color: var(--color-text);
+	border-bottom-color: var(--color-champagne);
+}
+
+.language-picker__section {
+	margin: var(--space-md) 0 var(--space-sm);
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	color: var(--color-muted);
+}
+
+.language-picker__list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 0.45rem 0.6rem;
+	align-items: stretch;
+}
+
+.language-picker__list li {
+	min-width: 0;
+	display: flex;
+}
+
+.language-picker__link {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+	gap: 0.2rem;
+	min-height: 3.75rem;
+	padding: 0.65rem 0.75rem;
+	text-decoration: none;
+	color: var(--color-text);
+	background: transparent;
+	border: 1px solid transparent;
+	border-radius: var(--radius-editorial);
+	box-sizing: border-box;
+}
+
+@media (max-width: 420px) {
+	.language-picker__list {
+		grid-template-columns: 1fr;
+	}
+
+	.language-picker__link {
+		min-height: 0;
+	}
+}
+
+.language-picker__link:hover {
+	background: var(--color-neutral);
+	border-color: color-mix(in srgb, var(--color-border) 70%, transparent);
+}
+
+.language-picker__link--current {
+	border-color: color-mix(in srgb, var(--color-champagne) 65%, var(--color-border));
+	background: color-mix(in srgb, var(--color-neutral) 40%, transparent);
+}
+
+.language-picker__primary {
+	font-size: 0.9375rem;
+	font-weight: 600;
+}
+
+.language-picker__secondary {
+	font-size: 0.8125rem;
+	font-weight: 500;
+	color: var(--color-muted);
+}
+
+.language-picker__close {
+	margin-top: var(--space-lg);
+	width: 100%;
+	padding: 0.55rem 0.75rem;
+	font: inherit;
+	font-weight: 600;
+	cursor: pointer;
+	color: var(--color-text);
+	background: var(--color-neutral);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-editorial);
+}
+
+.language-picker__close:hover {
+	background: color-mix(in srgb, var(--color-neutral) 85%, var(--color-border));
+}

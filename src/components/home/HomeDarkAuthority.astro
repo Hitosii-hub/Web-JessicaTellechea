@@ -1,0 +1,26 @@
+---
+import type { Locale } from '../../i18n/config';
+import { homeContent } from '../../i18n/home-content';
+
+interface Props {
+	lang: Locale;
+}
+
+const { lang } = Astro.props;
+const c = homeContent[lang].authority;
+
+const icons = ['ph-clipboard-text', 'ph-leaf', 'ph-stack-simple'] as const;
+---
+
+<section class="home-authority">
+	<div class="home-authority__inner">
+		{
+			c.statements.map((text, i) => (
+				<div class="home-authority__col">
+					<i class:list={['ph-thin', icons[i], 'home-ph', 'home-authority__icon']} aria-hidden="true" />
+					<p class="home-authority__statement">{text}</p>
+				</div>
+			))
+		}
+	</div>
+</section>

@@ -1,0 +1,19 @@
+---
+import type { Locale } from '../../i18n/config';
+import { homeContent } from '../../i18n/home-content';
+import Heading from '../ui/Heading.astro';
+
+interface Props {
+	lang: Locale;
+}
+
+const { lang } = Astro.props;
+const c = homeContent[lang].manifest;
+---
+
+<section class="home-manifest">
+	<div class="home-manifest__inner">
+		<Heading level={2} serif class="home-manifest__title">{c.h2}</Heading>
+		<p class="home-manifest__body">{c.body}</p>
+	</div>
+</section>

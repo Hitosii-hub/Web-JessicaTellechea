@@ -1,7 +1,8 @@
 /* AJ brand tokens. Hex literals live here only per web-design-tokens spec. */
 
 @theme {
-	--font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+	--font-sans: 'Manrope Variable', ui-sans-serif, system-ui, sans-serif;
+	--font-serif-display: 'Noto Serif', Georgia, 'Times New Roman', serif;
 
 	--color-bg: #f7f6f3;
 	--color-surface: #ffffff;
@@ -25,6 +26,7 @@
 
 	--radius-sm: 6px;
 	--radius-md: 10px;
+	--radius-editorial: 2px;
 
 	--shadow-sm: 0 1px 2px rgb(47 46 43 / 8%);
 
@@ -34,11 +36,16 @@
 
 	--max-width-narrow: 32rem;
 	--max-width-editorial: 52rem;
+	--max-width-manifest: 760px;
 	--max-width-wide: 80rem;
+
+	--space-section-y: clamp(3.25rem, 6vw, 5.5rem);
 }
 
 :root {
-	--font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+	--font-sans: 'Manrope Variable', ui-sans-serif, system-ui, sans-serif;
+	--font-sans-ui: var(--font-sans);
+	--font-serif-display: 'Noto Serif', Georgia, 'Times New Roman', serif;
 
 	--color-bg: #f7f6f3;
 	--color-surface: #ffffff;
@@ -55,6 +62,7 @@
 
 	--max-width-narrow: 32rem;
 	--max-width-editorial: 52rem;
+	--max-width-manifest: 760px;
 	--max-width-wide: 80rem;
 
 	--space-xs: 0.35rem;
@@ -62,9 +70,11 @@
 	--space-md: 1.25rem;
 	--space-lg: 2rem;
 	--space-xl: 3rem;
+	--space-section-y: clamp(3.25rem, 6vw, 5.5rem);
 
 	--radius-sm: 6px;
 	--radius-md: 10px;
+	--radius-editorial: 2px;
 
 	--shadow-sm: 0 1px 2px rgb(47 46 43 / 8%);
 

@@ -1,29 +1,33 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import HomeCapillary from '../../components/home/HomeCapillary.astro';
+import HomeClinicExperience from '../../components/home/HomeClinicExperience.astro';
+import HomeDarkAuthority from '../../components/home/HomeDarkAuthority.astro';
+import HomeFinalCta from '../../components/home/HomeFinalCta.astro';
+import HomeHero from '../../components/home/HomeHero.astro';
+import HomeManifest from '../../components/home/HomeManifest.astro';
+import HomeMedicalProcess from '../../components/home/HomeMedicalProcess.astro';
+import HomeTreatmentAreas from '../../components/home/HomeTreatmentAreas.astro';
 import { locales, type Locale } from '../../i18n/config';
-import { pageStubsHome } from '../../i18n/page-stubs';
-import CTAStack from '../../components/CTAStack.astro';
-import heroUrl from '../../assets/hero-shape.svg?url';
+import { homeContent } from '../../i18n/home-content';
 
 export function getStaticPaths() {
 	return locales.map((lang) => ({ params: { lang } }));
 }
 
 const lang = Astro.params.lang as Locale;
-const { title, heading, lead } = pageStubsHome[lang];
+const { hero } = homeContent[lang];
+const title = `WebAJ | ${hero.h1}`;
+const description = `${hero.subtitle} ${hero.supporting}`;
 ---
 
-<BaseLayout lang={lang} title={title} description={lead}>
-	<section class="hero">
-		<div class="hero__inner">
-			<div>
-				<h1>{heading}</h1>
-				<p>{lead}</p>
-			</div>
-			<div class="hero__visual">
-				<img src={heroUrl} alt="" width="800" height="360" loading="eager" fetchpriority="high" />
-			</div>
-		</div>
-	</section>
-	<CTAStack lang={lang} />
+<BaseLayout lang={lang} title={title} description={description} shell="marketing">
+	<HomeHero lang={lang} />
+	<HomeManifest lang={lang} />
+	<HomeMedicalProcess lang={lang} />
+	<HomeTreatmentAreas lang={lang} />
+	<HomeCapillary lang={lang} />
+	<HomeClinicExperience lang={lang} />
+	<HomeDarkAuthority lang={lang} />
+	<HomeFinalCta lang={lang} />
 </BaseLayout>

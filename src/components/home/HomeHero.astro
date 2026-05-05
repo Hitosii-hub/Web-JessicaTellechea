@@ -1,0 +1,35 @@
+---
+import type { Locale } from '../../i18n/config';
+import { homeContent } from '../../i18n/home-content';
+import { href } from '../../i18n/route-registry';
+import Heading from '../ui/Heading.astro';
+import bgUrl from '../../assets/background.svg?url';
+
+interface Props {
+	lang: Locale;
+}
+
+const { lang } = Astro.props;
+const c = homeContent[lang].hero;
+---
+
+<section class="home-hero">
+	<div class="home-hero__media" style={`background-image: url(${bgUrl})`}>
+		<div class="home-hero__overlay" aria-hidden="true" />
+		<div class="home-hero__inner">
+			<Heading level={1} display serif class="home-hero__title">
+				{c.h1}
+			</Heading>
+			<p class="home-hero__subtitle">{c.subtitle}</p>
+			<p class="home-hero__supporting">{c.supporting}</p>
+			<div class="home-hero__actions">
+				<a class="home-hero__cta-primary" href={href(lang, 'booking')}>
+					{c.ctaPrimary}
+				</a>
+				<a class="home-hero__cta-secondary" href={href(lang, 'trust')}>
+					{c.ctaSecondary}
+				</a>
+			</div>
+		</div>
+	</div>
+</section>

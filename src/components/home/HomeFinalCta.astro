@@ -1,0 +1,29 @@
+﻿---
+import type { Locale } from '../../i18n/config';
+import { homeContent } from '../../i18n/home-content';
+import { href } from '../../i18n/route-registry';
+import Heading from '../ui/Heading.astro';
+
+interface Props {
+	lang: Locale;
+}
+
+const { lang } = Astro.props;
+const c = homeContent[lang].finalCta;
+---
+
+<section class="home-final-cta">
+	<div class="home-final-cta__inner">
+	<Heading level={2} serif class="home-final-cta__title">{c.h2}</Heading>
+		<style> 
+			:global(.home-final-cta__title) 
+				{ 
+					font-size: clamp(2.15rem, 5vw, 2.85rem);
+    				padding-bottom: 3%;
+				} 
+		</style>
+		<p class="home-final-cta__body">{c.body}</p>
+		<a class="home-final-cta__btn" href={href(lang, 'booking')}>{c.cta}</a>
+	</div>
+</section>
+
