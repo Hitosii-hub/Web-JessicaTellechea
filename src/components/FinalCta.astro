@@ -1,0 +1,22 @@
+---
+import type { Locale } from '../i18n/config';
+import { href } from '../i18n/route-registry';
+import Heading from './ui/Heading.astro';
+
+interface Props {
+	lang: Locale;
+	h2: string;
+	body: string;
+	cta: string;
+}
+
+const { lang, h2, body, cta } = Astro.props;
+---
+
+<section class="home-final-cta">
+	<div class="home-final-cta__inner">
+		<Heading level={2} serif class="home-final-cta__title">{h2}</Heading>
+		<p class="home-final-cta__body">{body}</p>
+		<a class="home-final-cta__btn" href={href(lang, 'booking')}>{cta}</a>
+	</div>
+</section>

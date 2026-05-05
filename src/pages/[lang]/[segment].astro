@@ -5,6 +5,7 @@ import { contactPageMeta } from '../../i18n/contact-page';
 import { pageStubsBySegment } from '../../i18n/page-stubs';
 import { iaKeyFromPath, type IaKey, segmentFor, stubRecordKeyFromIaKey } from '../../i18n/route-registry';
 import CTAStack from '../../components/CTAStack.astro';
+import FinalCta from '../../components/FinalCta.astro';
 import ValoracionForm from '../../components/ValoracionForm.astro';
 import BookingFlow from '../../features/booking-nubimed/BookingFlow';
 
@@ -40,6 +41,28 @@ let heading: string;
 let lead: string;
 let showCta = false;
 let bookingBlock = false;
+const facialFinalCtaCopy: Record<Locale, { h2: string; body: string; cta: string }> = {
+	es: {
+		h2: 'Empieza con una valoración facial',
+		body: 'El objetivo es definir qué necesita tu rostro y en qué orden trabajarlo.',
+		cta: 'Solicitar valoración facial',
+	},
+	en: {
+		h2: 'Start with a facial assessment',
+		body: 'The goal is to define what your face needs and in what order to work on it.',
+		cta: 'Request facial assessment',
+	},
+	ca: {
+		h2: 'Comença amb una valoració facial',
+		body: "L'objectiu és definir què necessita el teu rostre i en quin ordre treballar-lo.",
+		cta: 'Sol·licitar valoració facial',
+	},
+	fr: {
+		h2: 'Commencez par une évaluation du visage',
+		body: "L'objectif est de définir ce dont votre visage a besoin et dans quel ordre le traiter.",
+		cta: 'Demander une évaluation du visage',
+	},
+};
 
 if (iaKey === 'contact') {
 	const meta = contactPageMeta[lang];
@@ -72,7 +95,16 @@ if (iaKey === 'contact') {
 			<>
 				<h1>{heading}</h1>
 				<p>{lead}</p>
-				{showCta ? <CTAStack lang={lang} /> : null}
+				{iaKey === 'facial' ? (
+					<FinalCta
+						lang={lang}
+						h2={facialFinalCtaCopy[lang].h2}
+						body={facialFinalCtaCopy[lang].body}
+						cta={facialFinalCtaCopy[lang].cta}
+					/>
+				) : showCta ? (
+					<CTAStack lang={lang} />
+				) : null}
 				{bookingBlock ? (
 					<div class="booking-flow-root" data-booking-flow>
 						<BookingFlow client:load lang={lang} presetSpecialtySlug={presetSpecialtySlug} />
