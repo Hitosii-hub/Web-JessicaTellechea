@@ -1,18 +1,22 @@
 ---
 import type { Locale } from '../i18n/config';
-import { primaryNavItems } from '../i18n/nav';
+import { primaryNavItems, headerBookingCta } from '../i18n/nav';
 import { href, type IaKey } from '../i18n/route-registry';
 
 interface Props {
 	lang: Locale;
 	currentIaKey: IaKey;
+	bookingHref: string;
 }
 
-const { lang, currentIaKey } = Astro.props;
+const { lang, currentIaKey, bookingHref } = Astro.props;
+const bookingLabel = headerBookingCta[lang];
+const toggleId = 'site-nav-drawer-toggle';
 ---
 
 <nav class="primary-nav" aria-label="Principal">
-	<ul>
+	<input id={toggleId} type="checkbox" class="primary-nav__toggle" />
+	<ul class="primary-nav__list primary-nav__list--desktop">
 		{
 			primaryNavItems.map((item) => (
 				<li>
@@ -26,27 +30,206 @@ const { lang, currentIaKey } = Astro.props;
 			))
 		}
 	</ul>
+	<label class="primary-nav__open" for={toggleId}>
+		<span class="primary-nav__burger" aria-hidden="true" />
+		<span class="primary-nav__open-text">Menu</span>
+	</label>
+	<div class="primary-nav__panel">
+		<div class="primary-nav__panel-inner">
+			<ul class="primary-nav__list primary-nav__list--mobile">
+				{
+					primaryNavItems.map((item) => (
+						<li>
+							<a
+								href={href(lang, item.iaKey)}
+								aria-current={currentIaKey === item.iaKey ? 'page' : undefined}
+							>
+								{item.label[lang]}
+							</a>
+						</li>
+					))
+				}
+			</ul>
+			<a class="primary-nav__booking" href={bookingHref}>
+				{bookingLabel}
+			</a>
+		</div>
+	</div>
 </nav>
 
 <style>
-	.primary-nav ul {
+	.primary-nav {
+		position: relative;
 		display: flex;
-		flex-wrap: wrap;
-		gap: 0.75rem 1.25rem;
+		justify-content: center;
+		width: 100%;
+		min-width: 0;
+	}
+
+	.primary-nav__toggle {
+		position: absolute;
+		opacity: 0;
+		width: 1px;
+		height: 1px;
+		margin: 0;
+		pointer-events: none;
+	}
+
+	.primary-nav__list {
 		list-style: none;
 		margin: 0;
 		padding: 0;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 0.75rem 1.35rem;
 	}
-	.primary-nav a {
+
+	.primary-nav__list a {
 		color: inherit;
 		text-decoration: none;
+		font-family: var(--font-sans-ui);
 		font-weight: 500;
+		font-size: 0.9375rem;
+		padding: 0.15rem 0;
+		border-bottom: 2px solid transparent;
+		transition: border-color var(--duration-fast) var(--ease-standard);
 	}
-	.primary-nav a:hover {
-		text-decoration: underline;
+
+	.primary-nav__list a:hover {
+		border-bottom-color: color-mix(in srgb, var(--color-champagne) 75%, transparent);
 	}
-	.primary-nav a[aria-current='page'] {
-		text-decoration: underline;
-		font-weight: 700;
+
+	.primary-nav__list a[aria-current='page'] {
+		border-bottom-color: var(--color-champagne);
+		font-weight: 600;
+	}
+
+	.primary-nav__open {
+		display: none;
+		align-items: center;
+		justify-content: center;
+		min-width: 44px;
+		min-height: 44px;
+		cursor: pointer;
+		border: 1px solid color-mix(in srgb, var(--color-border) 70%, transparent);
+		border-radius: var(--radius-editorial);
+		background: transparent;
+		color: inherit;
+	}
+
+	.primary-nav__open:hover {
+		border-color: var(--color-champagne);
+	}
+
+	.primary-nav__burger {
+		display: block;
+		width: 1.1rem;
+		height: 2px;
+		background: currentColor;
+		box-shadow:
+			0 -6px 0 currentColor,
+			0 6px 0 currentColor;
+	}
+
+	.primary-nav__open-text {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border: 0;
+	}
+
+	.primary-nav__panel {
+		display: none;
+	}
+
+	.primary-nav__list--mobile {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 0;
+	}
+
+	.primary-nav__list--mobile li + li {
+		border-top: 1px solid var(--color-border);
+	}
+
+	.primary-nav__list--mobile a {
+		display: block;
+		padding: 0.85rem 0;
+		border-bottom: none;
+	}
+
+	.primary-nav__booking {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		margin-top: var(--space-md);
+		padding: 0.65rem 1rem;
+		font-weight: 600;
+		font-size: 0.75rem;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		text-decoration: none;
+		color: var(--color-on-accent);
+		background: var(--color-text);
+		border-radius: var(--radius-editorial);
+		border: 1px solid var(--color-text);
+	}
+
+	.primary-nav__booking:hover {
+		opacity: 0.92;
+	}
+
+	@media (max-width: 959.98px) {
+		.primary-nav__list--desktop {
+			display: none;
+		}
+
+		.primary-nav__open {
+			display: inline-flex;
+			position: absolute;
+			right: 0;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+
+		.primary-nav__panel {
+			display: block;
+			position: fixed;
+			z-index: 35;
+			top: 100px;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: var(--color-surface);
+			padding: var(--space-md);
+			transform: translateX(100%);
+			transition: transform var(--duration-normal) var(--ease-standard);
+			overflow-y: auto;
+			box-shadow: 0 -2px 24px rgb(47 46 43 / 12%);
+			visibility: hidden;
+			pointer-events: none;
+		}
+
+		.primary-nav__toggle:checked ~ .primary-nav__panel {
+			transform: translateX(0);
+			visibility: visible;
+			pointer-events: auto;
+		}
+	}
+
+	@media (min-width: 960px) {
+		.primary-nav__open {
+			display: none;
+		}
+
+		.primary-nav__panel {
+			display: none !important;
+		}
 	}
 </style>

@@ -1,0 +1,29 @@
+---
+import type { Locale } from '../../i18n/config';
+import { href } from '../../i18n/route-registry';
+
+interface Props {
+  lang: Locale;
+  h1: string;
+  subtitle: string;
+  lead: string;
+  primaryCta: string;
+  secondaryCta: string;
+}
+
+const { lang, h1, subtitle, lead, primaryCta, secondaryCta } = Astro.props;
+---
+
+<section class="facial-hero">
+  <div class="facial-hero__inner">
+    <h1 class="facial-hero__title">{h1}</h1>
+    <p class="facial-hero__subtitle">{subtitle}</p>
+    <p class="facial-hero__lead">{lead}</p>
+    <div class="facial-hero__actions">
+      <a class="facial-hero__primary" href={href(lang, 'contact')}>{primaryCta}</a>
+      <a class="facial-hero__secondary" href={href(lang, 'trust')}>{secondaryCta}</a>
+    </div>
+  </div>
+</section>
+
+

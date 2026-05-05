@@ -1,0 +1,32 @@
+---
+interface Props {
+	level?: 1 | 2 | 3 | 4 | 5 | 6;
+	display?: boolean;
+	/** Marketing/editorial headings use Noto Serif (legal and system pages stay sans). */
+	serif?: boolean;
+	class?: string;
+}
+
+const { level = 2, display = false, serif = false, class: className } = Astro.props;
+
+const tags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
+const Tag = tags[level - 1] ?? 'h2';
+
+const serifCls = serif ? '[font-family:var(--font-serif-display)]' : '';
+
+const displayCls =
+	`${serifCls} text-[clamp(2rem,5vw,3rem)] font-semibold tracking-tight text-[color:var(--color-text)]`.trim();
+
+const bodyCls: Record<1 | 2 | 3 | 4 | 5 | 6, string> = {
+	1: `${serifCls} text-3xl font-semibold text-[color:var(--color-text)] md:text-4xl`.trim(),
+	2: `${serifCls} text-2xl font-semibold text-[color:var(--color-text)] md:text-3xl`.trim(),
+	3: `${serifCls} text-xl font-semibold text-[color:var(--color-text)]`.trim(),
+	4: `${serifCls} text-lg font-semibold text-[color:var(--color-text)]`.trim(),
+	5: 'text-base font-semibold text-[color:var(--color-text)]',
+	6: 'text-sm font-semibold uppercase tracking-wide text-[color:var(--color-muted)]',
+};
+---
+
+<Tag class:list={[display ? displayCls : bodyCls[level], className]}>
+	<slot />
+</Tag>

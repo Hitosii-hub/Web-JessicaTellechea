@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 import preact from '@astrojs/preact';
 import sitemap from '@astrojs/sitemap';
+import tailwindcss from '@tailwindcss/vite';
 import { loadEnv } from 'vite';
 
 const env = loadEnv(import.meta.env.MODE, process.cwd(), '');
@@ -15,11 +16,12 @@ const nubimedVendorTarget =
 /** Booking URL segments per locale (keep aligned with `src/i18n/route-registry.ts`). */
 const bookingUrlSegments = ['reservar-cita', 'book-appointment', 'reserver-rendez-vous'];
 
-// SITE_URL in .env (see .env.example). Trailing slashes are stripped.
+// SITE_URL in .env (see `.env.example`). Trailing slashes are stripped.
 export default defineConfig({
 	site,
 	trailingSlash: 'always',
 	vite: {
+		plugins: [tailwindcss()],
 		server: {
 			proxy: {
 				'/__nubimed-proxy': {

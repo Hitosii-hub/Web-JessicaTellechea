@@ -1,0 +1,19 @@
+---
+import Heading from '../ui/Heading.astro';
+
+interface Props {
+  title: string;
+  body: string;
+}
+
+const { title, body } = Astro.props;
+---
+
+<section class="facial-section facial-section--insight">
+  <div class="facial-container">
+    <Heading level={2} serif class="facial-section__title">{title}</Heading>
+    <p class="facial-section__body">{body}</p>
+  </div>
+</section>
+
+

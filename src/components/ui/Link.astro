@@ -1,0 +1,25 @@
+---
+interface Props {
+	href: string;
+	external?: boolean;
+	class?: string;
+}
+
+const { href, external = false, class: className, ...rest } = Astro.props;
+
+const isHttpOffSite = /^https?:\/\//i.test(href);
+const targetBlank = isHttpOffSite || external;
+---
+
+<a
+	href={href}
+	class:list={[
+		'motion-safe:transition-colors motion-safe:duration-[length:var(--duration-fast)] text-[color:var(--color-accent)] underline-offset-2 hover:underline',
+		className,
+	]}
+	target={targetBlank ? '_blank' : undefined}
+	rel={targetBlank ? 'noopener noreferrer' : undefined}
+	{...rest}
+>
+	<slot />
+</a>

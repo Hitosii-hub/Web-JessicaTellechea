@@ -16,6 +16,14 @@ export const localeLabels: Record<Locale, string> = {
 	fr: 'Français',
 };
 
+/** Second line in language modal (region / scope), per interview spec. */
+export const localeRegionLine: Record<Locale, string> = {
+	es: 'España',
+	en: 'International',
+	ca: 'Espanya',
+	fr: 'France',
+};
+
 export function isLocale(value: string): value is Locale {
 	return (locales as readonly string[]).includes(value);
 }

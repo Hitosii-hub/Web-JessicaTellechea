@@ -2,9 +2,10 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { locales, type Locale } from '../../i18n/config';
 import { contactPageMeta } from '../../i18n/contact-page';
+import FacialPillarPage from '../../components/facial/FacialPillarPage.astro';
 import { pageStubsBySegment } from '../../i18n/page-stubs';
+import { facialPageContent } from '../../i18n/facial-page';
 import { iaKeyFromPath, type IaKey, segmentFor, stubRecordKeyFromIaKey } from '../../i18n/route-registry';
-import CTAStack from '../../components/CTAStack.astro';
 import ValoracionForm from '../../components/ValoracionForm.astro';
 import BookingFlow from '../../features/booking-nubimed/BookingFlow';
 
@@ -38,14 +39,20 @@ if (!iaKey) {
 let title: string;
 let heading: string;
 let lead: string;
-let showCta = false;
 let bookingBlock = false;
+let facialContent = facialPageContent[lang];
 
 if (iaKey === 'contact') {
 	const meta = contactPageMeta[lang];
 	title = meta.title;
 	heading = meta.heading;
 	lead = meta.intro;
+} else if (iaKey === 'facial') {
+	const content = facialPageContent[lang];
+	facialContent = content;
+	title = content.seo.title;
+	heading = content.hero.h1;
+	lead = content.seo.description;
 } else {
 	const stubKey = stubRecordKeyFromIaKey(iaKey);
 	if (!stubKey) {
@@ -55,7 +62,6 @@ if (iaKey === 'contact') {
 	title = stub.title;
 	heading = stub.heading;
 	lead = stub.lead;
-	showCta = ['facial', 'corporal', 'capilar', 'criterio-medico'].includes(stubKey);
 	bookingBlock = iaKey === 'booking';
 }
 ---
@@ -70,9 +76,9 @@ if (iaKey === 'contact') {
 			</>
 		) : (
 			<>
-				<h1>{heading}</h1>
-				<p>{lead}</p>
-				{showCta ? <CTAStack lang={lang} /> : null}
+				{iaKey === 'facial' ? <FacialPillarPage lang={lang} content={facialContent} /> : null}
+				{iaKey !== 'facial' ? <h1>{heading}</h1> : null}
+				{iaKey !== 'facial' ? <p>{lead}</p> : null}
 				{bookingBlock ? (
 					<div class="booking-flow-root" data-booking-flow>
 						<BookingFlow client:load lang={lang} presetSpecialtySlug={presetSpecialtySlug} />

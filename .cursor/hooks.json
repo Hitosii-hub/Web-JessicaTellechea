@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "hooks": {
+    "afterFileEdit": [
+      {
+        "command": "npm run lint:encoding",
+        "matcher": "Write|TabWrite",
+        "timeout": 30
+      }
+    ]
+  }
+}

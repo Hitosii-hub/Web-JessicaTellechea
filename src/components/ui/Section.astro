@@ -1,0 +1,18 @@
+---
+interface Props {
+	tone?: 'default' | 'muted';
+	class?: string;
+}
+
+const { tone = 'default', class: className } = Astro.props;
+---
+
+<section
+	class:list={[
+		'py-[length:var(--space-xl)]',
+		tone === 'muted' ? 'bg-[color:var(--color-neutral)]' : 'bg-transparent',
+		className,
+	]}
+>
+	<slot />
+</section>

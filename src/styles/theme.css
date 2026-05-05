@@ -1,0 +1,84 @@
+/* AJ brand tokens. Hex literals live here only per web-design-tokens spec. */
+
+@theme {
+	--font-sans: 'Manrope Variable', ui-sans-serif, system-ui, sans-serif;
+	--font-serif-display: 'Noto Serif', Georgia, 'Times New Roman', serif;
+
+	--color-bg: #f7f6f3;
+	--color-surface: #ffffff;
+	--color-text: #2f2e2b;
+	--color-muted: #656056;
+	--color-border: #ddd9cf;
+	--color-neutral: #ecebe7;
+	--color-accent: #5b594f;
+	--color-accent-muted: #6f6c61;
+	--color-champagne: #c9ad7a;
+	--color-on-accent: #fafaf8;
+
+	--color-danger: #8f3d3d;
+	--color-success: #3d5f4f;
+
+	--spacing-xs: 0.35rem;
+	--spacing-sm: 0.75rem;
+	--spacing-md: 1.25rem;
+	--spacing-lg: 2rem;
+	--spacing-xl: 3rem;
+
+	--radius-sm: 6px;
+	--radius-md: 10px;
+	--radius-editorial: 2px;
+
+	--shadow-sm: 0 1px 2px rgb(47 46 43 / 8%);
+
+	--ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+	--duration-fast: 150ms;
+	--duration-normal: 250ms;
+
+	--max-width-narrow: 32rem;
+	--max-width-editorial: 52rem;
+	--max-width-manifest: 760px;
+	--max-width-wide: 80rem;
+
+	--space-section-y: clamp(3.25rem, 6vw, 5.5rem);
+}
+
+:root {
+	--font-sans: 'Manrope Variable', ui-sans-serif, system-ui, sans-serif;
+	--font-sans-ui: var(--font-sans);
+	--font-serif-display: 'Noto Serif', Georgia, 'Times New Roman', serif;
+
+	--color-bg: #f7f6f3;
+	--color-surface: #ffffff;
+	--color-text: #2f2e2b;
+	--color-muted: #656056;
+	--color-border: #ddd9cf;
+	--color-accent: #5b594f;
+	--color-accent-muted: #6f6c61;
+	--color-on-accent: #fafaf8;
+	--color-neutral: #ecebe7;
+	--color-champagne: #c9ad7a;
+	--color-danger: #8f3d3d;
+	--color-success: #3d5f4f;
+
+	--max-width-narrow: 32rem;
+	--max-width-editorial: 52rem;
+	--max-width-manifest: 760px;
+	--max-width-wide: 80rem;
+
+	--space-xs: 0.35rem;
+	--space-sm: 0.75rem;
+	--space-md: 1.25rem;
+	--space-lg: 2rem;
+	--space-xl: 3rem;
+	--space-section-y: clamp(3.25rem, 6vw, 5.5rem);
+
+	--radius-sm: 6px;
+	--radius-md: 10px;
+	--radius-editorial: 2px;
+
+	--shadow-sm: 0 1px 2px rgb(47 46 43 / 8%);
+
+	--ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+	--duration-fast: 150ms;
+	--duration-normal: 250ms;
+}

@@ -1,0 +1,46 @@
+---
+import type { Locale } from '../../i18n/config';
+import { homeContent } from '../../i18n/home-content';
+import Heading from '../ui/Heading.astro';
+
+interface Props {
+	lang: Locale;
+}
+
+const { lang } = Astro.props;
+const c = homeContent[lang].clinic;
+---
+
+<section class="home-clinic">
+	<div class="home-clinic__inner">
+		<div class="home-clinic__copy">
+			<Heading level={2} serif>{c.h2}</Heading>
+			<p class="home-clinic__lead">{c.lead}</p>
+			<blockquote class="home-clinic__quote">{c.quote}</blockquote>
+		</div>
+		<div class="home-clinic__photos">
+			<figure class="home-clinic__figure home-clinic__figure--primary">
+				<img
+					class="home-clinic__img"
+					src={c.imagePrimarySrc}
+					alt={c.imagePrimaryAlt}
+					width={720}
+					height={960}
+					loading="lazy"
+					decoding="async"
+				/>
+			</figure>
+			<figure class="home-clinic__figure home-clinic__figure--secondary">
+				<img
+					class="home-clinic__img"
+					src={c.imageSecondarySrc}
+					alt={c.imageSecondaryAlt}
+					width={720}
+					height={960}
+					loading="lazy"
+					decoding="async"
+				/>
+			</figure>
+		</div>
+	</div>
+</section>

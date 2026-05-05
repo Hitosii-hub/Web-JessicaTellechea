@@ -1,0 +1,33 @@
+---
+import type { Locale } from '../../i18n/config';
+import { homeContent } from '../../i18n/home-content';
+import Heading from '../ui/Heading.astro';
+
+interface Props {
+	lang: Locale;
+}
+
+const { lang } = Astro.props;
+const c = homeContent[lang].process;
+
+const icons = ['ph-scan', 'ph-tree-structure', 'ph-calendar-check'] as const;
+---
+
+<section class="home-process">
+	<div class="home-process__inner">
+		<div class="home-process__head">
+			<Heading level={2} serif>{c.h2}</Heading>
+		</div>
+		<div class="home-process__grid">
+			{
+				c.steps.map((step, i) => (
+					<div class="home-process__col">
+						<i class:list={['ph-thin', icons[i], 'home-ph', 'home-process__icon']} aria-hidden="true" />
+						<h3 class="home-process__step-title">{step.title}</h3>
+						<p class="home-process__step-body">{step.body}</p>
+					</div>
+				))
+			}
+		</div>
+	</div>
+</section>

@@ -1,0 +1,316 @@
+.booking-flow-root {
+	margin-top: var(--space-lg);
+}
+
+.booking-flow {
+	display: grid;
+	gap: var(--space-md);
+	padding: var(--space-md);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-md);
+	background: var(--color-surface);
+}
+
+.booking-flow__h {
+	font-size: 1rem;
+	margin: 0 0 var(--space-sm);
+}
+
+.booking-flow__fieldset {
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-sm);
+	padding: var(--space-md);
+	margin: 0;
+}
+
+.booking-flow__list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: grid;
+	gap: var(--space-sm);
+}
+
+.booking-flow__choice {
+	display: flex;
+	align-items: center;
+	gap: var(--space-sm);
+	cursor: pointer;
+}
+
+.booking-flow__days,
+.booking-flow__slots {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-xs);
+}
+
+.booking-flow__day,
+.booking-flow__slot {
+	padding: var(--space-xs) var(--space-sm);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-sm);
+	background: var(--color-bg);
+	cursor: pointer;
+	font: inherit;
+}
+
+.booking-flow__day:hover,
+.booking-flow__slot:hover {
+	border-color: var(--color-accent);
+}
+
+.booking-flow__day.is-active,
+.booking-flow__slot.is-active {
+	border-color: var(--color-accent);
+	box-shadow: 0 0 0 1px var(--color-accent);
+}
+
+.booking-flow__retry,
+.booking-flow__continue {
+	font: inherit;
+	padding: var(--space-sm) var(--space-md);
+	border-radius: var(--radius-sm);
+	border: 1px solid var(--color-border);
+	background: var(--color-bg);
+	cursor: pointer;
+}
+
+.booking-flow__continue {
+	background: var(--color-accent);
+	color: var(--color-on-accent);
+	border-color: transparent;
+	font-weight: 600;
+}
+
+.booking-flow__continue:disabled {
+	opacity: 0.45;
+	cursor: not-allowed;
+}
+
+.booking-flow__notice {
+	font-size: 0.875rem;
+	color: var(--color-muted);
+	margin: 0;
+}
+
+.booking-flow__banner {
+	margin: 0;
+	padding: var(--space-sm);
+	border-radius: var(--radius-sm);
+	background: color-mix(in srgb, var(--color-accent) 12%, transparent);
+}
+
+.booking-flow--error .booking-flow__retry,
+.booking-flow--gate .booking-flow__retry {
+	margin-top: var(--space-sm);
+}
+
+.booking-flow__portal-link {
+	color: var(--color-accent);
+	font-weight: 600;
+}
+
+.booking-flow__section,
+.booking-flow__details {
+	display: grid;
+	gap: var(--space-md);
+}
+
+.booking-flow__actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: var(--space-sm);
+	margin-top: var(--space-sm);
+}
+
+.booking-flow__actions--split {
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.booking-flow__btn-secondary {
+	font: inherit;
+	padding: var(--space-sm) var(--space-md);
+	border-radius: var(--radius-sm);
+	border: 1px solid var(--color-border);
+	background: var(--color-surface);
+	cursor: pointer;
+}
+
+.booking-flow__btn-secondary:disabled {
+	opacity: 0.45;
+	cursor: not-allowed;
+}
+
+.booking-flow__panel {
+	padding: var(--space-md);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-sm);
+	background: var(--color-bg);
+}
+
+.booking-flow__subh {
+	font-size: 0.9375rem;
+	margin: 0 0 var(--space-sm);
+}
+
+.booking-flow__summary p {
+	margin: 0 0 var(--space-xs);
+	font-size: 0.9375rem;
+}
+
+.booking-flow__label {
+	font-weight: 600;
+	margin: 0;
+}
+
+.booking-flow__mode-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-md);
+}
+
+.booking-flow__grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+	gap: var(--space-md);
+}
+
+.booking-flow__field {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-xs);
+	font-size: 0.875rem;
+}
+
+.booking-flow__field--full {
+	grid-column: 1 / -1;
+}
+
+.booking-flow__input {
+	font: inherit;
+	padding: var(--space-xs) var(--space-sm);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-sm);
+	background: var(--color-surface);
+}
+
+.booking-flow__privacy {
+	margin-top: var(--space-sm);
+	align-items: flex-start;
+}
+
+.booking-flow__notice--inline {
+	margin-top: var(--space-xs);
+}
+
+.booking-flow__modal-overlay {
+	position: fixed;
+	inset: 0;
+	z-index: 80;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: var(--space-md);
+	background: color-mix(in srgb, #000 45%, transparent);
+}
+
+.booking-flow__modal {
+	max-width: 32rem;
+	width: 100%;
+	max-height: min(92vh, 44rem);
+	overflow: auto;
+	padding: var(--space-lg);
+	border-radius: var(--radius-md);
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
+	box-shadow: 0 12px 40px color-mix(in srgb, #000 18%, transparent);
+}
+
+.booking-flow__modal .booking-flow__h {
+	margin-top: 0;
+}
+
+.booking-flow__legal-block {
+	font-size: 0.85rem;
+	line-height: 1.45;
+	margin: var(--space-md) 0;
+	padding: var(--space-sm) var(--space-md);
+	border-radius: var(--radius-sm);
+	border: 1px solid var(--color-border);
+	background: color-mix(in srgb, var(--color-surface) 96%, var(--color-border));
+}
+
+.booking-flow__legal-block p {
+	margin: 0 0 var(--space-xs);
+}
+
+.booking-flow__legal-block a {
+	color: var(--color-accent);
+}
+
+.booking-flow__legal-block-title {
+	font-size: 0.8125rem;
+	font-weight: 600;
+	margin: 0 0 var(--space-xs);
+	line-height: 1.35;
+	color: color-mix(in srgb, var(--color-text) 88%, var(--color-border));
+}
+
+.booking-flow__legal-summary-body {
+	margin: 0 0 var(--space-sm);
+}
+
+.booking-flow__legal-policy-link {
+	margin: 0;
+}
+
+.booking-flow__legal-block p.booking-flow__legal-policy-link:last-child {
+	margin-bottom: 0;
+}
+
+.booking-flow__recaptcha-wrap {
+	margin-top: var(--space-md);
+	padding-top: var(--space-md);
+	border-top: 1px solid var(--color-border);
+}
+
+.booking-flow__banner--compact {
+	margin-top: var(--space-sm);
+	margin-bottom: 0;
+}
+
+.booking-flow--success {
+	text-align: left;
+}
+
+.booking-flow__success-msg {
+	font-size: 1.05rem;
+	margin: 0 0 var(--space-md);
+}
+
+body .grecaptcha-badge {
+	visibility: hidden !important;
+	opacity: 0 !important;
+	pointer-events: none !important;
+	width: 0 !important;
+	height: 0 !important;
+	overflow: hidden !important;
+	position: fixed !important;
+	right: 0 !important;
+	bottom: 0 !important;
+}
+
+.booking-flow__recaptcha-disclosure {
+	font-size: 0.75rem;
+	line-height: 1.45;
+	margin: var(--space-sm) 0 0;
+}
+
+.booking-flow__recaptcha-disclosure a {
+	color: var(--color-accent);
+}

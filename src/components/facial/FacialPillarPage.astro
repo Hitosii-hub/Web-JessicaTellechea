@@ -1,0 +1,47 @@
+---
+import type { Locale } from '../../i18n/config';
+import type { FacialPageContent } from '../../i18n/facial-page';
+import FinalCta from '../FinalCta.astro';
+import FacialBenefits from './FacialBenefits.astro';
+import FacialHero from './FacialHero.astro';
+import FacialInsight from './FacialInsight.astro';
+import FacialMedicalApproach from './FacialMedicalApproach.astro';
+import FacialProcess from './FacialProcess.astro';
+import FacialServices from './FacialServices.astro';
+import FacialTrust from './FacialTrust.astro';
+
+interface Props {
+  lang: Locale;
+  content: FacialPageContent;
+}
+
+const { lang, content } = Astro.props;
+---
+
+<div class="facial-page">
+  <FacialHero
+    lang={lang}
+    h1={content.hero.h1}
+    subtitle={content.hero.subtitle}
+    lead={content.hero.lead}
+    primaryCta={content.hero.primaryCta}
+    secondaryCta={content.hero.secondaryCta}
+  />
+  <FacialInsight title={content.insight.title} body={content.insight.body} />
+  <FacialMedicalApproach title={content.medicalApproach.title} body={content.medicalApproach.body} />
+  <FacialBenefits title={content.benefits.title} items={content.benefits.items} />
+  <FacialServices title={content.services.title} groups={content.services.groups} />
+  <FacialProcess title={content.process.title} steps={content.process.steps} />
+  <FacialTrust title={content.trust.title} points={content.trust.points} />
+  <section class="facial-section facial-section--final-cta">
+    <div class="facial-container">
+      <FinalCta
+        lang={lang}
+        h2={content.finalCta.h2}
+        body={content.finalCta.body}
+        cta={content.finalCta.primary}
+      />
+    </div>
+  </section>
+</div>
+

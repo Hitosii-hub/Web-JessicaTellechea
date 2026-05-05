@@ -1,0 +1,47 @@
+---
+import type { Locale } from '../../i18n/config';
+import { bookingUrlWithPreset } from '../../i18n/booking-links';
+import { homeContent } from '../../i18n/home-content';
+import Heading from '../ui/Heading.astro';
+
+interface Props {
+	lang: Locale;
+}
+
+const { lang } = Astro.props;
+const c = homeContent[lang].capillary;
+const bookingCapilar = bookingUrlWithPreset(lang, 'medicina-capilar');
+---
+
+<section class="home-capillary">
+	<div class="home-capillary__inner">
+		<div class="home-capillary__visual">
+			<img
+				class="home-capillary__image"
+				src={c.imageSrc}
+				alt={c.imageAlt}
+				loading="lazy"
+				decoding="async"
+				width="960"
+				height="640"
+			/>
+		</div>
+		<div>
+			<Heading level={2} serif>{c.h2}</Heading>
+			<p class="home-capillary__lead">{c.lead}</p>
+			<ul class="home-capillary__list">
+				{
+					c.bullets.map((text) => (
+						<li>
+							<i class="ph-thin ph-check home-ph home-capillary__bullet-icon" aria-hidden="true" />
+							<span>{text}</span>
+						</li>
+					))
+				}
+			</ul>
+			<a class="home-capillary__cta" href={bookingCapilar}>
+				{c.cta}
+			</a>
+		</div>
+	</div>
+</section>

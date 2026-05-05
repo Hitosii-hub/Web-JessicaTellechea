@@ -1,0 +1,9 @@
+@import './components/shell.css' layer(components);
+@import './components/language-picker.css' layer(components);
+@import './components/home-marketing.css' layer(components);
+@import './components/hero-marketing.css' layer(components);
+@import './components/facial-pillar.css' layer(components);
+@import './components/legal-prose.css' layer(components);
+@import './components/cookie-consent.css' layer(components);
+@import './components/booking-flow.css' layer(components);
+

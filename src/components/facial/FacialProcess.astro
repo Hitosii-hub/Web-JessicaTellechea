@@ -1,0 +1,28 @@
+---
+import Heading from '../ui/Heading.astro';
+
+interface Props {
+  title: string;
+  steps: string[];
+}
+
+const { title, steps } = Astro.props;
+---
+
+<section class="facial-section facial-section--process">
+  <div class="facial-container">
+    <Heading level={2} serif class="facial-section__title">{title}</Heading>
+    <ol class="facial-process">
+      {
+        steps.map((step, index) => (
+          <li class="facial-process__step">
+            <span class="facial-process__index">{index + 1}</span>
+            <h3 class="facial-process__title">{step}</h3>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+

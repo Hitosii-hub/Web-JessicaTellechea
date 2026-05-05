@@ -1,0 +1,34 @@
+.legal-prose {
+	max-width: 52rem;
+	margin: 0 auto;
+	padding: var(--space-lg) var(--space-md);
+}
+
+.legal-prose h1 {
+	font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+	margin-bottom: var(--space-lg);
+}
+
+.legal-prose__section h2 {
+	font-size: 1.1rem;
+	margin: var(--space-lg) 0 var(--space-sm);
+}
+
+.legal-prose__section p {
+	margin: 0 0 var(--space-sm);
+	line-height: 1.55;
+}
+
+.legal-prose__cross {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-sm) var(--space-md);
+	margin-top: var(--space-xl);
+	padding-top: var(--space-md);
+	border-top: 1px solid var(--color-border);
+}
+
+.legal-prose__cross a {
+	color: var(--color-accent);
+	font-weight: 500;
+}
