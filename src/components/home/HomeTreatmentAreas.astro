@@ -23,7 +23,17 @@ const pillars: IaKey[] = ['facial', 'corporal', 'capilar'];
 			{
 				c.cards.map((card, index) => (
 					<a class="home-specialties__card" href={href(lang, pillars[index])}>
-						<div class="home-specialties__visual" aria-hidden="true" />
+						<div class="home-specialties__visual">
+							<img
+								class="home-specialties__image"
+								src={card.imageSrc}
+								alt={card.imageAlt}
+								loading="lazy"
+								decoding="async"
+								width="640"
+								height="800"
+							/>
+						</div>
 						<div class="home-specialties__body">
 							<span class="home-specialties__tag">{card.tag}</span>
 							<h3 class="home-specialties__title">{card.title}</h3>

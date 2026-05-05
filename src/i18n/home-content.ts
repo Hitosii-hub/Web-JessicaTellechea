@@ -15,11 +15,19 @@ export type HomeContent = {
 	};
 	specialties: {
 		h2: string;
-			linkCta: string;
-		cards: { tag: string; title: string }[];
+		linkCta: string;
+		cards: { tag: string; title: string; imageSrc: string; imageAlt: string }[];
 	};
-	capillary: { h2: string; lead: string; bullets: string[]; cta: string };
-	clinic: { h2: string; lead: string; quote: string };
+	capillary: { h2: string; lead: string; bullets: string[]; cta: string; imageSrc: string; imageAlt: string };
+	clinic: {
+		h2: string;
+		lead: string;
+		quote: string;
+		imagePrimarySrc: string;
+		imagePrimaryAlt: string;
+		imageSecondarySrc: string;
+		imageSecondaryAlt: string;
+	};
 	authority: { statements: string[] };
 	finalCta: { h2: string; body: string; cta: string };
 };
@@ -57,9 +65,24 @@ const es: HomeContent = {
 		h2: 'Especialidades',
 		linkCta: 'Ver tratamientos →',
 		cards: [
-			{ tag: 'FACIAL', title: 'Rejuvenecimiento natural' },
-			{ tag: 'CORPORAL', title: 'Cuerpo definido' },
-			{ tag: 'CAPILAR', title: 'Tratamiento capilar' },
+			{
+				tag: 'FACIAL',
+				title: 'Rejuvenecimiento natural',
+				imageSrc: '/images/home/treatment-facial.webp',
+				imageAlt: 'Tratamiento de medicina estética facial en clínica AJ',
+			},
+			{
+				tag: 'CORPORAL',
+				title: 'Cuerpo definido',
+				imageSrc: '/images/home/treatment-corporal.webp',
+				imageAlt: 'Tratamiento de medicina estética corporal en clínica AJ',
+			},
+			{
+				tag: 'CAPILAR',
+				title: 'Tratamiento capilar',
+				imageSrc: '/images/home/treatment-capilar.webp',
+				imageAlt: 'Tratamiento de salud capilar en clínica AJ',
+			},
 		],
 	},
 	capillary: {
@@ -71,11 +94,17 @@ const es: HomeContent = {
 			'Seguimiento tras el tratamiento',
 		],
 		cta: 'SOLICITAR DIAGNÓSTICO CAPILAR',
+		imageSrc: '/images/home/capillary.webp',
+		imageAlt: 'Evaluación y tratamiento de salud capilar en clínica AJ',
 	},
 	clinic: {
 		h2: 'Un espacio pensado para la calma',
 		lead: 'Privacidad, tiempo, luz cálida y una experiencia coherente con el cuidado médico',
 		quote: 'Privacidad absoluta. Trato humano. Resultados honestos.',
+		imagePrimarySrc: '/images/home/clinic-primary.webp',
+		imagePrimaryAlt: 'Sala de espera de la clínica AJ, ambiente luminoso y calmado',
+		imageSecondarySrc: '/images/home/clinic-secondary.webp',
+		imageSecondaryAlt: 'Detalle del espacio de consulta en clínica AJ',
 	},
 	authority: {
 		statements: [
@@ -124,9 +153,24 @@ const en: HomeContent = {
 		h2: 'Specialties',
 		linkCta: 'View treatments →',
 		cards: [
-			{ tag: 'FACIAL', title: 'Natural rejuvenation' },
-			{ tag: 'BODY', title: 'Defined body' },
-			{ tag: 'HAIR', title: 'Hair treatment' },
+			{
+				tag: 'FACIAL',
+				title: 'Natural rejuvenation',
+				imageSrc: '/images/home/treatment-facial.webp',
+				imageAlt: 'Facial aesthetic medicine treatment at AJ clinic',
+			},
+			{
+				tag: 'BODY',
+				title: 'Defined body',
+				imageSrc: '/images/home/treatment-corporal.webp',
+				imageAlt: 'Body aesthetic medicine treatment at AJ clinic',
+			},
+			{
+				tag: 'HAIR',
+				title: 'Hair treatment',
+				imageSrc: '/images/home/treatment-capilar.webp',
+				imageAlt: 'Hair health treatment at AJ clinic',
+			},
 		],
 	},
 	capillary: {
@@ -138,11 +182,17 @@ const en: HomeContent = {
 			'Follow-up after treatment',
 		],
 		cta: 'REQUEST A HAIR DIAGNOSIS',
+		imageSrc: '/images/home/capillary.webp',
+		imageAlt: 'Medical assessment and hair health treatment at AJ clinic',
 	},
 	clinic: {
 		h2: 'A space designed for calm',
 		lead: 'Privacy, time, warm light, and an experience aligned with medical care.',
 		quote: 'Absolute privacy. Human care. Honest outcomes.',
+		imagePrimarySrc: '/images/home/clinic-primary.webp',
+		imagePrimaryAlt: 'AJ clinic waiting area, bright and calm atmosphere',
+		imageSecondarySrc: '/images/home/clinic-secondary.webp',
+		imageSecondaryAlt: 'Consultation space detail at AJ clinic',
 	},
 	authority: {
 		statements: [
@@ -192,9 +242,24 @@ const ca: HomeContent = {
 		h2: 'Especialitats',
 		linkCta: 'Veure tractaments →',
 		cards: [
-			{ tag: 'FACIAL', title: 'Rejuveniment natural' },
-			{ tag: 'CORPORAL', title: 'Cos definit' },
-			{ tag: 'CAPIL·LAR', title: 'Tractament capil·lar' },
+			{
+				tag: 'FACIAL',
+				title: 'Rejuveniment natural',
+				imageSrc: '/images/home/treatment-facial.webp',
+				imageAlt: 'Tractament de medicina estètica facial a la clínica AJ',
+			},
+			{
+				tag: 'CORPORAL',
+				title: 'Cos definit',
+				imageSrc: '/images/home/treatment-corporal.webp',
+				imageAlt: 'Tractament de medicina estètica corporal a la clínica AJ',
+			},
+			{
+				tag: 'CAPIL·LAR',
+				title: 'Tractament capil·lar',
+				imageSrc: '/images/home/treatment-capilar.webp',
+				imageAlt: 'Tractament de salut capil·lar a la clínica AJ',
+			},
 		],
 	},
 	capillary: {
@@ -206,11 +271,17 @@ const ca: HomeContent = {
 			'Seguiment després del tractament',
 		],
 		cta: 'SOL·LICITAR DIAGNÒSTIC CAPIL·LAR',
+		imageSrc: '/images/home/capillary.webp',
+		imageAlt: 'Avaluació i tractament de salut capil·lar a la clínica AJ',
 	},
 	clinic: {
 		h2: 'Un espai pensat per a la calma',
 		lead: 'Privacitat, temps, llum càlida i una experiència coherent amb la cura mèdica',
 		quote: 'Privacitat absoluta. Tracte humà. Resultats honestos.',
+		imagePrimarySrc: '/images/home/clinic-primary.webp',
+		imagePrimaryAlt: 'Sala d\'espera de la clínica AJ, ambient lluminós i calm',
+		imageSecondarySrc: '/images/home/clinic-secondary.webp',
+		imageSecondaryAlt: 'Detall de l\'espai de consulta a la clínica AJ',
 	},
 	authority: {
 		statements: [
@@ -260,9 +331,24 @@ const fr: HomeContent = {
 		h2: 'Spécialités',
 		linkCta: 'Voir les soins →',
 		cards: [
-			{ tag: 'VISAGE', title: 'Rajeunissement naturel' },
-			{ tag: 'CORPS', title: 'Corps défini' },
-			{ tag: 'CAPILLAIRE', title: 'Soins capillaires' },
+			{
+				tag: 'VISAGE',
+				title: 'Rajeunissement naturel',
+				imageSrc: '/images/home/treatment-facial.webp',
+				imageAlt: 'Traitement de médecine esthétique du visage à la clinique AJ',
+			},
+			{
+				tag: 'CORPS',
+				title: 'Corps défini',
+				imageSrc: '/images/home/treatment-corporal.webp',
+				imageAlt: 'Traitement de médecine esthétique du corps à la clinique AJ',
+			},
+			{
+				tag: 'CAPILLAIRE',
+				title: 'Soins capillaires',
+				imageSrc: '/images/home/treatment-capilar.webp',
+				imageAlt: 'Traitement de santé capillaire à la clinique AJ',
+			},
 		],
 	},
 	capillary: {
@@ -274,11 +360,17 @@ const fr: HomeContent = {
 			'Suivi après le traitement',
 		],
 		cta: 'DEMANDER UN DIAGNOSTIC CAPILLAIRE',
+		imageSrc: '/images/home/capillary.webp',
+		imageAlt: 'Évaluation et traitement de santé capillaire à la clinique AJ',
 	},
 	clinic: {
 		h2: 'Un lieu pensé pour le calme',
 		lead: 'Intimité, temps, lumière chaude et une expérience alignée sur les soins médicaux.',
 		quote: 'Confidentialité absolue. Approche humaine. Résultats honnêtes.',
+		imagePrimarySrc: '/images/home/clinic-primary.webp',
+		imagePrimaryAlt: 'Salle d\'attente de la clinique AJ, ambiance lumineuse et apaisante',
+		imageSecondarySrc: '/images/home/clinic-secondary.webp',
+		imageSecondaryAlt: 'Détail de l\'espace de consultation à la clinique AJ',
 	},
 	authority: {
 		statements: [

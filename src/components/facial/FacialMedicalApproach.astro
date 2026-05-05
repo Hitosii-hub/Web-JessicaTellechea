@@ -1,0 +1,21 @@
+---
+import Heading from '../ui/Heading.astro';
+
+interface Props {
+  title: string;
+  body: string;
+}
+
+const { title, body } = Astro.props;
+---
+
+<section class="facial-section facial-section--medical-approach">
+  <div class="facial-container facial-medical-approach">
+    <div class="facial-medical-approach__content">
+      <Heading level={2} serif class="facial-section__title facial-section__title--left">{title}</Heading>
+      <p class="facial-medical-approach__body">{body}</p>
+    </div>
+    <div class="facial-medical-approach__visual" aria-hidden="true"></div>
+  </div>
+</section>
+

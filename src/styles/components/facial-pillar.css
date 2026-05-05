@@ -1,0 +1,318 @@
+.facial-page {
+	background: var(--color-bg);
+	color: var(--color-text);
+}
+
+.facial-container {
+	width: 100%;
+	max-width: var(--max-width-wide);
+	margin: 0 auto;
+}
+
+.facial-section {
+	padding: var(--space-section-y) var(--space-md);
+}
+
+.facial-section--insight,
+.facial-section--medical-approach {
+	background: color-mix(in srgb, var(--color-bg) 82%, var(--color-neutral));
+}
+
+.facial-section__title {
+	text-align: center;
+	margin-bottom: var(--space-lg);
+}
+
+.facial-section__body {
+	max-width: var(--max-width-editorial);
+	margin: 0 auto;
+	font-family: var(--font-sans-ui);
+	font-size: clamp(1rem, 2.1vw, 1.125rem);
+	line-height: 1.65;
+	color: var(--color-muted);
+	text-align: center;
+}
+
+.facial-hero {
+	display: flex;
+	align-items: center;
+	min-height: 75vh;
+	padding: var(--space-section-y) var(--space-md);
+	background:
+		linear-gradient(180deg, color-mix(in srgb, var(--color-bg) 55%, transparent) 0%, var(--color-bg) 100%),
+		linear-gradient(135deg, color-mix(in srgb, var(--color-champagne) 26%, var(--color-bg)) 0%, color-mix(in srgb, var(--color-neutral) 64%, var(--color-bg)) 100%);
+	border-bottom: 1px solid color-mix(in srgb, var(--color-border) 45%, transparent);
+}
+
+.facial-hero__inner {
+	width: 100%;
+	max-width: var(--max-width-editorial);
+	margin: 0 auto;
+	text-align: center;
+}
+
+.facial-hero__title {
+	margin: 0;
+	font-family: var(--font-serif-display);
+	font-size: clamp(2rem, 5.2vw, 3.4rem);
+	line-height: 1.1;
+}
+
+.facial-hero__subtitle {
+	margin: var(--space-sm) 0 0;
+	font-family: var(--font-sans-ui);
+	font-size: clamp(0.95rem, 2vw, 1.05rem);
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: color-mix(in srgb, var(--color-text) 72%, var(--color-muted));
+}
+
+.facial-hero__lead {
+	margin: var(--space-md) 0 0;
+	font-family: var(--font-sans-ui);
+	font-size: clamp(1rem, 2.3vw, 1.15rem);
+	line-height: 1.6;
+	color: var(--color-muted);
+}
+
+.facial-hero__actions {
+	margin-top: var(--space-xl);
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-sm);
+	justify-content: center;
+}
+
+.facial-hero__primary,
+.facial-hero__secondary {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 48px;
+	padding: 0.85rem 1.3rem;
+	font-family: var(--font-sans-ui);
+	font-size: 0.72rem;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	text-decoration: none;
+	border-radius: var(--radius-editorial);
+}
+
+.facial-hero__primary {
+	color: var(--color-on-accent);
+	background: var(--color-text);
+	border: 1px solid var(--color-text);
+}
+
+.facial-hero__secondary {
+	color: var(--color-text);
+	background: transparent;
+	border: 1px solid color-mix(in srgb, var(--color-border) 75%, transparent);
+}
+
+.facial-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: var(--space-md);
+}
+
+.facial-section--insight .facial-container {
+	max-width: 47.5rem;
+	text-align: center;
+}
+
+.facial-section--insight {
+	padding-block: calc(var(--space-section-y) * 1.12);
+}
+
+.facial-medical-approach {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: var(--space-lg);
+	align-items: stretch;
+}
+
+.facial-section__title--left {
+	text-align: left;
+}
+
+.facial-medical-approach__content {
+	padding: var(--space-lg);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-editorial);
+	background: var(--color-surface);
+}
+
+.facial-medical-approach__body {
+	margin: 0;
+	font-family: var(--font-sans-ui);
+	line-height: 1.6;
+	color: var(--color-muted);
+}
+
+.facial-medical-approach__visual {
+	min-height: 16rem;
+	border-radius: var(--radius-editorial);
+	background:
+		radial-gradient(circle at 20% 18%, color-mix(in srgb, var(--color-bg) 80%, transparent) 0%, transparent 55%),
+		linear-gradient(145deg, color-mix(in srgb, var(--color-champagne) 58%, var(--color-neutral)) 0%, color-mix(in srgb, var(--color-neutral) 55%, var(--color-bg)) 100%);
+	border: 1px solid color-mix(in srgb, var(--color-border) 60%, transparent);
+}
+
+.facial-section--benefits {
+	background: color-mix(in srgb, var(--color-neutral) 66%, var(--color-bg));
+}
+
+.facial-benefits-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: var(--space-sm);
+}
+
+.facial-benefits-list__item {
+	padding: var(--space-md);
+	border: 1px solid color-mix(in srgb, var(--color-border) 78%, transparent);
+	border-radius: var(--radius-editorial);
+	background: color-mix(in srgb, var(--color-surface) 84%, var(--color-bg));
+	font-family: var(--font-sans-ui);
+	line-height: 1.55;
+}
+
+.facial-section--services {
+	background: var(--color-bg);
+}
+
+.facial-services {
+	display: grid;
+	gap: var(--space-sm);
+}
+
+.facial-services__group {
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-editorial);
+	background: var(--color-surface);
+	padding: var(--space-sm) var(--space-md);
+}
+
+.facial-services__subtitle {
+	cursor: pointer;
+	font-family: var(--font-sans-ui);
+	font-size: 0.95rem;
+	font-weight: 700;
+	letter-spacing: 0.02em;
+}
+
+.facial-services__list {
+	margin: var(--space-sm) 0 0;
+	padding-left: 1rem;
+	display: grid;
+	gap: 0.35rem;
+	font-family: var(--font-sans-ui);
+	line-height: 1.5;
+	color: var(--color-muted);
+}
+
+.facial-process {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: grid;
+	gap: var(--space-md);
+	grid-template-columns: 1fr;
+}
+
+.facial-process__step {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-xs);
+	padding: var(--space-md);
+	background: var(--color-surface);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-editorial);
+	text-align: center;
+}
+
+.facial-process__index {
+	inline-size: 2.15rem;
+	block-size: 2.15rem;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 999px;
+	background: color-mix(in srgb, var(--color-neutral) 85%, var(--color-champagne));
+	font-family: var(--font-sans-ui);
+	font-weight: 700;
+}
+
+.facial-process__title {
+	margin: 0;
+	font-family: var(--font-sans-ui);
+	font-size: 0.95rem;
+	font-weight: 700;
+	line-height: 1.4;
+}
+
+.facial-points {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: grid;
+	gap: var(--space-sm);
+	max-width: 54rem;
+	margin-inline: auto;
+}
+
+.facial-section--trust {
+	background: color-mix(in srgb, var(--color-text) 92%, #0f1217);
+	color: color-mix(in srgb, var(--color-bg) 95%, white);
+}
+
+.facial-section--trust .facial-section__title {
+	color: inherit;
+}
+
+.facial-points__item {
+	padding: var(--space-sm) var(--space-md);
+	background: color-mix(in srgb, var(--color-surface) 12%, transparent);
+	border: 1px solid color-mix(in srgb, var(--color-bg) 24%, transparent);
+	border-left: 3px solid color-mix(in srgb, var(--color-champagne) 70%, var(--color-bg));
+	border-radius: var(--radius-editorial);
+	text-align: center;
+	font-family: var(--font-sans-ui);
+	line-height: 1.5;
+}
+
+.facial-section--final-cta {
+	background: var(--color-bg);
+	border-top: 1px solid color-mix(in srgb, var(--color-border) 45%, transparent);
+}
+
+.facial-section--final-cta .home-final-cta {
+	min-height: unset;
+	padding-block: calc(var(--space-section-y) * 0.85);
+}
+
+.facial-cta-stack {
+	max-width: 50rem;
+	margin-inline: auto;
+}
+
+@media (min-width: 900px) {
+	.facial-medical-approach {
+		grid-template-columns: minmax(0, 1.22fr) minmax(0, 1fr);
+	}
+
+	.facial-benefits-list {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.facial-process {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+}
+

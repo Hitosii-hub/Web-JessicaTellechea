@@ -33,13 +33,6 @@
 	vertical-align: middle;
 }
 
-.cta-stack {
-	display: flex;
-	flex-direction: column;
-	gap: var(--space-sm);
-	margin-top: var(--space-lg);
-}
-
 .cta-stack__primary {
 	display: inline-flex;
 	justify-content: center;
@@ -60,30 +53,6 @@
 
 .cta-stack__primary:hover {
 	background: var(--color-accent-muted);
-}
-
-.cta-stack__secondary {
-	display: flex;
-	flex-wrap: wrap;
-	gap: var(--space-sm);
-}
-
-.cta-stack__secondary a {
-	display: inline-flex;
-	align-items: center;
-	padding: 0.5rem 1rem;
-	border-radius: var(--radius-sm);
-	border: 1px solid var(--color-border);
-	background: var(--color-surface);
-	color: var(--color-text);
-	text-decoration: none;
-	font-weight: 500;
-	font-size: 0.9375rem;
-}
-
-.cta-stack__secondary a:hover {
-	border-color: var(--color-accent-muted);
-	color: var(--color-accent);
 }
 
 .booking-embed-placeholder {

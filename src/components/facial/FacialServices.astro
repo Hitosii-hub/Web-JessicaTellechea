@@ -1,0 +1,34 @@
+---
+import Heading from '../ui/Heading.astro';
+
+interface ServiceGroup {
+  subtitle: string;
+  services: string[];
+}
+
+interface Props {
+  title: string;
+  groups: ServiceGroup[];
+}
+
+const { title, groups } = Astro.props;
+---
+
+<section class="facial-section facial-section--services">
+  <div class="facial-container">
+    <Heading level={2} serif class="facial-section__title">{title}</Heading>
+    <div class="facial-services">
+      {
+        groups.map((group) => (
+          <details class="facial-services__group">
+            <summary class="facial-services__subtitle">{group.subtitle}</summary>
+            <ul class="facial-services__list">
+              {group.services.map((service) => <li>{service}</li>)}
+            </ul>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
