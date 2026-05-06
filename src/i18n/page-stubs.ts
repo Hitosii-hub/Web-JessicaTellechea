@@ -156,24 +156,24 @@ export const pageStubsBySegment: Record<StubSegment, Record<Locale, PageStub>> =
 	'reservar-cita': {
 		es: {
 			title: 'WebAJ - Reservar cita',
-			heading: 'Reservar cita',
+			heading: 'Reserva tu experiencia de cuidado experto',
 			lead:
-				'Ruta utilitaria para quien ya quiere agenda directa. Integracion externa pendiente (embed o enlace profundo).',
+				'Selecciona especialidad, tratamiento, fecha y hora en un recorrido guiado y discreto.',
 		},
 		en: {
 			title: 'WebAJ - Book appointment',
-			heading: 'Book appointment',
-			lead: 'Utility route for direct scheduling; external gateway to be wired.',
+			heading: 'Book your expert care experience',
+			lead: 'Choose specialty, treatment, date, and time in a guided, discreet flow.',
 		},
 		ca: {
 			title: 'WebAJ - Reservar cita',
-			heading: 'Reservar cita',
-			lead: 'Portal de reserves extern (stub).',
+			heading: 'Reserva la teva experiència de cura experta',
+			lead: 'Tria especialitat, tractament, data i hora en un recorregut guiat i discret.',
 		},
 		fr: {
 			title: 'WebAJ - Prendre rendez-vous',
-			heading: 'Prendre rendez-vous',
-			lead: 'Passerelle de reservation externe (stub).',
+			heading: 'Réservez votre expérience de soin experte',
+			lead: 'Choisissez spécialité, traitement, date et heure dans un parcours guidé et discret.',
 		},
 	},
 };

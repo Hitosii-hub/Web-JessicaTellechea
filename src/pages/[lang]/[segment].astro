@@ -30,6 +30,8 @@ export function getStaticPaths() {
 const lang = Astro.params.lang as Locale;
 const segment = Astro.params.segment as string;
 const presetSpecialtySlug = Astro.url.searchParams.get('preset');
+const presetTreatmentId = Astro.url.searchParams.get('treatment');
+const clinicAddress = import.meta.env.PUBLIC_CLINIC_ADDRESS?.trim() ?? '';
 const iaKey = iaKeyFromPath(lang, segment);
 
 if (!iaKey) {
@@ -77,11 +79,17 @@ if (iaKey === 'contact') {
 		) : (
 			<>
 				{iaKey === 'facial' ? <FacialPillarPage lang={lang} content={facialContent} /> : null}
-				{iaKey !== 'facial' ? <h1>{heading}</h1> : null}
-				{iaKey !== 'facial' ? <p>{lead}</p> : null}
+				{iaKey !== 'facial' ? <h1 class:list={[bookingBlock && 'booking-page__title']}>{heading}</h1> : null}
+				{iaKey !== 'facial' && !bookingBlock ? <p>{lead}</p> : null}
 				{bookingBlock ? (
 					<div class="booking-flow-root" data-booking-flow>
-						<BookingFlow client:load lang={lang} presetSpecialtySlug={presetSpecialtySlug} />
+						<BookingFlow
+							client:load
+							lang={lang}
+							presetSpecialtySlug={presetSpecialtySlug}
+							presetTreatmentId={presetTreatmentId}
+							clinicAddress={clinicAddress}
+						/>
 					</div>
 				) : null}
 			</>

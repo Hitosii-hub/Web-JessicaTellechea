@@ -2,24 +2,268 @@
 	margin-top: var(--space-lg);
 }
 
+.booking-page__title {
+	margin: 0;
+	font-family: var(--font-serif-display);
+	font-size: clamp(2rem, 4.5vw, 3.1rem);
+	line-height: 1.18;
+	font-weight: 400;
+	letter-spacing: -0.01em;
+	color: var(--color-text);
+	text-align: center;
+}
+
+.booking-flow-shell {
+	display: grid;
+	gap: var(--space-lg);
+}
+
 .booking-flow {
 	display: grid;
-	gap: var(--space-md);
-	padding: var(--space-md);
+	gap: var(--space-lg);
+	padding: clamp(1rem, 3vw, 2.5rem);
 	border: 1px solid var(--color-border);
-	border-radius: var(--radius-md);
+	border-radius: var(--radius-editorial);
 	background: var(--color-surface);
+	box-shadow: 0 24px 60px color-mix(in srgb, var(--color-text) 8%, transparent);
+	/** Altura del viewport de pasos: referencia Step 3, ~50px menos que la referencia anterior. */
+	--booking-flow-step-viewport-height: calc(min(clamp(26rem, 62vmin, 36rem), 85vh) - 50px);
+}
+
+.booking-flow__step-viewport {
+	display: flex;
+	flex-direction: column;
+	height: var(--booking-flow-step-viewport-height);
+	min-height: var(--booking-flow-step-viewport-height);
+	max-height: var(--booking-flow-step-viewport-height);
+	overflow: hidden;
+}
+
+.booking-flow__step-viewport > * {
+	flex: 1 1 auto;
+	min-height: 0;
+}
+
+.booking-flow__step-fill {
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	min-height: 0;
+}
+
+.booking-flow__fieldset.booking-flow__step-fill {
+	min-height: 0;
+}
+
+.booking-flow__fieldset.booking-flow__step-fill .booking-flow__legend {
+	margin-bottom: var(--space-md);
+}
+
+.booking-flow__section.booking-flow__step-fill,
+.booking-flow__details.booking-flow__step-fill {
+	display: flex;
+	flex-direction: column;
+}
+
+.booking-flow__scroll-region,
+.booking-flow__details-scroll {
+	flex: 1 1 auto;
+	min-height: 0;
+	overflow-y: auto;
+	overflow-x: hidden;
+	-webkit-overflow-scrolling: touch;
+}
+
+/** Espacio lateral para que `:focus-visible` no quede recortado por overflow-x. */
+.booking-flow__details-scroll {
+	padding-inline: var(--space-sm);
+}
+
+.booking-flow__slots-scroll {
+	flex: 1 1 0;
+	min-height: 0;
+	overflow-y: auto;
+	overflow-x: hidden;
+	-webkit-overflow-scrolling: touch;
+}
+
+.booking-flow__datetime-step {
+	min-height: 0;
+}
+
+.booking-flow__section.booking-flow__datetime-step-main {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-xs);
+	flex: 1 1 auto;
+	min-height: 0;
+	overflow: hidden;
+}
+
+.booking-flow__datetime-step > .booking-flow__banner,
+.booking-flow__datetime-step > .booking-flow__actions,
+.booking-flow__datetime-step > .booking-flow__notice {
+	flex-shrink: 0;
+}
+
+.booking-flow__datetime-body {
+	flex: 1 1 auto;
+	min-height: 0;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-md);
+}
+
+.booking-flow__datetime-layout {
+	flex: 1 1 auto;
+	min-height: 0;
+	overflow: hidden;
+	display: grid;
+	gap: var(--space-lg);
+	/** Una fila con altura limitada: si las filas son `auto`, la rejilla crece con el contenido y no hay scroll en hijos. */
+	grid-template-rows: minmax(0, 1fr);
+}
+
+.booking-flow__datetime-layout > * {
+	min-height: 0;
+	align-self: stretch;
+}
+
+.booking-flow__slots-pane {
+	min-height: 0;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+.booking-flow__section.booking-flow__slots-section {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-md);
+	flex: 1 1 auto;
+	min-height: 0;
+	overflow: hidden;
+}
+
+.booking-flow__slots-section .booking-flow__h {
+	flex-shrink: 0;
+}
+
+.booking-flow__slots-section .booking-flow__fieldset {
+	flex-shrink: 0;
+}
+
+.booking-flow__details .booking-flow__section-head {
+	flex-shrink: 0;
+}
+
+
+.booking-flow__progress {
+	list-style: none;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: var(--space-xs);
+	padding: 0;
+	margin: 0 auto;
+}
+
+.booking-flow__progress li {
+	display: flex;
+	align-items: center;
+}
+
+.booking-flow__progress li::after {
+	content: '';
+	display: block;
+	width: 1.8rem;
+	height: 1px;
+	margin: 0 0.2rem;
+	background: color-mix(in srgb, var(--color-border) 75%, transparent);
+}
+
+.booking-flow__progress li:last-child::after {
+	display: none;
+}
+
+.booking-flow__progress li span {
+	display: block;
+	height: 0.42rem;
+	width: 0.42rem;
+	border-radius: 999px;
+	background: color-mix(in srgb, var(--color-border) 80%, transparent);
+	transition: background-color var(--duration-normal) var(--ease-standard);
+}
+
+.booking-flow__progress li.is-active span {
+	background: var(--color-accent);
 }
 
 .booking-flow__h {
-	font-size: 1rem;
-	margin: 0 0 var(--space-sm);
+	margin: 0;
+	font-family: var(--font-serif-display);
+	font-size: clamp(1.65rem, 4vw, 2.35rem);
+	line-height: 1.25;
+	font-weight: 400;
+	color: var(--color-text);
+}
+
+.booking-flow__legend {
+	padding: 0;
+	border: 0;
+	display: grid;
+	gap: var(--space-xs);
+	margin-bottom: calc(var(--space-md) * 2);
+}
+
+.booking-flow__legend-row {
+	display: grid;
+	gap: var(--space-xs);
+}
+
+.booking-flow__step-kicker {
+	display: block;
+	font-size: 0.62rem;
+	letter-spacing: 0.14em;
+	font-weight: 700;
+	color: var(--color-champagne);
+}
+
+.booking-flow__step-description {
+	margin: 0;
+	font-size: 0.92rem;
+	line-height: 1.55;
+	color: var(--color-muted);
+}
+
+.booking-flow__step-description--legend {
+	text-align: right;
+}
+
+.booking-flow__section-head {
+	display: grid;
+	gap: var(--space-xs);
+}
+
+@media (min-width: 48rem) {
+	.booking-flow__legend--split .booking-flow__legend-row {
+		grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+		align-items: center;
+		column-gap: var(--space-md);
+	}
+
+	.booking-flow__legend-row--split {
+		grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+		align-items: center;
+		column-gap: var(--space-md);
+	}
 }
 
 .booking-flow__fieldset {
-	border: 1px solid var(--color-border);
+	border: 0;
 	border-radius: var(--radius-sm);
-	padding: var(--space-md);
+	padding: 0;
 	margin: 0;
 }
 
@@ -28,14 +272,58 @@
 	padding: 0;
 	margin: 0;
 	display: grid;
-	gap: var(--space-sm);
+	gap: calc(var(--space-sm) / 1.1);
+}
+
+.booking-flow__list--cards {
+	grid-template-columns: 1fr;
+}
+
+.booking-flow__list--cards > li {
+	display: flex;
+}
+
+.booking-flow__list--cards .booking-flow__choice,
+.booking-flow__list--cards .booking-flow__slot {
+	min-height: 5.5rem;
+	padding: var(--space-md);
+	align-items: center;
+	border: 1px solid color-mix(in srgb, var(--color-border) 70%, transparent);
+	background: var(--color-surface);
+}
+
+.booking-flow__list--cards .booking-flow__slot {
+	display: flex;
+	flex: 1 1 auto;
+	width: 100%;
+	height: 100%;
+	justify-content: center;
+	text-align: center;
 }
 
 .booking-flow__choice {
 	display: flex;
+	flex: 1 1 auto;
+	width: 100%;
+	height: 100%;
 	align-items: center;
+	justify-content: center;
 	gap: var(--space-sm);
 	cursor: pointer;
+	border: 1px solid var(--color-border);
+	padding: var(--space-md);
+	border-radius: var(--radius-editorial);
+	background: var(--color-surface);
+	font-family: var(--font-serif-display);
+	font-size: 1.15rem;
+	line-height: 1.25;
+	text-align: center;
+}
+
+.booking-flow__choice.is-active {
+	border-color: var(--color-champagne);
+	border-width: 2px;
+	background: color-mix(in srgb, var(--color-on-accent) 99%, var(--color-champagne));
 }
 
 .booking-flow__days,
@@ -48,42 +336,153 @@
 	gap: var(--space-xs);
 }
 
+.booking-flow__calendar {
+	display: grid;
+	gap: var(--space-md);
+	min-height: 0;
+}
+
+/** Mismo espacio título → contenido que `.booking-flow__slots-section` (flex + gap md). */
+.booking-flow__calendar-section.booking-flow__calendar-section--title {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-md);
+	min-height: 0;
+}
+
+.booking-flow__calendar-section--title > .booking-flow__h {
+	flex-shrink: 0;
+}
+
+.booking-flow__calendar-section--grid {
+	padding: var(--space-md);
+	border: 1px solid color-mix(in srgb, var(--color-border) 80%, transparent);
+	background: color-mix(in srgb, var(--color-neutral) 35%, var(--color-surface));
+	border-radius: var(--radius-editorial);
+}
+
+.booking-flow__calendar-header {
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+	align-items: center;
+	gap: var(--space-sm);
+	margin-bottom: var(--space-sm);
+}
+
+.booking-flow__calendar-title {
+	text-align: center;
+	font-family: var(--font-serif-display);
+	font-size: 1.05rem;
+	color: var(--color-text);
+	text-transform: capitalize;
+}
+
+.booking-flow__calendar-weekdays {
+	display: grid;
+	grid-template-columns: repeat(7, minmax(0, 1fr));
+	gap: 0.25rem;
+	margin-bottom: 0.35rem;
+}
+
+.booking-flow__calendar-weekdays span {
+	text-align: center;
+	font-size: 0.68rem;
+	letter-spacing: 0.08em;
+	color: var(--color-muted);
+}
+
+.booking-flow__calendar-grid {
+	display: grid;
+	grid-template-columns: repeat(7, minmax(0, 1fr));
+	gap: 0.3rem;
+}
+
+.booking-flow__calendar-empty {
+	display: block;
+	min-height: 2rem;
+}
+
+.booking-flow__calendar-day {
+	min-height: 2rem;
+	border: 0;
+	background: transparent;
+	color: color-mix(in srgb, var(--color-muted) 55%, transparent);
+	border-radius: 999px;
+	font-size: 0.84rem;
+}
+
+.booking-flow__calendar-day.is-available {
+	cursor: pointer;
+	font-weight: bold;
+	color: var(--color-text);
+}
+
+.booking-flow__calendar-day.is-active {
+	background: color-mix(in srgb, var(--color-text) 10%, var(--color-champagne));
+	color: var(--color-on-accent);
+	cursor: pointer;
+}
+
+.booking-flow__slots--grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: var(--space-sm);
+}
+
+.booking-flow__slots--grid .booking-flow__slot {
+	width: 100%;
+	text-align: center;
+	padding: 0.7rem 0.5rem;
+}
+
 .booking-flow__day,
 .booking-flow__slot {
 	padding: var(--space-xs) var(--space-sm);
 	border: 1px solid var(--color-border);
-	border-radius: var(--radius-sm);
+	border-radius: var(--radius-editorial);
 	background: var(--color-bg);
 	cursor: pointer;
 	font: inherit;
+	transition:
+		border-color var(--duration-fast) var(--ease-standard),
+		box-shadow var(--duration-fast) var(--ease-standard),
+		background-color var(--duration-fast) var(--ease-standard);
 }
 
+.booking-flow__choice:hover,
 .booking-flow__day:hover,
 .booking-flow__slot:hover {
-	border-color: var(--color-accent);
+	border-color: var(--color-champagne);
 }
 
 .booking-flow__day.is-active,
 .booking-flow__slot.is-active {
-	border-color: var(--color-accent);
-	box-shadow: 0 0 0 1px var(--color-accent);
+	border-color: var(--color-champagne);
+	border-width: 2px;
+	background: color-mix(in srgb, var(--color-on-accent) 99%, var(--color-champagne));
 }
 
 .booking-flow__retry,
 .booking-flow__continue {
-	font: inherit;
-	padding: var(--space-sm) var(--space-md);
-	border-radius: var(--radius-sm);
-	border: 1px solid var(--color-border);
-	background: var(--color-bg);
+	min-height: 46px;
+	padding: 0.85rem 1.3rem;
+	font-family: var(--font-sans-ui);
+	font-size: 0.72rem;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	text-decoration: none;
+	border-radius: var(--radius-editorial);
+	border: 1px solid var(--color-text);
+	background: var(--color-text);
+	color: var(--color-on-accent);
 	cursor: pointer;
 }
 
 .booking-flow__continue {
-	background: var(--color-accent);
+	background: var(--color-text);
 	color: var(--color-on-accent);
-	border-color: transparent;
-	font-weight: 600;
+	border-color: var(--color-text);
 }
 
 .booking-flow__continue:disabled {
@@ -120,9 +519,13 @@
 	gap: var(--space-md);
 }
 
+.booking-flow__section--datetime {
+	gap: var(--space-xs);
+}
+
 .booking-flow__actions {
 	display: flex;
-	justify-content: flex-end;
+	justify-content: flex-start;
 	gap: var(--space-sm);
 	margin-top: var(--space-sm);
 }
@@ -133,11 +536,17 @@
 }
 
 .booking-flow__btn-secondary {
-	font: inherit;
-	padding: var(--space-sm) var(--space-md);
-	border-radius: var(--radius-sm);
-	border: 1px solid var(--color-border);
-	background: var(--color-surface);
+	min-height: 46px;
+	padding: 0.85rem 1.15rem;
+	font-family: var(--font-sans-ui);
+	font-size: 0.72rem;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	border-radius: var(--radius-editorial);
+	border: 1px solid color-mix(in srgb, var(--color-border) 75%, transparent);
+	background: transparent;
+	color: var(--color-text);
 	cursor: pointer;
 }
 
@@ -149,7 +558,7 @@
 .booking-flow__panel {
 	padding: var(--space-md);
 	border: 1px solid var(--color-border);
-	border-radius: var(--radius-sm);
+	border-radius: var(--radius-editorial);
 	background: var(--color-bg);
 }
 
@@ -158,9 +567,58 @@
 	margin: 0 0 var(--space-sm);
 }
 
-.booking-flow__summary p {
-	margin: 0 0 var(--space-xs);
+.booking-flow__summary {
+	min-width: 0;
+}
+
+/**
+ * Una sola rejilla para todas las filas: la primera columna adopta el ancho de la etiqueta más larga,
+ * así los valores quedan alineados verticalmente (desktop y móvil).
+ */
+.booking-flow__summary-lines {
+	display: grid;
+	grid-template-columns: max-content minmax(0, 1fr);
+	column-gap: var(--space-sm);
+	row-gap: var(--space-xs);
+	align-items: start;
 	font-size: 0.9375rem;
+}
+
+.booking-flow__summary-lines > .booking-flow__summary-row {
+	display: contents;
+}
+
+.booking-flow__summary-label {
+	margin: 0;
+	font-weight: 700;
+	white-space: nowrap;
+}
+
+.booking-flow__summary-value {
+	margin: 0;
+	min-width: 0;
+	overflow-wrap: anywhere;
+	word-break: break-word;
+}
+
+.booking-flow__summary-value em {
+	display: inline-block;
+	margin-top: 0.2rem;
+	font-size: 0.85rem;
+	color: var(--color-muted);
+}
+
+.booking-flow__summary .booking-flow__actions {
+	justify-content: stretch;
+}
+
+.booking-flow__summary .booking-flow__continue {
+	width: 100%;
+}
+
+.booking-flow__details-layout {
+	display: grid;
+	gap: var(--space-lg);
 }
 
 .booking-flow__label {
@@ -169,15 +627,47 @@
 }
 
 .booking-flow__mode-row {
-	display: flex;
-	flex-wrap: wrap;
-	gap: var(--space-md);
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 0.5rem;
+	border-bottom: 1px solid color-mix(in srgb, var(--color-border) 70%, transparent);
+	padding-bottom: var(--space-xs);
+}
+
+.booking-flow__tab {
+	width: 100%;
+	min-width: 0;
+	min-height: 40px;
+	padding: 0.5rem 0.9rem;
+	border: 1px solid color-mix(in srgb, var(--color-border) 70%, transparent);
+	border-radius: var(--radius-editorial);
+	background: transparent;
+	color: var(--color-muted);
+	font-family: var(--font-sans-ui);
+	font-size: 0.72rem;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+
+.booking-flow__tab.is-active {
+	padding-top: var(--space-sm);
+	background: var(--color-text);
+	color: var(--color-on-accent);
+	border-color: var(--color-text);
 }
 
 .booking-flow__grid {
 	display: grid;
+	padding-top: var(--space-sm);
 	grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
 	gap: var(--space-md);
+}
+
+/** Formulario paso 4: siempre dos columnas (nombre/apellido, prefijo/tel…); email con `--full`. */
+.booking-flow__grid--two-cols {
+	grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .booking-flow__field {
@@ -193,10 +683,46 @@
 
 .booking-flow__input {
 	font: inherit;
-	padding: var(--space-xs) var(--space-sm);
-	border: 1px solid var(--color-border);
-	border-radius: var(--radius-sm);
-	background: var(--color-surface);
+	padding: 0.65rem 0;
+	border: 0;
+	border-bottom: 1px solid color-mix(in srgb, var(--color-text) 20%, transparent);
+	border-radius: 0;
+	background: transparent;
+}
+
+.booking-flow__input:focus {
+	outline: none;
+}
+
+.booking-flow__input:focus-visible {
+	outline: 2px solid var(--color-champagne);
+	outline-offset: 4px;
+	border-radius: 2px;
+}
+
+.booking-flow__select {
+	width: 100%;
+	cursor: pointer;
+	appearance: none;
+	background-image: linear-gradient(45deg, transparent 50%, currentColor 50%),
+		linear-gradient(135deg, currentColor 50%, transparent 50%);
+	background-position:
+		calc(100% - 1.1rem) 55%,
+		calc(100% - 0.72rem) 55%;
+	background-size: 5px 5px;
+	background-repeat: no-repeat;
+	padding-right: 1.75rem;
+	color: inherit;
+}
+
+.booking-flow__select:focus {
+	outline: none;
+}
+
+.booking-flow__select:focus-visible {
+	outline: 2px solid var(--color-champagne);
+	outline-offset: 4px;
+	border-radius: 2px;
 }
 
 .booking-flow__privacy {
@@ -206,6 +732,86 @@
 
 .booking-flow__notice--inline {
 	margin-top: var(--space-xs);
+}
+
+@media (max-width: 899px) {
+	.booking-flow {
+		/** ~80px más de alto que el viewport base en escritorio (más aire en pasos). */
+		--booking-flow-step-viewport-height: calc(min(clamp(26rem, 62vmin, 36rem), 85vh) - 50px + 80px);
+	}
+
+	/**
+	 * Móvil: scroll único en `.datetime-body`. Flex columna evita solapamiento por
+	 * `min-height: 0` + grid `auto` (contenido rebasa la celda y se pinta encima del siguiente bloque).
+	 */
+	.booking-flow__datetime-body {
+		flex: 1 1 0;
+		min-height: 0;
+		overflow-x: hidden;
+		overflow-y: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	.booking-flow__datetime-layout {
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+		gap: var(--space-lg);
+		flex: 0 1 auto;
+		width: 100%;
+		min-height: 0;
+		overflow: visible;
+	}
+
+	.booking-flow__datetime-layout > * {
+		min-height: auto;
+		align-self: stretch;
+		flex: 0 0 auto;
+		width: 100%;
+	}
+
+	.booking-flow__calendar {
+		min-height: auto;
+	}
+
+	.booking-flow__slots-pane {
+		overflow: visible;
+		min-height: auto;
+		flex: 0 0 auto;
+	}
+
+	.booking-flow__section.booking-flow__slots-section {
+		overflow: visible;
+		flex: 0 0 auto;
+		min-height: auto;
+	}
+
+	.booking-flow__slots-scroll {
+		flex: 0 0 auto;
+		overflow: visible;
+		min-height: auto;
+	}
+}
+
+@media (min-width: 900px) {
+	.booking-flow__list--cards {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+
+	.booking-flow__details-layout {
+		grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+		align-items: start;
+	}
+
+	.booking-flow__details-layout > * {
+		min-width: 0;
+	}
+
+	.booking-flow__datetime-layout {
+		grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+		grid-template-rows: minmax(0, 1fr);
+		align-items: stretch;
+	}
 }
 
 .booking-flow__modal-overlay {
@@ -313,4 +919,12 @@ body .grecaptcha-badge {
 
 .booking-flow__recaptcha-disclosure a {
 	color: var(--color-accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.booking-flow__day,
+	.booking-flow__slot,
+	.booking-flow__progress li span {
+		transition: none;
+	}
 }

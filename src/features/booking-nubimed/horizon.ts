@@ -36,10 +36,10 @@ export function ymdToDdMmYyyy(ymd: string): string {
 }
 
 /**
- * Effective horizon in days: min(61, vendor max), from today Madrid (REQ-6).
+ * Effective horizon in days: min(91, vendor max), from today Madrid (REQ-6).
  */
 export function effectiveHorizonDays(vendorMaxDias: number): number {
-	return Math.min(61, Math.max(1, vendorMaxDias));
+	return Math.min(91, Math.max(1, vendorMaxDias));
 }
 
 export function maxSelectableYmd(todayYmd: string, horizonDays: number): string {

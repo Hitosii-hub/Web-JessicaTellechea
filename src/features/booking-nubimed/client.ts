@@ -18,6 +18,12 @@ export interface NubimedClientOptions {
 	readonly getCsrf: () => string | undefined;
 }
 
+export interface VendorTreatmentOption {
+	readonly id: string;
+	readonly label: string;
+	readonly modalidad: string;
+}
+
 function joinUrl(base: string, path: string): string {
 	const b = base.replace(/\/$/, '');
 	const p = path.startsWith('/') ? path : `/${path}`;
@@ -49,6 +55,37 @@ function throwOnGate(res: Response): void {
 export function createNubimedClient(opts: NubimedClientOptions) {
 	const base = opts.baseUrl.replace(/\/$/, '');
 
+	function decodeHtml(text: string): string {
+		return text
+			.replace(/&nbsp;/gi, ' ')
+			.replace(/&amp;/gi, '&')
+			.replace(/&quot;/gi, '"')
+			.replace(/&#39;/gi, "'")
+			.replace(/&lt;/gi, '<')
+			.replace(/&gt;/gi, '>');
+	}
+
+	function parseOptionAttr(rawAttrs: string, attr: string): string {
+		const re = new RegExp(`${attr}\\s*=\\s*(['"])(.*?)\\1`, 'i');
+		const m = re.exec(rawAttrs);
+		return (m?.[2] ?? '').trim();
+	}
+
+	function parseVendorTreatmentsFromHtml(html: string): VendorTreatmentOption[] {
+		const options: VendorTreatmentOption[] = [];
+		const re = /<option\b([^>]*)>([\s\S]*?)<\/option>/gi;
+		for (const match of html.matchAll(re)) {
+			const attrs = match[1] ?? '';
+			const value = parseOptionAttr(attrs, 'value');
+			if (!value) continue; // ignorar "No lo tengo claro" y opciones vacías
+			const modalidad = parseOptionAttr(attrs, 'data-modalidad') || 'presencial';
+			const rawLabel = decodeHtml((match[2] ?? '').replace(/\s+/g, ' ').trim());
+			if (!rawLabel) continue;
+			options.push({ id: value, label: rawLabel, modalidad });
+		}
+		return options;
+	}
+
 	async function fetchBootstrapHtml(signal: AbortSignal): Promise<string> {
 		const id = opts.getClinicaId();
 		assertClinicaId(id);
@@ -66,6 +103,33 @@ export function createNubimedClient(opts: NubimedClientOptions) {
 			throw new BookingFlowError('network', `Widget HTTP ${res.status}`);
 		}
 		return res.text();
+	}
+
+	async function fetchTreatmentsBySpecialty(
+		signal: AbortSignal,
+		params: { locale: string; especialidadId: number },
+	): Promise<VendorTreatmentOption[]> {
+		const id = opts.getClinicaId();
+		assertClinicaId(id);
+		const q = new URLSearchParams();
+		q.set('locale', params.locale);
+		q.set('clinica_id', String(id));
+		q.set('especialidad_id', String(params.especialidadId));
+		const url = joinUrl(base, `/ajax/obtener_clinica_tratamientos?${q.toString()}`);
+		const res = await fetch(url, {
+			signal,
+			credentials: 'include',
+			headers: {
+				Accept: 'text/html, */*; q=0.01',
+				'X-Requested-With': 'XMLHttpRequest',
+			},
+		});
+		throwOnGate(res);
+		if (!res.ok) {
+			throw new BookingFlowError('network', `Treatments HTTP ${res.status}`);
+		}
+		const html = await res.text();
+		return parseVendorTreatmentsFromHtml(html);
 	}
 
 	function huecosUrl(pathSuffix: string, search: URLSearchParams): string {
@@ -186,6 +250,7 @@ export function createNubimedClient(opts: NubimedClientOptions) {
 
 	return {
 		fetchBootstrapHtml,
+		fetchTreatmentsBySpecialty,
 		async fetchDayStrings(
 			signal: AbortSignal,
 			p: { locale: string; especialidadId: number; clinicaTratamientoId: number; tipoHorario: string },

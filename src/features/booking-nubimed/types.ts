@@ -7,6 +7,10 @@ export interface BookingFlowProps {
 	lang: SiteLocale;
 	/** Query `preset`: slug or numeric vendor id string. */
 	presetSpecialtySlug?: string | null;
+	/** Optional query preset for future treatment preload (id or key). */
+	presetTreatmentId?: string | null;
+	/** Dirección textual de la clínica (build-time; preferible pasarla desde Astro para la isla). */
+	clinicAddress?: string | null;
 }
 
 export interface BootstrapSession {
