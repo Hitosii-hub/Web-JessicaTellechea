@@ -411,13 +411,25 @@
 
 .facial-section--final-cta .home-final-cta {
 	min-height: auto;
-	padding: clamp(4rem, 8vw, 6rem) 0 0;
+	width: 100%;
+	padding: clamp(4rem, 8vw, 6rem) 0 clamp(3rem, 6vw, 4.5rem);
 	background: transparent;
 	border-top: 0;
 }
 
+.facial-section--final-cta .home-final-cta__inner {
+	max-width: none;
+	width: 100%;
+}
+
 .facial-section--final-cta .home-final-cta__body {
-	display: none;
+	margin: var(--space-md) auto 0;
+	max-width: 38rem;
+	font-family: var(--font-sans-ui);
+	font-size: clamp(1rem, 2.2vw, 1.08rem);
+	font-weight: 400;
+	line-height: 1.65;
+	color: var(--color-muted);
 }
 
 .facial-section--final-cta .home-final-cta__secondary {

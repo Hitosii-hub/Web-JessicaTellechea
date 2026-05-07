@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'preact/hooks';
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'preact/hooks';
 import {
 	catalogEntryBySlugOrId,
 	labelFor,
@@ -180,16 +180,29 @@ export default function BookingFlow({
 		import.meta.env.PUBLIC_CLINIC_ADDRESS?.trim() ||
 		'';
 
-	const presetEntry = useMemo(() => {
-		if (presetSpecialtySlug == null || presetSpecialtySlug === '') return undefined;
-		return catalogEntryBySlugOrId(presetSpecialtySlug);
+	/** Prop from Astro is often empty on static builds; merge runtime `?preset=` from the browser URL. */
+	const trimPreset = (v: string | null | undefined) => (typeof v === 'string' ? v.trim() : '');
+	const [resolvedPresetSlug, setResolvedPresetSlug] = useState(() => trimPreset(presetSpecialtySlug));
+
+	useLayoutEffect(() => {
+		const fromProp = trimPreset(presetSpecialtySlug);
+		if (fromProp) {
+			setResolvedPresetSlug((prev) => (prev === fromProp ? prev : fromProp));
+			return;
+		}
+		if (typeof window === 'undefined') return;
+		const fromUrl = trimPreset(new URLSearchParams(window.location.search).get('preset'));
+		if (fromUrl) setResolvedPresetSlug((prev) => (prev === fromUrl ? prev : fromUrl));
 	}, [presetSpecialtySlug]);
 
-	const invalidPreset =
-		presetSpecialtySlug != null && presetSpecialtySlug !== '' && presetEntry === undefined;
+	const presetEntry = useMemo(() => {
+		if (resolvedPresetSlug === '') return undefined;
+		return catalogEntryBySlugOrId(resolvedPresetSlug);
+	}, [resolvedPresetSlug]);
 
-	const hasValidPreset =
-		presetSpecialtySlug != null && presetSpecialtySlug !== '' && presetEntry !== undefined;
+	const invalidPreset = resolvedPresetSlug !== '' && presetEntry === undefined;
+
+	const hasValidPreset = resolvedPresetSlug !== '' && presetEntry !== undefined;
 	const showSpecialtyPicker = !hasValidPreset || invalidPreset;
 
 	const [bootstrap, setBootstrap] = useState<BootstrapSession | null>(null);

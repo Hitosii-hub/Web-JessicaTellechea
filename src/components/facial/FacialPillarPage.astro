@@ -9,7 +9,7 @@ import FacialMedicalApproach from './FacialMedicalApproach.astro';
 import FacialProcess from './FacialProcess.astro';
 import FacialServices from './FacialServices.astro';
 import FacialTrust from './FacialTrust.astro';
-import { href } from '../../i18n/route-registry';
+import { bookingUrlWithPreset, BOOKING_PRESET_VENDOR_MEDICINA_ESTETICA } from '../../i18n/booking-links';
 
 interface Props {
   lang: Locale;
@@ -17,8 +17,6 @@ interface Props {
 }
 
 const { lang, content } = Astro.props;
-const whatsapp = import.meta.env.PUBLIC_WHATSAPP_E164?.trim();
-const whatsappHref = whatsapp ? `https://wa.me/${whatsapp}` : href(lang, 'contact');
 ---
 
 <div class="facial-page">
@@ -45,34 +43,15 @@ const whatsappHref = whatsapp ? `https://wa.me/${whatsapp}` : href(lang, 'contac
   <FacialServices groups={content.services.groups} images={content.services.images} />
   <FacialProcess eyebrow={content.process.eyebrow} steps={content.process.steps} />
   <FacialTrust points={content.trust.points} />
-  <section class="facial-section facial-section--faq">
-    <div class="facial-container">
-      <h2 class="facial-section__title">{content.faq.title}</h2>
-      <div class="facial-faq">
-        {
-          content.faq.items.map((item) => (
-            <details class="facial-faq__item">
-              <summary class="facial-faq__question">{item.question}</summary>
-              <p class="facial-faq__answer">{item.answer}</p>
-            </details>
-          ))
-        }
-      </div>
-    </div>
-  </section>
   <section class="facial-section facial-section--final-cta">
     <div class="facial-container">
       <FinalCta
         lang={lang}
         h2={content.finalCta.h2}
+        body={content.finalCta.body}
         cta={content.finalCta.primary}
-        primaryHref={href(lang, 'contact')}
-        secondaryActions={[
-          { label: content.finalCta.secondaryBooking, href: href(lang, 'booking') },
-          { label: content.finalCta.secondaryWhatsapp, href: whatsappHref },
-        ]}
+        primaryHref={bookingUrlWithPreset(lang, BOOKING_PRESET_VENDOR_MEDICINA_ESTETICA)}
       />
-      <p class="facial-final-note">{content.finalCta.note}</p>
     </div>
   </section>
 </div>
