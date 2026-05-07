@@ -33,7 +33,8 @@ This document defines platform context for future specs. It is not a step-by-ste
 | **SEO** | Per-route metadata, sitemap, hreflang aligned with `docs/seo-and-localization.md`. |
 | **Multilingual** | URL strategy from SEO doc; implement with Astro i18n routing or equivalent. |
 | **Forms / valuation** | On Hosting Plus: **no** server-side POST on IONOS; use a **third-party form backend** or external endpoint (e.g. `PUBLIC_FORM_POST_URL`). Optional later: serverless/edge elsewhere if product requires it. |
-| **Booking** | Utility route `/reservar-cita/`; `noindex` per project brief. Optional **first-party Nubimed flow**: Preact island (`src/features/booking-nubimed/`) calls vendor endpoints from the browser using `PUBLIC_NUBIMED_CLINICA_ID`, `PUBLIC_NUBIMED_VENDOR_ORIGIN`, optional `PUBLIC_NUBIMED_PROXY_URL` (same-origin proxy if CORS/cookies block direct access), optional `PUBLIC_NUBIMED_PORTAL_NEW_URL` for degradation. No BFF on IONOS; gate checklist under `openspec/changes/nubimed-booking-client-flow/gate-checklist.md`. Legacy iframe URL remains `PUBLIC_BOOKING_URL` in `.env.example` if needed. |
+| **Booking** | Utility route `/reservar-cita/`; `noindex` per project brief. Optional **first-party Nubimed flow**: Preact island (`src/features/booking-nubimed/`) calls vendor endpoints from the browser using `PUBLIC_NUBIMED_CLINICA_ID`, `PUBLIC_NUBIMED_VENDOR_ORIGIN`, optional `PUBLIC_NUBIMED_PROXY_URL` (same-origin proxy if CORS/cookies block direct access), optional `PUBLIC_NUBIMED_PORTAL_NEW_URL` for degradation. No BFF on IONOS; gate checklist under `openspec/changes/nubimed-booking-client-flow/gate-checklist.md`. |
+| **Clinic/contact data** | Public operational fields come from `.env`: `PUBLIC_CLINIC_ADDRESS`, `PUBLIC_CLINIC_PHONE`, `PUBLIC_CLINIC_EMAIL`, `PUBLIC_CLINIC_INSTAGRAM`, and `PUBLIC_GOOGLE_MAPS_URL`. Use `PUBLIC_CLINIC_PHONE` for visible phone text; keep `PUBLIC_WHATSAPP_E164` for WhatsApp/`wa.me` links only. These values are public and baked into static HTML/JS at build time. |
 | **Legal pages** | Static MDX per locale; legal review before launch. |
 | **Images/media** | `public/` or remote CDN; lazy loading and format strategy in implementation spec. |
 
@@ -69,6 +70,8 @@ The PDF dossier may describe a different historical execution path (e.g. visual 
 5. **Formularios:** sin runtime Node en IONOS para este sitio; el formulario de valoracion POSTea a destino externo configurado con `PUBLIC_FORM_POST_URL` (ver `.env.example`). Un cambio futuro de plan o de proveedor podria replantear endpoints propios; no es el supuesto actual.
 
 Actualizar `SITE_URL` en `.env` al dominio definitivo antes del go-live (canonical, sitemap y OG). El `robots.txt` se **genera en build** desde `src/pages/robots.txt.ts` (linea `Sitemap` y `Disallow` de reservas alineados con `SITE_URL` y `src/i18n/route-registry.ts`).
+
+Los datos visibles de la clinica se configuran con variables publicas en `.env`: `PUBLIC_CLINIC_ADDRESS`, `PUBLIC_CLINIC_PHONE`, `PUBLIC_CLINIC_EMAIL`, `PUBLIC_CLINIC_INSTAGRAM` y `PUBLIC_GOOGLE_MAPS_URL`. `PUBLIC_CLINIC_PHONE` es el formato humano para UI/tel links; `PUBLIC_WHATSAPP_E164` se reserva para enlaces `wa.me` sin simbolos.
 
 ## Variables legales opcionales (`PUBLIC_LEGAL_*`)
 

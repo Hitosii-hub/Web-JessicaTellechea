@@ -1,0 +1,163 @@
+---
+import type { Locale } from '../../i18n/config';
+import type { CapilarPageContent } from '../../i18n/capilar-page';
+import { href } from '../../i18n/route-registry';
+import Heading from '../ui/Heading.astro';
+
+interface Props {
+	lang: Locale;
+	content: CapilarPageContent;
+}
+
+const { lang, content } = Astro.props;
+---
+
+<article class="capilar-page">
+	<section class="capilar-hero">
+		<div class="capilar-hero__media" aria-hidden="true">
+			<img
+				class="capilar-hero__image"
+				src={content.hero.imageSrc}
+				alt={content.hero.imageAlt}
+				width={1280}
+				height={960}
+				loading="eager"
+				decoding="async"
+				fetchpriority="high"
+			/>
+			<div class="capilar-hero__overlay"></div>
+		</div>
+		<div class="capilar-hero__inner">
+			<p class="capilar-eyebrow">{content.hero.eyebrow}</p>
+			<h1 class="capilar-hero__title">{content.hero.h1}</h1>
+			<p class="capilar-hero__lead">{content.hero.lead}</p>
+			<a class="capilar-hero__primary" href={href(lang, 'contact')}>{content.hero.primaryCta}</a>
+		</div>
+	</section>
+
+	<section class="capilar-section capilar-section--identification">
+		<div class="capilar-container capilar-identification">
+			<div class="capilar-identification__rule" aria-hidden="true"></div>
+			<blockquote class="capilar-identification__quote">{content.identification.quote}</blockquote>
+			<p class="capilar-identification__author">{content.identification.author}</p>
+		</div>
+	</section>
+
+	<section class="capilar-section capilar-section--diagnosis">
+		<div class="capilar-texture" aria-hidden="true"></div>
+		<div class="capilar-container capilar-diagnosis">
+			<div class="capilar-diagnosis__copy">
+				<p class="capilar-eyebrow">{content.diagnosis.eyebrow}</p>
+				<Heading level={2} serif class="capilar-section__title capilar-section__title--left">
+					{content.diagnosis.title}
+				</Heading>
+				{content.diagnosis.body.map((paragraph) => <p class="capilar-diagnosis__body">{paragraph}</p>)}
+			</div>
+			<figure class="capilar-diagnosis__visual">
+				<img
+					src={content.diagnosis.imageSrc}
+					alt={content.diagnosis.imageAlt}
+					width={720}
+					height={960}
+					loading="lazy"
+					decoding="async"
+				/>
+			</figure>
+		</div>
+	</section>
+
+	<section class="capilar-section capilar-section--benefits">
+		<div class="capilar-container">
+			<ol class="capilar-benefits">
+				{
+					content.benefits.map((benefit, index) => (
+						<li class="capilar-benefits__item">
+							<span class="capilar-benefits__index">{String(index + 1).padStart(2, '0')}</span>
+							<h3 class="capilar-benefits__title">{benefit.title}</h3>
+							<p class="capilar-benefits__body">{benefit.body}</p>
+						</li>
+					))
+				}
+			</ol>
+		</div>
+	</section>
+
+	<section class="capilar-section capilar-section--treatments">
+		<div class="capilar-container capilar-treatments">
+			<div class="capilar-treatments__head">
+				<Heading level={2} serif class="capilar-section__title capilar-section__title--left">
+					{content.treatments.title}
+				</Heading>
+			</div>
+			<div class="capilar-treatments__list">
+				{
+					content.treatments.items.map((item) => (
+						<article class="capilar-treatment">
+							<div class="capilar-treatment__heading">
+								<h3 class="capilar-treatment__title">{item.title}</h3>
+								<i class="ph-thin ph-arrow-right capilar-treatment__icon" aria-hidden="true"></i>
+							</div>
+							<p class="capilar-treatment__body">{item.body}</p>
+						</article>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="capilar-section capilar-section--process">
+		<div class="capilar-container">
+			<Heading level={2} serif class="capilar-section__title">{content.process.title}</Heading>
+			<ol class="capilar-process">
+				{
+					content.process.steps.map((step, index) => (
+						<li class="capilar-process__step">
+							<span class="capilar-process__ghost">{index + 1}</span>
+							<h3 class="capilar-process__title">{step.title}</h3>
+							<p class="capilar-process__body">{step.body}</p>
+						</li>
+					))
+				}
+			</ol>
+		</div>
+	</section>
+
+	<section class="capilar-section capilar-section--authority">
+		<div class="capilar-container capilar-authority">
+			<figure class="capilar-authority__visual">
+				<img
+					src={content.authority.imageSrc}
+					alt={content.authority.imageAlt}
+					width={720}
+					height={960}
+					loading="lazy"
+					decoding="async"
+				/>
+			</figure>
+			<div class="capilar-authority__copy">
+				<Heading level={2} serif class="capilar-authority__title">{content.authority.title}</Heading>
+				<ul class="capilar-authority__list">
+					{
+						content.authority.items.map((item) => (
+							<li class="capilar-authority__item">
+								<i class:list={['ph-thin', item.icon, 'capilar-authority__icon']} aria-hidden="true"></i>
+								<div>
+									<h3 class="capilar-authority__item-title">{item.title}</h3>
+									<p class="capilar-authority__body">{item.body}</p>
+								</div>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<section class="capilar-section capilar-section--final-cta">
+		<div class="capilar-container capilar-final">
+			<Heading level={2} serif class="capilar-final__title">{content.finalCta.h2}</Heading>
+			<p class="capilar-final__body">{content.finalCta.body}</p>
+			<a class="capilar-final__button" href={href(lang, 'booking')}>{content.finalCta.primary}</a>
+		</div>
+	</section>
+</article>

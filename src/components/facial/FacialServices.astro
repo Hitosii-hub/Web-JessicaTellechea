@@ -6,26 +6,37 @@ interface ServiceGroup {
   services: string[];
 }
 
-interface Props {
-  title: string;
-  groups: ServiceGroup[];
+interface ServiceImage {
+  src: string;
+  alt: string;
 }
 
-const { title, groups } = Astro.props;
+interface Props {
+  groups: ServiceGroup[];
+  images: ServiceImage[];
+}
+
+const { groups, images } = Astro.props;
 ---
 
 <section class="facial-section facial-section--services">
   <div class="facial-container">
-    <Heading level={2} serif class="facial-section__title">{title}</Heading>
     <div class="facial-services">
       {
         groups.map((group) => (
-          <details class="facial-services__group">
-            <summary class="facial-services__subtitle">{group.subtitle}</summary>
+          <div class="facial-services__group">
+            <Heading level={3} serif class="facial-services__subtitle">{group.subtitle}</Heading>
             <ul class="facial-services__list">
               {group.services.map((service) => <li>{service}</li>)}
             </ul>
-          </details>
+          </div>
+        ))
+      }
+    </div>
+    <div class="facial-services__gallery">
+      {
+        images.map((image) => (
+          <img class="facial-services__image" src={image.src} alt={image.alt} width={720} height={720} loading="lazy" decoding="async" />
         ))
       }
     </div>

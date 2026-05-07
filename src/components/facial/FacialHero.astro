@@ -4,18 +4,26 @@ import { href } from '../../i18n/route-registry';
 
 interface Props {
   lang: Locale;
+  eyebrow: string;
   h1: string;
   subtitle: string;
   lead: string;
   primaryCta: string;
   secondaryCta: string;
+  imageSrc: string;
+  imageAlt: string;
 }
 
-const { lang, h1, subtitle, lead, primaryCta, secondaryCta } = Astro.props;
+const { lang, eyebrow, h1, subtitle, lead, primaryCta, secondaryCta, imageSrc, imageAlt } = Astro.props;
 ---
 
 <section class="facial-hero">
+  <div class="facial-hero__media" aria-hidden="true">
+    <img class="facial-hero__image" src={imageSrc} alt={imageAlt} width={1280} height={960} loading="eager" decoding="async" fetchpriority="high" />
+    <div class="facial-hero__overlay"></div>
+  </div>
   <div class="facial-hero__inner">
+    <p class="facial-eyebrow">{eyebrow}</p>
     <h1 class="facial-hero__title">{h1}</h1>
     <p class="facial-hero__subtitle">{subtitle}</p>
     <p class="facial-hero__lead">{lead}</p>

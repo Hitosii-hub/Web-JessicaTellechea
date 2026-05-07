@@ -21,26 +21,31 @@ const { lang, content } = Astro.props;
 <div class="facial-page">
   <FacialHero
     lang={lang}
+    eyebrow={content.hero.eyebrow}
     h1={content.hero.h1}
     subtitle={content.hero.subtitle}
     lead={content.hero.lead}
     primaryCta={content.hero.primaryCta}
     secondaryCta={content.hero.secondaryCta}
+    imageSrc={content.hero.imageSrc}
+    imageAlt={content.hero.imageAlt}
   />
   <FacialInsight title={content.insight.title} body={content.insight.body} />
-  <FacialMedicalApproach title={content.medicalApproach.title} body={content.medicalApproach.body} />
+  <FacialMedicalApproach
+    eyebrow={content.medicalApproach.eyebrow}
+    title={content.medicalApproach.title}
+    body={content.medicalApproach.body}
+    imageSrc={content.medicalApproach.imageSrc}
+    imageAlt={content.medicalApproach.imageAlt}
+  />
   <FacialBenefits title={content.benefits.title} items={content.benefits.items} />
-  <FacialServices title={content.services.title} groups={content.services.groups} />
-  <FacialProcess title={content.process.title} steps={content.process.steps} />
-  <FacialTrust title={content.trust.title} points={content.trust.points} />
+  <FacialServices groups={content.services.groups} images={content.services.images} />
+  <FacialProcess eyebrow={content.process.eyebrow} steps={content.process.steps} />
+  <FacialTrust points={content.trust.points} />
   <section class="facial-section facial-section--final-cta">
     <div class="facial-container">
-      <FinalCta
-        lang={lang}
-        h2={content.finalCta.h2}
-        body={content.finalCta.body}
-        cta={content.finalCta.primary}
-      />
+      <FinalCta lang={lang} h2={content.finalCta.h2} cta={content.finalCta.primary} />
+      <p class="facial-final-note">{content.finalCta.note}</p>
     </div>
   </section>
 </div>

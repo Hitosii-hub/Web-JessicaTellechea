@@ -1,29 +1,241 @@
 import type { Locale } from './config';
 
-export const contactPageMeta: Record<
-	Locale,
-	{ title: string; heading: string; intro: string }
-> = {
+interface ContactPageContent {
+	seo: {
+		title: string;
+		description: string;
+	};
+	hero: {
+		eyebrow: string;
+		h1: string;
+		lead: string;
+		imageSrc: string;
+		imageAlt: string;
+	};
+	form: {
+		name: string;
+		namePlaceholder: string;
+		phone: string;
+		phonePlaceholder: string;
+		email: string;
+		emailPlaceholder: string;
+		message: string;
+		messagePlaceholder: string;
+		privacyNote: string;
+		submit: string;
+	};
+	contactDetails: {
+		h2: string;
+		addressLabel: string;
+		addressFallback: string;
+		phoneLabel: string;
+		phoneFallback: string;
+		emailLabel: string;
+		emailFallback: string;
+		mapLabel: string;
+		mapText: string;
+	};
+	trust: {
+		quote: string;
+		author: string;
+	};
+}
+
+export const contactPageContent: Record<Locale, ContactPageContent> = {
 	es: {
-		title: 'WebAJ - Solicitar valoracion',
-		heading: 'Solicitar valoracion',
-		intro:
-			'Cuéntanos tu caso de forma breve. Respondemos en horario comercial según capacidad del equipo (MVP).',
+		seo: {
+			title: 'AJ Clínica - Solicita tu valoración',
+			description:
+				'Comienza tu camino hacia una belleza natural y equilibrada. En AJ Clínica, cada consulta es el primer paso de un diseño artístico personalizado.',
+		},
+		hero: {
+			eyebrow: 'Atención Personalizada',
+			h1: 'Solicita tu valoración.',
+			lead:
+				'Comienza tu camino hacia una belleza natural y equilibrada. En AJ Clínica, cada consulta es el primer paso de un diseño artístico personalizado.',
+			imageSrc: '/images/home/clinic-primary.webp',
+			imageAlt: 'Interior sereno de AJ Clínica',
+		},
+		form: {
+			name: 'Nombre',
+			namePlaceholder: 'Tu nombre completo',
+			phone: 'Teléfono',
+			phonePlaceholder: '+34 000 000 000',
+			email: 'Email',
+			emailPlaceholder: 'ejemplo@correo.com',
+			message: 'Mensaje',
+			messagePlaceholder: 'Cuéntanos brevemente sobre tu interés...',
+			privacyNote:
+				'Toda la información proporcionada es estrictamente confidencial y se procesa bajo los más altos estándares de privacidad médica.',
+			submit: 'Enviar Solicitud',
+		},
+		contactDetails: {
+			h2: 'Detalles de Contacto',
+			addressLabel: 'Dirección',
+			addressFallback: 'Paseo de Gracia, 12\n08007 Barcelona, España',
+			phoneLabel: 'Teléfono',
+			phoneFallback: '+34 932 456 789',
+			emailLabel: 'Email',
+			emailFallback: 'info@ajclinica.com',
+			mapLabel: 'Barcelona, Centro',
+			mapText: 'Barcelona, Centro',
+		},
+		trust: {
+			quote: '"La medicina estética no debe gritar, sino susurrar la mejor versión de uno mismo."',
+			author: 'Dr. Alejandro Jiménez',
+		},
 	},
 	en: {
-		title: 'WebAJ - Request an assessment',
-		heading: 'Request an assessment',
-		intro: 'Tell us briefly what you need. We reply during business hours (MVP).',
+		seo: {
+			title: 'AJ Clínica - Request your assessment',
+			description:
+				'Begin your path toward natural, balanced beauty. At AJ Clínica, each consultation is the first step in a personalised artistic design.',
+		},
+		hero: {
+			eyebrow: 'Personalised Attention',
+			h1: 'Request your assessment.',
+			lead:
+				'Begin your path toward natural, balanced beauty. At AJ Clínica, each consultation is the first step in a personalised artistic design.',
+			imageSrc: '/images/home/clinic-primary.webp',
+			imageAlt: 'Calm interior of AJ Clínica',
+		},
+		form: {
+			name: 'Name',
+			namePlaceholder: 'Your full name',
+			phone: 'Phone',
+			phonePlaceholder: '+34 000 000 000',
+			email: 'Email',
+			emailPlaceholder: 'example@email.com',
+			message: 'Message',
+			messagePlaceholder: 'Briefly tell us what you are interested in...',
+			privacyNote:
+				'All information provided is strictly confidential and processed under the highest standards of medical privacy.',
+			submit: 'Send Request',
+		},
+		contactDetails: {
+			h2: 'Contact Details',
+			addressLabel: 'Address',
+			addressFallback: 'Paseo de Gracia, 12\n08007 Barcelona, Spain',
+			phoneLabel: 'Phone',
+			phoneFallback: '+34 932 456 789',
+			emailLabel: 'Email',
+			emailFallback: 'info@ajclinica.com',
+			mapLabel: 'Barcelona, Centre',
+			mapText: 'Barcelona, Centre',
+		},
+		trust: {
+			quote: '"Aesthetic medicine should not shout, but whisper the best version of oneself."',
+			author: 'Dr. Alejandro Jiménez',
+		},
 	},
 	ca: {
-		title: 'WebAJ - Sol·licitar valoracio',
-		heading: 'Sol·licitar valoracio',
-		intro: 'Expliqueu el cas amb brevetat. Respuesta en horari comercial (MVP).',
+		seo: {
+			title: 'AJ Clínica - Sol·licita la teva valoració',
+			description:
+				'Comença el teu camí cap a una bellesa natural i equilibrada. A AJ Clínica, cada consulta és el primer pas d’un disseny artístic personalitzat.',
+		},
+		hero: {
+			eyebrow: 'Atenció Personalitzada',
+			h1: 'Sol·licita la teva valoració.',
+			lead:
+				'Comença el teu camí cap a una bellesa natural i equilibrada. A AJ Clínica, cada consulta és el primer pas d’un disseny artístic personalitzat.',
+			imageSrc: '/images/home/clinic-primary.webp',
+			imageAlt: 'Interior serè d’AJ Clínica',
+		},
+		form: {
+			name: 'Nom',
+			namePlaceholder: 'El teu nom complet',
+			phone: 'Telèfon',
+			phonePlaceholder: '+34 000 000 000',
+			email: 'Email',
+			emailPlaceholder: 'exemple@correu.com',
+			message: 'Missatge',
+			messagePlaceholder: 'Explica’ns breument el teu interès...',
+			privacyNote:
+				'Tota la informació proporcionada és estrictament confidencial i es processa sota els estàndards més alts de privacitat mèdica.',
+			submit: 'Enviar Sol·licitud',
+		},
+		contactDetails: {
+			h2: 'Detalls de Contacte',
+			addressLabel: 'Adreça',
+			addressFallback: 'Paseo de Gracia, 12\n08007 Barcelona, Espanya',
+			phoneLabel: 'Telèfon',
+			phoneFallback: '+34 932 456 789',
+			emailLabel: 'Email',
+			emailFallback: 'info@ajclinica.com',
+			mapLabel: 'Barcelona, Centre',
+			mapText: 'Barcelona, Centre',
+		},
+		trust: {
+			quote: '"La medicina estètica no ha de cridar, sinó xiuxiuejar la millor versió d’un mateix."',
+			author: 'Dr. Alejandro Jiménez',
+		},
 	},
 	fr: {
-		title: 'WebAJ - Demander une evaluation',
-		heading: 'Demander une evaluation',
-		intro:
-			'Decrivez votre demande en quelques lignes. Reponse aux heures ouvrables (MVP).',
+		seo: {
+			title: 'AJ Clínica - Demandez votre évaluation',
+			description:
+				'Commencez votre chemin vers une beauté naturelle et équilibrée. Chez AJ Clínica, chaque consultation est le premier pas d’un design artistique personnalisé.',
+		},
+		hero: {
+			eyebrow: 'Attention Personnalisée',
+			h1: 'Demandez votre évaluation.',
+			lead:
+				'Commencez votre chemin vers une beauté naturelle et équilibrée. Chez AJ Clínica, chaque consultation est le premier pas d’un design artistique personnalisé.',
+			imageSrc: '/images/home/clinic-primary.webp',
+			imageAlt: 'Intérieur serein d’AJ Clínica',
+		},
+		form: {
+			name: 'Nom',
+			namePlaceholder: 'Votre nom complet',
+			phone: 'Téléphone',
+			phonePlaceholder: '+34 000 000 000',
+			email: 'Email',
+			emailPlaceholder: 'exemple@email.com',
+			message: 'Message',
+			messagePlaceholder: 'Parlez-nous brièvement de votre intérêt...',
+			privacyNote:
+				'Toutes les informations fournies sont strictement confidentielles et traitées selon les plus hauts standards de confidentialité médicale.',
+			submit: 'Envoyer la Demande',
+		},
+		contactDetails: {
+			h2: 'Coordonnées',
+			addressLabel: 'Adresse',
+			addressFallback: 'Paseo de Gracia, 12\n08007 Barcelone, Espagne',
+			phoneLabel: 'Téléphone',
+			phoneFallback: '+34 932 456 789',
+			emailLabel: 'Email',
+			emailFallback: 'info@ajclinica.com',
+			mapLabel: 'Barcelone, Centre',
+			mapText: 'Barcelone, Centre',
+		},
+		trust: {
+			quote:
+				'"La médecine esthétique ne doit pas crier, mais murmurer la meilleure version de soi-même."',
+			author: 'Dr. Alejandro Jiménez',
+		},
+	},
+};
+
+export const contactPageMeta: Record<Locale, { title: string; heading: string; intro: string }> = {
+	es: {
+		title: contactPageContent.es.seo.title,
+		heading: contactPageContent.es.hero.h1,
+		intro: contactPageContent.es.seo.description,
+	},
+	en: {
+		title: contactPageContent.en.seo.title,
+		heading: contactPageContent.en.hero.h1,
+		intro: contactPageContent.en.seo.description,
+	},
+	ca: {
+		title: contactPageContent.ca.seo.title,
+		heading: contactPageContent.ca.hero.h1,
+		intro: contactPageContent.ca.seo.description,
+	},
+	fr: {
+		title: contactPageContent.fr.seo.title,
+		heading: contactPageContent.fr.hero.h1,
+		intro: contactPageContent.fr.seo.description,
 	},
 };

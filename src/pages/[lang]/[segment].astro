@@ -2,11 +2,17 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { locales, type Locale } from '../../i18n/config';
 import { contactPageMeta } from '../../i18n/contact-page';
+import ContactPage from '../../components/contact/ContactPage.astro';
+import CapilarPillarPage from '../../components/capilar/CapilarPillarPage.astro';
+import CorporalPillarPage from '../../components/corporal/CorporalPillarPage.astro';
 import FacialPillarPage from '../../components/facial/FacialPillarPage.astro';
+import TrustPage from '../../components/trust/TrustPage.astro';
 import { pageStubsBySegment } from '../../i18n/page-stubs';
+import { capilarPageContent } from '../../i18n/capilar-page';
+import { corporalPageContent } from '../../i18n/corporal-page';
 import { facialPageContent } from '../../i18n/facial-page';
+import { trustPageContent } from '../../i18n/trust-page';
 import { iaKeyFromPath, type IaKey, segmentFor, stubRecordKeyFromIaKey } from '../../i18n/route-registry';
-import ValoracionForm from '../../components/ValoracionForm.astro';
 import BookingFlow from '../../features/booking-nubimed/BookingFlow';
 
 export function getStaticPaths() {
@@ -43,6 +49,9 @@ let heading: string;
 let lead: string;
 let bookingBlock = false;
 let facialContent = facialPageContent[lang];
+let capilarContent = capilarPageContent[lang];
+let corporalContent = corporalPageContent[lang];
+let trustContent = trustPageContent[lang];
 
 if (iaKey === 'contact') {
 	const meta = contactPageMeta[lang];
@@ -52,6 +61,24 @@ if (iaKey === 'contact') {
 } else if (iaKey === 'facial') {
 	const content = facialPageContent[lang];
 	facialContent = content;
+	title = content.seo.title;
+	heading = content.hero.h1;
+	lead = content.seo.description;
+} else if (iaKey === 'corporal') {
+	const content = corporalPageContent[lang];
+	corporalContent = content;
+	title = content.seo.title;
+	heading = content.hero.h1;
+	lead = content.seo.description;
+} else if (iaKey === 'capilar') {
+	const content = capilarPageContent[lang];
+	capilarContent = content;
+	title = content.seo.title;
+	heading = content.hero.h1;
+	lead = content.seo.description;
+} else if (iaKey === 'trust') {
+	const content = trustPageContent[lang];
+	trustContent = content;
 	title = content.seo.title;
 	heading = content.hero.h1;
 	lead = content.seo.description;
@@ -68,19 +95,18 @@ if (iaKey === 'contact') {
 }
 ---
 
-<BaseLayout lang={lang} title={title} description={lead}>
+<BaseLayout lang={lang} title={title} description={lead} shell={iaKey === 'contact' ? 'marketing' : 'default'}>
 	{
 		iaKey === 'contact' ? (
-			<>
-				<h1>{heading}</h1>
-				<p>{lead}</p>
-				<ValoracionForm lang={lang} />
-			</>
+			<ContactPage lang={lang} />
 		) : (
 			<>
 				{iaKey === 'facial' ? <FacialPillarPage lang={lang} content={facialContent} /> : null}
-				{iaKey !== 'facial' ? <h1 class:list={[bookingBlock && 'booking-page__title']}>{heading}</h1> : null}
-				{iaKey !== 'facial' && !bookingBlock ? <p>{lead}</p> : null}
+				{iaKey === 'corporal' ? <CorporalPillarPage lang={lang} content={corporalContent} /> : null}
+				{iaKey === 'capilar' ? <CapilarPillarPage lang={lang} content={capilarContent} /> : null}
+				{iaKey === 'trust' ? <TrustPage lang={lang} content={trustContent} /> : null}
+				{iaKey !== 'facial' && iaKey !== 'corporal' && iaKey !== 'capilar' && iaKey !== 'trust' ? <h1 class:list={[bookingBlock && 'booking-page__title']}>{heading}</h1> : null}
+				{iaKey !== 'facial' && iaKey !== 'corporal' && iaKey !== 'capilar' && iaKey !== 'trust' && !bookingBlock ? <p>{lead}</p> : null}
 				{bookingBlock ? (
 					<div class="booking-flow-root" data-booking-flow>
 						<BookingFlow

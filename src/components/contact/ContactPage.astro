@@ -1,0 +1,173 @@
+---
+import type { Locale } from '../../i18n/config';
+import { contactPageContent } from '../../i18n/contact-page';
+import Heading from '../ui/Heading.astro';
+
+interface Props {
+	lang: Locale;
+}
+
+const { lang } = Astro.props;
+const c = contactPageContent[lang];
+const action = import.meta.env.PUBLIC_FORM_POST_URL as string | undefined;
+const clinicAddress = import.meta.env.PUBLIC_CLINIC_ADDRESS?.trim() || c.contactDetails.addressFallback;
+const clinicPhone = import.meta.env.PUBLIC_CLINIC_PHONE?.trim() || c.contactDetails.phoneFallback;
+const clinicEmail = import.meta.env.PUBLIC_CLINIC_EMAIL?.trim() || c.contactDetails.emailFallback;
+const googleMapsUrl = import.meta.env.PUBLIC_GOOGLE_MAPS_URL?.trim();
+const addressLines = clinicAddress.split('\n');
+const subject = `[AJ Clinica] ${c.form.submit} ${lang}`;
+const phoneHref = `tel:${clinicPhone.replace(/[^\d+]/g, '')}`;
+const emailHref = `mailto:${clinicEmail}`;
+const mapHref =
+	googleMapsUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(clinicAddress)}`;
+---
+
+<article class="contact-page">
+	<section class="contact-hero">
+		<div class="contact-hero__copy">
+			<p class="contact-eyebrow">{c.hero.eyebrow}</p>
+			<Heading level={1} display serif class="contact-hero__title">{c.hero.h1}</Heading>
+			<p class="contact-hero__lead">{c.hero.lead}</p>
+		</div>
+		<figure class="contact-hero__visual">
+			<img
+				class="contact-hero__image"
+				src={c.hero.imageSrc}
+				alt={c.hero.imageAlt}
+				width={720}
+				height={960}
+				loading="eager"
+				decoding="async"
+				fetchpriority="high"
+			/>
+		</figure>
+	</section>
+
+	<section class="contact-main" aria-label={c.seo.title}>
+		<div class="contact-main__inner">
+			<div class="contact-form-card">
+				<form
+					class="contact-form"
+					method="post"
+					action={action ?? '#'}
+					enctype="application/x-www-form-urlencoded"
+				>
+					<input type="hidden" name="lang" value={lang} />
+					<input type="hidden" name="_subject" value={subject} />
+
+					<div class="contact-form__row">
+						<label class="contact-field">
+							<span class="contact-field__label">{c.form.name}</span>
+							<input
+								class="contact-field__control"
+								type="text"
+								name="name"
+								placeholder={c.form.namePlaceholder}
+								autocomplete="name"
+								required
+							/>
+						</label>
+						<label class="contact-field">
+							<span class="contact-field__label">{c.form.phone}</span>
+							<input
+								class="contact-field__control"
+								type="tel"
+								name="phone"
+								placeholder={c.form.phonePlaceholder}
+								autocomplete="tel"
+							/>
+						</label>
+					</div>
+
+					<label class="contact-field">
+						<span class="contact-field__label">{c.form.email}</span>
+						<input
+							class="contact-field__control"
+							type="email"
+							name="email"
+							placeholder={c.form.emailPlaceholder}
+							autocomplete="email"
+							required
+						/>
+					</label>
+
+					<label class="contact-field">
+						<span class="contact-field__label">{c.form.message}</span>
+						<textarea
+							class="contact-field__control contact-field__control--textarea"
+							name="message"
+							placeholder={c.form.messagePlaceholder}
+							rows="4"
+							required></textarea>
+					</label>
+
+					<div class="contact-form__footer">
+						<div class="contact-form__privacy">
+							<i class="ph-thin ph-shield-check contact-form__privacy-icon" aria-hidden="true"></i>
+							<p>{c.form.privacyNote}</p>
+						</div>
+						<button class="contact-form__submit" type="submit">{c.form.submit}</button>
+					</div>
+				</form>
+			</div>
+
+			<aside class="contact-details" aria-label={c.contactDetails.h2}>
+				<div class="contact-details__content">
+					<Heading level={2} serif class="contact-details__title">
+						{c.contactDetails.h2}
+					</Heading>
+					<div class="contact-details__list">
+						<div class="contact-detail">
+							<i class="ph-thin ph-map-pin contact-detail__icon" aria-hidden="true"></i>
+							<div>
+								<p class="contact-detail__label">{c.contactDetails.addressLabel}</p>
+								<p class="contact-detail__value">
+									{addressLines.map((line) => <span>{line}</span>)}
+								</p>
+							</div>
+						</div>
+						<div class="contact-detail">
+							<i class="ph-thin ph-phone contact-detail__icon" aria-hidden="true"></i>
+							<div>
+								<p class="contact-detail__label">{c.contactDetails.phoneLabel}</p>
+								<p class="contact-detail__value">
+									<a href={phoneHref}>{clinicPhone}</a>
+								</p>
+							</div>
+						</div>
+						<div class="contact-detail">
+							<i class="ph-thin ph-envelope-simple contact-detail__icon" aria-hidden="true"></i>
+							<div>
+								<p class="contact-detail__label">{c.contactDetails.emailLabel}</p>
+								<p class="contact-detail__value">
+									<a href={emailHref}>{clinicEmail}</a>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<a
+					class="contact-map"
+					href={mapHref}
+					target="_blank"
+					rel="noreferrer"
+					aria-label={c.contactDetails.mapLabel}
+				>
+					<span class="contact-map__veil" aria-hidden="true">
+						<i class="ph-thin ph-map-trifold contact-map__icon"></i>
+						<span class="contact-map__text">{c.contactDetails.mapText}</span>
+					</span>
+				</a>
+			</aside>
+		</div>
+	</section>
+
+	<section class="contact-trust" aria-label={c.trust.author}>
+		<div class="contact-trust__inner">
+			<div class="contact-trust__rule" aria-hidden="true"></div>
+			<blockquote class="contact-trust__quote">{c.trust.quote}</blockquote>
+			<p class="contact-trust__author">{c.trust.author}</p>
+		</div>
+	</section>
+</article>

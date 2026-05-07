@@ -1,0 +1,147 @@
+---
+import type { Locale } from '../../i18n/config';
+import { blogIndexContent } from '../../i18n/blog-page';
+import { href as routeHref } from '../../i18n/route-registry';
+
+interface Props {
+	lang: Locale;
+}
+
+const { lang } = Astro.props;
+const content = blogIndexContent[lang];
+
+function localBlogHref(value?: string): string {
+	if (!value) return routeHref(lang, 'blog');
+	if (value.startsWith('/blog/')) return `/${lang}${value}`;
+	return value;
+}
+---
+
+<article class="blog-index-page">
+	<section class="blog-hero">
+		<div class="blog-container blog-hero__inner">
+			<h1 class="blog-hero__title">{content.hero.h1}</h1>
+			<div class="blog-hero__rule" aria-hidden="true"></div>
+			<p class="blog-hero__lead">{content.hero.lead}</p>
+		</div>
+	</section>
+
+	<nav class="blog-categories" aria-label="Categorías del blog">
+		<div class="blog-categories__inner">
+			{
+				content.categories.map((category) => (
+					<a class:list={['blog-categories__link', category.active && 'blog-categories__link--active']} href="#">
+						{category.label}
+					</a>
+				))
+			}
+		</div>
+	</nav>
+
+	<section class="blog-featured">
+		<div class="blog-container blog-featured__grid">
+			<figure class="blog-featured__media">
+				<img
+					src={content.featured.imageSrc}
+					alt={content.featured.imageAlt}
+					width={1120}
+					height={630}
+					loading="eager"
+					decoding="async"
+				/>
+			</figure>
+			<div class="blog-featured__copy">
+				<p class="blog-eyebrow">{content.featured.eyebrow}</p>
+				<h2 class="blog-featured__title">{content.featured.title}</h2>
+				<p class="blog-featured__body">{content.featured.description}</p>
+				<a class="blog-arrow-link" href={localBlogHref(content.featured.href)}>
+					{content.featured.linkLabel}
+					<i class="ph-thin ph-arrow-right" aria-hidden="true"></i>
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="blog-articles">
+		<div class="blog-container blog-card-grid">
+			{
+				content.articles.map((article) => (
+					<article class="blog-card">
+						<figure class="blog-card__media">
+							<img src={article.imageSrc} alt={article.imageAlt} width={720} height={900} loading="lazy" decoding="async" />
+						</figure>
+						<p class="blog-card__category">{article.category}</p>
+						<h3 class="blog-card__title">{article.title}</h3>
+						<p class="blog-card__body">{article.description}</p>
+						<a class="blog-card__link" href={localBlogHref(article.href)}>{content.labels.readArticle}</a>
+					</article>
+				))
+			}
+		</div>
+	</section>
+
+	<section class="blog-authority">
+		<div class="blog-authority__monogram" aria-hidden="true">AJ</div>
+		<div class="blog-container blog-authority__inner">
+			<p class="blog-eyebrow blog-authority__eyebrow">{content.authority.eyebrow}</p>
+			<h2 class="blog-authority__title">{content.authority.title}</h2>
+			<div class="blog-authority__rule" aria-hidden="true"></div>
+			<blockquote class="blog-authority__quote">{content.authority.quote}</blockquote>
+			<div class="blog-authority__stats">
+				{
+					content.authority.stats.map((stat) => (
+						<div class="blog-authority__stat">
+							<span class="blog-authority__stat-value">{stat.value}</span>
+							<span class="blog-authority__stat-label">{stat.label}</span>
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="blog-more">
+		<div class="blog-container blog-more__grid">
+			{
+				content.moreArticles.map((article) => (
+					<article class="blog-horizontal-card">
+						<figure class="blog-horizontal-card__media">
+							{article.imageSrc ? (
+								<img src={article.imageSrc} alt={article.imageAlt} width={720} height={720} loading="lazy" decoding="async" />
+							) : (
+								<div class="blog-horizontal-card__placeholder" aria-hidden="true">
+									<i class="ph-thin ph-leaf"></i>
+								</div>
+							)}
+						</figure>
+						<div class="blog-horizontal-card__copy">
+							<p class="blog-card__category">{article.category}</p>
+							<h3 class="blog-card__title">{article.title}</h3>
+							<p class="blog-card__body">{article.description}</p>
+							<a class="blog-card__link" href={localBlogHref(article.href)}>{content.labels.readArticle}</a>
+						</div>
+					</article>
+				))
+			}
+		</div>
+	</section>
+
+	<section class="blog-newsletter">
+		<div class="blog-container blog-newsletter__inner">
+			<h2 class="blog-newsletter__title">{content.newsletter.title}</h2>
+			<p class="blog-newsletter__body">{content.newsletter.body}</p>
+			<form class="blog-newsletter__form" action="#" method="post">
+				<input type="email" name="email" placeholder={content.newsletter.placeholder} />
+				<button type="submit">{content.newsletter.button}</button>
+			</form>
+		</div>
+	</section>
+
+	<section class="blog-final">
+		<div class="blog-container blog-final__inner">
+			<p class="blog-eyebrow">{content.finalCta.eyebrow}</p>
+			<h2 class="blog-final__title">{content.finalCta.h2}</h2>
+			<a class="blog-final__button" href={routeHref(lang, 'contact')}>{content.finalCta.cta}</a>
+		</div>
+	</section>
+</article>

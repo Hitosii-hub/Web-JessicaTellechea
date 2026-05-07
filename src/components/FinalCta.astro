@@ -6,7 +6,7 @@ import Heading from './ui/Heading.astro';
 interface Props {
 	lang: Locale;
 	h2: string;
-	body: string;
+	body?: string;
 	cta: string;
 }
 
@@ -16,7 +16,7 @@ const { lang, h2, body, cta } = Astro.props;
 <section class="home-final-cta">
 	<div class="home-final-cta__inner">
 		<Heading level={2} serif class="home-final-cta__title">{h2}</Heading>
-		<p class="home-final-cta__body">{body}</p>
+		{body ? <p class="home-final-cta__body">{body}</p> : null}
 		<a class="home-final-cta__btn" href={href(lang, 'booking')}>{cta}</a>
 	</div>
 </section>

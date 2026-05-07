@@ -1,0 +1,121 @@
+---
+import type { Locale } from '../../i18n/config';
+import type { TrustPageContent } from '../../i18n/trust-page';
+import { href } from '../../i18n/route-registry';
+import Heading from '../ui/Heading.astro';
+
+interface Props {
+	lang: Locale;
+	content: TrustPageContent;
+}
+
+const { lang, content } = Astro.props;
+---
+
+<article class="trust-page">
+	<section class="trust-hero">
+		<div class="trust-hero__media" aria-hidden="true">
+			<img
+				class="trust-hero__image"
+				src={content.hero.imageSrc}
+				alt={content.hero.imageAlt}
+				width={1280}
+				height={960}
+				loading="eager"
+				decoding="async"
+				fetchpriority="high"
+			/>
+			<div class="trust-hero__overlay"></div>
+		</div>
+		<div class="trust-hero__inner">
+			<p class="trust-eyebrow">{content.hero.eyebrow}</p>
+			<h1 class="trust-hero__title">{content.hero.h1}</h1>
+			<p class="trust-hero__lead">{content.hero.lead}</p>
+		</div>
+	</section>
+
+	<section class="trust-section trust-section--meaning">
+		<div class="trust-container trust-meaning">
+			<div class="trust-meaning__rule" aria-hidden="true"></div>
+			<Heading level={2} serif class="trust-meaning__title">{content.meaning.title}</Heading>
+			<div class="trust-meaning__body">
+				{content.meaning.body.map((paragraph) => <p>{paragraph}</p>)}
+			</div>
+		</div>
+	</section>
+
+	<section class="trust-section trust-section--valuation">
+		<div class="trust-container">
+			<div class="trust-valuation__head">
+				<div class="trust-valuation__copy">
+					<Heading level={2} serif class="trust-section__title trust-section__title--left">
+						{content.valuation.title}
+					</Heading>
+					<p class="trust-valuation__body">{content.valuation.body}</p>
+				</div>
+				<p class="trust-valuation__eyebrow">{content.valuation.eyebrow}</p>
+			</div>
+			<ol class="trust-protocol">
+				{
+					content.valuation.steps.map((step, index) => (
+						<li class="trust-protocol__card">
+							<span class="trust-protocol__index">{String(index + 1).padStart(2, '0')}</span>
+							<h3 class="trust-protocol__title">{step.title}</h3>
+							<p class="trust-protocol__body">{step.body}</p>
+						</li>
+					))
+				}
+			</ol>
+		</div>
+	</section>
+
+	<section class="trust-section trust-section--consultation">
+		<div class="trust-container trust-consultation">
+			<div class="trust-consultation__visual-wrap">
+				<figure class="trust-consultation__visual">
+					<img
+						src={content.consultation.imageSrc}
+						alt={content.consultation.imageAlt}
+						width={720}
+						height={900}
+						loading="lazy"
+						decoding="async"
+					/>
+				</figure>
+				<div class="trust-consultation__badge" aria-hidden="true">
+					<i class="ph-thin ph-shield-check trust-consultation__badge-icon"></i>
+					<p>{content.consultation.badge}</p>
+				</div>
+			</div>
+			<div class="trust-consultation__copy">
+				<Heading level={2} serif class="trust-section__title trust-section__title--left">
+					{content.consultation.title}
+				</Heading>
+				<ul class="trust-pillars">
+					{
+						content.consultation.pillars.map((pillar) => (
+							<li class="trust-pillars__item">
+								<i class:list={['ph-thin', pillar.icon, 'trust-pillars__icon']} aria-hidden="true"></i>
+								<div>
+									<h3 class="trust-pillars__title">{pillar.title}</h3>
+									<p class="trust-pillars__body">{pillar.body}</p>
+								</div>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<section class="trust-section trust-section--final-cta">
+		<div class="trust-container trust-final">
+			<p class="trust-eyebrow trust-final__eyebrow">{content.finalCta.eyebrow}</p>
+			<Heading level={2} serif class="trust-final__title">{content.finalCta.h2}</Heading>
+			<div class="trust-final__actions">
+				<a class="trust-final__primary" href={href(lang, 'contact')}>{content.finalCta.primary}</a>
+				<a class="trust-final__secondary" href={href(lang, 'facial')}>{content.finalCta.secondary}</a>
+			</div>
+		</div>
+	</section>
+</article>

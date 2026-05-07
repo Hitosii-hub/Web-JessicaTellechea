@@ -1,21 +1,20 @@
 ---
-import Heading from '../ui/Heading.astro';
-
 interface Props {
-  title: string;
-  points: string[];
+  points: { title: string; body: string }[];
 }
 
-const { title, points } = Astro.props;
+const { points } = Astro.props;
 ---
 
 <section class="facial-section facial-section--trust">
   <div class="facial-container">
-    <Heading level={2} serif class="facial-section__title">{title}</Heading>
     <ul class="facial-points">
       {
         points.map((point) => (
-          <li class="facial-points__item">{point}</li>
+          <li class="facial-points__item">
+            <h3 class="facial-points__title">{point.title}</h3>
+            <p class="facial-points__body">{point.body}</p>
+          </li>
         ))
       }
     </ul>

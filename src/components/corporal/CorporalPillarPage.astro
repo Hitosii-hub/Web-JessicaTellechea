@@ -1,0 +1,198 @@
+---
+import type { Locale } from '../../i18n/config';
+import type { CorporalPageContent } from '../../i18n/corporal-page';
+import { href } from '../../i18n/route-registry';
+import Heading from '../ui/Heading.astro';
+
+interface Props {
+	lang: Locale;
+	content: CorporalPageContent;
+}
+
+const { lang, content } = Astro.props;
+const whatsapp = import.meta.env.PUBLIC_WHATSAPP_E164?.trim();
+const whatsappHref = whatsapp ? `https://wa.me/${whatsapp}` : href(lang, 'contact');
+---
+
+<article class="corporal-page">
+	<section class="corporal-hero">
+		<div class="corporal-hero__media" aria-hidden="true">
+			<img
+				class="corporal-hero__image"
+				src={content.hero.imageSrc}
+				alt={content.hero.imageAlt}
+				width={1280}
+				height={960}
+				loading="eager"
+				decoding="async"
+				fetchpriority="high"
+			/>
+			<div class="corporal-hero__overlay"></div>
+		</div>
+		<div class="corporal-hero__inner">
+			<p class="corporal-eyebrow corporal-hero__eyebrow">{content.hero.eyebrow}</p>
+			<h1 class="corporal-hero__title">{content.hero.h1}</h1>
+			<p class="corporal-hero__lead">{content.hero.lead}</p>
+			<a class="corporal-hero__button" href={href(lang, 'contact')}>{content.hero.primaryCta}</a>
+		</div>
+	</section>
+
+	<section class="corporal-section corporal-section--identification">
+		<div class="corporal-container corporal-identification">
+			<div class="corporal-identification__rule" aria-hidden="true"></div>
+			<Heading level={2} serif class="corporal-identification__title">{content.identification.title}</Heading>
+			<p class="corporal-identification__body">{content.identification.body}</p>
+		</div>
+	</section>
+
+	<section class="corporal-section corporal-section--evaluation">
+		<div class="corporal-container corporal-evaluation">
+			<div class="corporal-evaluation__copy">
+				<Heading level={2} serif class="corporal-section__title corporal-section__title--left">
+					{content.evaluation.title}
+				</Heading>
+				<p class="corporal-evaluation__body">{content.evaluation.body}</p>
+				<div class="corporal-evaluation__steps">
+					{
+						content.evaluation.steps.map((step) => (
+							<div class="corporal-evaluation__step">
+								<p class="corporal-evaluation__step-label">{step.label}</p>
+								<p class="corporal-evaluation__step-body">{step.body}</p>
+							</div>
+						))
+					}
+				</div>
+			</div>
+			<figure class="corporal-evaluation__visual">
+				<img
+					src={content.evaluation.imageSrc}
+					alt={content.evaluation.imageAlt}
+					width={720}
+					height={960}
+					loading="lazy"
+					decoding="async"
+				/>
+			</figure>
+		</div>
+	</section>
+
+	<section class="corporal-section corporal-section--benefits">
+		<div class="corporal-container">
+			<div class="corporal-benefits__head">
+				<div>
+					<p class="corporal-eyebrow">{content.benefits.eyebrow}</p>
+					<Heading level={2} serif class="corporal-section__title corporal-section__title--left">
+						{content.benefits.title}
+					</Heading>
+				</div>
+				<div class="corporal-benefits__line" aria-hidden="true"></div>
+			</div>
+			<ul class="corporal-benefits">
+				{
+					content.benefits.items.map((benefit) => (
+						<li class="corporal-benefits__item">
+							<i class:list={['ph-thin', benefit.icon, 'corporal-benefits__icon']} aria-hidden="true"></i>
+							<h3 class="corporal-benefits__title">{benefit.title}</h3>
+							<p class="corporal-benefits__body">{benefit.body}</p>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</section>
+
+	<section class="corporal-section corporal-section--treatments">
+		<div class="corporal-container">
+			<Heading level={2} serif class="corporal-section__title">{content.treatments.title}</Heading>
+			<div class="corporal-treatments">
+				{
+					content.treatments.items.map((item) => (
+						<article
+							class:list={[
+								'corporal-treatment',
+								item.variant === 'wide' && 'corporal-treatment--wide',
+								item.variant === 'dark' && 'corporal-treatment--dark',
+							]}
+						>
+							<div class="corporal-treatment__copy">
+								<div class="corporal-treatment__eyebrow-row">
+									<span class="corporal-treatment__dot"></span>
+									<p class="corporal-treatment__eyebrow">{item.eyebrow}</p>
+								</div>
+								<h3 class="corporal-treatment__title">{item.title}</h3>
+								{item.body ? <p class="corporal-treatment__body">{item.body}</p> : null}
+								{item.services ? (
+									<ul class="corporal-treatment__list">
+										{item.services.map((service) => <li>{service}</li>)}
+									</ul>
+								) : null}
+								{item.variant === 'dark' ? (
+									<a class="corporal-treatment__link" href={href(lang, 'contact')}>
+										DESCUBRIR TECNOLOGÍA
+										<i class="ph-thin ph-arrow-right" aria-hidden="true"></i>
+									</a>
+								) : null}
+							</div>
+							<img
+								class="corporal-treatment__image"
+								src={item.imageSrc}
+								alt={item.imageAlt}
+								width={720}
+								height={480}
+								loading="lazy"
+								decoding="async"
+							/>
+						</article>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="corporal-section corporal-section--process">
+		<div class="corporal-container">
+			<div class="corporal-process__head">
+				<p class="corporal-eyebrow">{content.process.eyebrow}</p>
+				<Heading level={2} serif class="corporal-section__title">{content.process.title}</Heading>
+			</div>
+			<ol class="corporal-process">
+				{
+					content.process.steps.map((step) => (
+						<li class="corporal-process__step">
+							<span class="corporal-process__marker">{step.marker}</span>
+							<h3 class="corporal-process__title">{step.title}</h3>
+							<p class="corporal-process__body">{step.body}</p>
+						</li>
+					))
+				}
+			</ol>
+		</div>
+	</section>
+
+	<section class="corporal-section corporal-section--differentiation">
+		<div class="corporal-container">
+			<ul class="corporal-differentiation">
+				{
+					content.differentiation.map((item) => (
+						<li class="corporal-differentiation__item">
+							<span class="corporal-differentiation__index">{item.index}</span>
+							<h3 class="corporal-differentiation__title">{item.title}</h3>
+							<p class="corporal-differentiation__body">{item.body}</p>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</section>
+
+	<section class="corporal-section corporal-section--final-cta">
+		<div class="corporal-container corporal-final">
+			<Heading level={2} serif class="corporal-final__title">{content.finalCta.h2}</Heading>
+			<p class="corporal-final__body">{content.finalCta.body}</p>
+			<div class="corporal-final__actions">
+				<a class="corporal-final__primary" href={href(lang, 'booking')}>{content.finalCta.primary}</a>
+				<a class="corporal-final__secondary" href={whatsappHref}>{content.finalCta.secondary}</a>
+			</div>
+		</div>
+	</section>
+</article>
