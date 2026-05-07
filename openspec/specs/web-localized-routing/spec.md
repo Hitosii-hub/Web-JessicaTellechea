@@ -91,6 +91,28 @@ The language switcher SHALL navigate to the **equivalent** page in the target lo
 
 After full implementation of this change, `npm run build` SHALL exit with code 0.
 
+### Requirement: Facial locale routing conformance
+
+La implementacion del pilar Facial MUST respetar la matriz de slugs vigente por locale (incluyendo `fr/visage`) sin introducir rutas alternativas fuera de especificacion.
+
+#### Scenario: Segmento localizado correcto
+
+- GIVEN el intent Facial en cada locale soportado
+- WHEN un usuario navega desde menu o switcher de idioma
+- THEN la URL resultante MUST coincidir con la matriz canonica de ruteo
+- AND no deben generarse segmentos mixtos de otro idioma
+
+### Requirement: SEO continuity for Facial localized pages
+
+La pagina Facial en cada locale SHALL mantener consistencia SEO de alternates/canonical segun politica existente, con `x-default` apuntando a la variante espanola.
+
+#### Scenario: Alternates y canonical en Facial
+
+- GIVEN la pagina Facial renderizada en un locale no espanol
+- WHEN se inspecciona el head
+- THEN SHOULD existir relacion de alternates con equivalentes localizados
+- AND el canonical MUST corresponder a la URL de ese locale
+
 ---
 
 ## Scenarios

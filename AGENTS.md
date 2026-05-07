@@ -6,6 +6,7 @@ Instructions for **coding agents and implementers**. Human overview and doc inde
 
 - **Artifact store:** **OpenSpec** — specs and change deltas live under `openspec/` (see `openspec/config.yaml`). If Gentle AI install or TUI asks for persistence mode, choose **OpenSpec**, not Engram, for this repo.
 - Phase skills (`sdd-explore`, `sdd-propose`, …) read/write those paths per OpenSpec convention.
+- If any slash command or orchestrator context says `artifact store mode: engram`, override and run with `openspec` for this repository.
 
 ## Role
 

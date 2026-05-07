@@ -1,5 +1,7 @@
 schema: spec-driven
 
+artifact_store: openspec
+
 context: |
   Tech stack: Astro 6, TypeScript, Node >=22.12; clinic site; docs/ + Astro src.
   SDD: OpenSpec under openspec/; see AGENTS.md.
@@ -38,6 +40,9 @@ testing:
       command: "-"
 
 rules:
+  persistence:
+    - Use OpenSpec filesystem artifacts under openspec/
+    - Do not use Engram as the source of truth for SDD artifacts in this repo
   proposal:
     - Include rollback plan for risky changes
   specs:
