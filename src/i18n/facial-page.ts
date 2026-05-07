@@ -57,6 +57,11 @@ interface FacialTrustPoint {
 	body: string;
 }
 
+interface FacialFaqItem {
+	question: string;
+	answer: string;
+}
+
 export interface FacialPageContent {
 	seo: FacialSeoContent;
 	hero: FacialHeroContent;
@@ -66,7 +71,8 @@ export interface FacialPageContent {
 	services: { groups: FacialServiceGroup[]; images: FacialServiceImage[] };
 	process: { eyebrow: string; steps: FacialProcessStep[] };
 	trust: { points: FacialTrustPoint[] };
-	finalCta: { h2: string; primary: string; note: string };
+	faq: { title: string; items: FacialFaqItem[] };
+	finalCta: { h2: string; primary: string; secondaryBooking: string; secondaryWhatsapp: string; note: string };
 }
 
 const spanishFacialPageContent: FacialPageContent = {
@@ -198,16 +204,159 @@ const spanishFacialPageContent: FacialPageContent = {
 			},
 		],
 	},
+	faq: {
+		title: 'Preguntas frecuentes',
+		items: [
+			{
+				question: 'Cuanto tarda en verse el resultado?',
+				answer: 'Depende del tratamiento, pero normalmente vemos mejoras progresivas desde las primeras semanas.',
+			},
+			{
+				question: 'Perdere mi expresion natural?',
+				answer: 'No. El plan se diseña para respetar la expresion y evitar resultados artificiales.',
+			},
+			{
+				question: 'Necesitare tiempo de recuperacion?',
+				answer: 'La mayoria de protocolos permiten retomar la actividad habitual rapidamente con pautas simples.',
+			},
+		],
+	},
 	finalCta: {
 		h2: 'Empieza con una valoración facial.',
-		primary: 'AGENDAR CITA EN BARCELONA',
+		primary: 'Solicitar valoracion',
+		secondaryBooking: 'Reservar cita',
+		secondaryWhatsapp: 'WhatsApp',
 		note: 'CONSULTA PERSONALIZADA EN CALLE ARAGÓ, 245',
+	},
+};
+
+const englishFacialPageContent: FacialPageContent = {
+	...spanishFacialPageContent,
+	seo: {
+		title: 'Facial aesthetic medicine in Barcelona | AJ Clinic',
+		description:
+			'Medical treatments focused on skin quality and facial harmony with natural, progressive outcomes.',
+	},
+	hero: {
+		...spanishFacialPageContent.hero,
+		h1: 'Facial aesthetic medicine.',
+		subtitle: 'Rejuvenate while staying yourself.',
+		lead:
+			'Medical treatments focused on skin quality and facial harmony with natural, progressive outcomes.',
+		primaryCta: 'Request facial assessment',
+		secondaryCta: 'See our medical criteria',
+	},
+	faq: {
+		title: 'Frequently asked questions',
+		items: [
+			{
+				question: 'How long until I notice results?',
+				answer: 'It depends on the protocol, but improvements usually appear progressively from the first weeks.',
+			},
+			{
+				question: 'Will I lose my natural expression?',
+				answer: 'No. The plan is designed to preserve expression and avoid artificial results.',
+			},
+			{
+				question: 'Will I need downtime?',
+				answer: 'Most protocols allow you to resume normal activity quickly with simple care instructions.',
+			},
+		],
+	},
+	finalCta: {
+		...spanishFacialPageContent.finalCta,
+		h2: 'Start with a facial assessment.',
+		primary: 'Request assessment',
+		secondaryBooking: 'Book appointment',
+		secondaryWhatsapp: 'WhatsApp',
+	},
+};
+
+const catalanFacialPageContent: FacialPageContent = {
+	...spanishFacialPageContent,
+	seo: {
+		title: 'Medicina estetica facial a Barcelona | AJ Clinica',
+		description:
+			'Tractaments medics orientats a millorar la qualitat de la pell i l harmonia facial de forma natural i progressiva.',
+	},
+	hero: {
+		...spanishFacialPageContent.hero,
+		h1: 'Medicina estetica facial.',
+		subtitle: 'Rejoveneix sense deixar de ser tu.',
+		lead:
+			'Tractaments medics orientats a millorar la qualitat de la pell i l harmonia facial de forma natural i progressiva.',
+		primaryCta: 'Sol licitar valoracio facial',
+		secondaryCta: 'Coneix el nostre criteri medic',
+	},
+	faq: {
+		title: 'Preguntes frequents',
+		items: [
+			{
+				question: 'Quant tarda a veure s el resultat?',
+				answer: 'Depen del tractament, pero normalment es veuen millores progressives des de les primeres setmanes.',
+			},
+			{
+				question: 'Perdre l expressio natural?',
+				answer: 'No. El pla es dissenya per respectar l expressio i evitar resultats artificials.',
+			},
+			{
+				question: 'Necessitare temps de recuperacio?',
+				answer: 'La majoria de protocols permeten reprendre l activitat habitual rapidament amb pautes simples.',
+			},
+		],
+	},
+	finalCta: {
+		...spanishFacialPageContent.finalCta,
+		primary: 'Sol licitar valoracio',
+		secondaryBooking: 'Reservar cita',
+	},
+};
+
+const frenchFacialPageContent: FacialPageContent = {
+	...spanishFacialPageContent,
+	seo: {
+		title: 'Medecine esthetique du visage a Barcelone | AJ Clinique',
+		description:
+			'Des traitements medicaux axes sur la qualite de peau et l harmonie du visage, avec des resultats naturels et progressifs.',
+	},
+	hero: {
+		...spanishFacialPageContent.hero,
+		h1: 'Medecine esthetique du visage.',
+		subtitle: 'Rajeunir sans cesser d etre vous.',
+		lead:
+			'Des traitements medicaux axes sur la qualite de peau et l harmonie du visage, avec des resultats naturels et progressifs.',
+		primaryCta: 'Demander une evaluation faciale',
+		secondaryCta: 'Voir notre critere medical',
+	},
+	faq: {
+		title: 'Questions frequentes',
+		items: [
+			{
+				question: 'Quand verrai je les resultats?',
+				answer: 'Selon le protocole, les ameliorations apparaissent en general progressivement des les premieres semaines.',
+			},
+			{
+				question: 'Vais je perdre mon expression naturelle?',
+				answer: 'Non. Le plan est concu pour conserver l expression et eviter des resultats artificiels.',
+			},
+			{
+				question: 'Y a t il un temps de recuperation?',
+				answer: 'La plupart des protocoles permettent de reprendre rapidement l activite habituelle avec des consignes simples.',
+			},
+		],
+	},
+	finalCta: {
+		...spanishFacialPageContent.finalCta,
+		h2: 'Commencez par une evaluation faciale.',
+		primary: 'Demander une evaluation',
+		secondaryBooking: 'Prendre rendez-vous',
+		secondaryWhatsapp: 'WhatsApp',
 	},
 };
 
 export const facialPageContent: Record<Locale, FacialPageContent> = {
 	es: spanishFacialPageContent,
-	en: spanishFacialPageContent,
-	ca: spanishFacialPageContent,
-	fr: spanishFacialPageContent,
+	en: englishFacialPageContent,
+	ca: catalanFacialPageContent,
+	fr: frenchFacialPageContent,
 };

@@ -8,15 +8,28 @@ interface Props {
 	h2: string;
 	body?: string;
 	cta: string;
+	primaryHref?: string;
+	secondaryActions?: { label: string; href: string }[];
 }
 
-const { lang, h2, body, cta } = Astro.props;
+const { lang, h2, body, cta, primaryHref, secondaryActions = [] } = Astro.props;
 ---
 
 <section class="home-final-cta">
 	<div class="home-final-cta__inner">
 		<Heading level={2} serif class="home-final-cta__title">{h2}</Heading>
 		{body ? <p class="home-final-cta__body">{body}</p> : null}
-		<a class="home-final-cta__btn" href={href(lang, 'booking')}>{cta}</a>
+		<a class="home-final-cta__btn" href={primaryHref ?? href(lang, 'booking')}>{cta}</a>
+		{
+			secondaryActions.length ? (
+				<div class="home-final-cta__secondary">
+					{secondaryActions.map((action) => (
+						<a class="home-final-cta__secondary-link" href={action.href}>
+							{action.label}
+						</a>
+					))}
+				</div>
+			) : null
+		}
 	</div>
 </section>

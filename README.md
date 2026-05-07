@@ -46,7 +46,7 @@ Implementation (Astro app, UI, content in repo) is **in scope** for the reposito
 
 - **Persistence:** SDD artifacts live under **`openspec/`** (changes, specs, `config.yaml`). Prefer **OpenSpec** over Engram when Gentle AI or other tools ask for artifact store mode.
 - **Registry:** `.atl/skill-registry.md` (for delegators injecting compact rules).
-- **Active change (example):** `openspec/changes/i18n-routing-and-shell/` — routing `/es|en|ca|fr/`, shell y homes stub multi-idioma (`proposal.md`, `design.md`, `specs/`, `tasks.md`).
+- **Active changes:** consulta `openspec/changes/` (excluyendo `archive/`) para el estado real de deltas en curso; no asumir un unico cambio activo fijo en este README.
 - **Spec (Nubimed reserva):** `openspec/specs/web-booking-nubimed-client/spec.md` — fuente de verdad. Cambio archivado: `openspec/changes/archive/2026-05-03-nubimed-booking-client-flow/`.
 
 ## Source material
