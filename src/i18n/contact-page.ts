@@ -77,12 +77,12 @@ export const contactPageContent: Record<Locale, ContactPageContent> = {
 			phoneFallback: '+34 932 456 789',
 			emailLabel: 'Email',
 			emailFallback: 'info@ajclinica.com',
-			mapLabel: 'Barcelona, Centro',
-			mapText: 'Barcelona, Centro',
+			mapLabel: 'Vendrell, Centro',
+			mapText: 'Vendrell, Centro',
 		},
 		trust: {
 			quote: '"La medicina estética no debe gritar, sino susurrar la mejor versión de uno mismo."',
-			author: 'Dr. Alejandro Jiménez',
+			author: 'Dra. Jessica Tellechea',
 		},
 	},
 	en: {
@@ -120,12 +120,12 @@ export const contactPageContent: Record<Locale, ContactPageContent> = {
 			phoneFallback: '+34 932 456 789',
 			emailLabel: 'Email',
 			emailFallback: 'info@ajclinica.com',
-			mapLabel: 'Barcelona, Centre',
-			mapText: 'Barcelona, Centre',
+			mapLabel: 'Vendrell, Centre',
+			mapText: 'Vendrell, Centre',
 		},
 		trust: {
 			quote: '"Aesthetic medicine should not shout, but whisper the best version of oneself."',
-			author: 'Dr. Alejandro Jiménez',
+			author: 'Dra. Jessica Tellechea',
 		},
 	},
 	ca: {
@@ -163,12 +163,12 @@ export const contactPageContent: Record<Locale, ContactPageContent> = {
 			phoneFallback: '+34 932 456 789',
 			emailLabel: 'Email',
 			emailFallback: 'info@ajclinica.com',
-			mapLabel: 'Barcelona, Centre',
-			mapText: 'Barcelona, Centre',
+			mapLabel: 'Vendrell, Centre',
+			mapText: 'Vendrell, Centre',
 		},
 		trust: {
 			quote: '"La medicina estètica no ha de cridar, sinó xiuxiuejar la millor versió d’un mateix."',
-			author: 'Dr. Alejandro Jiménez',
+			author: 'Dra. Jessica Tellechea',
 		},
 	},
 	fr: {
@@ -206,13 +206,13 @@ export const contactPageContent: Record<Locale, ContactPageContent> = {
 			phoneFallback: '+34 932 456 789',
 			emailLabel: 'Email',
 			emailFallback: 'info@ajclinica.com',
-			mapLabel: 'Barcelone, Centre',
-			mapText: 'Barcelone, Centre',
+			mapLabel: 'Vendrell, Centre',
+			mapText: 'Vendrell, Centre',
 		},
 		trust: {
 			quote:
 				'"La médecine esthétique ne doit pas crier, mais murmurer la meilleure version de soi-même."',
-			author: 'Dr. Alejandro Jiménez',
+			author: 'Dra. Jessica Tellechea',
 		},
 	},
 };

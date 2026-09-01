@@ -81,7 +81,7 @@
 	color: var(--color-text);
 }
 
-.capilar-hero__lead {
+.capilar-hero__subtitle {
 	max-width: 34rem;
 	margin: var(--space-lg) 0 0;
 	font-family: var(--font-sans-ui);
@@ -90,13 +90,30 @@
 	color: var(--color-muted);
 }
 
+.capilar-hero__text {
+	max-width: 34rem;
+	margin: var(--space-sm) 0 0;
+	font-family: var(--font-sans-ui);
+	font-size: clamp(1rem, 2vw, 1.08rem);
+	line-height: 1.7;
+	color: var(--color-muted);
+}
+
+.capilar-hero__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-md);
+	align-items: center;
+	margin-top: var(--space-xl);
+}
+
 .capilar-hero__primary,
+.capilar-hero__secondary,
 .capilar-final__button {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
 	min-height: 52px;
-	margin-top: var(--space-xl);
 	padding: 0.95rem 1.55rem;
 	border: 1px solid var(--color-text);
 	border-radius: var(--radius-editorial);
@@ -109,6 +126,13 @@
 	color: var(--color-on-accent);
 	background: var(--color-text);
 	box-shadow: 0 18px 42px rgb(47 46 43 / 12%);
+}
+
+.capilar-hero__secondary {
+	color: var(--color-text);
+	background: transparent;
+	border: 1px solid color-mix(in srgb, var(--color-text) 35%, transparent);
+	box-shadow: none;
 }
 
 .capilar-section--identification {
@@ -127,8 +151,8 @@
 	background: var(--color-champagne);
 }
 
-.capilar-identification__quote {
-	margin: 0;
+.capilar-identification__title {
+	margin: 0 0 var(--space-lg);
 	font-family: var(--font-serif-display);
 	font-size: clamp(1.8rem, 4vw, 2.5rem);
 	font-weight: 400;
@@ -136,18 +160,19 @@
 	color: var(--color-text);
 }
 
-.capilar-identification__author {
-	margin: var(--space-lg) 0 0;
+.capilar-identification__body {
+	max-width: 46rem;
+	margin: 0 auto var(--space-md);
 	font-family: var(--font-sans-ui);
-	font-size: 0.95rem;
-	font-style: italic;
-	color: color-mix(in srgb, var(--color-muted) 75%, transparent);
+	font-size: clamp(1rem, 2vw, 1.08rem);
+	line-height: 1.75;
+	color: var(--color-muted);
 }
 
 .capilar-section--diagnosis {
 	position: relative;
 	overflow: hidden;
-	background: color-mix(in srgb, var(--color-neutral) 78%, var(--color-bg));
+	background: color-mix(in srgb, var(--color-surface) 18%, var(--color-bg));
 }
 
 .capilar-texture {
@@ -202,7 +227,9 @@
 }
 
 .capilar-section--benefits {
-	background: color-mix(in srgb, var(--color-neutral) 78%, var(--color-bg));
+	background:color-mix(in srgb, var(--color-muted) 5%, var(--color-bg));
+	border-top: 1px solid color-mix(in srgb, var(--color-border) 55%, transparent);
+	border-bottom: 1px solid color-mix(in srgb, var(--color-border) 55%, transparent);
 }
 
 .capilar-benefits {
@@ -219,10 +246,9 @@
 	border-left: 1px solid color-mix(in srgb, var(--color-champagne) 45%, transparent);
 }
 
-.capilar-benefits__index {
+.capilar-benefits__icon {
 	display: block;
 	margin-bottom: var(--space-md);
-	font-family: var(--font-serif-display);
 	font-size: 2rem;
 	line-height: 1;
 	color: color-mix(in srgb, var(--color-champagne) 82%, var(--color-accent));
@@ -390,22 +416,11 @@
 	text-align: center;
 }
 
-.capilar-final {
-	max-width: 42rem;
-}
-
-.capilar-final__title {
-	font-size: clamp(2.4rem, 5vw, 3.5rem);
-	font-weight: 400;
-}
-
-.capilar-final__body {
-	margin: 0 auto;
-	max-width: 35rem;
-	font-family: var(--font-sans-ui);
-	font-size: 1.1rem;
-	line-height: 1.7;
-	color: var(--color-muted);
+.capilar-section--final-cta .home-final-cta {
+	min-height: auto;
+	padding: clamp(4rem, 8vw, 6rem) 0;
+	background: transparent;
+	border-top: 0;
 }
 
 @media (min-width: 900px) {

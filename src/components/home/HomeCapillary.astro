@@ -1,6 +1,6 @@
 ---
 import type { Locale } from '../../i18n/config';
-import { bookingUrlWithPreset } from '../../i18n/booking-links';
+import { resolveBookingCta } from '../../i18n/booking-links';
 import { homeContent } from '../../i18n/home-content';
 import Heading from '../ui/Heading.astro';
 
@@ -10,7 +10,7 @@ interface Props {
 
 const { lang } = Astro.props;
 const c = homeContent[lang].capillary;
-const bookingCapilar = bookingUrlWithPreset(lang, 'medicina-capilar');
+const bookingCta = resolveBookingCta(lang);
 ---
 
 <section class="home-capillary">
@@ -39,7 +39,12 @@ const bookingCapilar = bookingUrlWithPreset(lang, 'medicina-capilar');
 					))
 				}
 			</ul>
-			<a class="home-capillary__cta" href={bookingCapilar}>
+			<a
+				class="home-capillary__cta"
+				href={bookingCta.href}
+				target={bookingCta.external ? '_blank' : undefined}
+				rel={bookingCta.external ? 'noopener noreferrer' : undefined}
+			>
 				{c.cta}
 			</a>
 		</div>

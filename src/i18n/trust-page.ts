@@ -10,14 +10,17 @@ interface TrustSeoContent {
 interface TrustHeroContent {
 	eyebrow: string;
 	h1: string;
-	lead: string;
+	subtitle: string;
+	text: string;
+	cta: string;
 	imageSrc: string;
 	imageAlt: string;
 }
 
 interface TrustMeaningContent {
-	title: string;
-	body: string[];
+	eyebrow: string;
+	h2: string;
+	text: string[];
 }
 
 interface TrustProtocolStep {
@@ -26,9 +29,19 @@ interface TrustProtocolStep {
 }
 
 interface TrustConsultationPillar {
-	icon: string;
 	title: string;
 	body: string;
+}
+
+interface TrustPrincipleItem {
+	title: string;
+	body: string;
+}
+
+export interface TrustPrinciplesContent {
+	eyebrow: string;
+	h2: string;
+	items: TrustPrincipleItem[];
 }
 
 export interface TrustPageContent {
@@ -36,23 +49,24 @@ export interface TrustPageContent {
 	hero: TrustHeroContent;
 	meaning: TrustMeaningContent;
 	valuation: {
-		title: string;
-		body: string;
 		eyebrow: string;
+		h2: string;
+		intro: string;
 		steps: TrustProtocolStep[];
 	};
 	consultation: {
-		title: string;
-		imageSrc: string;
-		imageAlt: string;
-		badge: string;
-		pillars: TrustConsultationPillar[];
+		eyebrow: string;
+		h2: string;
+		intro: string;
+		items: TrustConsultationPillar[];
 	};
+	principles: TrustPrinciplesContent;
 	finalCta: {
 		eyebrow: string;
 		h2: string;
-		primary: string;
-		secondary: string;
+		text: string;
+		cta: string;
+		secondaryCta: string;
 	};
 }
 
@@ -63,83 +77,197 @@ const spanishTrustPageContent: TrustPageContent = {
 			'Entendemos la estética como una extensión de la salud. Cada intervención nace de un análisis riguroso y una visión artística equilibrada.',
 	},
 	hero: {
-		eyebrow: 'Excelencia Médica',
-		h1: 'Criterio médico para cuidar, preservar y mejorar.',
-		lead:
-			'Entendemos la estética como una extensión de la salud. Cada intervención nace de un análisis riguroso y una visión artística equilibrada.',
+		eyebrow: 'CRITERIO MÉDICO',
+		h1: 'Criterio médico para cuidar, preservar y mejorar',
+		subtitle:
+		  'Entendemos la medicina estética desde la valoración, la naturalidad y la evolución progresiva.',
+		text:
+		  'Cada tratamiento se define según la necesidad real del paciente, su anatomía, su ritmo y su objetivo.',
+		cta: 'Solicitar valoración',
 		imageSrc: '/images/home/clinic-primary.webp',
 		imageAlt:
 			'Vista interior de una clínica de medicina estética de lujo con acabados de microcemento, iluminación indirecta cálida y un ambiente sereno que invita a la calma y la confianza profesional.',
 	},
 	meaning: {
-		title: '"Qué significa tratar con criterio médico"',
-		body: [
-			'No se trata solo de aplicar una técnica, sino de saber cuándo no aplicarla. El criterio médico es el filtro invisible que separa la tendencia del bienestar a largo plazo.',
-			'En AJ Clínica, cada paciente es un caso clínico único que requiere una mirada integradora, honesta y fundamentada en la evidencia científica.',
+		eyebrow: 'FILOSOFÍA AJ',
+		h2: 'Qué significa tratar con criterio médico',
+		text: [
+		  'Tratar con criterio médico significa valorar antes de indicar, escuchar antes de proponer y entender que no todo tratamiento es necesario para todos los pacientes.',
+		  'En AJ, la medicina estética no parte de una tendencia, sino de una evaluación individual: anatomía, calidad de piel, expresión, antecedentes, expectativas y evolución esperada.',
+		  'El objetivo no es transformar un rostro o un cuerpo, sino acompañar una mejora natural, segura y coherente con cada persona.',
 		],
 	},
 	valuation: {
-		title: 'El camino hacia su mejor versión',
-		body:
-			'Nuestro protocolo de valoración está diseñado para garantizar resultados naturales y, sobre todo, seguros.',
-		eyebrow: 'PROTOCOLO AJ',
+		eyebrow: 'VALORACIÓN MÉDICA',
+		h2: 'Cómo se construye una valoración en AJ',
+		intro:
+		  'La valoración es el punto de partida de cualquier tratamiento. Nos permite entender qué necesita realmente cada paciente y definir un plan con sentido clínico y estético.',
 		steps: [
-			{
-				title: 'Escucha',
-				body: 'Dedicamos el tiempo necesario para comprender sus inquietudes y expectativas reales.',
-			},
-			{
-				title: 'Valoración',
-				body: 'Examen clínico detallado de la arquitectura facial, calidad de piel o salud capilar.',
-			},
-			{
-				title: 'Priorización',
-				body: 'Definimos qué intervenciones aportarán mayor impacto con la mínima invasión.',
-			},
-			{
-				title: 'Plan',
-				body: 'Hoja de ruta personalizada con tiempos, resultados esperados y cuidados post-tratamiento.',
-			},
+		  {
+			title: 'Escucha clínica',
+			body:
+			  'Conocemos el motivo de consulta, las expectativas, los antecedentes y aquello que preocupa al paciente.',
+		  },
+		  {
+			title: 'Análisis individual',
+			body:
+			  'Valoramos anatomía, calidad de piel, expresión, proporciones, hábitos y evolución para entender el caso en conjunto.',
+		  },
+		  {
+			title: 'Priorización',
+			body:
+			  'Definimos qué conviene tratar primero, qué puede esperar y qué no sería recomendable en ese momento.',
+		  },
+		  {
+			title: 'Plan progresivo',
+			body:
+			  'Proponemos una hoja de ruta adaptada, realista y orientada a resultados naturales, con seguimiento cuando el caso lo requiere.',
+		  },
 		],
 	},
 	consultation: {
-		title: 'Nuestros pilares de confianza',
-		imageSrc: '/images/home/clinic-secondary.webp',
-		imageAlt:
-			'Retrato en primer plano de un profesional médico transmitiendo serenidad y confianza, con un fondo de consultorio minimalista y luz suave lateral, enfatizando la cercanía y la honestidad profesional.',
-		badge: 'COMPROMISO DE HONESTIDAD MÉDICA',
-		pillars: [
+	    eyebrow: 'EN CONSULTA',
+    h2: 'Qué puede esperar el paciente',
+    intro:
+      'La consulta en AJ está pensada para ofrecer una experiencia clara, honesta y tranquila. El paciente debe comprender su caso antes de tomar cualquier decisión.',
+    items: [
+      {
+        title: 'Tiempo para valorar',
+        body:
+          'Dedicamos el tiempo necesario para entender el caso, resolver dudas y explicar las opciones disponibles.',
+      },
+      {
+        title: 'Información clara',
+        body:
+          'Explicamos qué puede aportar cada tratamiento, sus límites, sus cuidados y el tipo de evolución esperable.',
+      },
+      {
+        title: 'Indicación honesta',
+        body:
+          'Recomendamos solo aquello que consideramos adecuado para el paciente, evitando tratamientos innecesarios o poco coherentes.',
+      },
+      {
+        title: 'Acompañamiento',
+        body:
+          'Cuando el tratamiento lo requiere, realizamos seguimiento para valorar la evolución y ajustar el plan si es necesario.',
+      },
+    ],
+	},
+	principles: {
+		eyebrow: 'PILARES AJ',
+		h2: 'Naturalidad, seguridad y seguimiento',
+		items: [
 			{
-				icon: 'ph-clock',
-				title: 'Tiempo de Calidad',
+				title: 'Naturalidad',
 				body:
-					'No creemos en las consultas rápidas. Cada paciente recibe la dedicación necesaria para resolver dudas y sentirse en calma.',
+					'Buscamos resultados que respeten la identidad, la expresión y la armonía propia de cada paciente.',
 			},
 			{
-				icon: 'ph-eye',
-				title: 'Claridad Absoluta',
+				title: 'Seguridad médica',
 				body:
-					'Explicamos detalladamente cada tratamiento, sus beneficios y sus limitaciones. La información es el primer paso del cuidado.',
+					'Cada procedimiento debe indicarse con criterio, técnica adecuada y materiales autorizados para uso médico-estético.',
 			},
 			{
-				icon: 'ph-first-aid-kit',
-				title: 'Ética Profesional',
+				title: 'Evolución progresiva',
 				body:
-					'Solo recomendamos tratamientos que realmente benefician al paciente, priorizando siempre la salud frente a la comercialización.',
+					'Preferimos planes graduales, medibles y adaptados al ritmo de cada persona antes que cambios bruscos o innecesarios.',
 			},
 		],
 	},
 	finalCta: {
 		eyebrow: 'PRIMER PASO',
-		h2: 'Comience hoy su transformación con una valoración honesta.',
-		primary: 'Solicitar valoración',
-		secondary: 'Nuestros Tratamientos',
-	},
+		h2: 'Empieza con una valoración médica',
+		text:
+		  'El primer paso es entender tu caso, valorar tus necesidades reales y definir si existe un tratamiento adecuado para ti.',
+		cta: 'Solicitar valoración',
+		secondaryCta: 'Resolver dudas por WhatsApp',
+	  },
 };
 
 export const trustPageContent: Record<Locale, TrustPageContent> = {
 	es: spanishTrustPageContent,
-	en: spanishTrustPageContent,
-	ca: spanishTrustPageContent,
-	fr: spanishTrustPageContent,
+	en: {
+		...spanishTrustPageContent,
+		hero: {
+			...spanishTrustPageContent.hero,
+			eyebrow: 'MEDICAL EXCELLENCE',
+		},
+		principles: {
+			eyebrow: 'AJ PILLARS',
+			h2: 'Naturalness, safety and follow-up',
+			items: [
+				{
+					title: 'Naturalness',
+					body:
+						'We pursue outcomes that respect identity, expression and each patient\'s inherent harmony.',
+				},
+				{
+					title: 'Medical safety',
+					body:
+						'Every procedure should be indicated with sound judgment, appropriate technique and materials authorised for medical aesthetic use.',
+				},
+				{
+					title: 'Progressive evolution',
+					body:
+						'We favour gradual, measurable plans adapted to each person\'s pace over abrupt or unnecessary changes.',
+				},
+			],
+		},
+	},
+	ca: {
+		...spanishTrustPageContent,
+		hero: {
+			...spanishTrustPageContent.hero,
+			eyebrow: 'EXCELLENCIA MEDICA',
+		},
+		principles: {
+			eyebrow: 'PILARS AJ',
+			h2: 'Naturalitat, seguretat i seguiment',
+			items: [
+				{
+					title: 'Naturalitat',
+					body:
+						'Busquem resultats que respectin la identitat, l\'expressió i l\'harmonia pròpia de cada pacient.',
+				},
+				{
+					title: 'Seguretat mèdica',
+					body:
+						'Cada procediment s\'ha d\'indicar amb criteri, tècnica adequada i materials autoritzats per a ús mèdic-estètic.',
+				},
+				{
+					title: 'Evolució progressiva',
+					body:
+						'Preferim plans graduals, mesurables i adaptats al ritme de cada persona abans que canvis bruscos o innecessaris.',
+				},
+			],
+		},
+	},
+	fr: {
+		...spanishTrustPageContent,
+		hero: {
+			...spanishTrustPageContent.hero,
+			eyebrow: 'EXCELLENCE MEDICALE',
+		},
+		principles: {
+			eyebrow: 'PILIERS AJ',
+			h2: 'Naturalité, sécurité et suivi',
+			items: [
+				{
+					title: 'Naturalité',
+					body:
+						'Nous visons des résultats qui respectent l\'identité, l\'expression et l\'harmonie propre à chaque patient.',
+				},
+				{
+					title: 'Sécurité médicale',
+					body:
+						'Chaque acte doit être indiqué avec discernement, une technique adaptée et des matériaux autorisés pour un usage médico-esthétique.',
+				},
+				{
+					title: 'Évolution progressive',
+					body:
+						'Nous privilégions des parcours graduels, mesurés et adaptés au rythme de chacun plutôt que des changements brutaux ou inutiles.',
+				},
+			],
+		},
+	},
 };

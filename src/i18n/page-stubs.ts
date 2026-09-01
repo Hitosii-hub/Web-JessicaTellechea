@@ -156,24 +156,35 @@ export const pageStubsBySegment: Record<StubSegment, Record<Locale, PageStub>> =
 	'reservar-cita': {
 		es: {
 			title: 'WebAJ - Reservar cita',
-			heading: 'Reserva tu experiencia de cuidado experto',
+			heading: 'Reserva tu cita por WhatsApp',
 			lead:
-				'Selecciona especialidad, tratamiento, fecha y hora en un recorrido guiado y discreto.',
+				'Coordinamos tu valoración por WhatsApp: contanos qué necesitás y te confirmamos día y hora directamente con el equipo.',
 		},
 		en: {
 			title: 'WebAJ - Book appointment',
-			heading: 'Book your expert care experience',
-			lead: 'Choose specialty, treatment, date, and time in a guided, discreet flow.',
+			heading: 'Book your appointment via WhatsApp',
+			lead:
+				'We arrange your assessment on WhatsApp: tell us what you need and we confirm date and time directly with the team.',
 		},
 		ca: {
 			title: 'WebAJ - Reservar cita',
-			heading: 'Reserva la teva experiència de cura experta',
-			lead: 'Tria especialitat, tractament, data i hora en un recorregut guiat i discret.',
+			heading: 'Reserva la teva cita per WhatsApp',
+			lead:
+				'Coordinem la teva valoració per WhatsApp: explica què necessites i et confirmem dia i hora directament amb l\'equip.',
 		},
 		fr: {
 			title: 'WebAJ - Prendre rendez-vous',
-			heading: 'Réservez votre expérience de soin experte',
-			lead: 'Choisissez spécialité, traitement, date et heure dans un parcours guidé et discret.',
+			heading: 'Prenez rendez-vous par WhatsApp',
+			lead:
+				'Nous organisons votre bilan sur WhatsApp : dites-nous ce dont vous avez besoin et nous confirmons la date et l\'heure directement avec l\'équipe.',
 		},
 	},
+};
+
+/** Release-1 booking placeholder CTA labels (see `defer-booking-cta-to-whatsapp`). */
+export const bookingPlaceholderCta: Record<Locale, { whatsapp: string; contact: string }> = {
+	es: { whatsapp: 'Escribir por WhatsApp', contact: 'Ver otras vías de contacto' },
+	en: { whatsapp: 'Message us on WhatsApp', contact: 'See other ways to contact us' },
+	ca: { whatsapp: 'Escriu-nos per WhatsApp', contact: 'Veure altres vies de contacte' },
+	fr: { whatsapp: 'Nous écrire sur WhatsApp', contact: 'Voir d\'autres moyens de contact' },
 };

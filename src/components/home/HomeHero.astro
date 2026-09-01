@@ -1,5 +1,6 @@
 ---
 import type { Locale } from '../../i18n/config';
+import { resolveBookingCta } from '../../i18n/booking-links';
 import { homeContent } from '../../i18n/home-content';
 import { href } from '../../i18n/route-registry';
 import Heading from '../ui/Heading.astro';
@@ -11,6 +12,7 @@ interface Props {
 
 const { lang } = Astro.props;
 const c = homeContent[lang].hero;
+const bookingCta = resolveBookingCta(lang);
 ---
 
 <section class="home-hero">
@@ -23,7 +25,12 @@ const c = homeContent[lang].hero;
 			<p class="home-hero__subtitle">{c.subtitle}</p>
 			<p class="home-hero__supporting">{c.supporting}</p>
 			<div class="home-hero__actions">
-				<a class="home-hero__cta-primary" href={href(lang, 'booking')}>
+				<a
+					class="home-hero__cta-primary"
+					href={bookingCta.href}
+					target={bookingCta.external ? '_blank' : undefined}
+					rel={bookingCta.external ? 'noopener noreferrer' : undefined}
+				>
 					{c.ctaPrimary}
 				</a>
 				<a class="home-hero__cta-secondary" href={href(lang, 'trust')}>

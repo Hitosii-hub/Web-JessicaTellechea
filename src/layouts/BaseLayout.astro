@@ -8,6 +8,7 @@ import { languageModalCopy } from '../i18n/language-modal';
 import { legalFooterLabels, legalFooterPublicationNote } from '../i18n/legal-nav';
 import { localeEquivalentHref } from '../i18n/locale-hrefs';
 import { headerBookingCta } from '../i18n/nav';
+import { resolveBookingCta } from '../i18n/booking-links';
 import { href, iaKeyFromPath, isBookingPath, type IaKey } from '../i18n/route-registry';
 import '../styles/app.css';
 
@@ -70,7 +71,7 @@ const bookingRoute = isBookingPath(pathname);
 const robots = bookingRoute ? 'noindex,follow' : undefined;
 const ogDefault = ogImage ?? new URL('/og-placeholder.svg', siteRoot).href;
 
-const bookingHref = href(lang, 'booking');
+const bookingCta = resolveBookingCta(lang);
 const langPickerItems = locales.map((code) => ({
 	locale: code,
 	label: localeLabels[code],
@@ -102,8 +103,8 @@ const langPickerItems = locales.map((code) => ({
 			))}
 		<meta property="og:image" content={ogDefault} />
 		<meta name="twitter:card" content="summary_large_image" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
+		<link rel="icon" type="image/svg+xml" href="/logo-aj.svg?v=2" />
+		<link rel="shortcut icon" type="image/svg+xml" href="/logo-aj.svg?v=2" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<link rel="canonical" href={pageUrl(lang)} />
@@ -127,10 +128,15 @@ const langPickerItems = locales.map((code) => ({
 					/>
 				</a>
 				<div class="site-header__nav-slot">
-					<PrimaryNav lang={lang} currentIaKey={currentIaKey} bookingHref={bookingHref} />
+					<PrimaryNav lang={lang} currentIaKey={currentIaKey} bookingCta={bookingCta} />
 				</div>
 				<div class="site-header__actions">
-					<a class="site-header__booking site-header__booking--desktop" href={bookingHref}>
+					<a
+						class="site-header__booking site-header__booking--desktop"
+						href={bookingCta.href}
+						target={bookingCta.external ? '_blank' : undefined}
+						rel={bookingCta.external ? 'noopener noreferrer' : undefined}
+					>
 						{headerBookingCta[lang]}
 					</a>
 					<LanguagePicker

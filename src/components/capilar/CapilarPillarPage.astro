@@ -1,7 +1,9 @@
 ---
 import type { Locale } from '../../i18n/config';
 import type { CapilarPageContent } from '../../i18n/capilar-page';
+import { resolveBookingCta } from '../../i18n/booking-links';
 import { href } from '../../i18n/route-registry';
+import FinalCta from '../FinalCta.astro';
 import Heading from '../ui/Heading.astro';
 
 interface Props {
@@ -10,6 +12,7 @@ interface Props {
 }
 
 const { lang, content } = Astro.props;
+const bookingCta = resolveBookingCta(lang);
 ---
 
 <article class="capilar-page">
@@ -30,16 +33,29 @@ const { lang, content } = Astro.props;
 		<div class="capilar-hero__inner">
 			<p class="capilar-eyebrow">{content.hero.eyebrow}</p>
 			<h1 class="capilar-hero__title">{content.hero.h1}</h1>
-			<p class="capilar-hero__lead">{content.hero.lead}</p>
-			<a class="capilar-hero__primary" href={href(lang, 'contact')}>{content.hero.primaryCta}</a>
+			<p class="capilar-hero__subtitle">{content.hero.subtitle}</p>
+			<p class="capilar-hero__text">{content.hero.text}</p>
+			<div class="capilar-hero__actions">
+				<a
+					class="capilar-hero__primary"
+					href={bookingCta.href}
+					target={bookingCta.external ? '_blank' : undefined}
+					rel={bookingCta.external ? 'noopener noreferrer' : undefined}
+				>{content.hero.primaryCta}</a>
+				<a class="capilar-hero__secondary" href={href(lang, 'trust')}>{content.hero.secondaryCta}</a>
+			</div>
 		</div>
 	</section>
 
 	<section class="capilar-section capilar-section--identification">
 		<div class="capilar-container capilar-identification">
 			<div class="capilar-identification__rule" aria-hidden="true"></div>
-			<blockquote class="capilar-identification__quote">{content.identification.quote}</blockquote>
-			<p class="capilar-identification__author">{content.identification.author}</p>
+			<Heading level={2} serif class="capilar-identification__title">{content.identification.title}</Heading>
+			{
+				content.identification.body.map((paragraph) => (
+					<p class="capilar-identification__body">{paragraph}</p>
+				))
+			}
 		</div>
 	</section>
 
@@ -68,11 +84,14 @@ const { lang, content } = Astro.props;
 
 	<section class="capilar-section capilar-section--benefits">
 		<div class="capilar-container">
+			<Heading level={2} serif class="capilar-section__title">
+				{content.benefitsTitle}
+			</Heading>
 			<ol class="capilar-benefits">
 				{
-					content.benefits.map((benefit, index) => (
+					content.benefits.map((benefit) => (
 						<li class="capilar-benefits__item">
-							<span class="capilar-benefits__index">{String(index + 1).padStart(2, '0')}</span>
+							<i class:list={['ph-thin', benefit.icon, 'capilar-benefits__icon']} aria-hidden="true"></i>
 							<h3 class="capilar-benefits__title">{benefit.title}</h3>
 							<p class="capilar-benefits__body">{benefit.body}</p>
 						</li>
@@ -154,10 +173,15 @@ const { lang, content } = Astro.props;
 	</section>
 
 	<section class="capilar-section capilar-section--final-cta">
-		<div class="capilar-container capilar-final">
-			<Heading level={2} serif class="capilar-final__title">{content.finalCta.h2}</Heading>
-			<p class="capilar-final__body">{content.finalCta.body}</p>
-			<a class="capilar-final__button" href={href(lang, 'booking')}>{content.finalCta.primary}</a>
+		<div class="capilar-container">
+			<FinalCta
+				lang={lang}
+				h2={content.finalCta.h2}
+				body={content.finalCta.body}
+				cta={content.finalCta.primary}
+				primaryHref={bookingCta.href}
+				primaryExternal={bookingCta.external}
+			/>
 		</div>
 	</section>
 </article>

@@ -5,9 +5,10 @@ interface Props {
 	/** Marketing/editorial headings use Noto Serif (legal and system pages stay sans). */
 	serif?: boolean;
 	class?: string;
+	id?: string;
 }
 
-const { level = 2, display = false, serif = false, class: className } = Astro.props;
+const { level = 2, display = false, serif = false, class: className, id } = Astro.props;
 
 const tags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
 const Tag = tags[level - 1] ?? 'h2';
@@ -27,6 +28,6 @@ const bodyCls: Record<1 | 2 | 3 | 4 | 5 | 6, string> = {
 };
 ---
 
-<Tag class:list={[display ? displayCls : bodyCls[level], className]}>
+<Tag id={id} class:list={[display ? displayCls : bodyCls[level], className]}>
 	<slot />
 </Tag>

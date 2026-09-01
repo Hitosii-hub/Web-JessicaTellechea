@@ -10,6 +10,10 @@ interface Props {
 }
 
 const { lang, content } = Astro.props;
+const whatsapp = import.meta.env.PUBLIC_WHATSAPP_E164?.trim();
+const whatsappHref = whatsapp ? `https://wa.me/${whatsapp}` : href(lang, 'contact');
+
+const principleIcons = ['ph-leaf', 'ph-shield-check', 'ph-chart-line-up'] as const;
 ---
 
 <article class="trust-page">
@@ -30,16 +34,19 @@ const { lang, content } = Astro.props;
 		<div class="trust-hero__inner">
 			<p class="trust-eyebrow">{content.hero.eyebrow}</p>
 			<h1 class="trust-hero__title">{content.hero.h1}</h1>
-			<p class="trust-hero__lead">{content.hero.lead}</p>
+			<p class="trust-hero__subtitle">{content.hero.subtitle}</p>
+			<p class="trust-hero__text">{content.hero.text}</p>
+			<a class="trust-hero__cta" href={href(lang, 'contact')}>{content.hero.cta}</a>
 		</div>
 	</section>
 
 	<section class="trust-section trust-section--meaning">
 		<div class="trust-container trust-meaning">
 			<div class="trust-meaning__rule" aria-hidden="true"></div>
-			<Heading level={2} serif class="trust-meaning__title">{content.meaning.title}</Heading>
+			<p class="trust-eyebrow">{content.meaning.eyebrow}</p>
+			<Heading level={2} serif class="trust-meaning__title">{content.meaning.h2}</Heading>
 			<div class="trust-meaning__body">
-				{content.meaning.body.map((paragraph) => <p>{paragraph}</p>)}
+				{content.meaning.text.map((paragraph) => <p>{paragraph}</p>)}
 			</div>
 		</div>
 	</section>
@@ -49,9 +56,9 @@ const { lang, content } = Astro.props;
 			<div class="trust-valuation__head">
 				<div class="trust-valuation__copy">
 					<Heading level={2} serif class="trust-section__title trust-section__title--left">
-						{content.valuation.title}
+						{content.valuation.h2}
 					</Heading>
-					<p class="trust-valuation__body">{content.valuation.body}</p>
+					<p class="trust-valuation__body">{content.valuation.intro}</p>
 				</div>
 				<p class="trust-valuation__eyebrow">{content.valuation.eyebrow}</p>
 			</div>
@@ -71,31 +78,16 @@ const { lang, content } = Astro.props;
 
 	<section class="trust-section trust-section--consultation">
 		<div class="trust-container trust-consultation">
-			<div class="trust-consultation__visual-wrap">
-				<figure class="trust-consultation__visual">
-					<img
-						src={content.consultation.imageSrc}
-						alt={content.consultation.imageAlt}
-						width={720}
-						height={900}
-						loading="lazy"
-						decoding="async"
-					/>
-				</figure>
-				<div class="trust-consultation__badge" aria-hidden="true">
-					<i class="ph-thin ph-shield-check trust-consultation__badge-icon"></i>
-					<p>{content.consultation.badge}</p>
-				</div>
-			</div>
 			<div class="trust-consultation__copy">
+				<p class="trust-eyebrow">{content.consultation.eyebrow}</p>
 				<Heading level={2} serif class="trust-section__title trust-section__title--left">
-					{content.consultation.title}
+					{content.consultation.h2}
 				</Heading>
+				<p class="trust-valuation__body">{content.consultation.intro}</p>
 				<ul class="trust-pillars">
 					{
-						content.consultation.pillars.map((pillar) => (
+						content.consultation.items.map((pillar) => (
 							<li class="trust-pillars__item">
-								<i class:list={['ph-thin', pillar.icon, 'trust-pillars__icon']} aria-hidden="true"></i>
 								<div>
 									<h3 class="trust-pillars__title">{pillar.title}</h3>
 									<p class="trust-pillars__body">{pillar.body}</p>
@@ -108,13 +100,47 @@ const { lang, content } = Astro.props;
 		</div>
 	</section>
 
+	<section class="trust-section trust-section--principles" aria-labelledby="trust-principles-heading">
+		<div class="trust-container trust-principles">
+			<div class="trust-principles__intro">
+				<p class="trust-eyebrow trust-principles__eyebrow">{content.principles.eyebrow}</p>
+				<Heading level={2} serif id="trust-principles-heading" class="trust-principles__title">
+					{content.principles.h2}
+				</Heading>
+			</div>
+			<ol class="trust-principles__list">
+				{
+					content.principles.items.map((item, index) => (
+						<li class="trust-principles__item">
+							<span class="trust-principles__connector" aria-hidden="true" />
+							<div class="trust-principles__card">
+								<div class="trust-principles__icon-ring" aria-hidden="true">
+									<i
+										class:list={[
+											'ph-thin',
+											principleIcons[index] ?? 'ph-circle',
+											'trust-principles__icon',
+										]}
+									/>
+								</div>
+								<h3 class="trust-principles__item-title">{item.title}</h3>
+								<p class="trust-principles__item-body">{item.body}</p>
+							</div>
+						</li>
+					))
+				}
+			</ol>
+		</div>
+	</section>
+
 	<section class="trust-section trust-section--final-cta">
 		<div class="trust-container trust-final">
 			<p class="trust-eyebrow trust-final__eyebrow">{content.finalCta.eyebrow}</p>
 			<Heading level={2} serif class="trust-final__title">{content.finalCta.h2}</Heading>
+			<p class="trust-final__text">{content.finalCta.text}</p>
 			<div class="trust-final__actions">
-				<a class="trust-final__primary" href={href(lang, 'contact')}>{content.finalCta.primary}</a>
-				<a class="trust-final__secondary" href={href(lang, 'facial')}>{content.finalCta.secondary}</a>
+				<a class="trust-final__primary" href={href(lang, 'contact')}>{content.finalCta.cta}</a>
+				<a class="trust-final__secondary" href={whatsappHref}>{content.finalCta.secondaryCta}</a>
 			</div>
 		</div>
 	</section>

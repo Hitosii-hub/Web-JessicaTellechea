@@ -99,7 +99,25 @@
 	color: color-mix(in srgb, var(--color-on-accent) 90%, transparent);
 }
 
+.corporal-hero__text {
+	max-width: 35rem;
+	margin: var(--space-sm) 0 0;
+	font-family: var(--font-sans-ui);
+	font-size: clamp(1rem, 1.8vw, 1.08rem);
+	line-height: 1.7;
+	color: color-mix(in srgb, var(--color-on-accent) 84%, transparent);
+}
+
+.corporal-hero__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-md);
+	align-items: center;
+	margin-top: var(--space-xl);
+}
+
 .corporal-hero__button,
+.corporal-hero__secondary,
 .corporal-final__primary,
 .corporal-final__secondary {
 	display: inline-flex;
@@ -117,11 +135,16 @@
 }
 
 .corporal-hero__button {
-	margin-top: var(--space-xl);
-	color: var(--color-text);
-	background: var(--color-surface);
-	border: 1px solid var(--color-surface);
+	color: var(--color-on-accent);
+	background: var(--color-text);
+	border: 1px solid var(--color-text);
 	box-shadow: 0 18px 42px rgb(47 46 43 / 18%);
+}
+
+.corporal-hero__secondary {
+	color: var(--color-on-accent);
+	background: transparent;
+	border: 1px solid color-mix(in srgb, var(--color-on-accent) 65%, transparent);
 }
 
 .corporal-section--identification {

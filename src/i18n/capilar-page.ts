@@ -10,8 +10,10 @@ interface CapilarSeoContent {
 interface CapilarHeroContent {
 	eyebrow: string;
 	h1: string;
-	lead: string;
+	subtitle: string;
+	text: string;
 	primaryCta: string;
+	secondaryCta: string;
 	imageSrc: string;
 	imageAlt: string;
 }
@@ -25,6 +27,7 @@ interface CapilarTextBlock {
 }
 
 interface CapilarBenefit {
+	icon: string;
 	title: string;
 	body: string;
 }
@@ -48,8 +51,9 @@ interface CapilarAuthorityItem {
 export interface CapilarPageContent {
 	seo: CapilarSeoContent;
 	hero: CapilarHeroContent;
-	identification: { quote: string; author: string };
+	identification: { title: string; body: string[] };
 	diagnosis: CapilarTextBlock;
+	benefitsTitle: string;
 	benefits: CapilarBenefit[];
 	treatments: { title: string; items: CapilarTreatment[] };
 	process: { title: string; steps: CapilarProcessStep[] };
@@ -64,51 +68,60 @@ const spanishCapilarPageContent: CapilarPageContent = {
 			'Recuperar el control sobre tu cabello es el primer paso para reencontrarte con tu imagen más auténtica.',
 	},
 	hero: {
-		eyebrow: 'Medicina de Vanguardia',
-		h1: 'Tratamiento capilar médico.',
-		lead:
-			'Recuperar el control sobre tu cabello es el primer paso para reencontrarte con tu imagen más auténtica.',
+		eyebrow: 'Medicina capilar',
+		h1: 'Tratamiento capilar médico',
+		subtitle: 'Recuperar el control sobre tu cabello',
+		text: 'El tratamiento capilar comienza entendiendo la causa y definiendo un plan médico adaptado a cada caso.',
 		primaryCta: 'Solicitar diagnostico capilar',
+		secondaryCta: 'Conoce nuestro criterio médico',
 		imageSrc: '/images/home/treatment-capilar.webp',
 		imageAlt: 'Vista elegante de clínica capilar',
 	},
 	identification: {
-		quote:
-			'"El cabello forma parte de la identidad. Su cuidado no es solo estética, es una declaración de salud y equilibrio personal."',
-		author: '— AJ Clínica Estética',
+		title: 'El cabello forma parte de la identidad',
+		body: [
+			'Cada caso capilar tiene una causa, una evolución y unas necesidades propias.',
+			'Abordamos el tratamiento desde el diagnóstico, el seguimiento y un acompañamiento médico adaptado a cada persona.',
+		],
 	},
 	diagnosis: {
-		eyebrow: 'Personalización Absoluta',
-		title: 'Cada caso requiere diagnóstico y seguimiento.',
+		eyebrow: 'Diagnóstico capilar',
+		title: 'Cada caso requiere diagnóstico y seguimiento',
 		body: [
-			'En AJ Clínica, entendemos que la alopecia o el debilitamiento capilar no son procesos genéricos. Nuestro enfoque médico comienza con una tricoscopia digital avanzada para analizar el cuero cabelludo desde la raíz.',
-			'Analizamos factores hormonales, nutricionales y ambientales para diseñar un plan de tratamiento que evolucione contigo. El seguimiento médico constante garantiza que los resultados sean visibles, naturales y duraderos.',
+			'No todos los procesos capilares tienen el mismo origen ni evolucionan igual. Por eso, cada tratamiento comienza con una valoración clínica y un plan adaptado.',
+			'Acompañamos la evolución capilar desde el diagnóstico, el seguimiento y el criterio médico.',
 		],
 		imageSrc: '/images/home/capillary.webp',
 		imageAlt: 'Diagnóstico médico capilar detallado',
 	},
+	benefitsTitle: 'Qué buscamos mejorar',
 	benefits: [
 		{
-			title: 'Control Caída',
-			body: 'Frenamos la fase telógena de forma efectiva mediante protocolos médicos validados.',
+		  icon: 'ph-shield-check',
+		  title: 'Control de caída',
+		  body: 'Apoyo en el control de la caída del cabello desde un enfoque médico y progresivo.',
 		},
 		{
-			title: 'Densidad',
-			body: 'Incrementamos el diámetro del tallo piloso para una apariencia más voluminosa.',
+		  icon: 'ph-sparkle',
+		  title: 'Estimulación capilar',
+		  body: 'Estimulación del crecimiento capilar según las necesidades de cada caso.',
 		},
 		{
-			title: 'Bioestimulación',
-			body: 'Activamos los folículos en reposo potenciando la regeneración celular natural.',
+		  icon: 'ph-hair-dryer',
+		  title: 'Densidad y aspecto',
+		  body: 'Mejora de la densidad y del aspecto general del cabello.',
 		},
 		{
-			title: 'Salud Cuero',
-			body: 'Equilibramos el ecosistema capilar eliminando inflamación y micro-irritaciones.',
+		  icon: 'ph-leaf',
+		  title: 'Salud del cuero cabelludo',
+		  body: 'Fortalecimiento del cuero cabelludo y del folículo piloso.',
 		},
 		{
-			title: 'Confianza',
-			body: 'Resultados medibles que impactan directamente en tu bienestar psicológico.',
+		  icon: 'ph-clipboard-text',
+		  title: 'Seguimiento médico',
+		  body: 'Control de la evolución para ajustar el tratamiento cuando sea necesario.',
 		},
-	],
+	  ],
 	treatments: {
 		title: 'Nuestros protocolos clínicos.',
 		items: [
@@ -129,58 +142,436 @@ const spanishCapilarPageContent: CapilarPageContent = {
 		],
 	},
 	process: {
-		title: 'La Experiencia AJ',
+		title: 'El proceso capilar en AJ',
 		steps: [
 			{
-				title: 'Consulta Inicial',
-				body: 'Análisis exhaustivo de historial y expectativas con nuestro equipo médico.',
+				title: 'Diagnóstico capilar',
+				body: 'Valoramos el cuero cabelludo, el cabello y la historia clínica para entender el punto de partida.',
 			},
 			{
-				title: 'Diseño de Plan',
-				body: 'Creación de una ruta terapéutica personalizada basada en evidencias.',
+				title: 'Identificación de la causa',
+				body: 'Analizamos los factores que pueden influir en la caída o el debilitamiento capilar.',
 			},
 			{
-				title: 'Tratamiento',
-				body: 'Sesiones clínicas realizadas en un entorno de máxima relajación y asepsia.',
+				title: 'Plan de tratamiento',
+				body: 'Definimos una propuesta médica adaptada a cada caso, con objetivos realistas y progresivos.',
 			},
 			{
-				title: 'Seguimiento',
-				body: 'Revisiones periódicas para ajustar el protocolo y documentar la evolución.',
+				title: 'Seguimiento y control',
+				body: 'Acompañamos la evolución para ajustar el tratamiento según la respuesta de cada paciente.',
 			},
 		],
 	},
 	authority: {
-		title: 'Compromiso con la Excelencia',
+		title: 'Diagnóstico, evolución y seguimiento',
 		imageSrc: '/images/home/clinic-primary.webp',
 		imageAlt: 'Profesional médico en entorno clínico premium',
 		items: [
 			{
-				icon: 'ph-shield-check',
-				title: 'Rigurosidad Científica',
-				body: 'Solo empleamos fármacos y técnicas con respaldo de estudios clínicos internacionales.',
+				icon: 'ph-magnifying-glass',
+				title: 'VALORACIÓN CLÍNICA',
+				body: 'Cada tratamiento comienza con una valoración médica orientada a comprender el origen y la evolución del problema capilar.',
 			},
 			{
-				icon: 'ph-first-aid-kit',
-				title: 'Tecnología de Punta',
-				body: 'Inversión constante en aparatología de última generación para diagnósticos precisos.',
+				icon: 'ph-sliders-horizontal',
+				title: 'TRATAMIENTO ADAPTADO',
+				body: 'Definimos protocolos personalizados según las necesidades, el diagnóstico y la evolución de cada caso.',
 			},
 			{
-				icon: 'ph-leaf',
-				title: 'Atención Humana',
-				body: 'Entendemos el impacto emocional del cabello y ofrecemos un acompañamiento empático.',
+				icon: 'ph-chart-line-up',
+				title: 'SEGUIMIENTO MÉDICO',
+				body: 'Acompañamos la evolución capilar para ajustar el tratamiento de forma progresiva y coherente.',
 			},
 		],
 	},
 	finalCta: {
-		h2: 'Comienza hoy tu transformación.',
-		body: 'Reserva tu primera consulta diagnóstica y descubre el potencial de tu salud capilar.',
-		primary: 'Agendar Cita Médica',
+		h2: 'Empieza con un diagnóstico capilar',
+		body: 'El primer paso es entender tu caso y definir un plan adecuado.',
+		primary: 'Solicitar diagnostico capilar',
 	},
 };
 
 export const capilarPageContent: Record<Locale, CapilarPageContent> = {
 	es: spanishCapilarPageContent,
-	en: spanishCapilarPageContent,
-	ca: spanishCapilarPageContent,
-	fr: spanishCapilarPageContent,
+	en: {
+		...spanishCapilarPageContent,
+		seo: {
+			title: 'Hair treatment in Barcelona | AJ Clinic',
+			description: 'Regaining control over your hair is the first step toward reconnecting with your most authentic image.',
+		},
+		hero: {
+			...spanishCapilarPageContent.hero,
+			eyebrow: 'ADVANCED MEDICINE',
+			h1: 'Medical hair treatment',
+			subtitle: 'Regain control over your hair',
+			text: 'Hair treatment starts by understanding the cause and defining a medical plan tailored to each case.',
+			primaryCta: 'Request hair diagnosis',
+			secondaryCta: 'See our medical criteria',
+			imageAlt: 'Elegant view of a hair clinic',
+		},
+		identification: {
+			title: 'Hair is part of identity',
+			body: [
+				'Every hair case has its own cause, progression, and needs.',
+				'We approach treatment through diagnosis, follow-up, and medical guidance adapted to each person.',
+			],
+		},
+		diagnosis: {
+			eyebrow: 'Hair diagnosis',
+			title: 'Every case requires diagnosis and follow-up',
+			body: [
+				'Not all hair conditions share the same origin or evolution. That is why each treatment starts with a clinical assessment and a tailored plan.',
+				'We accompany hair evolution through diagnosis, follow-up, and medical criteria.',
+			],
+			imageSrc: '/images/home/capillary.webp',
+			imageAlt: 'Detailed medical hair diagnosis',
+		},
+		benefitsTitle: 'What we aim to improve',
+		benefits: [
+			{
+				icon: 'ph-shield-check',
+				title: 'Hair loss control',
+				body: 'Support for controlling hair loss through a progressive medical approach.',
+			},
+			{
+				icon: 'ph-sparkle',
+				title: 'Hair stimulation',
+				body: 'Stimulation of hair growth according to each case needs.',
+			},
+			{
+				icon: 'ph-hair-dryer',
+				title: 'Density and appearance',
+				body: 'Improvement in density and overall hair appearance.',
+			},
+			{
+				icon: 'ph-leaf',
+				title: 'Scalp health',
+				body: 'Strengthening of the scalp and hair follicle.',
+			},
+			{
+				icon: 'ph-clipboard-text',
+				title: 'Medical follow-up',
+				body: 'Progress monitoring to adjust treatment when needed.',
+			},
+		],
+		treatments: {
+			title: 'Our clinical protocols.',
+			items: [
+				{
+					title: 'Medical Hair Mesotherapy',
+					body: 'Direct infiltration of peptides, vitamins, and anti-androgen drugs to nourish the follicle from within.',
+				},
+				{
+					title: 'Hair PRP (Platelet-Rich Plasma)',
+					body: 'Use of the patient\'s own growth factors to regenerate tissue and enhance vascularization.',
+				},
+				{
+					title: 'Foliar Carboxytherapy',
+					body: 'Improved microcirculation through medical CO2 application, facilitating nutrient delivery.',
+				},
+			],
+		},
+		process: {
+			title: 'The AJ hair process',
+			steps: [
+				{
+					title: 'Hair diagnosis',
+					body: 'We evaluate scalp, hair, and medical history to understand the starting point.',
+				},
+				{
+					title: 'Cause identification',
+					body: 'We analyze factors that may influence hair loss or weakening.',
+				},
+				{
+					title: 'Treatment plan',
+					body: 'We define a medical proposal tailored to each case, with realistic and progressive goals.',
+				},
+				{
+					title: 'Follow-up and control',
+					body: 'We monitor evolution to adjust treatment according to each patient response.',
+				},
+			],
+		},
+		authority: {
+			title: 'Diagnosis, progression, and follow-up',
+			imageSrc: '/images/home/clinic-primary.webp',
+			imageAlt: 'Medical professional in a premium clinical setting',
+			items: [
+				{
+					icon: 'ph-magnifying-glass',
+					title: 'CLINICAL ASSESSMENT',
+					body: 'Every treatment begins with a medical assessment focused on understanding the origin and evolution of the hair condition.',
+				},
+				{
+					icon: 'ph-sliders-horizontal',
+					title: 'ADAPTED TREATMENT',
+					body: 'We define personalized protocols according to each case needs, diagnosis, and evolution.',
+				},
+				{
+					icon: 'ph-chart-line-up',
+					title: 'MEDICAL FOLLOW-UP',
+					body: 'We accompany hair evolution to adjust treatment progressively and coherently.',
+				},
+			],
+		},
+		finalCta: {
+			h2: 'Start your transformation today.',
+			body: 'Book your first diagnostic consultation and discover the potential of your hair health.',
+			primary: 'Book Medical Appointment',
+		},
+	},
+	ca: {
+		...spanishCapilarPageContent,
+		seo: {
+			title: 'Tractament capil·lar a Barcelona | AJ Clínica',
+			description: 'Recuperar el control sobre el teu cabell és el primer pas per reconnectar amb la teva imatge més autèntica.',
+		},
+		hero: {
+			...spanishCapilarPageContent.hero,
+			eyebrow: 'MEDICINA D AVANGUARDA',
+			h1: 'Tractament capil·lar mèdic',
+			subtitle: 'Recuperar el control sobre el teu cabell',
+			text: 'El tractament capil·lar comença entenent la causa i definint un pla mèdic adaptat a cada cas.',
+			primaryCta: 'Sol·licitar diagnòstic capil·lar',
+			secondaryCta: 'Coneix el nostre criteri mèdic',
+			imageAlt: 'Vista elegant d una clínica capil·lar',
+		},
+		identification: {
+			title: 'El cabell forma part de la identitat',
+			body: [
+				'Cada cas capil·lar té una causa, una evolució i unes necessitats pròpies.',
+				'Abordem el tractament des del diagnòstic, el seguiment i un acompanyament mèdic adaptat a cada persona.',
+			],
+		},
+		diagnosis: {
+			eyebrow: 'Diagnòstic capil·lar',
+			title: 'Cada cas requereix diagnòstic i seguiment',
+			body: [
+				'No tots els processos capil·lars tenen el mateix origen ni evolucionen igual. Per això, cada tractament comença amb una valoració clínica i un pla adaptat.',
+				'Acompanyem l evolució capil·lar des del diagnòstic, el seguiment i el criteri mèdic.',
+			],
+			imageSrc: '/images/home/capillary.webp',
+			imageAlt: 'Diagnòstic mèdic capil·lar detallat',
+		},
+		benefitsTitle: 'Què volem millorar',
+		benefits: [
+			{
+				icon: 'ph-shield-check',
+				title: 'Control de la caiguda',
+				body: 'Suport en el control de la caiguda del cabell des d un enfocament mèdic i progressiu.',
+			},
+			{
+				icon: 'ph-sparkle',
+				title: 'Estimulació capil·lar',
+				body: 'Estimulació del creixement capil·lar segons les necessitats de cada cas.',
+			},
+			{
+				icon: 'ph-hair-dryer',
+				title: 'Densitat i aspecte',
+				body: 'Millora de la densitat i de l aspecte general del cabell.',
+			},
+			{
+				icon: 'ph-leaf',
+				title: 'Salut del cuir cabellut',
+				body: 'Enfortiment del cuir cabellut i del fol·licle pilós.',
+			},
+			{
+				icon: 'ph-clipboard-text',
+				title: 'Seguiment mèdic',
+				body: 'Control de l evolució per ajustar el tractament quan sigui necessari.',
+			},
+		],
+		treatments: {
+			title: 'Els nostres protocols clínics.',
+			items: [
+				{
+					title: 'Mesoteràpia capil·lar mèdica',
+					body: 'Infiltració directa de pèptids, vitamines i fàrmacs antiandrògens per nodrir el fol·licle des de l interior.',
+				},
+				{
+					title: 'PRP capil·lar (plasma ric en plaquetes)',
+					body: 'Utilització dels factors de creixement propis del pacient per regenerar teixits i potenciar la vascularització.',
+				},
+				{
+					title: 'Carboxiteràpia foliar',
+					body: 'Millora de la microcirculació mitjançant l aplicació de CO2 medicinal, facilitant l arribada de nutrients.',
+				},
+			],
+		},
+		process: {
+			title: 'El procés capil·lar a AJ',
+			steps: [
+				{
+					title: 'Diagnòstic capil·lar',
+					body: 'Valorem el cuir cabellut, el cabell i la història clínica per entendre el punt de partida.',
+				},
+				{
+					title: 'Identificació de la causa',
+					body: 'Analitzem els factors que poden influir en la caiguda o l afebliment capil·lar.',
+				},
+				{
+					title: 'Pla de tractament',
+					body: 'Definim una proposta mèdica adaptada a cada cas, amb objectius realistes i progressius.',
+				},
+				{
+					title: 'Seguiment i control',
+					body: 'Acompanyem l evolució per ajustar el tractament segons la resposta de cada pacient.',
+				},
+			],
+		},
+		authority: {
+			title: 'Diagnòstic, evolució i seguiment',
+			imageSrc: '/images/home/clinic-primary.webp',
+			imageAlt: 'Professional mèdic en un entorn clínic premium',
+			items: [
+				{
+					icon: 'ph-magnifying-glass',
+					title: 'VALORACIÓ CLÍNICA',
+					body: 'Cada tractament comença amb una valoració mèdica orientada a comprendre l origen i l evolució del problema capil·lar.',
+				},
+				{
+					icon: 'ph-sliders-horizontal',
+					title: 'TRACTAMENT ADAPTAT',
+					body: 'Definim protocols personalitzats segons les necessitats, el diagnòstic i l evolució de cada cas.',
+				},
+				{
+					icon: 'ph-chart-line-up',
+					title: 'SEGUIMENT MÈDIC',
+					body: 'Acompanyem l evolució capil·lar per ajustar el tractament de manera progressiva i coherent.',
+				},
+			],
+		},
+		finalCta: {
+			h2: 'Comença avui la teva transformació.',
+			body: 'Reserva la teva primera consulta diagnòstica i descobreix el potencial de la teva salut capil·lar.',
+			primary: 'Agendar visita mèdica',
+		},
+	},
+	fr: {
+		...spanishCapilarPageContent,
+		seo: {
+			title: 'Traitement capillaire a Barcelone | AJ Clinique',
+			description: 'Retrouver le controle sur vos cheveux est la premiere etape pour renouer avec votre image la plus authentique.',
+		},
+		hero: {
+			...spanishCapilarPageContent.hero,
+			eyebrow: 'MEDECINE DE POINTE',
+			h1: 'Traitement capillaire medical',
+			subtitle: 'Retrouver le controle sur vos cheveux',
+			text: 'Le traitement capillaire commence par la comprehension de la cause et la definition d un plan medical adapte a chaque cas.',
+			primaryCta: 'Demander un diagnostic capillaire',
+			secondaryCta: 'Voir notre critere medical',
+			imageAlt: 'Vue elegante d une clinique capillaire',
+		},
+		benefitsTitle: 'Ce que nous cherchons a ameliorer',
+		identification: {
+			title: 'Les cheveux font partie de l identite',
+			body: [
+				'Chaque cas capillaire a sa cause, son evolution et ses besoins propres.',
+				'Nous abordons le traitement par le diagnostic, le suivi et un accompagnement medical adapte a chaque personne.',
+			],
+		},
+		diagnosis: {
+			eyebrow: 'Diagnostic capillaire',
+			title: 'Chaque cas requiert diagnostic et suivi',
+			body: [
+				'Tous les processus capillaires n ont pas la meme origine ni la meme evolution. C est pourquoi chaque traitement commence par une evaluation clinique et un plan adapte.',
+				'Nous accompagnons l evolution capillaire par le diagnostic, le suivi et le critere medical.',
+			],
+			imageSrc: '/images/home/capillary.webp',
+			imageAlt: 'Diagnostic medical capillaire detaille',
+		},
+		benefits: [
+			{
+				icon: 'ph-shield-check',
+				title: 'Controle de la chute',
+				body: 'Soutien au controle de la chute des cheveux avec une approche medicale et progressive.',
+			},
+			{
+				icon: 'ph-sparkle',
+				title: 'Stimulation capillaire',
+				body: 'Stimulation de la croissance capillaire selon les besoins de chaque cas.',
+			},
+			{
+				icon: 'ph-hair-dryer',
+				title: 'Densite et apparence',
+				body: 'Amelioration de la densite et de l apparence generale des cheveux.',
+			},
+			{
+				icon: 'ph-leaf',
+				title: 'Sante du cuir chevelu',
+				body: 'Renforcement du cuir chevelu et du follicule pileux.',
+			},
+			{
+				icon: 'ph-clipboard-text',
+				title: 'Suivi medical',
+				body: 'Controle de l evolution pour ajuster le traitement lorsque necessaire.',
+			},
+		],
+		treatments: {
+			title: 'Nos protocoles cliniques.',
+			items: [
+				{
+					title: 'Mesotherapie capillaire medicale',
+					body: 'Infiltration directe de peptides, vitamines et medicaments antiandrogenes pour nourrir le follicule de l interieur.',
+				},
+				{
+					title: 'PRP capillaire (plasma riche en plaquettes)',
+					body: 'Utilisation des facteurs de croissance du patient pour regenerer les tissus et renforcer la vascularisation.',
+				},
+				{
+					title: 'Carboxytherapie folliculaire',
+					body: 'Amelioration de la microcirculation par application de CO2 medical, facilitant l apport en nutriments.',
+				},
+			],
+		},
+		process: {
+			title: 'Le processus capillaire AJ',
+			steps: [
+				{
+					title: 'Diagnostic capillaire',
+					body: 'Nous evaluons le cuir chevelu, les cheveux et l historique clinique pour comprendre le point de depart.',
+				},
+				{
+					title: 'Identification de la cause',
+					body: 'Nous analysons les facteurs pouvant influencer la chute ou l affaiblissement capillaire.',
+				},
+				{
+					title: 'Plan de traitement',
+					body: 'Nous definissons une proposition medicale adaptee a chaque cas, avec des objectifs realistes et progressifs.',
+				},
+				{
+					title: 'Suivi et controle',
+					body: 'Nous accompagnons l evolution pour ajuster le traitement selon la reponse de chaque patient.',
+				},
+			],
+		},
+		authority: {
+			title: 'Diagnostic, evolution et suivi',
+			imageSrc: '/images/home/clinic-primary.webp',
+			imageAlt: 'Professionnel medical dans un environnement clinique premium',
+			items: [
+				{
+					icon: 'ph-magnifying-glass',
+					title: 'EVALUATION CLINIQUE',
+					body: 'Chaque traitement commence par une evaluation medicale visant a comprendre l origine et l evolution du probleme capillaire.',
+				},
+				{
+					icon: 'ph-sliders-horizontal',
+					title: 'TRAITEMENT ADAPTE',
+					body: 'Nous definissons des protocoles personnalises selon les besoins, le diagnostic et l evolution de chaque cas.',
+				},
+				{
+					icon: 'ph-chart-line-up',
+					title: 'SUIVI MEDICAL',
+					body: 'Nous accompagnons l evolution capillaire pour ajuster le traitement de facon progressive et coherente.',
+				},
+			],
+		},
+		finalCta: {
+			h2: 'Commencez votre transformation des aujourd hui.',
+			body: 'Reservez votre premiere consultation diagnostique et decouvrez le potentiel de votre sante capillaire.',
+			primary: 'Prendre rendez-vous medical',
+		},
+	},
 };

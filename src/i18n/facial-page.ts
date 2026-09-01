@@ -77,7 +77,7 @@ const spanishFacialPageContent: FacialPageContent = {
 	},
 	hero: {
 		eyebrow: 'MEDICINA SILENCIOSA',
-		h1: 'Medicina estética facial.',
+		h1: 'Medicina estética facial',
 		subtitle: 'Rejuvenecer sin dejar de ser tú.',
 		lead:
 			'Tratamientos médicos orientados a mejorar la calidad de la piel y la armonía facial de forma natural y progresiva.',
@@ -215,7 +215,8 @@ const englishFacialPageContent: FacialPageContent = {
 	},
 	hero: {
 		...spanishFacialPageContent.hero,
-		h1: 'Facial aesthetic medicine.',
+		eyebrow: 'FACIAL MEDICINE',
+		h1: 'Facial aesthetic medicine',
 		subtitle: 'Rejuvenate while staying yourself.',
 		lead:
 			'Medical treatments focused on skin quality and facial harmony with natural, progressive outcomes.',
@@ -321,7 +322,8 @@ const catalanFacialPageContent: FacialPageContent = {
 	},
 	hero: {
 		...spanishFacialPageContent.hero,
-		h1: 'Medicina estetica facial.',
+		eyebrow: 'MEDICINA FACIAL',
+		h1: 'Medicina estetica facial',
 		subtitle: 'Rejoveneix sense deixar de ser tu.',
 		lead:
 			'Tractaments medics orientats a millorar la qualitat de la pell i l harmonia facial de forma natural i progressiva.',
@@ -427,6 +429,7 @@ const frenchFacialPageContent: FacialPageContent = {
 	},
 	hero: {
 		...spanishFacialPageContent.hero,
+		eyebrow: 'MEDECINE DU VISAGE',
 		h1: 'Medecine esthetique du visage.',
 		subtitle: 'Rajeunir sans cesser d etre vous.',
 		lead:

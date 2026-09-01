@@ -1,6 +1,6 @@
 ---
 import type { Locale } from '../i18n/config';
-import { href } from '../i18n/route-registry';
+import { resolveBookingCta } from '../i18n/booking-links';
 import Heading from './ui/Heading.astro';
 
 interface Props {
@@ -9,17 +9,26 @@ interface Props {
 	body?: string;
 	cta: string;
 	primaryHref?: string;
+	primaryExternal?: boolean;
 	secondaryActions?: { label: string; href: string }[];
 }
 
-const { lang, h2, body, cta, primaryHref, secondaryActions = [] } = Astro.props;
+const { lang, h2, body, cta, primaryHref, primaryExternal, secondaryActions = [] } = Astro.props;
+const fallback = resolveBookingCta(lang);
+const effectiveHref = primaryHref ?? fallback.href;
+const effectiveExternal = primaryHref !== undefined ? primaryExternal === true : fallback.external;
 ---
 
 <section class="home-final-cta">
 	<div class="home-final-cta__inner">
 		<Heading level={2} serif class="home-final-cta__title">{h2}</Heading>
 		{body ? <p class="home-final-cta__body">{body}</p> : null}
-		<a class="home-final-cta__btn" href={primaryHref ?? href(lang, 'booking')}>{cta}</a>
+		<a
+			class="home-final-cta__btn"
+			href={effectiveHref}
+			target={effectiveExternal ? '_blank' : undefined}
+			rel={effectiveExternal ? 'noopener noreferrer' : undefined}
+		>{cta}</a>
 		{
 			secondaryActions.length ? (
 				<div class="home-final-cta__secondary">

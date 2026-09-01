@@ -15,10 +15,30 @@ export type IaKey =
 	| 'booking';
 
 const segmentMatrix: Record<Exclude<IaKey, 'home'>, Record<Locale, string>> = {
-	facial: { es: 'facial', en: 'facial', ca: 'facial', fr: 'visage' },
-	corporal: { es: 'corporal', en: 'body', ca: 'corporal', fr: 'corporel' },
-	capilar: { es: 'capilar', en: 'hair', ca: 'capillar', fr: 'capillaire' },
-	trust: { es: 'criterio-medico', en: 'medical-criteria', ca: 'criteri-medic', fr: 'critere-medical' },
+	facial: {
+		es: 'medicina-estetica-facial-barcelona',
+		en: 'facial-aesthetic-medicine-barcelona',
+		ca: 'medicina-estetica-facial-barcelona',
+		fr: 'medecine-esthetique-faciale-barcelona',
+	},
+	corporal: {
+		es: 'medicina-estetica-corporal-barcelona',
+		en: 'body-aesthetic-medicine-barcelona',
+		ca: 'medicina-estetica-corporal-barcelona',
+		fr: 'medecine-esthetique-corporelle-barcelona',
+	},
+	capilar: {
+		es: 'tratamiento-capilar-barcelona',
+		en: 'hair-treatment-barcelona',
+		ca: 'tractament-capillar-barcelona',
+		fr: 'traitement-capillaire-barcelona',
+	},
+	trust: {
+		es: 'filosofia-medica',
+		en: 'medical-philosophy',
+		ca: 'filosofia-medica',
+		fr: 'philosophie-medicale',
+	},
 	blog: { es: 'blog', en: 'blog', ca: 'blog', fr: 'blog' },
 	contact: { es: 'contacto', en: 'contact', ca: 'contacte', fr: 'contact' },
 	booking: { es: 'reservar-cita', en: 'book-appointment', ca: 'reservar-cita', fr: 'reserver-rendez-vous' },

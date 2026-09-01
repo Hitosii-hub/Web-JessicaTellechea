@@ -7,13 +7,13 @@ import CapilarPillarPage from '../../components/capilar/CapilarPillarPage.astro'
 import CorporalPillarPage from '../../components/corporal/CorporalPillarPage.astro';
 import FacialPillarPage from '../../components/facial/FacialPillarPage.astro';
 import TrustPage from '../../components/trust/TrustPage.astro';
-import { pageStubsBySegment } from '../../i18n/page-stubs';
+import { bookingPlaceholderCta, pageStubsBySegment } from '../../i18n/page-stubs';
 import { capilarPageContent } from '../../i18n/capilar-page';
 import { corporalPageContent } from '../../i18n/corporal-page';
 import { facialPageContent } from '../../i18n/facial-page';
 import { trustPageContent } from '../../i18n/trust-page';
-import { iaKeyFromPath, type IaKey, segmentFor, stubRecordKeyFromIaKey } from '../../i18n/route-registry';
-import BookingFlow from '../../features/booking-nubimed/BookingFlow';
+import { resolveBookingCta } from '../../i18n/booking-links';
+import { href, iaKeyFromPath, type IaKey, segmentFor, stubRecordKeyFromIaKey } from '../../i18n/route-registry';
 
 export function getStaticPaths() {
 	const pathKeys: Exclude<IaKey, 'home' | 'blog'>[] = [
@@ -35,10 +35,8 @@ export function getStaticPaths() {
 
 const lang = Astro.params.lang as Locale;
 const segment = Astro.params.segment as string;
-const presetSpecialtySlug = Astro.url.searchParams.get('preset');
-const presetTreatmentId = Astro.url.searchParams.get('treatment');
-const clinicAddress = import.meta.env.PUBLIC_CLINIC_ADDRESS?.trim() ?? '';
 const iaKey = iaKeyFromPath(lang, segment);
+const bookingCta = resolveBookingCta(lang);
 
 if (!iaKey) {
 	return Astro.redirect(`/${lang}/`, 302);
@@ -106,16 +104,20 @@ if (iaKey === 'contact') {
 				{iaKey === 'capilar' ? <CapilarPillarPage lang={lang} content={capilarContent} /> : null}
 				{iaKey === 'trust' ? <TrustPage lang={lang} content={trustContent} /> : null}
 				{iaKey !== 'facial' && iaKey !== 'corporal' && iaKey !== 'capilar' && iaKey !== 'trust' ? <h1 class:list={[bookingBlock && 'booking-page__title']}>{heading}</h1> : null}
-				{iaKey !== 'facial' && iaKey !== 'corporal' && iaKey !== 'capilar' && iaKey !== 'trust' && !bookingBlock ? <p>{lead}</p> : null}
+				{iaKey !== 'facial' && iaKey !== 'corporal' && iaKey !== 'capilar' && iaKey !== 'trust' ? <p>{lead}</p> : null}
 				{bookingBlock ? (
-					<div class="booking-flow-root" data-booking-flow>
-						<BookingFlow
-							client:load
-							lang={lang}
-							presetSpecialtySlug={presetSpecialtySlug}
-							presetTreatmentId={presetTreatmentId}
-							clinicAddress={clinicAddress}
-						/>
+					<div class="booking-placeholder" data-booking-placeholder>
+						<a
+							class="booking-placeholder__primary"
+							href={bookingCta.href}
+							target={bookingCta.external ? '_blank' : undefined}
+							rel={bookingCta.external ? 'noopener noreferrer' : undefined}
+						>
+							{bookingPlaceholderCta[lang].whatsapp}
+						</a>
+						<a class="booking-placeholder__secondary" href={href(lang, 'contact')}>
+							{bookingPlaceholderCta[lang].contact}
+						</a>
 					</div>
 				) : null}
 			</>

@@ -1,6 +1,6 @@
 ---
 import type { Locale } from '../../i18n/config';
-import { bookingUrlWithPreset, BOOKING_PRESET_VENDOR_MEDICINA_ESTETICA } from '../../i18n/booking-links';
+import { resolveBookingCta } from '../../i18n/booking-links';
 import { href } from '../../i18n/route-registry';
 
 interface Props {
@@ -16,6 +16,7 @@ interface Props {
 }
 
 const { lang, eyebrow, h1, subtitle, lead, primaryCta, secondaryCta, imageSrc, imageAlt } = Astro.props;
+const bookingCta = resolveBookingCta(lang);
 ---
 
 <section class="facial-hero">
@@ -29,7 +30,12 @@ const { lang, eyebrow, h1, subtitle, lead, primaryCta, secondaryCta, imageSrc, i
     <p class="facial-hero__subtitle">{subtitle}</p>
     <p class="facial-hero__lead">{lead}</p>
     <div class="facial-hero__actions">
-      <a class="facial-hero__primary" href={bookingUrlWithPreset(lang, BOOKING_PRESET_VENDOR_MEDICINA_ESTETICA)}>{primaryCta}</a>
+      <a
+        class="facial-hero__primary"
+        href={bookingCta.href}
+        target={bookingCta.external ? '_blank' : undefined}
+        rel={bookingCta.external ? 'noopener noreferrer' : undefined}
+      >{primaryCta}</a>
       <a class="facial-hero__secondary" href={href(lang, 'trust')}>{secondaryCta}</a>
     </div>
   </div>

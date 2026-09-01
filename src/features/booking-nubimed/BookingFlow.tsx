@@ -183,6 +183,7 @@ export default function BookingFlow({
 	/** Prop from Astro is often empty on static builds; merge runtime `?preset=` from the browser URL. */
 	const trimPreset = (v: string | null | undefined) => (typeof v === 'string' ? v.trim() : '');
 	const [resolvedPresetSlug, setResolvedPresetSlug] = useState(() => trimPreset(presetSpecialtySlug));
+	const [resolvedPresetTreatmentId, setResolvedPresetTreatmentId] = useState(() => trimPreset(presetTreatmentId));
 
 	useLayoutEffect(() => {
 		const fromProp = trimPreset(presetSpecialtySlug);
@@ -191,9 +192,12 @@ export default function BookingFlow({
 			return;
 		}
 		if (typeof window === 'undefined') return;
-		const fromUrl = trimPreset(new URLSearchParams(window.location.search).get('preset'));
-		if (fromUrl) setResolvedPresetSlug((prev) => (prev === fromUrl ? prev : fromUrl));
-	}, [presetSpecialtySlug]);
+		const params = new URLSearchParams(window.location.search);
+		const fromUrlPreset = trimPreset(params.get('preset'));
+		if (fromUrlPreset) setResolvedPresetSlug((prev) => (prev === fromUrlPreset ? prev : fromUrlPreset));
+		const fromUrlTreatment = trimPreset(params.get('treatment'));
+		if (fromUrlTreatment) setResolvedPresetTreatmentId((prev) => (prev === fromUrlTreatment ? prev : fromUrlTreatment));
+	}, [presetSpecialtySlug, presetTreatmentId]);
 
 	const presetEntry = useMemo(() => {
 		if (resolvedPresetSlug === '') return undefined;
@@ -284,8 +288,8 @@ export default function BookingFlow({
 	}, [specialty, pickStep, loadTreatments]);
 
 	useEffect(() => {
-		if (pickStep !== 'treatment' || selectedTreatment || !presetTreatmentId) return;
-		const normalized = presetTreatmentId.trim().toLowerCase();
+		if (pickStep !== 'treatment' || selectedTreatment || !resolvedPresetTreatmentId) return;
+		const normalized = resolvedPresetTreatmentId.trim().toLowerCase();
 		if (!normalized) return;
 		const matched = treatmentOptions.find(
 			(option) =>
@@ -295,7 +299,7 @@ export default function BookingFlow({
 		if (!matched) return;
 		setSelectedTreatment(matched);
 		setPickStep('datetime');
-	}, [pickStep, selectedTreatment, presetTreatmentId, treatmentOptions]);
+	}, [pickStep, selectedTreatment, resolvedPresetTreatmentId, treatmentOptions]);
 	const [days, setDays] = useState<string[]>([]);
 	const [daysLoading, setDaysLoading] = useState(false);
 	const [daysErr, setDaysErr] = useState<string | null>(null);

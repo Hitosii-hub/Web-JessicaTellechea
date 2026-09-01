@@ -1,7 +1,9 @@
 ---
 import type { Locale } from '../../i18n/config';
 import type { CorporalPageContent } from '../../i18n/corporal-page';
+import { resolveBookingCta } from '../../i18n/booking-links';
 import { href } from '../../i18n/route-registry';
+import FinalCta from '../FinalCta.astro';
 import Heading from '../ui/Heading.astro';
 
 interface Props {
@@ -10,8 +12,7 @@ interface Props {
 }
 
 const { lang, content } = Astro.props;
-const whatsapp = import.meta.env.PUBLIC_WHATSAPP_E164?.trim();
-const whatsappHref = whatsapp ? `https://wa.me/${whatsapp}` : href(lang, 'contact');
+const bookingCta = resolveBookingCta(lang);
 ---
 
 <article class="corporal-page">
@@ -33,7 +34,18 @@ const whatsappHref = whatsapp ? `https://wa.me/${whatsapp}` : href(lang, 'contac
 			<p class="corporal-eyebrow corporal-hero__eyebrow">{content.hero.eyebrow}</p>
 			<h1 class="corporal-hero__title">{content.hero.h1}</h1>
 			<p class="corporal-hero__lead">{content.hero.lead}</p>
-			<a class="corporal-hero__button" href={href(lang, 'contact')}>{content.hero.primaryCta}</a>
+		<p class="corporal-hero__text">{content.hero.text}</p>
+			<div class="corporal-hero__actions">
+				<a
+					class="corporal-hero__button"
+					href={bookingCta.href}
+					target={bookingCta.external ? '_blank' : undefined}
+					rel={bookingCta.external ? 'noopener noreferrer' : undefined}
+				>
+					{content.hero.primaryCta}
+				</a>
+				<a class="corporal-hero__secondary" href={href(lang, 'trust')}>{content.hero.secondaryCta}</a>
+			</div>
 		</div>
 	</section>
 
@@ -186,13 +198,15 @@ const whatsappHref = whatsapp ? `https://wa.me/${whatsapp}` : href(lang, 'contac
 	</section>
 
 	<section class="corporal-section corporal-section--final-cta">
-		<div class="corporal-container corporal-final">
-			<Heading level={2} serif class="corporal-final__title">{content.finalCta.h2}</Heading>
-			<p class="corporal-final__body">{content.finalCta.body}</p>
-			<div class="corporal-final__actions">
-				<a class="corporal-final__primary" href={href(lang, 'booking')}>{content.finalCta.primary}</a>
-				<a class="corporal-final__secondary" href={whatsappHref}>{content.finalCta.secondary}</a>
-			</div>
+		<div class="corporal-container">
+			<FinalCta
+				lang={lang}
+				h2={content.finalCta.h2}
+				body={content.finalCta.body}
+				cta={content.finalCta.primary}
+				primaryHref={bookingCta.href}
+				primaryExternal={bookingCta.external}
+			/>
 		</div>
 	</section>
 </article>

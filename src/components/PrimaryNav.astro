@@ -6,10 +6,10 @@ import { href, type IaKey } from '../i18n/route-registry';
 interface Props {
 	lang: Locale;
 	currentIaKey: IaKey;
-	bookingHref: string;
+	bookingCta: { href: string; external: boolean };
 }
 
-const { lang, currentIaKey, bookingHref } = Astro.props;
+const { lang, currentIaKey, bookingCta } = Astro.props;
 const bookingLabel = headerBookingCta[lang];
 const toggleId = 'site-nav-drawer-toggle';
 ---
@@ -50,7 +50,12 @@ const toggleId = 'site-nav-drawer-toggle';
 					))
 				}
 			</ul>
-			<a class="primary-nav__booking" href={bookingHref}>
+			<a
+				class="primary-nav__booking"
+				href={bookingCta.href}
+				target={bookingCta.external ? '_blank' : undefined}
+				rel={bookingCta.external ? 'noopener noreferrer' : undefined}
+			>
 				{bookingLabel}
 			</a>
 		</div>

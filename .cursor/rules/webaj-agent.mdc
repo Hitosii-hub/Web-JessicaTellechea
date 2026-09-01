@@ -1,0 +1,18 @@
+---
+description: Protocolo agéntico WebAJ — leer AGENTS.md, implementar, verificar, no preguntar en trabajo acotado.
+alwaysApply: true
+---
+
+# WebAJ — Agent mode
+
+Follow root `AGENTS.md` as the operating manual.
+
+- Execute bounded, reversible work without asking. Report when done.
+- Ask before slug/nav/IA changes, new locales, stack/hosting changes, legal/medical claims, or git commit/push/PR.
+- Never commit secrets, paste the PDF dossier, add WordPress/Elementor, or add SSR/Node on IONOS (static `dist/` only).
+- Product: valuation-first; booking is utility + `noindex`, not primary nav.
+- Live URLs: `src/i18n/route-registry.ts` + `href(lang, iaKey)`. Copy in `src/i18n/*` for `es`, `en`, `ca`, `fr`.
+- UI: Astro + tokens in `src/styles/theme.css` + `src/components/ui/`. Islands: Preact only.
+- OpenSpec (`openspec/`) for new routes, conversion model, booking contract, or design-system deltas. Direct implement for bugs, copy, and isolated UI.
+- Verify: `npm run check`; `npm run build` if pages/config/islands changed; `npm run verify:routes` if slugs changed.
+- Speak Spanish to the human. Do not commit unless asked.
