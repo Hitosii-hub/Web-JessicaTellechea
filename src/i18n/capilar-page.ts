@@ -63,7 +63,7 @@ export interface CapilarPageContent {
 
 const spanishCapilarPageContent: CapilarPageContent = {
 	seo: {
-		title: 'Tratamiento capilar en Barcelona | AJ Clínica',
+		title: 'Tratamiento capilar en Barcelona y Tarragona | Dra. Jessica Tellechea',
 		description:
 			'Recuperar el control sobre tu cabello es el primer paso para reencontrarte con tu imagen más auténtica.',
 	},
@@ -73,15 +73,15 @@ const spanishCapilarPageContent: CapilarPageContent = {
 		subtitle: 'Recuperar el control sobre tu cabello',
 		text: 'El tratamiento capilar comienza entendiendo la causa y definiendo un plan médico adaptado a cada caso.',
 		primaryCta: 'Solicitar diagnostico capilar',
-		secondaryCta: 'Conoce nuestro criterio médico',
+		secondaryCta: 'Conoce el criterio médico',
 		imageSrc: '/images/home/treatment-capilar.webp',
-		imageAlt: 'Vista elegante de clínica capilar',
+		imageAlt: 'Espacio de consulta capilar en Barcelona y Tarragona',
 	},
 	identification: {
 		title: 'El cabello forma parte de la identidad',
 		body: [
 			'Cada caso capilar tiene una causa, una evolución y unas necesidades propias.',
-			'Abordamos el tratamiento desde el diagnóstico, el seguimiento y un acompañamiento médico adaptado a cada persona.',
+			'En el tratamiento capilar, la Dra. Jessica Tellechea aborda cada caso desde el diagnóstico, el seguimiento y un acompañamiento médico adaptado a cada persona.',
 		],
 	},
 	diagnosis: {
@@ -89,12 +89,12 @@ const spanishCapilarPageContent: CapilarPageContent = {
 		title: 'Cada caso requiere diagnóstico y seguimiento',
 		body: [
 			'No todos los procesos capilares tienen el mismo origen ni evolucionan igual. Por eso, cada tratamiento comienza con una valoración clínica y un plan adaptado.',
-			'Acompañamos la evolución capilar desde el diagnóstico, el seguimiento y el criterio médico.',
+			'La evolución capilar se acompaña desde el diagnóstico, el seguimiento y el criterio médico.',
 		],
 		imageSrc: '/images/home/capillary.webp',
 		imageAlt: 'Diagnóstico médico capilar detallado',
 	},
-	benefitsTitle: 'Qué buscamos mejorar',
+	benefitsTitle: 'Áreas de mejora',
 	benefits: [
 		{
 		  icon: 'ph-shield-check',
@@ -123,7 +123,7 @@ const spanishCapilarPageContent: CapilarPageContent = {
 		},
 	  ],
 	treatments: {
-		title: 'Nuestros protocolos clínicos.',
+		title: 'Protocolos clínicos.',
 		items: [
 			{
 				title: 'Mesoterapia Capilar Médica',
@@ -142,23 +142,23 @@ const spanishCapilarPageContent: CapilarPageContent = {
 		],
 	},
 	process: {
-		title: 'El proceso capilar en AJ',
+		title: 'El proceso capilar',
 		steps: [
 			{
 				title: 'Diagnóstico capilar',
-				body: 'Valoramos el cuero cabelludo, el cabello y la historia clínica para entender el punto de partida.',
+				body: 'Valoración del cuero cabelludo, el cabello y la historia clínica para entender el punto de partida.',
 			},
 			{
 				title: 'Identificación de la causa',
-				body: 'Analizamos los factores que pueden influir en la caída o el debilitamiento capilar.',
+				body: 'Análisis de los factores que pueden influir en la caída o el debilitamiento capilar.',
 			},
 			{
 				title: 'Plan de tratamiento',
-				body: 'Definimos una propuesta médica adaptada a cada caso, con objetivos realistas y progresivos.',
+				body: 'Propuesta médica adaptada a cada caso, con objetivos realistas y progresivos.',
 			},
 			{
 				title: 'Seguimiento y control',
-				body: 'Acompañamos la evolución para ajustar el tratamiento según la respuesta de cada paciente.',
+				body: 'Acompañamiento de la evolución para ajustar el tratamiento según la respuesta de cada paciente.',
 			},
 		],
 	},
@@ -175,12 +175,12 @@ const spanishCapilarPageContent: CapilarPageContent = {
 			{
 				icon: 'ph-sliders-horizontal',
 				title: 'TRATAMIENTO ADAPTADO',
-				body: 'Definimos protocolos personalizados según las necesidades, el diagnóstico y la evolución de cada caso.',
+				body: 'Protocolos personalizados según las necesidades, el diagnóstico y la evolución de cada caso.',
 			},
 			{
 				icon: 'ph-chart-line-up',
 				title: 'SEGUIMIENTO MÉDICO',
-				body: 'Acompañamos la evolución capilar para ajustar el tratamiento de forma progresiva y coherente.',
+				body: 'Acompañamiento de la evolución capilar para ajustar el tratamiento de forma progresiva y coherente.',
 			},
 		],
 	},
@@ -196,7 +196,7 @@ export const capilarPageContent: Record<Locale, CapilarPageContent> = {
 	en: {
 		...spanishCapilarPageContent,
 		seo: {
-			title: 'Hair treatment in Barcelona | AJ Clinic',
+			title: 'Hair treatment in Barcelona and Tarragona | Dr. Jessica Tellechea',
 			description: 'Regaining control over your hair is the first step toward reconnecting with your most authentic image.',
 		},
 		hero: {
@@ -206,14 +206,14 @@ export const capilarPageContent: Record<Locale, CapilarPageContent> = {
 			subtitle: 'Regain control over your hair',
 			text: 'Hair treatment starts by understanding the cause and defining a medical plan tailored to each case.',
 			primaryCta: 'Request hair diagnosis',
-			secondaryCta: 'See our medical criteria',
-			imageAlt: 'Elegant view of a hair clinic',
+			secondaryCta: 'See the medical criteria',
+			imageAlt: 'Hair consultation space in Barcelona and Tarragona',
 		},
 		identification: {
 			title: 'Hair is part of identity',
 			body: [
 				'Every hair case has its own cause, progression, and needs.',
-				'We approach treatment through diagnosis, follow-up, and medical guidance adapted to each person.',
+				'In hair treatment, Dr. Jessica Tellechea approaches each case through diagnosis, follow-up and medical guidance adapted to each person.',
 			],
 		},
 		diagnosis: {
@@ -221,12 +221,12 @@ export const capilarPageContent: Record<Locale, CapilarPageContent> = {
 			title: 'Every case requires diagnosis and follow-up',
 			body: [
 				'Not all hair conditions share the same origin or evolution. That is why each treatment starts with a clinical assessment and a tailored plan.',
-				'We accompany hair evolution through diagnosis, follow-up, and medical criteria.',
+				'Hair evolution is accompanied through diagnosis, follow-up and medical criteria.',
 			],
 			imageSrc: '/images/home/capillary.webp',
 			imageAlt: 'Detailed medical hair diagnosis',
 		},
-		benefitsTitle: 'What we aim to improve',
+		benefitsTitle: 'Areas of improvement',
 		benefits: [
 			{
 				icon: 'ph-shield-check',
@@ -255,7 +255,7 @@ export const capilarPageContent: Record<Locale, CapilarPageContent> = {
 			},
 		],
 		treatments: {
-			title: 'Our clinical protocols.',
+			title: 'Clinical protocols.',
 			items: [
 				{
 					title: 'Medical Hair Mesotherapy',
@@ -272,23 +272,23 @@ export const capilarPageContent: Record<Locale, CapilarPageContent> = {
 			],
 		},
 		process: {
-			title: 'The AJ hair process',
+			title: 'The hair process',
 			steps: [
 				{
 					title: 'Hair diagnosis',
-					body: 'We evaluate scalp, hair, and medical history to understand the starting point.',
+					body: 'Evaluation of scalp, hair, and medical history to understand the starting point.',
 				},
 				{
 					title: 'Cause identification',
-					body: 'We analyze factors that may influence hair loss or weakening.',
+					body: 'Analysis of factors that may influence hair loss or weakening.',
 				},
 				{
 					title: 'Treatment plan',
-					body: 'We define a medical proposal tailored to each case, with realistic and progressive goals.',
+					body: 'Medical proposal tailored to each case, with realistic and progressive goals.',
 				},
 				{
 					title: 'Follow-up and control',
-					body: 'We monitor evolution to adjust treatment according to each patient response.',
+					body: 'Ongoing support during evolution to adjust treatment according to each patient response.',
 				},
 			],
 		},
@@ -305,12 +305,12 @@ export const capilarPageContent: Record<Locale, CapilarPageContent> = {
 				{
 					icon: 'ph-sliders-horizontal',
 					title: 'ADAPTED TREATMENT',
-					body: 'We define personalized protocols according to each case needs, diagnosis, and evolution.',
+					body: 'Personalised protocols according to each case needs, diagnosis and evolution.',
 				},
 				{
 					icon: 'ph-chart-line-up',
 					title: 'MEDICAL FOLLOW-UP',
-					body: 'We accompany hair evolution to adjust treatment progressively and coherently.',
+					body: 'Ongoing support during hair evolution to adjust treatment progressively and coherently.',
 				},
 			],
 		},
@@ -323,7 +323,7 @@ export const capilarPageContent: Record<Locale, CapilarPageContent> = {
 	ca: {
 		...spanishCapilarPageContent,
 		seo: {
-			title: 'Tractament capil·lar a Barcelona | AJ Clínica',
+			title: 'Tractament capil·lar a Barcelona i Tarragona | Dra. Jessica Tellechea',
 			description: 'Recuperar el control sobre el teu cabell és el primer pas per reconnectar amb la teva imatge més autèntica.',
 		},
 		hero: {
@@ -333,14 +333,14 @@ export const capilarPageContent: Record<Locale, CapilarPageContent> = {
 			subtitle: 'Recuperar el control sobre el teu cabell',
 			text: 'El tractament capil·lar comença entenent la causa i definint un pla mèdic adaptat a cada cas.',
 			primaryCta: 'Sol·licitar diagnòstic capil·lar',
-			secondaryCta: 'Coneix el nostre criteri mèdic',
-			imageAlt: 'Vista elegant d una clínica capil·lar',
+			secondaryCta: 'Coneix el criteri mèdic',
+			imageAlt: 'Espai de consulta capil·lar a Barcelona i Tarragona',
 		},
 		identification: {
 			title: 'El cabell forma part de la identitat',
 			body: [
 				'Cada cas capil·lar té una causa, una evolució i unes necessitats pròpies.',
-				'Abordem el tractament des del diagnòstic, el seguiment i un acompanyament mèdic adaptat a cada persona.',
+				'En el tractament capil·lar, la Dra. Jessica Tellechea aborda cada cas des del diagnòstic, el seguiment i un acompanyament mèdic adaptat a cada persona.',
 			],
 		},
 		diagnosis: {
@@ -348,12 +348,12 @@ export const capilarPageContent: Record<Locale, CapilarPageContent> = {
 			title: 'Cada cas requereix diagnòstic i seguiment',
 			body: [
 				'No tots els processos capil·lars tenen el mateix origen ni evolucionen igual. Per això, cada tractament comença amb una valoració clínica i un pla adaptat.',
-				'Acompanyem l evolució capil·lar des del diagnòstic, el seguiment i el criteri mèdic.',
+				'L\'evolució capil·lar s\'acompanya des del diagnòstic, el seguiment i el criteri mèdic.',
 			],
 			imageSrc: '/images/home/capillary.webp',
 			imageAlt: 'Diagnòstic mèdic capil·lar detallat',
 		},
-		benefitsTitle: 'Què volem millorar',
+		benefitsTitle: 'Àrees de millora',
 		benefits: [
 			{
 				icon: 'ph-shield-check',
@@ -382,7 +382,7 @@ export const capilarPageContent: Record<Locale, CapilarPageContent> = {
 			},
 		],
 		treatments: {
-			title: 'Els nostres protocols clínics.',
+			title: 'Protocols clínics.',
 			items: [
 				{
 					title: 'Mesoteràpia capil·lar mèdica',
@@ -399,23 +399,23 @@ export const capilarPageContent: Record<Locale, CapilarPageContent> = {
 			],
 		},
 		process: {
-			title: 'El procés capil·lar a AJ',
+			title: 'El procés capil·lar',
 			steps: [
 				{
 					title: 'Diagnòstic capil·lar',
-					body: 'Valorem el cuir cabellut, el cabell i la història clínica per entendre el punt de partida.',
+					body: 'Valoració del cuir cabellut, el cabell i la història clínica per entendre el punt de partida.',
 				},
 				{
 					title: 'Identificació de la causa',
-					body: 'Analitzem els factors que poden influir en la caiguda o l afebliment capil·lar.',
+					body: 'Anàlisi dels factors que poden influir en la caiguda o l afebliment capil·lar.',
 				},
 				{
 					title: 'Pla de tractament',
-					body: 'Definim una proposta mèdica adaptada a cada cas, amb objectius realistes i progressius.',
+					body: 'Proposta mèdica adaptada a cada cas, amb objectius realistes i progressius.',
 				},
 				{
 					title: 'Seguiment i control',
-					body: 'Acompanyem l evolució per ajustar el tractament segons la resposta de cada pacient.',
+					body: 'Acompanyament de l evolució per ajustar el tractament segons la resposta de cada pacient.',
 				},
 			],
 		},
@@ -432,12 +432,12 @@ export const capilarPageContent: Record<Locale, CapilarPageContent> = {
 				{
 					icon: 'ph-sliders-horizontal',
 					title: 'TRACTAMENT ADAPTAT',
-					body: 'Definim protocols personalitzats segons les necessitats, el diagnòstic i l evolució de cada cas.',
+					body: 'Protocols personalitzats segons les necessitats, el diagnòstic i l evolució de cada cas.',
 				},
 				{
 					icon: 'ph-chart-line-up',
 					title: 'SEGUIMENT MÈDIC',
-					body: 'Acompanyem l evolució capil·lar per ajustar el tractament de manera progressiva i coherent.',
+					body: 'Acompanyament de l evolució capil·lar per ajustar el tractament de manera progressiva i coherent.',
 				},
 			],
 		},
@@ -450,7 +450,7 @@ export const capilarPageContent: Record<Locale, CapilarPageContent> = {
 	fr: {
 		...spanishCapilarPageContent,
 		seo: {
-			title: 'Traitement capillaire a Barcelone | AJ Clinique',
+			title: 'Traitement capillaire a Barcelone et Tarragone | Dre Jessica Tellechea',
 			description: 'Retrouver le controle sur vos cheveux est la premiere etape pour renouer avec votre image la plus authentique.',
 		},
 		hero: {
@@ -460,15 +460,15 @@ export const capilarPageContent: Record<Locale, CapilarPageContent> = {
 			subtitle: 'Retrouver le controle sur vos cheveux',
 			text: 'Le traitement capillaire commence par la comprehension de la cause et la definition d un plan medical adapte a chaque cas.',
 			primaryCta: 'Demander un diagnostic capillaire',
-			secondaryCta: 'Voir notre critere medical',
-			imageAlt: 'Vue elegante d une clinique capillaire',
+			secondaryCta: 'Voir le critere medical',
+			imageAlt: 'Espace de consultation capillaire a Barcelone et Tarragone',
 		},
-		benefitsTitle: 'Ce que nous cherchons a ameliorer',
+		benefitsTitle: 'Zones d\'amelioration',
 		identification: {
 			title: 'Les cheveux font partie de l identite',
 			body: [
 				'Chaque cas capillaire a sa cause, son evolution et ses besoins propres.',
-				'Nous abordons le traitement par le diagnostic, le suivi et un accompagnement medical adapte a chaque personne.',
+				'Dans le traitement capillaire, la Dre Jessica Tellechea aborde chaque cas par le diagnostic, le suivi et un accompagnement medical adapte a chaque personne.',
 			],
 		},
 		diagnosis: {
@@ -476,7 +476,7 @@ export const capilarPageContent: Record<Locale, CapilarPageContent> = {
 			title: 'Chaque cas requiert diagnostic et suivi',
 			body: [
 				'Tous les processus capillaires n ont pas la meme origine ni la meme evolution. C est pourquoi chaque traitement commence par une evaluation clinique et un plan adapte.',
-				'Nous accompagnons l evolution capillaire par le diagnostic, le suivi et le critere medical.',
+				'L\'evolution capillaire s\'accompagne par le diagnostic, le suivi et le critere medical.',
 			],
 			imageSrc: '/images/home/capillary.webp',
 			imageAlt: 'Diagnostic medical capillaire detaille',
@@ -509,7 +509,7 @@ export const capilarPageContent: Record<Locale, CapilarPageContent> = {
 			},
 		],
 		treatments: {
-			title: 'Nos protocoles cliniques.',
+			title: 'Protocoles cliniques.',
 			items: [
 				{
 					title: 'Mesotherapie capillaire medicale',
@@ -526,23 +526,23 @@ export const capilarPageContent: Record<Locale, CapilarPageContent> = {
 			],
 		},
 		process: {
-			title: 'Le processus capillaire AJ',
+			title: 'Le processus capillaire',
 			steps: [
 				{
 					title: 'Diagnostic capillaire',
-					body: 'Nous evaluons le cuir chevelu, les cheveux et l historique clinique pour comprendre le point de depart.',
+					body: 'Evaluation du cuir chevelu, des cheveux et de l historique clinique pour comprendre le point de depart.',
 				},
 				{
 					title: 'Identification de la cause',
-					body: 'Nous analysons les facteurs pouvant influencer la chute ou l affaiblissement capillaire.',
+					body: 'Analyse des facteurs pouvant influencer la chute ou l affaiblissement capillaire.',
 				},
 				{
 					title: 'Plan de traitement',
-					body: 'Nous definissons une proposition medicale adaptee a chaque cas, avec des objectifs realistes et progressifs.',
+					body: 'Proposition medicale adaptee a chaque cas, avec des objectifs realistes et progressifs.',
 				},
 				{
 					title: 'Suivi et controle',
-					body: 'Nous accompagnons l evolution pour ajuster le traitement selon la reponse de chaque patient.',
+					body: 'Accompagnement de l evolution pour ajuster le traitement selon la reponse de chaque patient.',
 				},
 			],
 		},
@@ -559,12 +559,12 @@ export const capilarPageContent: Record<Locale, CapilarPageContent> = {
 				{
 					icon: 'ph-sliders-horizontal',
 					title: 'TRAITEMENT ADAPTE',
-					body: 'Nous definissons des protocoles personnalises selon les besoins, le diagnostic et l evolution de chaque cas.',
+					body: 'Protocoles personnalises selon les besoins, le diagnostic et l evolution de chaque cas.',
 				},
 				{
 					icon: 'ph-chart-line-up',
 					title: 'SUIVI MEDICAL',
-					body: 'Nous accompagnons l evolution capillaire pour ajuster le traitement de facon progressive et coherente.',
+					body: 'Accompagnement de l evolution capillaire pour ajuster le traitement de facon progressive et coherente.',
 				},
 			],
 		},

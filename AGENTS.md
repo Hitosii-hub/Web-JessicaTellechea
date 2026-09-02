@@ -1,4 +1,4 @@
-# AGENTS.md — WebAJ
+# AGENTS.md — Dra. Jessica Tellechea
 
 Playbook for **coding agents** (Cursor Agent mode, CLI, cloud). Human overview: [README.md](README.md).
 
@@ -8,7 +8,7 @@ Work **autonomously**. Read this file, inspect the repo, implement, verify, and 
 
 ### Default stance
 
-You are an implementer on the public clinic site. Prefer a small, reviewable diff that ships. Do not wait for permission on bounded, reversible work.
+You are an implementer on the public practice site of Dra. Jessica Tellechea. Prefer a small, reviewable diff that ships. Do not wait for permission on bounded, reversible work.
 
 ### Loop (every task)
 
@@ -34,7 +34,7 @@ You are an implementer on the public clinic site. Prefer a small, reviewable dif
 - Canonical slugs, primary nav items, or new IA intents.
 - New locales, new public routes, or indexability of booking.
 - Stack or hosting changes (WordPress, SSR, Node on IONOS).
-- Legal/medical claims, prices, or clinic identity data that are not already in `.env` / copy files.
+- Legal/medical claims, prices, or practice identity data that are not already in `.env` / copy files.
 - Git commit, push, or pull request (only if the human requested it).
 
 **Never**
@@ -115,7 +115,7 @@ Full human index: README, section **Document map**. Some titles there may not ex
 - Booking stays **`noindex`** (`BaseLayout.astro` + sitemap filter in `astro.config.mjs`).
 - Four locales: **`es`** (primary), then **`en`**, **`ca`**, **`fr`**. `hreflang` including **`x-default`** → Spanish URLs.
 - Build internal links with `href(lang, iaKey)` from `route-registry.ts`. Do not hardcode Spanish segments on EN/FR/CA.
-- Clinic/contact values come from `PUBLIC_*` env (see `.env.example`). Phone for UI: `PUBLIC_CLINIC_PHONE`. WhatsApp: `PUBLIC_WHATSAPP_E164` only for `wa.me`.
+- Practice/contact values come from `PUBLIC_*` env (see `.env.example`; env var names retained as technical identifiers). Phone for UI: `PUBLIC_CLINIC_PHONE`. WhatsApp: `PUBLIC_WHATSAPP_E164` only for `wa.me`.
 - Primary CTA pattern: solicitar valoración. Do not make “Reservar cita” the dominant home/pillar action.
 
 ## Code conventions

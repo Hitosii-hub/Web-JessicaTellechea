@@ -1,5 +1,6 @@
 ---
 import type { Locale } from '../i18n/config';
+import { resolveContactFormPostUrl } from '../i18n/form-endpoints';
 
 interface Props {
 	lang: Locale;
@@ -7,7 +8,11 @@ interface Props {
 
 const { lang } = Astro.props;
 
-const action = import.meta.env.PUBLIC_FORM_POST_URL as string | undefined;
+const clinicEmail =
+	import.meta.env.PUBLIC_CLINIC_EMAIL?.trim() ||
+	import.meta.env.PUBLIC_LEGAL_CONTROLLER_EMAIL?.trim() ||
+	'';
+const action = resolveContactFormPostUrl(clinicEmail);
 
 const ui = {
 	es: {
@@ -18,7 +23,7 @@ const ui = {
 		send: 'Enviar solicitud',
 		noBackend:
 			'Configura PUBLIC_FORM_POST_URL en .env (Formspree, Getform, etc.) para activar el envio.',
-		privacyNote: 'No enviamos datos a terceros hasta que el endpoint este configurado.',
+		privacyNote: 'No se envían datos a terceros hasta que el endpoint esté configurado.',
 	},
 	en: {
 		name: 'Name',
@@ -35,8 +40,8 @@ const ui = {
 		phone: 'Telefon (opcional)',
 		message: 'Missatge',
 		send: 'Enviar sol·licitud',
-		noBackend: 'Configureu PUBLIC_FORM_POST_URL al .env per activar l enviament.',
-		privacyNote: 'Sense endpoint no s envia res a tercers.',
+		noBackend: 'Configura PUBLIC_FORM_POST_URL al .env per activar l enviament.',
+		privacyNote: 'Sense endpoint configurat no s envien dades a tercers.',
 	},
 	fr: {
 		name: 'Nom',
@@ -61,7 +66,7 @@ const t = ui[lang];
 >
 	{action ? null : <input type="hidden" name="_disabled" value="1" />}
 	<input type="hidden" name="lang" value={lang} />
-	<input type="hidden" name="_subject" value={`[WebAJ] Valoracion ${lang}`} />
+	<input type="hidden" name="_subject" value={`[Dra. Jessica Tellechea] Valoracion ${lang}`} />
 
 	<label>
 		{t.name}

@@ -96,3 +96,8 @@ export function isBookingPath(pathname: string): boolean {
 	const norm = pathname.replace(/\/+$/, '') || '/';
 	return bookingSegments.some((seg) => norm.includes(`/${seg}`));
 }
+
+/** Blog index and posts live under `/{lang}/blog/…`. */
+export function isBlogPath(pathname: string): boolean {
+	return /\/blog(\/|$)/.test(pathname.replace(/\/+$/, '') || '/');
+}

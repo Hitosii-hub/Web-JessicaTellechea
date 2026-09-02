@@ -1,4 +1,4 @@
-# SEO and Localization - AJ Public Website
+# SEO and Localization - Dra. Jessica Tellechea Public Website
 
 ## Local SEO Baseline
 
@@ -6,7 +6,7 @@
 - Preserve one unique H1 per page.
 - Keep metadata concise and page-specific (title/description by intent, not keyword stuffing).
 - Use clean, readable URLs.
-- Support local trust signals through consistent contact/location data and clinic identity.
+- Support local trust signals through consistent contact/location data and practitioner identity.
 - Use blog content to expand topical authority around Facial, Body, Hair, and medical-criteria education.
 
 ## Multilingual Implications (Decided Direction)

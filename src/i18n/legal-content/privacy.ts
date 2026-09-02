@@ -46,7 +46,7 @@ const es: LegalPageModel = {
 			id: 'finalidades',
 			heading: '5. Finalidades del tratamiento y bases legitimadoras',
 			paragraphs: [
-				'Gestionar la relación con los usuarios del sitio (consultas, comunicaciones, mejora del servicio), mantener la seguridad del sitio y cumplir obligaciones legales aplicables a la actividad de la clínica. Según el caso, la base jurídica puede ser la ejecución de medidas precontractuales o de un contrato (artículo 6.1.b RGPD), el interés legítimo en un sitio seguro y operativo (6.1.f) y el cumplimiento de obligaciones legales (6.1.c).',
+				'Gestionar la relación con los usuarios del sitio (consultas, comunicaciones, mejora del servicio), mantener la seguridad del sitio y cumplir obligaciones legales aplicables a la actividad profesional del responsable. Según el caso, la base jurídica puede ser la ejecución de medidas precontractuales o de un contrato (artículo 6.1.b RGPD), el interés legítimo en un sitio seguro y operativo (6.1.f) y el cumplimiento de obligaciones legales (6.1.c).',
 				'La solicitud y gestión de citas en línea mediante el formulario integrado tiene como finalidad principal la prestación del servicio solicitado por el interesado (gestión de agenda y comunicaciones relacionadas con la cita), con base jurídica predominante en la ejecución de medidas precontractuales o contractual (6.1.b).',
 				'Respecto a cookies y preferencias similares, se aplicará lo indicado en la política de cookies: cookies estrictamente necesarias o de seguridad con fundamento en interés legítimo o ejecución del servicio, cuando proceda, y otras categorías solo tras la configuración o el consentimiento que corresponda según el mecanismo del sitio.',
 				'Si en el futuro se incorporaran comunicaciones comerciales, se solicitarán de forma independiente y solo con el consentimiento previo e informado (6.1.a), salvo que otra base legal resulte aplicable.',
@@ -56,7 +56,7 @@ const es: LegalPageModel = {
 			id: 'conservacion',
 			heading: '6. Plazos de conservación',
 			paragraphs: [
-				'Los datos se conservarán durante el tiempo necesario para cumplir cada finalidad, las obligaciones legales aplicables y la prescripción de posibles responsabilidades. Los plazos concretos dependen del tipo de dato y del canal (sitio web, agenda o plataforma del encargado); puede solicitar información adicional por los medios de contacto indicados en el apartado 1.',
+				'Los datos se conservarán durante el tiempo necesario para cumplir cada finalidad, las obligaciones legales aplicables y la prescripción de posibles responsabilidades. Los plazos concretos dependen del tipo de dato y del canal (sitio web, agenda profesional o plataforma del encargado); puede solicitar información adicional por los medios de contacto indicados en el apartado 1.',
 			],
 		},
 		{
@@ -146,7 +146,7 @@ const en: LegalPageModel = {
 			id: 'finalidades',
 			heading: '5. Purposes and legal bases',
 			paragraphs: [
-				'To manage the relationship with site users (requests, communications, service improvement), maintain site security, and comply with legal obligations applicable to the clinic. Depending on the case, the legal basis may be performance of pre-contractual measures or a contract (Art. 6(1)(b) GDPR), legitimate interests in a secure, operational site (6(1)(f)), and legal obligations (6(1)(c)).',
+				'To manage the relationship with site users (requests, communications, service improvement), maintain site security, and comply with legal obligations applicable to the controller\'s professional practice. Depending on the case, the legal basis may be performance of pre-contractual measures or a contract (Art. 6(1)(b) GDPR), legitimate interests in a secure, operational site (6(1)(f)), and legal obligations (6(1)(c)).',
 				'Online appointment handling aims primarily at providing the service requested by the data subject (scheduling and communications related to the appointment), mainly on the basis of performance of pre-contractual measures or contract (6(1)(b)).',
 				'For cookies and similar preferences, see the cookie policy: strictly necessary or security cookies may rely on legitimate interests or service performance where appropriate; other categories only after the configuration or consent required by the site mechanism.',
 				'If direct marketing is added later, it will be offered separately and only with prior informed consent (6(1)(a)) unless another legal basis applies.',
@@ -156,7 +156,7 @@ const en: LegalPageModel = {
 			id: 'conservacion',
 			heading: '6. Retention',
 			paragraphs: [
-				'Data are kept only as long as necessary for each purpose, applicable legal duties, and limitation periods. Exact periods depend on the data category and channel (website, clinic diary, or processor platform); you may request further detail using the contact details in section 1.',
+				'Data are kept only as long as necessary for each purpose, applicable legal duties, and limitation periods. Exact periods depend on the data category and channel (website, professional diary, or processor platform); you may request further detail using the contact details in section 1.',
 			],
 		},
 		{
@@ -246,7 +246,7 @@ const ca: LegalPageModel = {
 			id: 'finalidades',
 			heading: '5. Finalitats del tractament i bases legitimadores',
 			paragraphs: [
-				'Gestionar la relació amb els usuaris del lloc (consultes, comunicacions, millora del servei), mantenir la seguretat del lloc i complir obligacions legals aplicables a l’activitat de la clínica. Segons el cas, la base jurídica pot ser l’execució de mesures precontractuals o d’un contracte (article 6.1.b RGPD), l’interès legítim en un lloc segur i operatiu (6.1.f) i el compliment d’obligacions legals (6.1.c).',
+				'Gestionar la relació amb els usuaris del lloc (consultes, comunicacions, millora del servei), mantenir la seguretat del lloc i complir obligacions legals aplicables a l’activitat professional del responsable. Segons el cas, la base jurídica pot ser l’execució de mesures precontractuals o d’un contracte (article 6.1.b RGPD), l’interès legítim en un lloc segur i operatiu (6.1.f) i el compliment d’obligacions legals (6.1.c).',
 				'La sol·licitud i gestió de cites en línia mitjançant el formulari integrat té com a finalitat principal la prestació del servei sol·licitat per l’interessat (gestió d’agenda i comunicacions relacionades amb la cita), amb base jurídica predominant en l’execució de mesures precontractuals o contractual (6.1.b).',
 				'Quant a galetes i preferències similars, s’aplicarà el indicat a la política de galetes: galetes estrictament necessàries o de seguretat amb fonament en interès legítim o execució del servei, quan escaigui, i altres categories només després de la configuració o el consentiment que correspongui segons el mecanisme del lloc.',
 				'Si s’incorporen comunicacions comercials en el futur, es sol·licitaran de manera independent i només amb el consentiment previ i informat (6.1.a), llevat que una altra base legal sigui aplicable.',
@@ -256,7 +256,7 @@ const ca: LegalPageModel = {
 			id: 'conservacion',
 			heading: '6. Terminis de conservació',
 			paragraphs: [
-				'Les dades es conservaran el temps necessari per complir cada finalitat, les obligacions legals aplicables i la prescripció de possibles responsabilitats. Els terminis concrets depenen del tipus de dada i del canal (lloc web, agenda o plataforma de l’encarregat); pot sol·licitar informació addicional pels mitjans de contacte indicats a l’apartat 1.',
+				'Les dades es conservaran el temps necessari per complir cada finalitat, les obligacions legals aplicables i la prescripció de possibles responsabilitats. Els terminis concrets depenen del tipus de dada i del canal (lloc web, agenda professional o plataforma de l’encarregat); pot sol·licitar informació addicional pels mitjans de contacte indicats a l’apartat 1.',
 			],
 		},
 		{
@@ -346,7 +346,7 @@ const fr: LegalPageModel = {
 			id: 'finalidades',
 			heading: '5. Finalités et bases juridiques',
 			paragraphs: [
-				'Gérer la relation avec les utilisateurs du site (demandes, communications, amélioration du service), maintenir la sécurité du site et respecter les obligations légales applicables à l’activité de la clinique. Selon les cas, la base juridique peut être l’exécution de mesures précontractuelles ou d’un contrat (article 6.1.b du RGPD), l’intérêt légitime à disposer d’un site sûr et opérationnel (6.1.f), et le respect d’obligations légales (6.1.c).',
+				'Gérer la relation avec les utilisateurs du site (demandes, communications, amélioration du service), maintenir la sécurité du site et respecter les obligations légales applicables à l’activité professionnelle du responsable. Selon les cas, la base juridique peut être l’exécution de mesures précontractuelles ou d’un contrat (article 6.1.b du RGPD), l’intérêt légitime à disposer d’un site sûr et opérationnel (6.1.f), et le respect d’obligations légales (6.1.c).',
 				'La demande et la gestion de rendez-vous en ligne via le formulaire intégré visent principalement la fourniture du service demandé par la personne concernée (gestion d’agenda et communications liées au rendez-vous), avec une base juridique prédominante en l’exécution de mesures précontractuelles ou contractuelles (6.1.b).',
 				'Pour les cookies et préférences similaires, les indications de la politique relative aux cookies s’appliquent : cookies strictement nécessaires ou de sécurité sur le fondement de l’intérêt légitime ou de l’exécution du service, le cas échéant, et autres catégories uniquement après la configuration ou le consentement requis par le mécanisme du site.',
 				'Si des communications commerciales sont ajoutées ultérieurement, elles feront l’objet d’une information distincte et d’un consentement préalable éclairé (6.1.a), sauf base légale différente applicable.',
@@ -356,7 +356,7 @@ const fr: LegalPageModel = {
 			id: 'conservacion',
 			heading: '6. Durées de conservation',
 			paragraphs: [
-				'Les données sont conservées le temps nécessaire à chaque finalité, aux obligations légales applicables et aux délais de prescription. Les durées précises dépendent de la catégorie de données et du canal (site web, agenda ou plateforme du sous-traitant) ; des précisions peuvent être demandées aux coordonnées indiquées à la section 1.',
+				'Les données sont conservées le temps nécessaire à chaque finalité, aux obligations légales applicables et aux délais de prescription. Les durées précises dépendent de la catégorie de données et du canal (site web, agenda professionnel ou plateforme du sous-traitant) ; des précisions peuvent être demandées aux coordonnées indiquées à la section 1.',
 			],
 		},
 		{

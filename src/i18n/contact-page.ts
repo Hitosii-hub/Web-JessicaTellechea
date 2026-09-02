@@ -44,17 +44,17 @@ interface ContactPageContent {
 export const contactPageContent: Record<Locale, ContactPageContent> = {
 	es: {
 		seo: {
-			title: 'AJ Clínica - Solicita tu valoración',
+			title: 'Dra. Jessica Tellechea - Solicita tu valoración',
 			description:
-				'Comienza tu camino hacia una belleza natural y equilibrada. En AJ Clínica, cada consulta es el primer paso de un diseño artístico personalizado.',
+				'Comienza tu camino hacia una belleza natural y equilibrada. En la consulta de la Dra. Jessica Tellechea, cada visita es el primer paso de un diseño artístico personalizado.',
 		},
 		hero: {
 			eyebrow: 'Atención Personalizada',
 			h1: 'Solicita tu valoración.',
 			lead:
-				'Comienza tu camino hacia una belleza natural y equilibrada. En AJ Clínica, cada consulta es el primer paso de un diseño artístico personalizado.',
+				'Comienza tu camino hacia una belleza natural y equilibrada. En la consulta de la Dra. Jessica Tellechea, cada visita es el primer paso de un diseño artístico personalizado.',
 			imageSrc: '/images/home/clinic-primary.webp',
-			imageAlt: 'Interior sereno de AJ Clínica',
+			imageAlt: 'Interior sereno de la consulta médica',
 		},
 		form: {
 			name: 'Nombre',
@@ -64,7 +64,7 @@ export const contactPageContent: Record<Locale, ContactPageContent> = {
 			email: 'Email',
 			emailPlaceholder: 'ejemplo@correo.com',
 			message: 'Mensaje',
-			messagePlaceholder: 'Cuéntanos brevemente sobre tu interés...',
+			messagePlaceholder: 'Cuéntame brevemente sobre tu interés...',
 			privacyNote:
 				'Toda la información proporcionada es estrictamente confidencial y se procesa bajo los más altos estándares de privacidad médica.',
 			submit: 'Enviar Solicitud',
@@ -87,17 +87,17 @@ export const contactPageContent: Record<Locale, ContactPageContent> = {
 	},
 	en: {
 		seo: {
-			title: 'AJ Clínica - Request your assessment',
+			title: 'Dr. Jessica Tellechea - Request your assessment',
 			description:
-				'Begin your path toward natural, balanced beauty. At AJ Clínica, each consultation is the first step in a personalised artistic design.',
+				'Begin your path toward natural, balanced beauty. In Dr. Jessica Tellechea\'s practice, each consultation is the first step in a personalised artistic design.',
 		},
 		hero: {
 			eyebrow: 'Personalised Attention',
 			h1: 'Request your assessment.',
 			lead:
-				'Begin your path toward natural, balanced beauty. At AJ Clínica, each consultation is the first step in a personalised artistic design.',
+				'Begin your path toward natural, balanced beauty. In Dr. Jessica Tellechea\'s practice, each consultation is the first step in a personalised artistic design.',
 			imageSrc: '/images/home/clinic-primary.webp',
-			imageAlt: 'Calm interior of AJ Clínica',
+			imageAlt: 'Calm interior of the medical practice',
 		},
 		form: {
 			name: 'Name',
@@ -107,7 +107,7 @@ export const contactPageContent: Record<Locale, ContactPageContent> = {
 			email: 'Email',
 			emailPlaceholder: 'example@email.com',
 			message: 'Message',
-			messagePlaceholder: 'Briefly tell us what you are interested in...',
+			messagePlaceholder: 'Briefly tell me what you are interested in...',
 			privacyNote:
 				'All information provided is strictly confidential and processed under the highest standards of medical privacy.',
 			submit: 'Send Request',
@@ -125,22 +125,22 @@ export const contactPageContent: Record<Locale, ContactPageContent> = {
 		},
 		trust: {
 			quote: '"Aesthetic medicine should not shout, but whisper the best version of oneself."',
-			author: 'Dra. Jessica Tellechea',
+			author: 'Dr. Jessica Tellechea',
 		},
 	},
 	ca: {
 		seo: {
-			title: 'AJ Clínica - Sol·licita la teva valoració',
+			title: 'Dra. Jessica Tellechea - Sol·licita la teva valoració',
 			description:
-				'Comença el teu camí cap a una bellesa natural i equilibrada. A AJ Clínica, cada consulta és el primer pas d’un disseny artístic personalitzat.',
+				'Comença el teu camí cap a una bellesa natural i equilibrada. A la consulta de la Dra. Jessica Tellechea, cada visita és el primer pas d’un disseny artístic personalitzat.',
 		},
 		hero: {
 			eyebrow: 'Atenció Personalitzada',
 			h1: 'Sol·licita la teva valoració.',
 			lead:
-				'Comença el teu camí cap a una bellesa natural i equilibrada. A AJ Clínica, cada consulta és el primer pas d’un disseny artístic personalitzat.',
+				'Comença el teu camí cap a una bellesa natural i equilibrada. A la consulta de la Dra. Jessica Tellechea, cada visita és el primer pas d’un disseny artístic personalitzat.',
 			imageSrc: '/images/home/clinic-primary.webp',
-			imageAlt: 'Interior serè d’AJ Clínica',
+			imageAlt: 'Interior serè de la consulta mèdica',
 		},
 		form: {
 			name: 'Nom',
@@ -150,7 +150,7 @@ export const contactPageContent: Record<Locale, ContactPageContent> = {
 			email: 'Email',
 			emailPlaceholder: 'exemple@correu.com',
 			message: 'Missatge',
-			messagePlaceholder: 'Explica’ns breument el teu interès...',
+			messagePlaceholder: 'Explica’m breument el teu interès...',
 			privacyNote:
 				'Tota la informació proporcionada és estrictament confidencial i es processa sota els estàndards més alts de privacitat mèdica.',
 			submit: 'Enviar Sol·licitud',
@@ -173,17 +173,17 @@ export const contactPageContent: Record<Locale, ContactPageContent> = {
 	},
 	fr: {
 		seo: {
-			title: 'AJ Clínica - Demandez votre évaluation',
+			title: 'Dre Jessica Tellechea - Demandez votre évaluation',
 			description:
-				'Commencez votre chemin vers une beauté naturelle et équilibrée. Chez AJ Clínica, chaque consultation est le premier pas d’un design artistique personnalisé.',
+				'Commencez votre chemin vers une beauté naturelle et équilibrée. Au cabinet de la Dre Jessica Tellechea, chaque consultation est le premier pas d’un design artistique personnalisé.',
 		},
 		hero: {
 			eyebrow: 'Attention Personnalisée',
 			h1: 'Demandez votre évaluation.',
 			lead:
-				'Commencez votre chemin vers une beauté naturelle et équilibrée. Chez AJ Clínica, chaque consultation est le premier pas d’un design artistique personnalisé.',
+				'Commencez votre chemin vers une beauté naturelle et équilibrée. Au cabinet de la Dre Jessica Tellechea, chaque consultation est le premier pas d’un design artistique personnalisé.',
 			imageSrc: '/images/home/clinic-primary.webp',
-			imageAlt: 'Intérieur serein d’AJ Clínica',
+			imageAlt: 'Intérieur serein du cabinet médical',
 		},
 		form: {
 			name: 'Nom',
@@ -193,7 +193,7 @@ export const contactPageContent: Record<Locale, ContactPageContent> = {
 			email: 'Email',
 			emailPlaceholder: 'exemple@email.com',
 			message: 'Message',
-			messagePlaceholder: 'Parlez-nous brièvement de votre intérêt...',
+			messagePlaceholder: 'Parlez-moi brièvement de votre intérêt...',
 			privacyNote:
 				'Toutes les informations fournies sont strictement confidentielles et traitées selon les plus hauts standards de confidentialité médicale.',
 			submit: 'Envoyer la Demande',
@@ -212,7 +212,7 @@ export const contactPageContent: Record<Locale, ContactPageContent> = {
 		trust: {
 			quote:
 				'"La médecine esthétique ne doit pas crier, mais murmurer la meilleure version de soi-même."',
-			author: 'Dra. Jessica Tellechea',
+			author: 'Dre Jessica Tellechea',
 		},
 	},
 };

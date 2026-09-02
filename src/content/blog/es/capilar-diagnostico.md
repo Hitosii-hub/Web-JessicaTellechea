@@ -4,6 +4,6 @@ description: 'Por que el mensaje capilar debe estar ligado al diagnostico y al s
 pubDate: 2026-04-20
 ---
 
-El cabello responde a muchas variables. Por eso evitamos presentar un **catalogo agresivo** en la entrada: primero contexto, diagnostico y criterio.
+El cabello responde a muchas variables. Por eso no presento un **catalogo agresivo** en la entrada: primero contexto, diagnostico y criterio.
 
 Post de ejemplo para la **coleccion blog** multi-idioma (contenido inicial solo en ES).

@@ -36,8 +36,8 @@ const es: LegalPageModel = {
 			id: 'servicios',
 			heading: 'Servicios',
 			paragraphs: [
-				'En el Sitio Web podrá encontrar información sobre la actividad de la clínica, servicios, localización y medios de contacto. Pueden existir formularios o funciones adicionales (por ejemplo, solicitud de información o reserva de cita en línea) según lo habilitado en cada momento.',
-				'La información publicada tiene carácter general e informativo. La relación clínica, prescripción o contratación de servicios sanitarios se regirá por las reglas aplicables fuera de este entorno digital y, en su caso, por lo acordado con la clínica.',
+				'En el Sitio Web podrá encontrar información sobre la actividad profesional del responsable, servicios, localización y medios de contacto. Pueden existir formularios o funciones adicionales (por ejemplo, solicitud de información o reserva de cita en línea) según lo habilitado en cada momento.',
+				'La información publicada tiene carácter general e informativo. La relación clínica, prescripción o contratación de servicios sanitarios se regirá por las reglas aplicables fuera de este entorno digital y, en su caso, por lo acordado directamente con el responsable.',
 			],
 		},
 		{
@@ -123,8 +123,8 @@ const en: LegalPageModel = {
 			id: 'servicios',
 			heading: 'Services',
 			paragraphs: [
-				'The Site may provide information about the clinic, services, location, and contact options. Additional features (for example, contact or online booking) may be enabled from time to time.',
-				'Information is general in nature. Clinical care, prescriptions, or healthcare contracts are governed by applicable rules and any separate agreement with the clinic.',
+				'The Site may provide information about the controller\'s professional practice, services, location, and contact options. Additional features (for example, contact or online booking) may be enabled from time to time.',
+				'Information is general in nature. Clinical care, prescriptions, or healthcare contracts are governed by applicable rules and any separate agreement with the controller.',
 			],
 		},
 		{
@@ -210,8 +210,8 @@ const ca: LegalPageModel = {
 			id: 'servicios',
 			heading: 'Serveis',
 			paragraphs: [
-				'Al Lloc Web hi pot haver informacio sobre la clinica, serveis i contacte. Poden habilitar-se formularis o reserves en linia segons el cas.',
-				'La informacio es general. La relacio clinica o contractacio sanitaria es regeix per les normes aplicables fora daquest entorn.',
+				'Al Lloc Web hi pot haver informacio sobre lactivitat professional del responsable, serveis i contacte. Poden habilitar-se formularis o reserves en linia segons el cas.',
+				'La informacio es general. La relacio clinica o contractacio sanitaria es regeix per les normes aplicables fora daquest entorn i, si escau, pel que sacordi directament amb el responsable.',
 			],
 		},
 		{
@@ -296,8 +296,8 @@ const fr: LegalPageModel = {
 			id: 'servicios',
 			heading: 'Services',
 			paragraphs: [
-				'Le Site peut présenter des informations sur la clinique, les services et les contacts. Des formulaires ou une prise de rendez-vous en ligne peuvent être proposés selon les fonctionnalités actives.',
-				'Les informations sont générales. Les soins ou contrats de santé sont régis par les règles applicables en dehors du Site.',
+				'Le Site peut présenter des informations sur l\'activité professionnelle du responsable, les services et les contacts. Des formulaires ou une prise de rendez-vous en ligne peuvent être proposés selon les fonctionnalités actives.',
+				'Les informations sont générales. Les soins ou contrats de santé sont régis par les règles applicables en dehors du Site et, le cas échéant, par ce qui est convenu directement avec le responsable.',
 			],
 		},
 		{

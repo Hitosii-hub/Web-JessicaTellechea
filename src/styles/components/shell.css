@@ -2,10 +2,12 @@
 	position: sticky;
 	top: 0;
 	z-index: 40;
-	min-height: 100px;
-	display: flex;
-	align-items: center;
-	padding: 0 var(--space-md);
+	--site-header-min-height: 144px;
+	--site-header-pad-top: var(--space-md);
+	--site-header-pad-bottom: var(--space-sm);
+	--site-header-center-gap: 0.625rem;
+	min-height: var(--site-header-min-height);
+	padding: var(--site-header-pad-top) var(--space-md) var(--site-header-pad-bottom);
 	background: var(--color-surface);
 	border-bottom: 1px solid var(--color-border);
 	box-shadow: var(--shadow-sm);
@@ -32,17 +34,37 @@
 .site-header__inner {
 	display: grid;
 	grid-template-columns: auto 1fr auto;
+	grid-template-rows: auto auto;
+	row-gap: var(--site-header-center-gap);
+	align-content: center;
 	align-items: center;
-	gap: var(--space-md);
 	width: 100%;
 	max-width: var(--max-width-wide);
+	height: calc(
+		var(--site-header-min-height) - var(--site-header-pad-top) - var(--site-header-pad-bottom)
+	);
+	min-height: calc(
+		var(--site-header-min-height) - var(--site-header-pad-top) - var(--site-header-pad-bottom)
+	);
 	margin: 0 auto;
 }
 
+/* Los hijos del centro participan en la cuadrícula del header */
+.site-header__center {
+	display: contents;
+}
+
+/* Monograma: columna izquierda, altura completa del header */
 .site-header__logo {
+	grid-column: 1;
+	grid-row: 1 / -1;
+	z-index: 2;
+	justify-self: start;
+	align-self: center;
 	display: inline-flex;
 	align-items: center;
-	min-height: 44px;
+	justify-content: center;
+	flex-shrink: 0;
 	text-decoration: none;
 	outline-offset: 4px;
 }
@@ -53,23 +75,117 @@
 
 .site-header__logo-img {
 	display: block;
-	height: 65px;
-	width: auto;
-	max-width: min(220px, 36vw);
+	width: min(5rem, 18vw);
+	height: auto;
+	max-height: calc(var(--site-header-min-height) - var(--space-md));
 	object-fit: contain;
 }
 
-.site-header__nav-slot {
+/* Nombre + menú centrados en el ancho total del header (misma simetría) */
+.site-header__wordmark {
+	grid-column: 1 / -1;
+	grid-row: 1;
+	z-index: 1;
+	justify-self: center;
 	display: flex;
+	align-items: center;
 	justify-content: center;
-	min-width: 0;
+	max-width: min(100%, 28rem);
+	pointer-events: auto;
+	text-decoration: none;
+	outline-offset: 4px;
+}
+
+.site-header__wordmark:hover .site-header__wordmark-img {
+	opacity: 0.9;
+}
+
+.site-header__wordmark-img {
+	display: block;
+	width: min(100%, 28rem);
+	height: auto;
+	max-height: 1.9rem;
+	object-fit: contain;
+}
+
+.site-header__toolbar {
+	grid-column: 1 / -1;
+	grid-row: 2;
+	z-index: 1;
+	justify-self: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	max-width: 100%;
+	pointer-events: auto;
 }
 
 .site-header__actions {
+	grid-column: 3;
+	grid-row: 1 / -1;
+	z-index: 2;
+	justify-self: end;
+	align-self: center;
 	display: flex;
 	align-items: center;
 	justify-content: flex-end;
 	gap: var(--space-sm);
+	flex-shrink: 0;
+}
+
+@media (max-width: 959.98px) {
+	.site-header {
+		--site-header-min-height: 72px;
+		--site-header-pad-top: var(--space-sm);
+		--site-header-pad-bottom: var(--space-sm);
+		padding-inline: var(--space-sm);
+	}
+
+	.site-header__inner {
+		grid-template-columns: auto minmax(0, 1fr) auto auto;
+		grid-template-rows: auto;
+		row-gap: 0;
+		column-gap: var(--space-sm);
+	}
+
+	.site-header__logo {
+		grid-column: 1;
+		grid-row: 1;
+	}
+
+	.site-header__logo-img {
+		width: 2.75rem;
+		max-height: 2.75rem;
+	}
+
+	.site-header__wordmark {
+		grid-column: 2;
+		grid-row: 1;
+		justify-self: center;
+		width: 100%;
+		min-width: 0;
+		max-width: none;
+		padding-inline: var(--space-xs);
+	}
+
+	.site-header__wordmark-img {
+		width: 100%;
+		max-height: 1.1rem;
+	}
+
+	.site-header__actions {
+		grid-column: 3;
+		grid-row: 1;
+		gap: 0;
+	}
+
+	.site-header__toolbar {
+		grid-column: 4;
+		grid-row: 1;
+		width: auto;
+		justify-self: end;
+	}
 }
 
 .site-header__booking {
