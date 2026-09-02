@@ -13,9 +13,10 @@ export function resolveContactFormPostUrl(clinicEmail: string): string | undefin
 	if (!isUnsetFormPostUrl(configured)) return configured;
 
 	const email = clinicEmail.trim();
-	if (!email.includes('@')) return undefined;
+	if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return undefined;
 
-	return `https://formsubmit.co/${encodeURIComponent(email)}`;
+	// FormSubmit expects the raw address in the path (do not encode `@`).
+	return `https://formsubmit.co/${email}`;
 }
 
 export function contactFormUsesFormSubmitFallback(clinicEmail: string): boolean {
