@@ -54,14 +54,14 @@ interface BlogIndexContent {
 
 const spanishBlogIndexContent: BlogIndexContent = {
 	seo: {
-		title: 'Blog AJ Clínica',
+		title: 'Blog Dra. Jessica Tellechea',
 		description:
-			'Un espacio dedicado al rigor médico y la estética consciente. Exploramos la intersección entre la ciencia avanzada y la preservación de la armonía natural.',
+			'Un espacio dedicado al rigor médico y la estética consciente. La intersección entre la ciencia avanzada y la preservación de la armonía natural.',
 	},
 	hero: {
-		h1: 'Blog AJ Clínica',
+		h1: 'Blog Dra. Jessica Tellechea',
 		lead:
-			'Un espacio dedicado al rigor médico y la estética consciente. Exploramos la intersección entre la ciencia avanzada y la preservación de la armonía natural.',
+			'Un espacio dedicado al rigor médico y la estética consciente. La intersección entre la ciencia avanzada y la preservación de la armonía natural.',
 	},
 	categories: [
 		{ label: 'Todos los artículos', active: true },
@@ -75,22 +75,22 @@ const spanishBlogIndexContent: BlogIndexContent = {
 		category: 'Destacado',
 		title: 'Qué significa rejuvenecimiento natural',
 		description:
-			'La verdadera maestría en medicina estética no reside en el cambio drástico, sino en la restauración sutil de los volúmenes y la luminosidad perdida. Analizamos cómo el enfoque progresivo garantiza resultados imperceptibles pero transformadores.',
+			'La verdadera maestría en medicina estética no reside en el cambio drástico, sino en la restauración sutil de los volúmenes y la luminosidad perdida. Un enfoque progresivo que garantiza resultados imperceptibles pero transformadores.',
 		imageSrc: '/images/home/clinic-primary.webp',
 		imageAlt:
-			'A macro, editorial photograph of high-end skincare serums on a microcement surface with natural, soft morning light casting gentle shadows. The composition is clean and minimalist, reflecting a luxurious clinical atmosphere with neutral beige and warm grey tones. The focus is sharp on the glass textures and liquid drops, conveying purity and medical precision.',
+			'Fotografía macro editorial de sérums de skincare de alta gama sobre una superficie de microcemento con luz natural suave, sombras delicadas y una atmósfera clínica minimalista en tonos beige y gris cálido.',
 		href: '/blog/rejuvenecimiento-progresivo/',
 		linkLabel: 'LEER ARTÍCULO',
 	},
 	articles: [
 		{
 			category: 'Guía Médica',
-			title: 'Cómo elegir una clínica estética en Barcelona',
+			title: 'Cómo elegir una consulta médica estética en Barcelona o Tarragona',
 			description:
-				'Criterios fundamentales para identificar un centro comprometido con la ética médica y la seguridad del paciente más allá del marketing.',
+				'Criterios fundamentales para identificar una práctica comprometida con la ética médica y la seguridad del paciente más allá del marketing.',
 			imageSrc: '/images/home/clinic-secondary.webp',
 			imageAlt:
-				'Close-up of a professional medical consultation room in a luxury clinic in Barcelona. The aesthetic is warm and inviting, featuring minimalist wooden accents, a soft cream leather chair, and a large window providing diffuse natural light. The atmosphere is serene, focusing on the calm and private environment where medical assessments take place.',
+				'Sala de consulta médica premium con acentos minimalistas de madera, sillón crema de piel y luz natural difusa. Ambiente sereno pensado para valoraciones médicas privadas.',
 		},
 		{
 			category: 'Salud Capilar',
@@ -99,7 +99,7 @@ const spanishBlogIndexContent: BlogIndexContent = {
 				'Diferencias técnicas y sinergias entre los bioestimuladores capilares para tratar el efluvio telógeno y la alopecia inicial.',
 			imageSrc: '/images/home/capillary.webp',
 			imageAlt:
-				'An artistic, macro shot of clean skin texture under soft, focused medical lighting. The image emphasizes the health and detail of human skin in a non-clinical, editorial way, using warm lighting and high-end photographic techniques. The palette consists of soft flesh tones and neutral backgrounds, conveying a sense of care and advanced dermatological science.',
+				'Macro artístico de textura de piel bajo luz médica focalizada, con tonos cálidos y técnica fotográfica editorial que destaca la salud y el detalle dermatológico.',
 			href: '/blog/capilar-diagnostico/',
 		},
 		{
@@ -109,14 +109,14 @@ const spanishBlogIndexContent: BlogIndexContent = {
 				'Entender la diferencia entre relajar el músculo y regenerar el colágeno propio es la clave para un plan de antienvejecimiento inteligente.',
 			imageSrc: '/images/home/treatment-facial.webp',
 			imageAlt:
-				'A minimalist architectural detail of a high-end wellness space. Soft, indirect lighting illuminates a textured lime-wash wall, creating a soothing play of light and shadow. In the foreground, a single organic-shaped ceramic vase sits on a stone surface, embodying the philosophy of silent luxury and Mediterranean minimalism that defines the clinic aesthetic.',
+				'Detalle arquitectónico de un espacio wellness de alta gama con iluminación indirecta suave sobre pared texturizada de cal y un jarrón cerámico orgánico. Estética de lujo silencioso y minimalismo mediterráneo.',
 		},
 	],
 	authority: {
-		eyebrow: 'Nuestra Filosofía',
+		eyebrow: 'Filosofía',
 		title: 'Información para decidir con criterio',
 		quote:
-			'"En AJ Clínica, creemos que el paciente mejor informado es el que obtiene los mejores resultados. No seguimos tendencias; aplicamos medicina basada en la anatomía individual para potenciar la identidad única de cada rostro."',
+			'"En medicina estética, creo que el paciente mejor informado es el que obtiene los mejores resultados. No sigo tendencias; aplico medicina basada en la anatomía individual para potenciar la identidad única de cada rostro."',
 		stats: [
 			{ value: '98%', label: 'Satisfacción Médica' },
 			{ value: '15+', label: 'Años de Especialidad' },
@@ -130,7 +130,7 @@ const spanishBlogIndexContent: BlogIndexContent = {
 				'El secreto del éxito reside en la planificación a largo plazo, evitando intervenciones súbitas.',
 			imageSrc: '/images/home/clinic-primary.webp',
 			imageAlt:
-				'A sophisticated flat-lay photograph of medical-grade skincare products and a minimalist clinical agenda on a light stone table. The lighting is bright and clean, mimicking a professional workspace in a premium medical center. The color palette is dominated by whites, soft beiges, and subtle metallic accents, emphasizing organizational excellence and scientific focus.',
+				'Flat-lay sofisticado de productos de skincare de grado médico y una agenda clínica minimalista sobre mesa de piedra clara, con iluminación limpia que evoca excelencia organizativa y foco científico.',
 		},
 		{
 			category: 'Tendencias',
@@ -140,9 +140,9 @@ const spanishBlogIndexContent: BlogIndexContent = {
 		},
 	],
 	newsletter: {
-		title: 'Suscríbase a nuestro boletín médico',
+		title: 'Suscríbase al boletín médico',
 		body:
-			'Reciba bimensualmente nuestras reflexiones sobre medicina estética, novedades en tratamientos y recomendaciones dermatológicas exclusivas.',
+			'Reciba bimensualmente reflexiones sobre medicina estética, novedades en tratamientos y recomendaciones dermatológicas exclusivas.',
 		placeholder: 'Correo electrónico',
 		button: 'SUSCRIBIRSE',
 	},

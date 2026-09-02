@@ -89,7 +89,7 @@ export interface CorporalPageContent {
 
 const spanishCorporalPageContent: CorporalPageContent = {
 	seo: {
-		title: 'Medicina estetica corporal en Barcelona | AJ Clinica',
+		title: 'Medicina estetica corporal en Barcelona y Tarragona | Dra. Jessica Tellechea',
 		description:
 			'Mejorar tu cuerpo con criterio, priorizando la salud del tejido y la armonía natural de las formas.',
 	},
@@ -100,23 +100,23 @@ const spanishCorporalPageContent: CorporalPageContent = {
 			'Mejorar tu cuerpo con criterio.',
 		text: 'Tratamientos médicos orientados a mejorar firmeza, calidad de piel y definición corporal con un enfoque progresivo.',
 		primaryCta: 'Solicitar valoración corporal',
-		secondaryCta: 'Conoce nuestro criterio médico',
+		secondaryCta: 'Conoce el criterio médico',
 		imageSrc: '/images/home/treatment-corporal.webp',
-		imageAlt: 'Medicina Estetica Corporal',
+		imageAlt: 'Medicina estética corporal en Barcelona y Tarragona',
 	},
 	identification: {
 		title: 'Buscas mejorar, con naturalidad y control.',
 		body:
-			'En AJ, buscamos acompañar cada cuerpo desde un enfoque médico, progresivo y personalizado, priorizando resultados naturales, equilibrados y coherentes con cada persona.',
+			'En la medicina estética corporal, la Dra. Jessica Tellechea busca acompañar cada cuerpo desde un enfoque médico, progresivo y personalizado, priorizando resultados naturales, equilibrados y coherentes con cada persona.',
 	},
 	evaluation: {
 		title: 'Cada protocolo parte de una evaluación corporal.',
 		body:
-			'Cada cuerpo requiere una valoración propia. Analizamos calidad de la piel, firmeza y objetivo corporal para construir un plan progresivo, natural y coherente con cada persona.',
+			'Cada cuerpo requiere una valoración propia. La evaluación parte del análisis de la calidad de la piel, la firmeza y el objetivo corporal, para construir un plan progresivo, natural y coherente con cada persona.',
 		steps: [
 			{
 				label: '01 / Criterio médico',
-				body: 'Priorizamos las necesidades reales de cada cuerpo antes de definir cualquier tratamiento.',
+				body: 'Las necesidades reales de cada cuerpo se priorizan antes de definir cualquier tratamiento.',
 			},
 			{
 				label: '02 / Evolución Progresiva',
@@ -124,7 +124,7 @@ const spanishCorporalPageContent: CorporalPageContent = {
 			},
 		],
 		imageSrc: '/images/home/treatment-corporal.webp',
-		imageAlt: 'Evaluación Corporal',
+		imageAlt: 'Evaluación corporal en Barcelona y Tarragona',
 	},
 	benefits: {
 		eyebrow: 'Beneficios',
@@ -133,32 +133,32 @@ const spanishCorporalPageContent: CorporalPageContent = {
 			{
 			  icon: 'ph-sparkle',
 			  title: 'Piel más firme',
-			  body: 'Trabajamos la firmeza y la calidad de la piel de forma progresiva.',
+			  body: 'La firmeza y la calidad de la piel se trabajan de forma progresiva.',
 			},
 			{
 			  icon: 'ph-target',
 			  title: 'Definición natural',
-			  body: 'Acompañamos protocolos de definición corporal desde un enfoque médico.',
+			  body: 'Los protocolos de definición corporal se abordan desde un enfoque médico.',
 			},
 			{
 			  icon: 'ph-waves',
 			  title: 'Drenaje y alivio',
-			  body: 'Favorecemos el drenaje y la recuperación de los tejidos.',
+			  body: 'El drenaje y la recuperación de los tejidos se favorecen a lo largo del plan.',
 			},
 			{
 			  icon: 'ph-sliders-horizontal',
 			  title: 'Cada cuerpo, un plan',
-			  body: 'Adaptamos cada tratamiento al ritmo, objetivo y evolución de cada persona.',
+			  body: 'Cada tratamiento se adapta al ritmo, objetivo y evolución de cada persona.',
 			},
 			{
 			  icon: 'ph-seal-check',
 			  title: 'Evolución visible',
-			  body: 'Buscamos una mejora gradual, natural y coherente con cada cuerpo.',
+			  body: 'Mejora gradual, natural y coherente con cada cuerpo.',
 			},
 		  ],
 	},
 	treatments: {
-		title: 'Nuestras áreas de especialización',
+		title: 'Áreas de especialización',
 		items: [
 			{
 				eyebrow: 'Firmeza y Tensión',
@@ -169,7 +169,7 @@ const spanishCorporalPageContent: CorporalPageContent = {
 					'Hilos tensores corporales de nueva generación',
 				],
 				imageSrc: '/images/home/treatment-corporal.webp',
-				imageAlt: 'Tecnología de Firmeza',
+				imageAlt: 'Tecnología de firmeza',
 				variant: 'wide',
 			},
 			{
@@ -178,7 +178,7 @@ const spanishCorporalPageContent: CorporalPageContent = {
 				body:
 					'Programas integrales para recuperar la elasticidad y compactación del tejido tras cambios volumétricos.',
 				imageSrc: '/images/home/clinic-secondary.webp',
-				imageAlt: 'Proceso de Recuperación',
+				imageAlt: 'Proceso de recuperación',
 			},
 			{
 				eyebrow: 'Estimulación',
@@ -186,7 +186,7 @@ const spanishCorporalPageContent: CorporalPageContent = {
 				body:
 					'Mantenimiento de la masa muscular y definición de contornos mediante tecnología electromagnética focalizada.',
 				imageSrc: '/images/home/clinic-primary.webp',
-				imageAlt: 'Estimulación Muscular',
+				imageAlt: 'Estimulación muscular',
 				variant: 'dark',
 			},
 		],
@@ -198,22 +198,22 @@ const spanishCorporalPageContent: CorporalPageContent = {
 			{
 				marker: 'I',
 				title: 'Valoración Corporal',
-				body: 'Analizamos las necesidades del cuerpo y definimos las prioridades del tratamiento.',
+				body: 'Análisis de las necesidades del cuerpo y definición de las prioridades del tratamiento.',
 			},
 			{
 				marker: 'II',
 				title: 'Objetivo y priorización',
-				body: 'Establecemos un enfoque progresivo y coherente con cada objetivo corporal.',
+				body: 'Establecimiento de un enfoque progresivo y coherente con cada objetivo corporal.',
 			},
 			{
 				marker: 'III',
 				title: 'Plan personalizado',
-				body: 'Diseñamos un protocolo adaptado al ritmo, evolución y características de cada persona.',
+				body: 'Diseño de un protocolo adaptado al ritmo, evolución y características de cada persona.',
 			},
 			{
 				marker: 'IV',
 				title: 'Seguimiento',
-				body: 'Acompañamos la evolución del tratamiento para mantener resultados naturales y equilibrados.',
+				body: 'Acompañamiento de la evolución del tratamiento para mantener resultados naturales y equilibrados.',
 			},
 		],
 	},
@@ -226,7 +226,7 @@ const spanishCorporalPageContent: CorporalPageContent = {
 		{
 			index: '02',
 			title: 'Evolución Progresiva',
-			body: 'Buscamos mejoras visibles, naturales y coherentes a través de un enfoque progresivo.',
+			body: 'Mejoras visibles, naturales y coherentes a través de un enfoque progresivo.',
 		},
 		{
 			index: '03',
@@ -244,7 +244,7 @@ const spanishCorporalPageContent: CorporalPageContent = {
 const englishCorporalPageContent: CorporalPageContent = {
 	...spanishCorporalPageContent,
 	seo: {
-		title: 'Body aesthetic medicine in Barcelona | AJ Clinic',
+		title: 'Body aesthetic medicine in Barcelona and Tarragona | Dr. Jessica Tellechea',
 		description:
 			'Improve your body with a thoughtful approach, prioritizing tissue health and the natural harmony of body shape.',
 	},
@@ -255,44 +255,44 @@ const englishCorporalPageContent: CorporalPageContent = {
 		lead: 'Improve your body with a thoughtful approach.',
 		text: 'Medical treatments focused on improving firmness, skin quality, and body definition with a progressive approach.',
 		primaryCta: 'Request body assessment',
-		secondaryCta: 'See our medical criteria',
-		imageAlt: 'Body aesthetic medicine',
+		secondaryCta: 'See the medical criteria',
+		imageAlt: 'Body aesthetic medicine in Barcelona and Tarragona',
 	},
 	identification: {
 		title: 'You want to improve with naturalness and control.',
 		body:
-			'At AJ, we seek to support each body through a medical, progressive, and personalized approach, prioritizing natural, balanced results aligned with each person.',
+			'In her practice, Dr. Jessica Tellechea supports each body through a medical, progressive and personalised approach, prioritising natural, balanced results aligned with each person.',
 	},
 	evaluation: {
 		title: 'Every protocol starts with a body assessment.',
 		body:
-			'Each body needs an individual evaluation. We assess skin quality, firmness, and body goals to build a progressive, natural plan aligned with each person.',
+			'Each body needs an individual evaluation. The assessment starts from analysing skin quality, firmness and body goals to build a progressive, natural plan aligned with each person.',
 		steps: [
 			{
 				label: '01 / Medical criteria',
-				body: 'We prioritize each body’s real needs before defining any treatment.',
+				body: 'Each body\'s real needs are prioritised before defining any treatment.',
 			},
 			{
 				label: '02 / Progressive evolution',
-				body: 'Protocols are adapted to each person’s pace and evolution.',
+				body: 'Protocols are adapted to each person\'s pace and evolution.',
 			},
 		],
 		imageSrc: spanishCorporalPageContent.evaluation.imageSrc,
-		imageAlt: 'Body assessment',
+		imageAlt: 'Body assessment in Barcelona and Tarragona',
 	},
 	benefits: {
 		eyebrow: 'Benefits',
 		title: 'Excellence in tissue quality',
 		items: [
-			{ icon: 'ph-sparkle', title: 'Firmer skin', body: 'We improve firmness and skin quality progressively.' },
-			{ icon: 'ph-target', title: 'Natural definition', body: 'We support body-definition protocols through a medical approach.' },
-			{ icon: 'ph-waves', title: 'Drainage and relief', body: 'We encourage drainage and tissue recovery.' },
-			{ icon: 'ph-sliders-horizontal', title: 'Every body, one plan', body: 'Each protocol adapts to each person’s pace, goals, and evolution.' },
-			{ icon: 'ph-seal-check', title: 'Visible evolution', body: 'We pursue gradual, natural, and coherent improvement.' },
+			{ icon: 'ph-sparkle', title: 'Firmer skin', body: 'Firmness and skin quality improve progressively.' },
+			{ icon: 'ph-target', title: 'Natural definition', body: 'Body-definition protocols are approached with a medical lens.' },
+			{ icon: 'ph-waves', title: 'Drainage and relief', body: 'Drainage and tissue recovery are encouraged along the plan.' },
+			{ icon: 'ph-sliders-horizontal', title: 'Every body, one plan', body: 'Each protocol adapts to each person\'s pace, goals and evolution.' },
+			{ icon: 'ph-seal-check', title: 'Visible evolution', body: 'Gradual, natural and coherent improvement.' },
 		],
 	},
 	treatments: {
-		title: 'Our areas of specialization',
+		title: 'Areas of specialisation',
 		items: [
 			{
 				eyebrow: 'Firmness and tension',
@@ -327,22 +327,22 @@ const englishCorporalPageContent: CorporalPageContent = {
 		eyebrow: 'Methodology',
 		title: 'The path to progressive improvement',
 		steps: [
-			{ marker: 'I', title: 'Body assessment', body: 'We assess body needs and define treatment priorities.' },
-			{ marker: 'II', title: 'Goal and prioritization', body: 'We establish a progressive approach aligned with each body goal.' },
-			{ marker: 'III', title: 'Personalized plan', body: 'We design a protocol adapted to each person’s pace, evolution, and characteristics.' },
-			{ marker: 'IV', title: 'Follow-up', body: 'We support treatment evolution to preserve natural, balanced results.' },
+			{ marker: 'I', title: 'Body assessment', body: 'Analysis of body needs and definition of treatment priorities.' },
+			{ marker: 'II', title: 'Goal and prioritisation', body: 'Establishing a progressive approach aligned with each body goal.' },
+			{ marker: 'III', title: 'Personalised plan', body: 'Design of a protocol adapted to each person\'s pace, evolution and characteristics.' },
+			{ marker: 'IV', title: 'Follow-up', body: 'Ongoing support during treatment evolution to preserve natural, balanced results.' },
 		],
 	},
 	differentiation: [
 		{
 			index: '01',
-			title: 'Personalized protocols',
-			body: 'Each treatment adapts to each body’s needs, pace, and evolution.',
+			title: 'Personalised protocols',
+			body: 'Each treatment adapts to each body\'s needs, pace and evolution.',
 		},
 		{
 			index: '02',
 			title: 'Progressive evolution',
-			body: 'We seek visible, natural, and coherent improvements through a progressive approach.',
+			body: 'Visible, natural and coherent improvements through a progressive approach.',
 		},
 		{
 			index: '03',
@@ -352,7 +352,7 @@ const englishCorporalPageContent: CorporalPageContent = {
 	],
 	finalCta: {
 		h2: 'Request a body assessment',
-		body: 'The first step is to identify the real need and prioritize treatment order.',
+		body: 'The first step is to identify the real need and prioritise treatment order.',
 		primary: 'Request body assessment',
 	},
 };
@@ -360,7 +360,7 @@ const englishCorporalPageContent: CorporalPageContent = {
 const catalanCorporalPageContent: CorporalPageContent = {
 	...spanishCorporalPageContent,
 	seo: {
-		title: 'Medicina estètica corporal a Barcelona | AJ Clínica',
+		title: 'Medicina estètica corporal a Barcelona i Tarragona | Dra. Jessica Tellechea',
 		description:
 			'Millorar el teu cos amb criteri, prioritzant la salut del teixit i l harmonia natural de les formes.',
 	},
@@ -371,22 +371,22 @@ const catalanCorporalPageContent: CorporalPageContent = {
 		lead: 'Millorar el teu cos amb criteri.',
 		text: 'Tractaments mèdics orientats a millorar fermesa, qualitat de la pell i definició corporal amb un enfocament progressiu.',
 		primaryCta: 'Sol·licitar valoració corporal',
-		secondaryCta: 'Coneix el nostre criteri mèdic',
-		imageAlt: 'Medicina estètica corporal',
+		secondaryCta: 'Coneix el criteri mèdic',
+		imageAlt: 'Medicina estètica corporal a Barcelona i Tarragona',
 	},
 	identification: {
 		title: 'Vols millorar, amb naturalitat i control.',
 		body:
-			'A AJ, busquem acompanyar cada cos des d un enfocament mèdic, progressiu i personalitzat, prioritzant resultats naturals, equilibrats i coherents amb cada persona.',
+			'En la medicina estètica corporal, la Dra. Jessica Tellechea busca acompanyar cada cos des d\'un enfocament mèdic, progressiu i personalitzat, prioritzant resultats naturals, equilibrats i coherents amb cada persona.',
 	},
 	evaluation: {
 		title: 'Cada protocol parteix d una valoració corporal.',
 		body:
-			'Cada cos requereix una valoració pròpia. Analitzem la qualitat de la pell, la fermesa i l objectiu corporal per construir un pla progressiu, natural i coherent amb cada persona.',
+			'Cada cos requereix una valoració pròpia. La valoració parteix de l\'anàlisi de la qualitat de la pell, la fermesa i l\'objectiu corporal, per construir un pla progressiu, natural i coherent amb cada persona.',
 		steps: [
 			{
 				label: '01 / Criteri mèdic',
-				body: 'Prioritzem les necessitats reals de cada cos abans de definir qualsevol tractament.',
+				body: 'Les necessitats reals de cada cos es prioritzen abans de definir qualsevol tractament.',
 			},
 			{
 				label: '02 / Evolució progressiva',
@@ -394,21 +394,21 @@ const catalanCorporalPageContent: CorporalPageContent = {
 			},
 		],
 		imageSrc: spanishCorporalPageContent.evaluation.imageSrc,
-		imageAlt: 'Valoració corporal',
+		imageAlt: 'Valoració corporal a Barcelona i Tarragona',
 	},
 	benefits: {
 		eyebrow: 'Beneficis',
 		title: 'L excel·lència en la qualitat del teixit',
 		items: [
-			{ icon: 'ph-sparkle', title: 'Pell més ferma', body: 'Treballem la fermesa i la qualitat de la pell de manera progressiva.' },
-			{ icon: 'ph-target', title: 'Definició natural', body: 'Acompanyem protocols de definició corporal des d un enfocament mèdic.' },
-			{ icon: 'ph-waves', title: 'Drenatge i alleujament', body: 'Afavorim el drenatge i la recuperació dels teixits.' },
-			{ icon: 'ph-sliders-horizontal', title: 'Cada cos, un pla', body: 'Adaptem cada tractament al ritme, objectiu i evolució de cada persona.' },
-			{ icon: 'ph-seal-check', title: 'Evolució visible', body: 'Busquem una millora gradual, natural i coherent amb cada cos.' },
+			{ icon: 'ph-sparkle', title: 'Pell més ferma', body: 'La fermesa i la qualitat de la pell es treballen de manera progressiva.' },
+			{ icon: 'ph-target', title: 'Definició natural', body: 'Els protocols de definició corporal s\'aborden des d\'un enfocament mèdic.' },
+			{ icon: 'ph-waves', title: 'Drenatge i alleujament', body: 'El drenatge i la recuperació dels teixits es afavoreixen al llarg del pla.' },
+			{ icon: 'ph-sliders-horizontal', title: 'Cada cos, un pla', body: 'Cada tractament s\'adapta al ritme, objectiu i evolució de cada persona.' },
+			{ icon: 'ph-seal-check', title: 'Evolució visible', body: 'Millora gradual, natural i coherent amb cada cos.' },
 		],
 	},
 	treatments: {
-		title: 'Les nostres àrees d especialització',
+		title: 'Àrees d\'especialització',
 		items: [
 			{
 				eyebrow: 'Fermesa i tensió',
@@ -443,10 +443,10 @@ const catalanCorporalPageContent: CorporalPageContent = {
 		eyebrow: 'Metodologia',
 		title: 'El camí cap a una millora progressiva',
 		steps: [
-			{ marker: 'I', title: 'Valoració corporal', body: 'Analitzem les necessitats del cos i definim les prioritats del tractament.' },
-			{ marker: 'II', title: 'Objectiu i priorització', body: 'Establim un enfocament progressiu i coherent amb cada objectiu corporal.' },
-			{ marker: 'III', title: 'Pla personalitzat', body: 'Dissenyem un protocol adaptat al ritme, evolució i característiques de cada persona.' },
-			{ marker: 'IV', title: 'Seguiment', body: 'Acompanyem l evolució del tractament per mantenir resultats naturals i equilibrats.' },
+			{ marker: 'I', title: 'Valoració corporal', body: 'Anàlisi de les necessitats del cos i definició de les prioritats del tractament.' },
+			{ marker: 'II', title: 'Objectiu i priorització', body: 'Establiment d\'un enfocament progressiu i coherent amb cada objectiu corporal.' },
+			{ marker: 'III', title: 'Pla personalitzat', body: 'Disseny d\'un protocol adaptat al ritme, evolució i característiques de cada persona.' },
+			{ marker: 'IV', title: 'Seguiment', body: 'Acompanyament de l\'evolució del tractament per mantenir resultats naturals i equilibrats.' },
 		],
 	},
 	differentiation: [
@@ -458,7 +458,7 @@ const catalanCorporalPageContent: CorporalPageContent = {
 		{
 			index: '02',
 			title: 'Evolució progressiva',
-			body: 'Busquem millores visibles, naturals i coherents a través d un enfocament progressiu.',
+			body: 'Millores visibles, naturals i coherents a través d un enfocament progressiu.',
 		},
 		{
 			index: '03',
@@ -476,7 +476,7 @@ const catalanCorporalPageContent: CorporalPageContent = {
 const frenchCorporalPageContent: CorporalPageContent = {
 	...spanishCorporalPageContent,
 	seo: {
-		title: 'Medecine esthetique corporelle a Barcelone | AJ Clinique',
+		title: 'Medecine esthetique corporelle a Barcelone et Tarragone | Dre Jessica Tellechea',
 		description:
 			'Ameliorer votre corps avec rigueur, en priorisant la sante des tissus et l harmonie naturelle des formes.',
 	},
@@ -487,22 +487,22 @@ const frenchCorporalPageContent: CorporalPageContent = {
 		lead: 'Ameliorer votre corps avec rigueur.',
 		text: 'Des traitements medicaux axes sur la fermete, la qualite de peau et la definition corporelle avec une approche progressive.',
 		primaryCta: 'Demander une evaluation corporelle',
-		secondaryCta: 'Voir notre critere medical',
-		imageAlt: 'Medecine esthetique corporelle',
+		secondaryCta: 'Voir le critere medical',
+		imageAlt: 'Medecine esthetique corporelle a Barcelone et Tarragone',
 	},
 	identification: {
 		title: 'Vous souhaitez ameliorer, avec naturel et controle.',
 		body:
-			'Chez AJ, nous cherchons a accompagner chaque corps avec une approche medicale, progressive et personnalisee, en priorisant des resultats naturels, equilibres et coherents avec chaque personne.',
+			'Dans sa pratique, la Dre Jessica Tellechea accompagne chaque corps avec une approche medicale, progressive et personnalisee, en priorisant des resultats naturels, equilibres et coherents avec chaque personne.',
 	},
 	evaluation: {
 		title: 'Chaque protocole commence par une evaluation corporelle.',
 		body:
-			'Chaque corps demande une evaluation specifique. Nous analysons la qualite de la peau, la fermete et l objectif corporel pour construire un plan progressif, naturel et coherent avec chaque personne.',
+			'Chaque corps demande une evaluation specifique. L\'evaluation part de l\'analyse de la qualite de la peau, de la fermete et de l\'objectif corporel, pour construire un plan progressif, naturel et coherent avec chaque personne.',
 		steps: [
 			{
 				label: '01 / Critere medical',
-				body: 'Nous priorisons les besoins reels de chaque corps avant de definir tout traitement.',
+				body: 'Les besoins reels de chaque corps sont priorises avant de definir tout traitement.',
 			},
 			{
 				label: '02 / Evolution progressive',
@@ -510,21 +510,21 @@ const frenchCorporalPageContent: CorporalPageContent = {
 			},
 		],
 		imageSrc: spanishCorporalPageContent.evaluation.imageSrc,
-		imageAlt: 'Evaluation corporelle',
+		imageAlt: 'Evaluation corporelle a Barcelone et Tarragone',
 	},
 	benefits: {
 		eyebrow: 'Benefices',
 		title: 'L excellence de la qualite tissulaire',
 		items: [
-			{ icon: 'ph-sparkle', title: 'Peau plus ferme', body: 'Nous travaillons la fermete et la qualite de peau de facon progressive.' },
-			{ icon: 'ph-target', title: 'Definition naturelle', body: 'Nous accompagnons les protocoles de definition corporelle avec une approche medicale.' },
-			{ icon: 'ph-waves', title: 'Drainage et soulagement', body: 'Nous favorisons le drainage et la recuperation des tissus.' },
-			{ icon: 'ph-sliders-horizontal', title: 'Chaque corps, un plan', body: 'Nous adaptons chaque traitement au rythme, a l objectif et a l evolution de chaque personne.' },
-			{ icon: 'ph-seal-check', title: 'Evolution visible', body: 'Nous recherchons une amelioration progressive, naturelle et coherente avec chaque corps.' },
+			{ icon: 'ph-sparkle', title: 'Peau plus ferme', body: 'La fermete et la qualite de peau s\'ameliorent de facon progressive.' },
+			{ icon: 'ph-target', title: 'Definition naturelle', body: 'Les protocoles de definition corporelle sont abordes avec une approche medicale.' },
+			{ icon: 'ph-waves', title: 'Drainage et soulagement', body: 'Le drainage et la recuperation des tissus sont favorises tout au long du plan.' },
+			{ icon: 'ph-sliders-horizontal', title: 'Chaque corps, un plan', body: 'Chaque protocole s\'adapte au rythme, a l\'objectif et a l\'evolution de chaque personne.' },
+			{ icon: 'ph-seal-check', title: 'Evolution visible', body: 'Amelioration progressive, naturelle et coherente avec chaque corps.' },
 		],
 	},
 	treatments: {
-		title: 'Nos domaines de specialisation',
+		title: 'Domaines de specialisation',
 		items: [
 			{
 				eyebrow: 'Fermete et tension',
@@ -559,10 +559,10 @@ const frenchCorporalPageContent: CorporalPageContent = {
 		eyebrow: 'Methodologie',
 		title: 'Le chemin vers une amelioration progressive',
 		steps: [
-			{ marker: 'I', title: 'Evaluation corporelle', body: 'Nous analysons les besoins du corps et definissons les priorites du traitement.' },
-			{ marker: 'II', title: 'Objectif et priorisation', body: 'Nous etablissons une approche progressive et coherente avec chaque objectif corporel.' },
-			{ marker: 'III', title: 'Plan personnalise', body: 'Nous concevons un protocole adapte au rythme, a l evolution et aux caracteristiques de chaque personne.' },
-			{ marker: 'IV', title: 'Suivi', body: 'Nous accompagnons l evolution du traitement pour maintenir des resultats naturels et equilibres.' },
+			{ marker: 'I', title: 'Evaluation corporelle', body: 'Analyse des besoins du corps et definition des priorites du traitement.' },
+			{ marker: 'II', title: 'Objectif et priorisation', body: 'Etablissement d\'une approche progressive et coherente avec chaque objectif corporel.' },
+			{ marker: 'III', title: 'Plan personnalise', body: 'Conception d\'un protocole adapte au rythme, a l\'evolution et aux caracteristiques de chaque personne.' },
+			{ marker: 'IV', title: 'Suivi', body: 'Accompagnement de l\'evolution du traitement pour maintenir des resultats naturels et equilibres.' },
 		],
 	},
 	differentiation: [
@@ -574,7 +574,7 @@ const frenchCorporalPageContent: CorporalPageContent = {
 		{
 			index: '02',
 			title: 'Evolution progressive',
-			body: 'Nous visons des ameliorations visibles, naturelles et coherentes grace a une approche progressive.',
+			body: 'Ameliorations visibles, naturelles et coherentes grace a une approche progressive.',
 		},
 		{
 			index: '03',

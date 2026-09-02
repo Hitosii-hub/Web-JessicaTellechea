@@ -66,6 +66,8 @@ const toggleId = 'site-nav-drawer-toggle';
 	.primary-nav {
 		position: relative;
 		display: flex;
+		align-items: center;
+		align-self: stretch;
 		justify-content: center;
 		width: 100%;
 		min-width: 0;
@@ -191,23 +193,26 @@ const toggleId = 'site-nav-drawer-toggle';
 	}
 
 	@media (max-width: 959.98px) {
+		.primary-nav {
+			width: auto;
+			justify-content: flex-end;
+		}
+
 		.primary-nav__list--desktop {
 			display: none;
 		}
 
 		.primary-nav__open {
 			display: inline-flex;
-			position: absolute;
-			right: 0;
-			top: 50%;
-			transform: translateY(-50%);
+			position: static;
+			transform: none;
 		}
 
 		.primary-nav__panel {
 			display: block;
 			position: fixed;
 			z-index: 35;
-			top: 100px;
+			top: var(--site-header-min-height, 108px);
 			left: 0;
 			right: 0;
 			bottom: 0;

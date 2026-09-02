@@ -1,15 +1,15 @@
-# Site Architecture - AJ Public Website
+# Site Architecture - Dra. Jessica Tellechea Public Website
 
 ## Recommended Sitemap (Normalized)
 
 Public routes are **locale-first**: `/{es|en|ca|fr}/…` with a **per-locale segment** for each IA intent (trailing slash on directory URLs). Examples:
 
-- `/{lang}/` — Home ("Clinica" conceptually same as home).
+- `/{lang}/` — Home.
 - Facial pillar: `/es/facial/`, `/en/facial/`, `/ca/facial/`, `/fr/visage/`.
 - Corporal pillar: `/es/corporal/`, `/en/body/`, `/ca/corporal/`, `/fr/corporel/`.
 - Capilar pillar: `/es/capilar/`, `/en/hair/`, `/ca/capillar/`, `/fr/capillaire/`.
 - Trust: `/es/criterio-medico/`, `/en/medical-criteria/`, `/ca/criteri-medic/`, `/fr/critere-medical/`.
-- Blog index: `/{lang}/blog/`.
+- Blog index: `/{lang}/blog/` (deferred at launch: `noindex`, excluded from primary nav and sitemap; enable via `src/i18n/site-features.ts`).
 - Contact: `/es/contacto/`, `/en/contact/`, `/ca/contacte/`, `/fr/contact/`.
 - Booking (utility, not in primary nav): `/es/reservar-cita/`, `/en/book-appointment/`, `/ca/reservar-cita/`, `/fr/reserver-rendez-vous/`.
 
@@ -27,7 +27,6 @@ Public routes are **locale-first**: `/{es|en|ca|fr}/…` with a **per-locale seg
 ## Navigation Rules
 
 - Primary navigation: one item per IA intent, **labels per locale** (REQ-5 in `openspec/specs/web-localized-routing/spec.md`); URLs built with `href(lang, iaKey)` from `route-registry.ts` (not Spanish segments on EN/FR).
-- "Clinica" is not a separate page in IA; it is treated as Home conceptually.
 - Booking is **not** a primary menu item (REQ-6); reachable via CTAs / secondary surfaces.
 - Footer can include operational links to reservation/contact/legal pages.
 
@@ -50,13 +49,13 @@ Public routes are **locale-first**: `/{es|en|ca|fr}/…` with a **per-locale seg
 
 - Booking route must be reachable from CTA surfaces and operational flows.
 - Booking route is intentionally excluded from main navigation to keep trust-first structure clean.
+- Blog routes remain built in the repo but are excluded from primary nav and sitemap until `blogPublic` is enabled (`src/i18n/site-features.ts`); pages use `noindex` while deferred.
 
 ## Naming Normalization Decisions
 
 - Canonical public trust page name: `Criterio medico`.
 - Canonical slug: `criterio-medico`.
 - "Filosofia medica" may appear as in-page wording, not as separate IA node.
-- "Clinica" and "Home" are treated as the same page intent.
 
 ## Relationship Between Main Pages and Conversion Routes
 
@@ -70,7 +69,7 @@ Public routes are **locale-first**: `/{es|en|ca|fr}/…` with a **per-locale seg
 
 - Core IA and page intent.
 - Hidden booking route requirement.
-- Naming normalization for trust page and clinic/home equivalence.
+- Naming normalization for trust page.
 - CTA hierarchy with valuation-first dominance.
 - Final slug taxonomy v1 per language (REQ-2); registry + redirects in repo.
 

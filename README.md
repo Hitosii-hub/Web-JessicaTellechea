@@ -1,6 +1,6 @@
-# WebAJ - AJ Clinica Estetica y Capilar (Public Website)
+# Dra. Jessica Tellechea - Public Website
 
-This repository holds **durable product and IA documentation** for the AJ public clinic website, and hosts the **implementation** of the site as an **Astro + TypeScript** project (content and UI maintained from code, with optional interactive islands—for example React—where needed).
+This repository holds **durable product and IA documentation** for the Dra. Jessica Tellechea public website, and hosts the **implementation** of the site as an **Astro + TypeScript** project (content and UI maintained from code, with optional interactive islands—for example React—where needed).
 
 Deployment target is **IONOS Hosting Plus** (shared hosting): **static** Astro build output (`dist/`); see `docs/stack-and-deployment-context.md`.
 
@@ -15,7 +15,7 @@ Agent-assisted workflows (Cursor, Claude Code, etc.) are expected for implementa
 
 ## In scope
 
-- Public-facing clinic website context and documentation.
+- Public-facing practice website context and documentation.
 - Site goals, structure, messaging, conversion model, SEO/localization direction.
 - Technical stack context: **Astro, TypeScript, IONOS deployment constraints** (`docs/stack-and-deployment-context.md`).
 
@@ -93,7 +93,7 @@ Run from the project root (after `npm install`):
 - **`/`** uses `Astro.redirect` in dev; **static build** emits an HTML redirect (`meta refresh` + link) to `/es/`. For production, you MAY replace this with a host-level 302 rule.
 - Set **`SITE_URL`** in a local `.env` (see `.env.example`); `astro.config.mjs` reads it via Vite `loadEnv` for Astro `site` (canonical and `hreflang`). If unset, a placeholder is used for local builds.
 - **`/robots.txt`** is emitted at build from `src/pages/robots.txt.ts` (booking `Disallow` lines follow `src/i18n/route-registry.ts`; `Sitemap` uses the same origin as `site`).
-- Public clinic/contact values (`PUBLIC_CLINIC_ADDRESS`, `PUBLIC_CLINIC_PHONE`, `PUBLIC_CLINIC_EMAIL`, `PUBLIC_CLINIC_INSTAGRAM`, `PUBLIC_GOOGLE_MAPS_URL`) and conversion values (`PUBLIC_NUBIMED_VENDOR_ORIGIN`, `PUBLIC_FORM_POST_URL`, `PUBLIC_WHATSAPP_E164`) live in `.env.example`; values are baked into the static build at build time where used. Use `PUBLIC_CLINIC_PHONE` for visible phone text and `PUBLIC_WHATSAPP_E164` only for `wa.me` links.
+- Public practice/contact values (`PUBLIC_CLINIC_ADDRESS`, `PUBLIC_CLINIC_PHONE`, `PUBLIC_CLINIC_EMAIL`, `PUBLIC_CLINIC_INSTAGRAM`, `PUBLIC_GOOGLE_MAPS_URL` — env var names retained as technical identifiers) and conversion values (`PUBLIC_NUBIMED_VENDOR_ORIGIN`, `PUBLIC_FORM_POST_URL`, `PUBLIC_WHATSAPP_E164`) live in `.env.example`; values are baked into the static build at build time where used. Use `PUBLIC_CLINIC_PHONE` for visible phone text and `PUBLIC_WHATSAPP_E164` only for `wa.me` links.
 
 Official docs: [https://docs.astro.build](https://docs.astro.build) · Community: [https://astro.build/chat](https://astro.build/chat).
 

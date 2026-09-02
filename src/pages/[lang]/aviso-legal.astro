@@ -13,6 +13,6 @@ const page = legalPages['aviso-legal'][lang];
 const description = page.sections[0]?.paragraphs[0] ?? page.title;
 ---
 
-<BaseLayout lang={lang} title={`WebAJ — ${page.title}`} description={description}>
+<BaseLayout lang={lang} title={`Dra. Jessica Tellechea — ${page.title}`} description={description}>
 	<LegalDocArticle lang={lang} page={page} current="aviso-legal" />
 </BaseLayout>

@@ -71,7 +71,7 @@ export interface FacialPageContent {
 
 const spanishFacialPageContent: FacialPageContent = {
 	seo: {
-		title: 'Medicina estética facial en Barcelona | AJ Clínica',
+		title: 'Medicina estética facial en Barcelona y Tarragona | Dra. Jessica Tellechea',
 		description:
 			'Tratamientos médicos orientados a mejorar la calidad de la piel y la armonía facial de forma natural y progresiva.',
 	},
@@ -82,22 +82,22 @@ const spanishFacialPageContent: FacialPageContent = {
 		lead:
 			'Tratamientos médicos orientados a mejorar la calidad de la piel y la armonía facial de forma natural y progresiva.',
 		primaryCta: 'Solicitar valoración facial',
-		secondaryCta: 'Conoce nuestro criterio médico',
+		secondaryCta: 'Conoce el criterio médico',
 		imageSrc: '/images/home/treatment-facial.webp',
-		imageAlt: 'Tratamiento facial en AJ Clínica',
+		imageAlt: 'Tratamiento facial en Barcelona y Tarragona',
 	},
 	insight: {
 		title: 'Quieres verte mejor, manteniendo tu expresión.',
 		body:
-			'La medicina estética facial en AJ busca acompañar la armonía del rostro con resultados sutiles, progresivos y coherentes con tu identidad.',
+			'En la medicina estética facial, la Dra. Jessica Tellechea busca acompañar la armonía del rostro con resultados sutiles, progresivos y coherentes con tu identidad.',
 	},
 	medicalApproach: {
 		eyebrow: 'ENFOQUE MÉDICO',
 		title: 'Cada tratamiento se define a partir de una valoración.',
 		body: [
-			'Analizamos estructura facial, calidad de la piel y objetivo estético para construir un plan adaptado a cada caso.',
-			'Nuestro enfoque busca acompañar la armonía del rostro con resultados naturales, progresivos y coherentes con cada identidad.',
-			'Nuestro compromiso es la seguridad médica y la elegancia estética. Utilizamos solo materiales biocompatibles de la más alta gama, aplicados con técnicas de mínima invasión.',
+			'La valoración parte del análisis de la estructura facial, la calidad de la piel y el objetivo estético, para construir un plan adaptado a cada caso.',
+			'El enfoque acompaña la armonía del rostro con resultados naturales, progresivos y coherentes con cada identidad.',
+			'El compromiso es doble: seguridad médica y elegancia estética. Se utilizan sólo materiales biocompatibles de la más alta gama, aplicados con técnicas de mínima invasión.',
 		],
 		imageSrc: '/images/home/clinic-primary.webp',
 		imageAlt: 'Consulta clínica para valoración facial',
@@ -167,19 +167,19 @@ const spanishFacialPageContent: FacialPageContent = {
 		steps: [
 			{
 				title: 'Valoración',
-				body: 'Escuchamos tus necesidades y realizamos un estudio morfológico completo.',
+				body: 'Escucha activa de tus necesidades y realización de un estudio morfológico completo.',
 			},
 			{
 				title: 'Diagnóstico',
-				body: 'Identificamos las causas subyacentes del envejecimiento o desarmonía.',
+				body: 'Identificación de las causas subyacentes del envejecimiento o desarmonía.',
 			},
 			{
 				title: 'Plan',
-				body: 'Diseñamos un cronograma de tratamientos personalizado, priorizado y equilibrado.',
+				body: 'Diseño de un cronograma de tratamientos personalizado, priorizado y equilibrado.',
 			},
 			{
 				title: 'Seguimiento',
-				body: 'Acompañamos la evolución para asegurar resultados duraderos y naturales.',
+				body: 'Acompañamiento de la evolución para asegurar resultados duraderos y naturales.',
 			},
 		],
 	},
@@ -187,7 +187,7 @@ const spanishFacialPageContent: FacialPageContent = {
 		points: [
 			{
 				title: 'Resultados naturales',
-				body: 'Buscamos resultados frescos, equilibrados y coherentes con la identidad de cada paciente.',
+				body: 'Resultados frescos, equilibrados y coherentes con la identidad de cada paciente.',
 			},
 			{
 				title: 'Seleccionados según el caso',
@@ -195,7 +195,7 @@ const spanishFacialPageContent: FacialPageContent = {
 			},
 			{
 				title: 'Evolución progresiva',
-				body: 'Preferimos la progresión controlada, ajustando en sucesivas visitas si es necesario.',
+				body: 'Progresión controlada, con ajustes en sucesivas visitas si es necesario.',
 			},
 		],
 	},
@@ -209,7 +209,7 @@ const spanishFacialPageContent: FacialPageContent = {
 const englishFacialPageContent: FacialPageContent = {
 	...spanishFacialPageContent,
 	seo: {
-		title: 'Facial aesthetic medicine in Barcelona | AJ Clinic',
+		title: 'Facial aesthetic medicine in Barcelona and Tarragona | Dr. Jessica Tellechea',
 		description:
 			'Medical treatments focused on skin quality and facial harmony with natural, progressive outcomes.',
 	},
@@ -221,20 +221,20 @@ const englishFacialPageContent: FacialPageContent = {
 		lead:
 			'Medical treatments focused on skin quality and facial harmony with natural, progressive outcomes.',
 		primaryCta: 'Request facial assessment',
-		secondaryCta: 'See our medical criteria',
+		secondaryCta: 'See the medical criteria',
 	},
 	insight: {
 		title: 'You want to look better while keeping your expression.',
 		body:
-			'At AJ, facial aesthetic medicine supports facial harmony with subtle, progressive results aligned with who you are.',
+			'In her practice, Dr. Jessica Tellechea supports facial harmony with subtle, progressive results aligned with who you are.',
 	},
 	medicalApproach: {
 		eyebrow: 'MEDICAL APPROACH',
 		title: 'Every treatment starts from an assessment.',
 		body: [
-			'We analyze facial structure, skin quality, and aesthetic goals to build a plan tailored to each case.',
-			'Our approach supports facial harmony with natural, progressive results that fit each person\'s identity.',
-			'Our commitment is medical safety and aesthetic elegance. We use only top-tier biocompatible materials, applied with minimally invasive techniques.',
+			'The assessment starts from analysing facial structure, skin quality, and aesthetic goals to build a plan tailored to each case.',
+			'The approach supports facial harmony with natural, progressive results that fit each person\'s identity.',
+			'The commitment is medical safety and aesthetic elegance. Only top-tier biocompatible materials are used, applied with minimally invasive techniques.',
 		],
 		imageSrc: '/images/home/clinic-primary.webp',
 		imageAlt: 'Clinical consultation for facial assessment',
@@ -274,19 +274,19 @@ const englishFacialPageContent: FacialPageContent = {
 		steps: [
 			{
 				title: 'Assessment',
-				body: 'We listen to your needs and carry out a full morphological study.',
+				body: 'Active listening to your needs and a full morphological study.',
 			},
 			{
 				title: 'Diagnosis',
-				body: 'We identify the underlying causes of ageing or loss of harmony.',
+				body: 'Identification of the underlying causes of ageing or loss of harmony.',
 			},
 			{
 				title: 'Plan',
-				body: 'We design a personalized treatment timeline, prioritized and balanced.',
+				body: 'Design of a personalised treatment timeline, prioritised and balanced.',
 			},
 			{
 				title: 'Follow-up',
-				body: 'We support your progress to ensure lasting, natural results.',
+				body: 'Ongoing support during evolution to ensure lasting, natural results.',
 			},
 		],
 	},
@@ -294,7 +294,7 @@ const englishFacialPageContent: FacialPageContent = {
 		points: [
 			{
 				title: 'Natural results',
-				body: 'We aim for fresh, balanced outcomes aligned with each patient\'s identity.',
+				body: 'Fresh, balanced outcomes aligned with each patient\'s identity.',
 			},
 			{
 				title: 'Selected for your case',
@@ -302,7 +302,7 @@ const englishFacialPageContent: FacialPageContent = {
 			},
 			{
 				title: 'Progressive evolution',
-				body: 'We prefer controlled progression, fine-tuning over follow-up visits when needed.',
+				body: 'Controlled progression, with fine-tuning over follow-up visits when needed.',
 			},
 		],
 	},
@@ -316,7 +316,7 @@ const englishFacialPageContent: FacialPageContent = {
 const catalanFacialPageContent: FacialPageContent = {
 	...spanishFacialPageContent,
 	seo: {
-		title: 'Medicina estetica facial a Barcelona | AJ Clinica',
+		title: 'Medicina estetica facial a Barcelona i Tarragona | Dra. Jessica Tellechea',
 		description:
 			'Tractaments medics orientats a millorar la qualitat de la pell i l harmonia facial de forma natural i progressiva.',
 	},
@@ -328,20 +328,20 @@ const catalanFacialPageContent: FacialPageContent = {
 		lead:
 			'Tractaments medics orientats a millorar la qualitat de la pell i l harmonia facial de forma natural i progressiva.',
 		primaryCta: 'Sol licitar valoracio facial',
-		secondaryCta: 'Coneix el nostre criteri medic',
+		secondaryCta: 'Coneix el criteri medic',
 	},
 	insight: {
 		title: 'Vols veure t millor, mantenint la teva expressio.',
 		body:
-			'La medicina estetica facial a AJ busca acompanyar l harmonia del rostre amb resultats subtils, progressius i coherents amb la teva identitat.',
+			'La medicina estètica facial de la Dra. Jessica Tellechea acompanya l\'harmonia del rostre amb resultats subtils, progressius i coherents amb la teva identitat.',
 	},
 	medicalApproach: {
 		eyebrow: 'ENFOC MÈDIC',
 		title: 'Cada tractament es defineix a partir d\'una valoració.',
 		body: [
-			'Analitzem l\'estructura facial, la qualitat de la pell i l\'objectiu estètic per construir un pla adaptat a cada cas.',
-			'El nostre enfoc busca acompanyar l\'harmonia del rostre amb resultats naturals, progressius i coherents amb cada identitat.',
-			'El nostre compromís és la seguretat mèdica i l\'elegància estètica. Només utilitzem materials biocompatibles de la màxima gamma, aplicats amb tècniques de mínima invasió.',
+			'La valoració parteix de l\'anàlisi de l\'estructura facial, la qualitat de la pell i l\'objectiu estètic per construir un pla adaptat a cada cas.',
+			'L\'enfoc acompanya l\'harmonia del rostre amb resultats naturals, progressius i coherents amb cada identitat.',
+			'El compromís és doble: seguretat mèdica i elegància estètica. Només s\'utilitzen materials biocompatibles de la màxima gamma, aplicats amb tècniques de mínima invasió.',
 		],
 		imageSrc: '/images/home/clinic-primary.webp',
 		imageAlt: 'Consulta clínica per a la valoració facial',
@@ -381,19 +381,19 @@ const catalanFacialPageContent: FacialPageContent = {
 		steps: [
 			{
 				title: 'Valoració',
-				body: 'Escoltem les teves necessitats i fem un estudi morfològic complet.',
+				body: 'Escolta activa de les teves necessitats i estudi morfològic complet.',
 			},
 			{
 				title: 'Diagnòstic',
-				body: 'Identifiquem les causes subjacents de l\'envelliment o la desarmonia.',
+				body: 'Identificació de les causes subjacents de l\'envelliment o la desarmonia.',
 			},
 			{
 				title: 'Pla',
-				body: 'Dissenyem un cronograma de tractaments personalitzat, prioritzat i equilibrat.',
+				body: 'Disseny d\'un cronograma de tractaments personalitzat, prioritzat i equilibrat.',
 			},
 			{
 				title: 'Seguiment',
-				body: 'Acompanyem l\'evolució per assegurar resultats duradors i naturals.',
+				body: 'Acompanyament de l\'evolució per assegurar resultats duradors i naturals.',
 			},
 		],
 	},
@@ -401,7 +401,7 @@ const catalanFacialPageContent: FacialPageContent = {
 		points: [
 			{
 				title: 'Resultats naturals',
-				body: 'Busquem resultats frescos, equilibrats i coherents amb la identitat de cada pacient.',
+				body: 'Resultats frescos, equilibrats i coherents amb la identitat de cada pacient.',
 			},
 			{
 				title: 'Seleccionats segons el cas',
@@ -409,7 +409,7 @@ const catalanFacialPageContent: FacialPageContent = {
 			},
 			{
 				title: 'Evolució progressiva',
-				body: 'Preferim la progressió controlada, ajustant en visites successives si cal.',
+				body: 'Progressió controlada, amb ajustos en visites successives si cal.',
 			},
 		],
 	},
@@ -423,7 +423,7 @@ const catalanFacialPageContent: FacialPageContent = {
 const frenchFacialPageContent: FacialPageContent = {
 	...spanishFacialPageContent,
 	seo: {
-		title: 'Medecine esthetique du visage a Barcelone | AJ Clinique',
+		title: 'Medecine esthetique du visage a Barcelone et Tarragona | Dre Jessica Tellechea',
 		description:
 			'Des traitements medicaux axes sur la qualite de peau et l harmonie du visage, avec des resultats naturels et progressifs.',
 	},
@@ -435,20 +435,20 @@ const frenchFacialPageContent: FacialPageContent = {
 		lead:
 			'Des traitements medicaux axes sur la qualite de peau et l harmonie du visage, avec des resultats naturels et progressifs.',
 		primaryCta: 'Demander une evaluation faciale',
-		secondaryCta: 'Voir notre critere medical',
+		secondaryCta: 'Voir le critere medical',
 	},
 	insight: {
 		title: 'Vous voulez vous voir au mieux tout en gardant votre expression.',
 		body:
-			'La medecine esthetique du visage chez AJ vise a accompagner l harmonie du visage avec des resultats discrets, progressifs et coherents avec votre identite.',
+			'Dans sa pratique, Dr. Jessica Tellechea accompagne l\'harmonie du visage avec des resultats discrets, progressifs et coherents avec votre identite.',
 	},
 	medicalApproach: {
 		eyebrow: 'APPROCHE MEDICALE',
 		title: 'Chaque traitement decoule d\'une evaluation.',
 		body: [
-			'Nous analysons la structure du visage, la qualite de la peau et l\'objectif esthetique pour concevoir un plan adapte a chaque cas.',
-			'Notre approche vise a soutenir l\'harmonie du visage avec des resultats naturels, progressifs et coherents avec chaque identite.',
-			'Notre engagement est la securite medicale et l\'elegance esthetique. Nous utilisons uniquement des materiaux biocompatibles haut de gamme, avec des techniques de pose peu invasives.',
+			'L\'evaluation part de l\'analyse de la structure du visage, de la qualite de la peau et de l\'objectif esthetique, pour concevoir un plan adapte a chaque cas.',
+			'L\'approche accompagne l\'harmonie du visage avec des resultats naturels, progressifs et coherents avec chaque identite.',
+			'L\'engagement est double : securite medicale et elegance esthetique. Seuls des materiaux biocompatibles haut de gamme sont utilises, avec des techniques de pose peu invasives.',
 		],
 		imageSrc: '/images/home/clinic-primary.webp',
 		imageAlt: 'Consultation clinique pour evaluation faciale',
@@ -488,19 +488,19 @@ const frenchFacialPageContent: FacialPageContent = {
 		steps: [
 			{
 				title: 'Evaluation',
-				body: 'Nous ecoutons vos besoins et realisons une etude morphologique complete.',
+				body: 'Ecoute active de vos besoins et etude morphologique complete.',
 			},
 			{
 				title: 'Diagnostic',
-				body: 'Nous identifions les causes sous jacentes du vieillissement ou du desequilibre.',
+				body: 'Identification des causes sous jacentes du vieillissement ou du desequilibre.',
 			},
 			{
 				title: 'Plan',
-				body: 'Nous concevons un calendrier de soins personnalise, priorise et equilibre.',
+				body: 'Conception d\'un calendrier de soins personnalise, priorise et equilibre.',
 			},
 			{
 				title: 'Suivi',
-				body: 'Nous accompagnons l\'evolution pour des resultats durables et naturels.',
+				body: 'Accompagnement de l\'evolution pour des resultats durables et naturels.',
 			},
 		],
 	},
@@ -508,7 +508,7 @@ const frenchFacialPageContent: FacialPageContent = {
 		points: [
 			{
 				title: 'Resultats naturels',
-				body: 'Nous visons des resultats frais, equilibres et coherents avec l\'identite de chaque patient.',
+				body: 'Resultats frais, equilibres et coherents avec l\'identite de chaque patient.',
 			},
 			{
 				title: 'Selectionnes selon le cas',
@@ -516,7 +516,7 @@ const frenchFacialPageContent: FacialPageContent = {
 			},
 			{
 				title: 'Evolution progressive',
-				body: 'Nous privilegions une progression controlee, avec des ajustements lors des visites suivantes si necessaire.',
+				body: 'Progression controlee, avec des ajustements lors des visites suivantes si necessaire.',
 			},
 		],
 	},

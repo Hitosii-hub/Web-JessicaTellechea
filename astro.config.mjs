@@ -35,6 +35,9 @@ const nubimedProxy = {
 /** Booking URL segments per locale (keep aligned with `src/i18n/route-registry.ts`). */
 const bookingUrlSegments = ['reservar-cita', 'book-appointment', 'reserver-rendez-vous'];
 
+/** Blog deferred at launch — set false when `blogPublic` is true in `src/i18n/site-features.ts`. */
+const blogHiddenFromSitemap = true;
+
 // SITE_URL in .env (see `.env.example`). Trailing slashes are stripped.
 export default defineConfig({
 	site,
@@ -70,7 +73,11 @@ export default defineConfig({
 	integrations: [
 		preact(),
 		sitemap({
-			filter: (page) => !bookingUrlSegments.some((seg) => page.includes(`/${seg}/`)),
+			filter: (page) => {
+				if (bookingUrlSegments.some((seg) => page.includes(`/${seg}/`))) return false;
+				if (blogHiddenFromSitemap && page.includes('/blog/')) return false;
+				return true;
+			},
 			i18n: {
 				defaultLocale: 'es',
 				locales: {

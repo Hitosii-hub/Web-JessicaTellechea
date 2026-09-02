@@ -9,7 +9,8 @@ import { legalFooterLabels, legalFooterPublicationNote } from '../i18n/legal-nav
 import { localeEquivalentHref } from '../i18n/locale-hrefs';
 import { headerBookingCta } from '../i18n/nav';
 import { resolveBookingCta } from '../i18n/booking-links';
-import { href, iaKeyFromPath, isBookingPath, type IaKey } from '../i18n/route-registry';
+import { href, iaKeyFromPath, isBlogPath, isBookingPath, type IaKey } from '../i18n/route-registry';
+import { blogPublic } from '../i18n/site-features';
 import '../styles/app.css';
 
 interface Props {
@@ -68,7 +69,8 @@ function ogLocale(code: Locale): string {
 }
 
 const bookingRoute = isBookingPath(pathname);
-const robots = bookingRoute ? 'noindex,follow' : undefined;
+const blogRoute = isBlogPath(pathname);
+const robots = bookingRoute || (!blogPublic && blogRoute) ? 'noindex,follow' : undefined;
 const ogDefault = ogImage ?? new URL('/og-placeholder.svg', siteRoot).href;
 
 const bookingCta = resolveBookingCta(lang);
@@ -113,22 +115,35 @@ const langPickerItems = locales.map((code) => ({
 		<ClientRouter />
 	</head>
 	<body class:list={[shell === 'marketing' ? 'site-body--marketing' : undefined]}>
-		<header class="site-header">
+		<header class="site-header" transition:animate="none">
 			<div class="site-header__inner">
 				<a class="site-header__logo" href={href(lang, 'home')}>
 					<img
 						class="site-header__logo-img"
-						src="/logo-aj.svg"
-						alt="WebAJ"
-						width="1024"
-						height="725"
+						src="/logo.svg"
+						alt=""
+						width="1590"
+						height="1820"
 						decoding="async"
 						loading="eager"
-						fetchpriority="high"
 					/>
 				</a>
-				<div class="site-header__nav-slot">
-					<PrimaryNav lang={lang} currentIaKey={currentIaKey} bookingCta={bookingCta} />
+				<div class="site-header__center">
+					<a class="site-header__wordmark" href={href(lang, 'home')}>
+						<img
+							class="site-header__wordmark-img"
+							src="/dra-jessica-tellechea.svg"
+							alt="Dra. Jessica Tellechea"
+							width="2928"
+							height="181"
+							decoding="async"
+							loading="eager"
+							fetchpriority="high"
+						/>
+					</a>
+					<div class="site-header__toolbar">
+						<PrimaryNav lang={lang} currentIaKey={currentIaKey} bookingCta={bookingCta} />
+					</div>
 				</div>
 				<div class="site-header__actions">
 					<a

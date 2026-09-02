@@ -1,12 +1,18 @@
 import type { IaKey } from './route-registry';
 
 import type { Locale } from './config';
+import { blogPublic } from './site-features';
 
 export type PrimaryNavIaKey = Exclude<IaKey, 'booking'>;
 
 export type NavItem = { iaKey: PrimaryNavIaKey; label: Record<Locale, string> };
 
-/** Primary nav: no booking route (docs/site-architecture.md). */
+const blogNavItem: NavItem = {
+	iaKey: 'blog',
+	label: { es: 'Blog', en: 'Blog', ca: 'Blog', fr: 'Blog' },
+};
+
+/** Primary nav: no booking route (docs/site-architecture.md). Blog gated by `blogPublic`. */
 export const primaryNavItems: NavItem[] = [
 	{ iaKey: 'home', label: { es: 'Inicio', en: 'Home', ca: 'Inici', fr: 'Accueil' } },
 	{ iaKey: 'facial', label: { es: 'Facial', en: 'Facial', ca: 'Facial', fr: 'Visage' } },
@@ -21,7 +27,7 @@ export const primaryNavItems: NavItem[] = [
 			fr: 'Critère médical',
 		},
 	},
-	{ iaKey: 'blog', label: { es: 'Blog', en: 'Blog', ca: 'Blog', fr: 'Blog' } },
+	...(blogPublic ? [blogNavItem] : []),
 	{ iaKey: 'contact', label: { es: 'Contacto', en: 'Contact', ca: 'Contacte', fr: 'Contact' } },
 ];
 

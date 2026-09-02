@@ -1,5 +1,7 @@
 ---
 import type { Locale } from '../../i18n/config';
+import { contactFormUsesFormSubmitFallback, resolveContactFormPostUrl } from '../../i18n/form-endpoints';
+import { href } from '../../i18n/route-registry';
 import { contactPageContent } from '../../i18n/contact-page';
 import Heading from '../ui/Heading.astro';
 
@@ -9,13 +11,16 @@ interface Props {
 
 const { lang } = Astro.props;
 const c = contactPageContent[lang];
-const action = import.meta.env.PUBLIC_FORM_POST_URL as string | undefined;
 const clinicAddress = import.meta.env.PUBLIC_CLINIC_ADDRESS?.trim() || c.contactDetails.addressFallback;
 const clinicPhone = import.meta.env.PUBLIC_CLINIC_PHONE?.trim() || c.contactDetails.phoneFallback;
 const clinicEmail = import.meta.env.PUBLIC_CLINIC_EMAIL?.trim() || c.contactDetails.emailFallback;
 const googleMapsUrl = import.meta.env.PUBLIC_GOOGLE_MAPS_URL?.trim();
 const addressLines = clinicAddress.split('\n');
-const subject = `[AJ Clinica] ${c.form.submit} ${lang}`;
+const formAction = resolveContactFormPostUrl(clinicEmail);
+const formSubmitFallback = contactFormUsesFormSubmitFallback(clinicEmail);
+const formSubject = `[Dra. Jessica Tellechea] ${c.form.submit} (${lang})`;
+const siteOrigin = Astro.site ? new URL(Astro.site).origin : Astro.url.origin;
+const formNextUrl = `${siteOrigin}${href(lang, 'contact')}?sent=1`;
 const phoneHref = `tel:${clinicPhone.replace(/[^\d+]/g, '')}`;
 const emailHref = `mailto:${clinicEmail}`;
 const mapHref =
@@ -49,11 +54,18 @@ const mapHref =
 				<form
 					class="contact-form"
 					method="post"
-					action={action ?? '#'}
+					action={formAction ?? '#'}
 					enctype="application/x-www-form-urlencoded"
 				>
 					<input type="hidden" name="lang" value={lang} />
-					<input type="hidden" name="_subject" value={subject} />
+					<input type="hidden" name="_subject" value={formSubject} />
+					{formAction ? <input type="hidden" name="_next" value={formNextUrl} /> : null}
+					{formSubmitFallback ? (
+						<>
+							<input type="hidden" name="_template" value="table" />
+							<input type="hidden" name="_captcha" value="false" />
+						</>
+					) : null}
 
 					<div class="contact-form__row">
 						<label class="contact-field">
@@ -65,6 +77,7 @@ const mapHref =
 								placeholder={c.form.namePlaceholder}
 								autocomplete="name"
 								required
+								disabled={!formAction}
 							/>
 						</label>
 						<label class="contact-field">
@@ -75,6 +88,7 @@ const mapHref =
 								name="phone"
 								placeholder={c.form.phonePlaceholder}
 								autocomplete="tel"
+								disabled={!formAction}
 							/>
 						</label>
 					</div>
@@ -88,6 +102,7 @@ const mapHref =
 							placeholder={c.form.emailPlaceholder}
 							autocomplete="email"
 							required
+							disabled={!formAction}
 						/>
 					</label>
 
@@ -98,7 +113,8 @@ const mapHref =
 							name="message"
 							placeholder={c.form.messagePlaceholder}
 							rows="4"
-							required></textarea>
+							required
+							disabled={!formAction}></textarea>
 					</label>
 
 					<div class="contact-form__footer">
@@ -106,7 +122,9 @@ const mapHref =
 							<i class="ph-thin ph-shield-check contact-form__privacy-icon" aria-hidden="true"></i>
 							<p>{c.form.privacyNote}</p>
 						</div>
-						<button class="contact-form__submit" type="submit">{c.form.submit}</button>
+						<button class="contact-form__submit" type="submit" disabled={!formAction}>
+							{c.form.submit}
+						</button>
 					</div>
 				</form>
 			</div>
