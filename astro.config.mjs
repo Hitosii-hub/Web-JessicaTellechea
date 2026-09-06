@@ -6,8 +6,8 @@ import tailwindcss from '@tailwindcss/vite';
 import { loadEnv } from 'vite';
 
 const env = loadEnv(import.meta.env.MODE, process.cwd(), '');
-const raw = env.SITE_URL || 'https://www.webaj.placeholder';
-const site = raw.replace(/\/+$/, '') || 'https://www.webaj.placeholder';
+const raw = env.SITE_URL || 'https://www.webjt.placeholder';
+const site = raw.replace(/\/+$/, '') || 'https://www.webjt.placeholder';
 
 /** Dev-only: same-origin prefix so fetch() avoids browser CORS to the portal. */
 const nubimedVendorTarget =
@@ -37,6 +37,16 @@ const bookingUrlSegments = ['reservar-cita', 'book-appointment', 'reserver-rende
 
 /** Blog deferred at launch — set false when `blogPublic` is true in `src/i18n/site-features.ts`. */
 const blogHiddenFromSitemap = true;
+
+/** Corporal deferred at launch — set false when `corporalPublic` is true in `src/i18n/site-features.ts`. */
+const corporalHiddenFromSitemap = true;
+
+/** Keep aligned with `corporalSegments` in `src/i18n/route-registry.ts`. */
+const corporalUrlSegments = [
+	'medicina-estetica-corporal-barcelona',
+	'body-aesthetic-medicine-barcelona',
+	'medecine-esthetique-corporelle-barcelona',
+];
 
 // SITE_URL in .env (see `.env.example`). Trailing slashes are stripped.
 export default defineConfig({
@@ -76,6 +86,9 @@ export default defineConfig({
 			filter: (page) => {
 				if (bookingUrlSegments.some((seg) => page.includes(`/${seg}/`))) return false;
 				if (blogHiddenFromSitemap && page.includes('/blog/')) return false;
+				if (corporalHiddenFromSitemap && corporalUrlSegments.some((seg) => page.includes(`/${seg}/`))) {
+					return false;
+				}
 				return true;
 			},
 			i18n: {

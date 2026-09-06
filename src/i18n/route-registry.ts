@@ -101,3 +101,10 @@ export function isBookingPath(pathname: string): boolean {
 export function isBlogPath(pathname: string): boolean {
 	return /\/blog(\/|$)/.test(pathname.replace(/\/+$/, '') || '/');
 }
+
+export const corporalSegments: string[] = locales.map((l) => segmentFor(l, 'corporal'));
+
+export function isCorporalPath(pathname: string): boolean {
+	const norm = pathname.replace(/\/+$/, '') || '/';
+	return corporalSegments.some((seg) => norm.includes(`/${seg}`));
+}

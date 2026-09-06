@@ -3,7 +3,7 @@ import { locales } from '../i18n/config';
 import { segmentFor } from '../i18n/route-registry';
 
 /** Fallback when `site` is unset (local dev without `.env`). Mirrors `astro.config.mjs`. */
-const PLACEHOLDER_ORIGIN = 'https://www.webaj.placeholder';
+const PLACEHOLDER_ORIGIN = 'https://www.webjt.placeholder';
 
 export const GET: APIRoute = ({ site }) => {
 	const base = site ?? new URL(PLACEHOLDER_ORIGIN);

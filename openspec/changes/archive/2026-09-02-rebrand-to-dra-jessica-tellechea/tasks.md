@@ -31,7 +31,7 @@ Regla vinculante para toda tarea: aplicar AD-1 (voz), AD-2 (tabla de reemplazos)
 - [x] 3.9 `src/pages/[lang]/index.astro`: `WebAJ | ${hero.h1}` → `Dra. Jessica Tellechea | ${hero.h1}`.
 - [x] 3.10 `src/pages/[lang]/{privacidad,cookies,aviso-legal}.astro`: `WebAJ — ${page.title}` → `Dra. Jessica Tellechea — ${page.title}` en los 3 archivos.
 - [x] 3.11 `src/pages/[lang]/blog/[slug].astro`: `${post.data.title} | WebAJ` → `${post.data.title} | Dra. Jessica Tellechea`.
-- [x] 3.12 Batch check + `npm run check` PASS. 5 hits residuales son technical identifiers Out of Scope (`webaj.placeholder`, `webaj_cookie_consent_v1`).
+- [x] 3.12 Batch check + `npm run check` PASS. 5 hits residuales son technical identifiers Out of Scope (`webjt.placeholder`, `webjt_cookie_consent_v1`).
 
 ## Phase 4: Blog content
 
@@ -41,7 +41,7 @@ Regla vinculante para toda tarea: aplicar AD-1 (voz), AD-2 (tabla de reemplazos)
 ## Phase 5: Legal (batch aislado, requiere sign-off)
 
 - [x] 5.1 `src/i18n/legal-content/privacy.ts`: sin hardcode de "AJ Clínica" (ya usa placeholders `__LEGAL_*__` interpolados desde env). Cambiadas 4 menciones de "la clínica" / "the clinic" / "l'activitat de la clínica" / "l'activité de la clinique" (sustantivo) → "actividad profesional del responsable" / "controller's professional practice" / "l'activitat professional del responsable" / "l'activité professionnelle du responsable". "clinic diary" → "professional diary" / "agenda profesional" en los 4 locales.
-- [x] 5.2 `src/i18n/legal-content/cookies.ts`: sin cambios necesarios. No hay menciones de "la clínica" como sustantivo. `webaj_cookie_consent_v1` conservado (identificador técnico Out of Scope).
+- [x] 5.2 `src/i18n/legal-content/cookies.ts`: sin cambios necesarios. No hay menciones de "la clínica" como sustantivo. `webjt_cookie_consent_v1` conservado (identificador técnico Out of Scope).
 - [x] 5.3 `src/i18n/legal-content/aviso.ts`: cambiadas 6 menciones (2 por locale ES/EN/CA/FR) — "actividad de la clínica" → "actividad profesional del responsable", "acordado con la clínica" → "acordado directamente con el responsable". "relación clínica" (adjetivo = clinical relationship) preservado.
 - [x] 5.4 Sign-off pendiente del operador. Textos rewriteados para que **no** se refieran a una clínica como entidad. Placeholders `__LEGAL_*__` siguen intactos — el operador debe setear `PUBLIC_LEGAL_CONTROLLER_*` en `.env` en el mismo deploy (dependency del proposal). **Voz formal legal "nosotros/we/nous" NO tocada** — es convención estándar en textos RGPD y el sujeto real es `__LEGAL_NAME__` interpolado; cambiarla requiere review con abogado.
 
@@ -60,7 +60,7 @@ Regla vinculante para toda tarea: aplicar AD-1 (voz), AD-2 (tabla de reemplazos)
 
 - [x] 7.1 Grep de regresión de marca ejecutado. Residuales legítimos:
     - `README.md:54` + `docs/reference/source-materials.md:5,7,19` — filename del dossier PDF (Out of Scope decidido) + quotes históricas explicando rebrand
-    - `src/i18n/legal-content/cookies.ts:41,112,183,254` — `webaj_cookie_consent_v1` en texto de cookie policy (identificador técnico, Out of Scope)
+    - `src/i18n/legal-content/cookies.ts:41,112,183,254` — `webjt_cookie_consent_v1` en texto de cookie policy (identificador técnico, Out of Scope)
     - `src/pages/robots.txt.ts:6` + `src/components/CookieConsent.tsx:5` — identificadores técnicos (`webaj.placeholder`, storage key)
     - `openspec/changes/rebrand-to-dra-jessica-tellechea/**` — docs de la propia propuesta (meta)
     - `openspec/changes/archive/**` — archivados (Out of Scope por proposal)
