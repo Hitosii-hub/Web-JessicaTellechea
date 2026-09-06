@@ -3,3 +3,6 @@
  * @see docs/site-architecture.md (utility / deferred routes)
  */
 export const blogPublic = false;
+
+/** @see docs/site-architecture.md — enable when corporal pillar launches. */
+export const corporalPublic = false;

@@ -280,6 +280,32 @@
 	white-space: pre-line;
 }
 
+.site-footer__credit {
+	margin: var(--space-sm) 0 0;
+	max-width: var(--max-width-wide);
+	font-family: var(--font-sans-ui);
+	font-size: 0.6875rem;
+	font-weight: 400;
+	line-height: 1.4;
+	letter-spacing: 0.03em;
+	text-align: end;
+	color: color-mix(in srgb, var(--color-on-accent) 42%, transparent);
+}
+
+.site-footer__credit a,
+.site-footer__credit span {
+	color: inherit;
+}
+
+.site-footer__credit a {
+	text-decoration: none;
+	transition: color var(--duration-fast) var(--ease-standard);
+}
+
+.site-footer__credit a:hover {
+	color: color-mix(in srgb, var(--color-on-accent) 62%, transparent);
+}
+
 .site-main {
 	padding: var(--space-md);
 	max-width: 55rem;

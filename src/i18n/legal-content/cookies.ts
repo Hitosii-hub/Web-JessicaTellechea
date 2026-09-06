@@ -38,7 +38,7 @@ const es: LegalPageModel = {
 			heading: '4. Tecnologías utilizadas en este sitio',
 			paragraphs: [
 				'Cookies o datos técnicos necesarios para la navegación y la carga del sitio (por ejemplo, sesión o recursos asociados a la tecnología del sitio, como las transiciones de vista de Astro si están activas).',
-				'Preferencia sobre el aviso de cookies: se utiliza la clave local del navegador `webaj_cookie_consent_v1` (o una versión posterior acordada en el código) para recordar si aceptó, rechazó o configuró el banner. Es un dato almacenado en su equipo por este origen; permanece hasta que lo borre desde el navegador o cambie su elección desde el banner.',
+				'Preferencia sobre el aviso de cookies: se utiliza la clave local del navegador `webjt_cookie_consent_v1` (o una versión posterior acordada en el código) para recordar si aceptó, rechazó o configuró el banner. Es un dato almacenado en su equipo por este origen; permanece hasta que lo borre desde el navegador o cambie su elección desde el banner.',
 				'Seguridad (Google reCAPTCHA): cuando se muestra el formulario de reserva integrado, Google puede establecer cookies o datos técnicos propios de Google para evaluar el riesgo de abuso. Los nombres y duraciones concretos los determina Google; puede consultar la información que Google publica sobre cookies y privacidad para ese producto.',
 			],
 		},
@@ -109,7 +109,7 @@ const en: LegalPageModel = {
 			heading: '4. Technologies used on this site',
 			paragraphs: [
 				'Technical cookies or data needed to browse and load the site (for example session or resources related to the site technology, such as Astro View Transitions if enabled).',
-				'Cookie-banner preference: the browser local key `webaj_cookie_consent_v1` (or a later version defined in code) stores whether you accepted, rejected, or configured the banner. It remains until you clear site data in the browser or change your choice in the banner.',
+				'Cookie-banner preference: the browser local key `webjt_cookie_consent_v1` (or a later version defined in code) stores whether you accepted, rejected, or configured the banner. It remains until you clear site data in the browser or change your choice in the banner.',
 				'Security (Google reCAPTCHA): when the embedded booking form is shown, Google may set cookies or technical data to assess abuse risk. Names and lifetimes are determined by Google; see Google’s published information on cookies and privacy for that product.',
 			],
 		},
@@ -180,7 +180,7 @@ const ca: LegalPageModel = {
 			heading: '4. Tecnologies utilitzades en aquest lloc',
 			paragraphs: [
 				'Galetes o dades tècniques necessàries per a la navegació i la càrrega del lloc (per exemple, sessió o recursos associats a la tecnologia del lloc, com les transicions de vista d’Astro si estan actives).',
-				'Preferència sobre l’avís de galetes: s’utilitza la clau local del navegador `webaj_cookie_consent_v1` (o una versió posterior acordada al codi) per recordar si va acceptar, rebutjar o configurar el bàner. És una dada emmagatzemada al seu equip per aquest origen; roman fins que l’esborri des del navegador o canviï l’elecció des del bàner.',
+				'Preferència sobre l’avís de galetes: s’utilitza la clau local del navegador `webjt_cookie_consent_v1` (o una versió posterior acordada al codi) per recordar si va acceptar, rebutjar o configurar el bàner. És una dada emmagatzemada al seu equip per aquest origen; roman fins que l’esborri des del navegador o canviï l’elecció des del bàner.',
 				'Seguretat (Google reCAPTCHA): quan es mostra el formulari de reserva integrat, Google pot establir galetes o dades tècniques pròpies de Google per avaluar el risc d’abús. Els noms i durades concrets els determina Google; pot consultar la informació que Google publica sobre galetes i privacitat per a aquest producte.',
 			],
 		},
@@ -251,7 +251,7 @@ const fr: LegalPageModel = {
 			heading: '4. Technologies utilisées sur ce site',
 			paragraphs: [
 				'Cookies ou données techniques nécessaires à la navigation et au chargement du site (par exemple session ou ressources liées à la technologie du site, telles que les transitions de vue d’Astro si elles sont activées).',
-				'Préférence relative à la bannière cookies : clé locale du navigateur `webaj_cookie_consent_v1` (ou version ultérieure définie dans le code) pour mémoriser accepter / refuser / configurer. Les données restent sur votre équipement jusqu’à effacement via le navigateur ou changement de choix dans la bannière.',
+				'Préférence relative à la bannière cookies : clé locale du navigateur `webjt_cookie_consent_v1` (ou version ultérieure définie dans le code) pour mémoriser accepter / refuser / configurer. Les données restent sur votre équipement jusqu’à effacement via le navigateur ou changement de choix dans la bannière.',
 				'Sécurité (Google reCAPTCHA) : lorsque le formulaire de réservation intégré est affiché, Google peut déposer des cookies ou des données techniques pour évaluer le risque d’abus. Les noms et durées sont déterminés par Google ; consultez l’information publiée par Google sur les cookies et la confidentialité pour ce produit.',
 			],
 		},
