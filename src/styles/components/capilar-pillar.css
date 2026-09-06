@@ -267,7 +267,6 @@
 }
 
 .capilar-benefits__body,
-.capilar-treatment__body,
 .capilar-process__body {
 	margin: 0;
 	font-family: var(--font-sans-ui);
@@ -280,39 +279,115 @@
 }
 
 .capilar-treatments {
+	width: 100%;
+}
+
+.capilar-treatments__head {
+	margin-bottom: var(--space-xl);
+}
+
+.capilar-treatments__grid {
 	display: grid;
-	gap: var(--space-xl);
-	align-items: start;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 17.5rem), 1fr));
+	gap: var(--space-lg);
+	width: 100%;
 }
 
-.capilar-treatment {
-	padding-bottom: var(--space-xl);
-	border-bottom: 1px solid color-mix(in srgb, var(--color-border) 78%, transparent);
-}
-
-.capilar-treatment + .capilar-treatment {
-	margin-top: var(--space-xl);
-}
-
-.capilar-treatment__heading {
+.capilar-treatment-card {
 	display: flex;
-	gap: var(--space-md);
-	align-items: flex-end;
-	justify-content: space-between;
-	margin-bottom: var(--space-md);
+	flex-direction: column;
+	height: 100%;
+	background: var(--color-bg);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-editorial);
+	box-shadow: var(--shadow-sm);
+	overflow: hidden;
+	text-decoration: none;
+	color: inherit;
+	transition:
+		border-color var(--duration-fast) var(--ease-standard),
+		box-shadow var(--duration-fast) var(--ease-standard);
 }
 
-.capilar-treatment__title {
+.capilar-treatment-card:hover {
+	border-color: color-mix(in srgb, var(--color-champagne) 45%, var(--color-border));
+	box-shadow: 0 12px 36px rgb(47 46 43 / 10%);
+}
+
+.capilar-treatment-card__visual {
+	position: relative;
+	overflow: hidden;
+	aspect-ratio: 5 / 4;
+	min-height: 0;
+	background: linear-gradient(
+		145deg,
+		color-mix(in srgb, var(--color-neutral) 85%, var(--color-champagne)),
+		var(--color-bg)
+	);
+}
+
+.capilar-treatment-card__image {
+	width: 100%;
+	height: 100%;
+	display: block;
+	object-fit: cover;
+	max-width: 100%;
+	transition: transform var(--duration-normal) var(--ease-standard);
+}
+
+.capilar-treatment-card__image--silent-luxury {
+	filter: sepia(0.14) saturate(0.72) brightness(1.05) contrast(0.93) grayscale(0.12);
+}
+
+.capilar-treatment-card:hover .capilar-treatment-card__image {
+	transform: scale(1.03);
+}
+
+.capilar-treatment-card__body {
+	padding: var(--space-md);
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-sm);
+	flex: 1;
+}
+
+.capilar-treatment-card__tag {
+	font-family: var(--font-sans-ui);
+	font-size: 0.6875rem;
+	font-weight: 700;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: color-mix(in srgb, var(--color-champagne) 82%, var(--color-accent));
+}
+
+.capilar-treatment-card__title {
 	margin: 0;
 	font-family: var(--font-serif-display);
-	font-size: clamp(1.5rem, 3vw, 2rem);
-	font-weight: 400;
+	font-size: clamp(1.2rem, 2.4vw, 1.45rem);
+	font-weight: 600;
+	line-height: 1.25;
 	color: var(--color-text);
 }
 
-.capilar-treatment__icon {
-	font-size: 1.5rem;
+.capilar-treatment-card__excerpt {
+	margin: 0;
+	font-family: var(--font-sans-ui);
+	font-size: 0.9375rem;
+	line-height: 1.6;
 	color: var(--color-muted);
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	overflow: hidden;
+}
+
+.capilar-treatment-card__link {
+	margin-top: auto;
+	padding-top: var(--space-xs);
+	font-family: var(--font-sans-ui);
+	font-size: 0.8125rem;
+	font-weight: 600;
+	color: var(--color-accent);
 }
 
 .capilar-section--process {
@@ -424,6 +499,10 @@
 }
 
 @media (min-width: 900px) {
+	.capilar-section--benefits {
+		padding-inline-start: clamp(0.35rem, 1.2vw, 0.65rem);
+	}
+
 	.capilar-diagnosis {
 		grid-template-columns: minmax(0, 55fr) minmax(0, 45fr);
 		gap: clamp(3rem, 7vw, 5rem);
@@ -433,13 +512,14 @@
 		grid-template-columns: repeat(5, minmax(0, 1fr));
 	}
 
-	.capilar-treatments {
-		grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+	.capilar-treatments__grid,
+	.capilar-treatments__grid[data-treatment-count='4'] {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: clamp(var(--space-md), 2vw, var(--space-lg));
 	}
 
-	.capilar-treatments__head {
-		position: sticky;
-		top: 9rem;
+	.capilar-treatment-card__visual {
+		aspect-ratio: 5 / 4;
 	}
 
 	.capilar-process {

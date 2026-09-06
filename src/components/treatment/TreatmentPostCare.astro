@@ -1,0 +1,30 @@
+---
+import type { TreatmentPageContent } from '../../i18n/capilar-treatments/types';
+import TreatmentImagePlaceholder from './TreatmentImagePlaceholder.astro';
+
+interface Props {
+	content: TreatmentPageContent;
+}
+
+const { content: c } = Astro.props;
+---
+
+<section class="treatment-section treatment-section--post-care">
+	<div class="treatment-container treatment-split treatment-split--copy-right">
+		<div class="treatment-split__copy">
+			<h2 class="treatment-section__title">{c.postCare.title}</h2>
+			{c.postCare.body.map((paragraph) => <p class="treatment-prose">{paragraph}</p>)}
+			<div class="treatment-bullet-panel">
+				<h3 class="treatment-bullet-panel__title">{c.postCare.essentialsTitle}</h3>
+				<ul class="treatment-bullet-panel__list">
+					{c.postCare.essentials.map((item) => (
+						<li>{item}</li>
+					))}
+				</ul>
+			</div>
+		</div>
+		<div class="treatment-split__visual">
+			<TreatmentImagePlaceholder fillHeight aspect="square" {...c.postCare.image} />
+		</div>
+	</div>
+</section>

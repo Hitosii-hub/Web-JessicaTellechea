@@ -2,7 +2,7 @@
 import type { Locale } from '../../i18n/config';
 import type { CapilarPageContent } from '../../i18n/capilar-page';
 import { resolveBookingCta } from '../../i18n/booking-links';
-import { href } from '../../i18n/route-registry';
+import { href, hrefCapilarTreatment } from '../../i18n/route-registry';
 import FinalCta from '../FinalCta.astro';
 import Heading from '../ui/Heading.astro';
 
@@ -102,24 +102,47 @@ const bookingCta = resolveBookingCta(lang);
 	</section>
 
 	<section class="capilar-section capilar-section--treatments">
-		<div class="capilar-container capilar-treatments">
-			<div class="capilar-treatments__head">
-				<Heading level={2} serif class="capilar-section__title capilar-section__title--left">
-					{content.treatments.title}
-				</Heading>
-			</div>
-			<div class="capilar-treatments__list">
-				{
-					content.treatments.items.map((item) => (
-						<article class="capilar-treatment">
-							<div class="capilar-treatment__heading">
-								<h3 class="capilar-treatment__title">{item.title}</h3>
-								<i class="ph-thin ph-arrow-right capilar-treatment__icon" aria-hidden="true"></i>
-							</div>
-							<p class="capilar-treatment__body">{item.body}</p>
-						</article>
-					))
-				}
+		<div class="capilar-container">
+			<div class="capilar-treatments">
+				<div class="capilar-treatments__head">
+					<Heading level={2} serif class="capilar-section__title capilar-section__title--left">
+						{content.treatments.title}
+					</Heading>
+				</div>
+				<div class="capilar-treatments__grid" data-treatment-count={content.treatments.items.length}>
+					{
+						content.treatments.items.map((item, index) => (
+							<a
+								class="capilar-treatment-card"
+								href={hrefCapilarTreatment(lang, item.treatmentKey)}
+								data-treatment-key={item.treatmentKey}
+							>
+								<div class="capilar-treatment-card__visual">
+									<img
+										class:list={[
+											'capilar-treatment-card__image',
+											item.treatmentKey === 'mesoterapia-capilar' &&
+												'capilar-treatment-card__image--silent-luxury',
+										]}
+										src={item.imageSrc}
+										alt={item.imageAlt}
+										width={640}
+										height={480}
+										loading={index < 2 ? 'eager' : 'lazy'}
+										decoding="async"
+										fetchpriority={index === 0 ? 'high' : undefined}
+									/>
+								</div>
+								<div class="capilar-treatment-card__body">
+									<span class="capilar-treatment-card__tag">{item.tag}</span>
+									<h3 class="capilar-treatment-card__title">{item.title}</h3>
+									<p class="capilar-treatment-card__excerpt">{item.body}</p>
+									<span class="capilar-treatment-card__link">{content.treatments.linkCta}</span>
+								</div>
+							</a>
+						))
+					}
+				</div>
 			</div>
 		</div>
 	</section>

@@ -108,3 +108,83 @@ export function isCorporalPath(pathname: string): boolean {
 	const norm = pathname.replace(/\/+$/, '') || '/';
 	return corporalSegments.some((seg) => norm.includes(`/${seg}`));
 }
+
+export type CapilarTreatmentKey =
+	| 'mesoterapia-capilar'
+	| 'prp-capilar'
+	| 'carboxiterapia-capilar'
+	| 'transplante-capilar';
+
+export const capilarTreatmentKeys: CapilarTreatmentKey[] = [
+	'mesoterapia-capilar',
+	'prp-capilar',
+	'carboxiterapia-capilar',
+	'transplante-capilar',
+];
+
+const capilarTreatmentSegmentMatrix: Record<CapilarTreatmentKey, Record<Locale, string>> = {
+	'mesoterapia-capilar': {
+		es: 'mesoterapia-capilar-medica',
+		en: 'capillary-mesotherapy',
+		ca: 'mesoterapia-capilar-medica',
+		fr: 'mesotherapie-capillaire',
+	},
+	'prp-capilar': {
+		es: 'prp-capilar',
+		en: 'capillary-prp',
+		ca: 'prp-capilar',
+		fr: 'prp-capillaire',
+	},
+	'carboxiterapia-capilar': {
+		es: 'carboxiterapia-capilar',
+		en: 'capillary-carboxytherapy',
+		ca: 'carboxiterapia-capilar',
+		fr: 'carboxitherapie-capillaire',
+	},
+	'transplante-capilar': {
+		es: 'transplante-capilar',
+		en: 'capillary-hair-transplant',
+		ca: 'transplante-capilar',
+		fr: 'greffe-capillaire',
+	},
+};
+
+function buildCapilarTreatmentReverse(): Record<Locale, Map<string, CapilarTreatmentKey>> {
+	const out = {} as Record<Locale, Map<string, CapilarTreatmentKey>>;
+	for (const loc of locales) {
+		const m = new Map<string, CapilarTreatmentKey>();
+		for (const key of capilarTreatmentKeys) {
+			m.set(capilarTreatmentSegmentMatrix[key][loc], key);
+		}
+		out[loc] = m;
+	}
+	return out;
+}
+
+const capilarTreatmentReverseByLocale = buildCapilarTreatmentReverse();
+
+export function segmentForCapilarTreatment(locale: Locale, key: CapilarTreatmentKey): string {
+	return capilarTreatmentSegmentMatrix[key][locale];
+}
+
+export function capilarTreatmentKeyFromSegment(
+	locale: Locale,
+	segment: string,
+): CapilarTreatmentKey | undefined {
+	return capilarTreatmentReverseByLocale[locale].get(segment);
+}
+
+/** Trailing slash matches site `trailingSlash: 'always'`. */
+export function hrefCapilarTreatment(locale: Locale, key: CapilarTreatmentKey): string {
+	return `/${locale}/${segmentFor(locale, 'capilar')}/${segmentForCapilarTreatment(locale, key)}/`;
+}
+
+export function isCapilarTreatmentPath(pathname: string): CapilarTreatmentKey | undefined {
+	const norm = pathname.replace(/\/+$/, '') || '/';
+	const parts = norm.split('/').filter(Boolean);
+	if (parts.length !== 3) return undefined;
+	const locale = parts[0] as Locale;
+	if (!locales.includes(locale)) return undefined;
+	if (iaKeyFromPath(locale, parts[1]) !== 'capilar') return undefined;
+	return capilarTreatmentKeyFromSegment(locale, parts[2]);
+}

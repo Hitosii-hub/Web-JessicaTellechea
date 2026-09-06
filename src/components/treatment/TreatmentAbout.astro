@@ -1,0 +1,35 @@
+---
+import type { Locale } from '../../i18n/config';
+import type { TreatmentPageContent } from '../../i18n/capilar-treatments/types';
+import { resolveBookingCta } from '../../i18n/booking-links';
+import TreatmentImagePlaceholder from './TreatmentImagePlaceholder.astro';
+
+interface Props {
+	lang: Locale;
+	content: TreatmentPageContent;
+}
+
+const { lang, content: c } = Astro.props;
+const booking = resolveBookingCta(lang);
+---
+
+<section class="treatment-section treatment-section--about">
+	<div class="treatment-container treatment-split treatment-split--copy-right">
+		<div class="treatment-split__copy">
+			<p class="treatment-eyebrow">{c.about.eyebrow}</p>
+			<h2 class="treatment-section__title">{c.about.title}</h2>
+			{c.about.body.map((paragraph) => <p class="treatment-prose">{paragraph}</p>)}
+			<a
+				class="treatment-cta"
+				href={booking.href}
+				target={booking.external ? '_blank' : undefined}
+				rel={booking.external ? 'noopener noreferrer' : undefined}
+			>
+				{c.about.cta}
+			</a>
+		</div>
+		<div class="treatment-split__visual">
+			<TreatmentImagePlaceholder {...c.about.image} />
+		</div>
+	</div>
+</section>

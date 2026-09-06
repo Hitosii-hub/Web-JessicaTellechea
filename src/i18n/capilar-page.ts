@@ -1,4 +1,5 @@
 import type { Locale as AppLocale } from './config';
+import type { CapilarTreatmentKey } from './route-registry';
 
 export type Locale = AppLocale;
 
@@ -33,8 +34,12 @@ interface CapilarBenefit {
 }
 
 interface CapilarTreatment {
+	treatmentKey: CapilarTreatmentKey;
 	title: string;
 	body: string;
+	tag: string;
+	imageSrc: string;
+	imageAlt: string;
 }
 
 interface CapilarProcessStep {
@@ -55,7 +60,7 @@ export interface CapilarPageContent {
 	diagnosis: CapilarTextBlock;
 	benefitsTitle: string;
 	benefits: CapilarBenefit[];
-	treatments: { title: string; items: CapilarTreatment[] };
+	treatments: { title: string; linkCta: string; items: CapilarTreatment[] };
 	process: { title: string; steps: CapilarProcessStep[] };
 	authority: { title: string; imageSrc: string; imageAlt: string; items: CapilarAuthorityItem[] };
 	finalCta: { h2: string; body: string; primary: string };
@@ -124,25 +129,42 @@ const spanishCapilarPageContent: CapilarPageContent = {
 	  ],
 	treatments: {
 		title: 'Tratamientos médicos.',
+		linkCta: 'Ver tratamiento',
 		items: [
 			{
+				treatmentKey: 'mesoterapia-capilar',
 				title: 'Mesoterapia Capilar Médica',
 				body:
 					'Infiltración directa de péptidos, vitaminas y fármacos antiandrógenos para nutrir el folículo desde el interior.',
+				tag: 'Regenerativo',
+				imageSrc: '/images/capilar/carbox/foliculo.png',
+				imageAlt: 'Folículo piloso en contexto de mesoterapia capilar médica',
 			},
 			{
+				treatmentKey: 'prp-capilar',
 				title: 'PRP Capilar (Plasma Rico en Plaquetas)',
 				body:
 					'Utilización de los factores de crecimiento propios del paciente para regenerar tejidos y potenciar la vascularización.',
+				tag: 'Autólogo',
+				imageSrc: '/images/home/treatment-capilar.webp',
+				imageAlt: 'Tratamiento PRP capilar con plasma rico en plaquetas',
 			},
 			{
+				treatmentKey: 'carboxiterapia-capilar',
 				title: 'Carboxiterapia Capilar',
 				body: 'Mejora de la microcirculación mediante la aplicación de CO2 medicinal, facilitando la llegada de nutrientes.',
+				tag: 'Circulatorio',
+				imageSrc: '/images/capilar/carbox/carboxitherapy-3.png',
+				imageAlt: 'Paciente revisando su cabello tras carboxiterapia capilar',
 			},
 			{
+				treatmentKey: 'transplante-capilar',
 				title: 'Transplante Capilar',
 				body:
 					'Reposición de densidad mediante extracción e implantación de folículos bajo criterio médico, con valoración previa y plan personalizado.',
+				tag: 'Quirúrgico',
+				imageSrc: '/images/capilar/transplant/transplant-planification.png',
+				imageAlt: 'Planificación de transplante capilar con el paciente en consulta',
 			},
 		],
 	},
@@ -261,23 +283,36 @@ export const capilarPageContent: Record<Locale, CapilarPageContent> = {
 		],
 		treatments: {
 			title: 'Medical treatments.',
+			linkCta: 'View treatment',
 			items: [
 				{
+					...spanishCapilarPageContent.treatments.items[0],
 					title: 'Medical Hair Mesotherapy',
 					body: 'Direct infiltration of peptides, vitamins, and anti-androgen drugs to nourish the follicle from within.',
+					tag: 'Regenerative',
+					imageAlt: 'Hair follicle in medical capillary mesotherapy context',
 				},
 				{
+					...spanishCapilarPageContent.treatments.items[1],
 					title: 'Hair PRP (Platelet-Rich Plasma)',
 					body: 'Use of the patient\'s own growth factors to regenerate tissue and enhance vascularization.',
+					tag: 'Autologous',
+					imageAlt: 'Hair PRP treatment with platelet-rich plasma',
 				},
 				{
+					...spanishCapilarPageContent.treatments.items[2],
 					title: 'Capilar Carboxytherapy',
 					body: 'Improved microcirculation through medical CO2 application, facilitating nutrient delivery.',
+					tag: 'Circulatory',
+					imageAlt: 'Patient checking hair after capillary carboxytherapy',
 				},
 				{
+					...spanishCapilarPageContent.treatments.items[3],
 					title: 'Hair Transplant',
 					body:
 						'Density restoration through follicle extraction and implantation under medical criteria, with prior assessment and a personalised plan.',
+					tag: 'Surgical',
+					imageAlt: 'Hair transplant planning with patient in consultation',
 				},
 			],
 		},
@@ -393,23 +428,36 @@ export const capilarPageContent: Record<Locale, CapilarPageContent> = {
 		],
 		treatments: {
 			title: 'Tractaments mèdics.',
+			linkCta: 'Veure tractament',
 			items: [
 				{
+					...spanishCapilarPageContent.treatments.items[0],
 					title: 'Mesoteràpia capil·lar mèdica',
 					body: 'Infiltració directa de pèptids, vitamines i fàrmacs antiandrògens per nodrir el fol·licle des de l interior.',
+					tag: 'Regeneratiu',
+					imageAlt: 'Fol·licle pilós en context de mesoteràpia capil·lar mèdica',
 				},
 				{
+					...spanishCapilarPageContent.treatments.items[1],
 					title: 'PRP capil·lar (plasma ric en plaquetes)',
 					body: 'Utilització dels factors de creixement propis del pacient per regenerar teixits i potenciar la vascularització.',
+					tag: 'Autòleg',
+					imageAlt: 'Tractament PRP capil·lar amb plasma ric en plaquetes',
 				},
 				{
+					...spanishCapilarPageContent.treatments.items[2],
 					title: 'Carboxiteràpia capil·lar',
 					body: 'Millora de la microcirculació mitjançant l aplicació de CO2 medicinal, facilitant l arribada de nutrients.',
+					tag: 'Circulatòri',
+					imageAlt: 'Pacient revisant el cabell després de carboxiteràpia capil·lar',
 				},
 				{
+					...spanishCapilarPageContent.treatments.items[3],
 					title: 'Trasplantament capil·lar',
 					body:
 						'Reposició de densitat mitjançant extracció i implantació de fol·licles sota criteri mèdic, amb valoració prèvia i pla personalitzat.',
+					tag: 'Quirúrgic',
+					imageAlt: 'Planificació de transplant capil·lar amb el pacient en consulta',
 				},
 			],
 		},
@@ -525,23 +573,36 @@ export const capilarPageContent: Record<Locale, CapilarPageContent> = {
 		],
 		treatments: {
 			title: 'Traitements médicaux.',
+			linkCta: 'Voir le traitement',
 			items: [
 				{
+					...spanishCapilarPageContent.treatments.items[0],
 					title: 'Mesotherapie capillaire medicale',
 					body: 'Infiltration directe de peptides, vitamines et medicaments antiandrogenes pour nourrir le follicule de l interieur.',
+					tag: 'Regeneratif',
+					imageAlt: 'Follicule pileux en contexte de mésothérapie capillaire médicale',
 				},
 				{
+					...spanishCapilarPageContent.treatments.items[1],
 					title: 'PRP capillaire (plasma riche en plaquettes)',
 					body: 'Utilisation des facteurs de croissance du patient pour regenerer les tissus et renforcer la vascularisation.',
+					tag: 'Autologue',
+					imageAlt: 'Traitement PRP capillaire avec plasma riche en plaquettes',
 				},
 				{
+					...spanishCapilarPageContent.treatments.items[2],
 					title: 'Carboxytherapie capillaire',
 					body: 'Amelioration de la microcirculation par application de CO2 medical, facilitant l apport en nutriments.',
+					tag: 'Circulatoire',
+					imageAlt: 'Patient vérifiant ses cheveux après carboxythérapie capillaire',
 				},
 				{
+					...spanishCapilarPageContent.treatments.items[3],
 					title: 'Greffe capillaire',
 					body:
 						'Restauration de la densite par extraction et implantation de follicules sous critere medical, avec evaluation prealable et plan personnalise.',
+					tag: 'Chirurgical',
+					imageAlt: 'Planification de greffe capillaire avec le patient en consultation',
 				},
 			],
 		},

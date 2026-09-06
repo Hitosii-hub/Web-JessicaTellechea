@@ -10,7 +10,7 @@ import { resolveClinicInstagram } from '../i18n/clinic-links';
 import { localeEquivalentHref } from '../i18n/locale-hrefs';
 import { headerBookingCta } from '../i18n/nav';
 import { resolveBookingCta } from '../i18n/booking-links';
-import { href, iaKeyFromPath, isBlogPath, isBookingPath, isCorporalPath, type IaKey } from '../i18n/route-registry';
+import { href, iaKeyFromPath, isBlogPath, isBookingPath, isCapilarTreatmentPath, isCorporalPath, hrefCapilarTreatment, type IaKey } from '../i18n/route-registry';
 import { blogPublic, corporalPublic } from '../i18n/site-features';
 import '../styles/app.css';
 
@@ -38,6 +38,7 @@ const pathWithinLocale = parts.length > 1 ? `${parts.slice(1).join('/')}/` : '';
 
 let currentIaKey: IaKey = 'home';
 let useLegacyLocalePaths = false;
+const capilarTreatmentKey = isCapilarTreatmentPath(pathname);
 
 if (parts.length <= 1) {
 	currentIaKey = 'home';
@@ -48,6 +49,8 @@ if (parts.length <= 1) {
 	useLegacyLocalePaths = true;
 } else if (parts[1] === 'blog') {
 	currentIaKey = 'blog';
+} else if (capilarTreatmentKey) {
+	currentIaKey = 'capilar';
 } else {
 	const ik = iaKeyFromPath(lang, parts[1]);
 	if (ik) currentIaKey = ik;
@@ -59,6 +62,9 @@ const origin = siteRoot.origin;
 
 function pageUrl(locale: string) {
 	const loc = locale as Locale;
+	if (capilarTreatmentKey) {
+		return `${origin}${hrefCapilarTreatment(loc, capilarTreatmentKey)}`;
+	}
 	if (!useLegacyLocalePaths) {
 		return `${origin}${href(loc, currentIaKey)}`;
 	}
@@ -88,11 +94,13 @@ const langPickerItems = locales.map((code) => ({
 	locale: code,
 	label: localeLabels[code],
 	region: localeRegionLine[code],
-	href: localeEquivalentHref(code, {
-		currentIaKey,
-		pathWithinLocale,
-		useLegacyLocalePaths,
-	}),
+	href: capilarTreatmentKey
+		? hrefCapilarTreatment(code, capilarTreatmentKey)
+		: localeEquivalentHref(code, {
+				currentIaKey,
+				pathWithinLocale,
+				useLegacyLocalePaths,
+			}),
 	suggested: code === 'es' || code === 'ca',
 }));
 ---

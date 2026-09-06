@@ -1,0 +1,26 @@
+---
+import type { TreatmentPageContent } from '../../i18n/capilar-treatments/types';
+
+interface Props {
+	content: TreatmentPageContent;
+}
+
+const { content: c } = Astro.props;
+---
+
+<section class="treatment-section treatment-section--faq">
+	<div class="treatment-container treatment-centered">
+		<p class="treatment-eyebrow">{c.faq.eyebrow}</p>
+		<h2 class="treatment-section__title">{c.faq.title}</h2>
+		<div class="treatment-faq">
+			{
+				c.faq.items.map((item) => (
+					<details class="treatment-faq__item">
+						<summary class="treatment-faq__question">{item.q}</summary>
+						<p class="treatment-faq__answer">{item.a}</p>
+					</details>
+				))
+			}
+		</div>
+	</div>
+</section>

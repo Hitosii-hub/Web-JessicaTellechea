@@ -20,9 +20,9 @@ const corporalNavItem: NavItem = {
 /** Primary nav: no booking route (docs/site-architecture.md). Blog/corporal gated by launch flags. */
 export const primaryNavItems: NavItem[] = [
 	{ iaKey: 'home', label: { es: 'Inicio', en: 'Home', ca: 'Inici', fr: 'Accueil' } },
-	{ iaKey: 'facial', label: { es: 'Facial', en: 'Facial', ca: 'Facial', fr: 'Visage' } },
-	...(corporalPublic ? [corporalNavItem] : []),
 	{ iaKey: 'capilar', label: { es: 'Capilar', en: 'Hair', ca: 'Capil·lar', fr: 'Capillaire' } },
+	...(corporalPublic ? [corporalNavItem] : []),
+	{ iaKey: 'facial', label: { es: 'Facial', en: 'Facial', ca: 'Facial', fr: 'Visage' } },
 	{
 		iaKey: 'trust',
 		label: {

@@ -1,0 +1,49 @@
+---
+interface Props {
+	alt: string;
+	recraftPrompt?: string;
+	src?: string;
+	tone?: 'silent-luxury';
+	aspect?: 'portrait' | 'landscape' | 'square';
+	fit?: 'cover' | 'contain';
+	fillHeight?: boolean;
+}
+
+const {
+	alt,
+	recraftPrompt,
+	src,
+	tone,
+	aspect = 'portrait',
+	fit = 'cover',
+	fillHeight = false,
+} = Astro.props;
+const isDev = import.meta.env.DEV;
+---
+
+<figure
+	class:list={[
+		'treatment-image',
+		aspect === 'landscape' && 'treatment-image--landscape',
+		aspect === 'square' && 'treatment-image--square',
+		fit === 'contain' && 'treatment-image--contain',
+		fillHeight && 'treatment-image--fill-height',
+	]}
+>
+	{
+		src ? (
+			<img
+				class:list={['treatment-image__img', tone === 'silent-luxury' && 'treatment-image__img--silent-luxury']}
+				src={src}
+				alt={alt}
+				loading="lazy"
+				decoding="async"
+			/>
+		) : (
+			<div class="treatment-image__placeholder" role="img" aria-label={alt}>
+				<span class="treatment-image__placeholder-label">{alt}</span>
+			</div>
+		)
+	}
+	{isDev && recraftPrompt ? <figcaption class="treatment-image__prompt">Recraft: {recraftPrompt}</figcaption> : null}
+</figure>

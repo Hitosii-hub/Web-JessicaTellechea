@@ -1,6 +1,6 @@
 # Web localized routing and primary navigation
 
-**Status:** Main spec (promoted from changes `localized-slugs-nav-conventions`, `defer-corporal-pillar`; archived 2026-09-06).  
+**Status:** Main spec (promoted from changes `localized-slugs-nav-conventions`, `defer-corporal-pillar`, `capilar-treatment-pages`; archived 2026-09-06).  
 **Implementation:** `src/i18n/route-registry.ts`, `[lang]/[segment].astro`, nav components, `astro.config.mjs` redirects.
 
 ## Normative keywords
@@ -111,6 +111,33 @@ When `corporalPublic` in `src/i18n/site-features.ts` is `false`, the system **SH
 - GIVEN `corporalPublic` is set to `true` and sitemap filter for corporal is disabled
 - WHEN the site is rebuilt and deployed
 - THEN corporal **SHALL** appear in primary nav, sitemap, and without `noindex` on corporal pages (same policy as facial/capilar)
+
+### Requirement: Capilar treatment nested routes
+
+The system SHALL expose capilar treatment pages as nested paths under the capilar pillar segment per locale (see `web-capilar-treatment-routes` slug matrix). These URLs SHALL NOT appear in primary navigation (REQ-6). They SHALL be reachable from capilar pillar treatment list and internal links.
+
+#### Scenario: Primary nav unchanged
+
+- GIVEN primary navigation on `/es/`
+- WHEN rendered
+- THEN nav SHALL include Capilar pillar only
+- AND SHALL NOT include individual treatment slugs as top-level items
+
+#### Scenario: Language switcher equivalence
+
+- GIVEN user on `/en/hair-treatment-barcelona/capillary-prp/`
+- WHEN switching to `ca`
+- THEN target SHALL be `/ca/tractament-capillar-barcelona/prp-capilar/`
+
+### Requirement: Treatment href builder
+
+`route-registry.ts` SHALL provide `hrefCapilarTreatment(locale, treatmentKey)` and reverse lookup helpers for static path generation and language switcher.
+
+#### Scenario: Internal link construction
+
+- GIVEN `hrefCapilarTreatment('fr', 'transplante-capilar')`
+- WHEN called
+- THEN result SHALL be `/fr/traitement-capillaire-barcelona/greffe-capillaire/`
 
 ### REQ-7 Home representation consistency
 

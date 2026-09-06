@@ -1,0 +1,28 @@
+---
+import type { Locale } from '../../i18n/config';
+import type { TreatmentPageContent } from '../../i18n/capilar-treatments/types';
+import TreatmentAbout from './TreatmentAbout.astro';
+import TreatmentFaq from './TreatmentFaq.astro';
+import TreatmentHero from './TreatmentHero.astro';
+import TreatmentHow from './TreatmentHow.astro';
+import TreatmentPostCare from './TreatmentPostCare.astro';
+import TreatmentPrecautions from './TreatmentPrecautions.astro';
+import TreatmentResults from './TreatmentResults.astro';
+
+interface Props {
+	lang: Locale;
+	content: TreatmentPageContent;
+}
+
+const { lang, content } = Astro.props;
+---
+
+<article class="treatment-page">
+	<TreatmentHero lang={lang} content={content} />
+	<TreatmentAbout lang={lang} content={content} />
+	<TreatmentHow content={content} />
+	<TreatmentPostCare content={content} />
+	<TreatmentPrecautions content={content} />
+	<TreatmentResults content={content} />
+	<TreatmentFaq content={content} />
+</article>
