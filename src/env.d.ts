@@ -7,6 +7,7 @@ interface ImportMetaEnv {
 	readonly PUBLIC_CLINIC_WEBSITE?: string;
 	readonly PUBLIC_CLINIC_INSTAGRAM?: string;
 	readonly PUBLIC_GOOGLE_MAPS_URL?: string;
+	readonly PUBLIC_STUDIO_URL?: string;
 	readonly PUBLIC_WHATSAPP_E164?: string;
 	readonly PUBLIC_FORM_POST_URL?: string;
 	readonly PUBLIC_NUBIMED_CLINICA_ID?: string;

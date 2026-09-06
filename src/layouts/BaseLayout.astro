@@ -5,12 +5,12 @@ import LanguagePicker from '../components/LanguagePicker';
 import PrimaryNav from '../components/PrimaryNav.astro';
 import { locales, localeLabels, localeRegionLine, type Locale } from '../i18n/config';
 import { languageModalCopy } from '../i18n/language-modal';
-import { legalFooterLabels, legalFooterPublicationNote } from '../i18n/legal-nav';
+import { legalFooterLabels, legalFooterPublicationNote, footerStudioCredit } from '../i18n/legal-nav';
 import { localeEquivalentHref } from '../i18n/locale-hrefs';
 import { headerBookingCta } from '../i18n/nav';
 import { resolveBookingCta } from '../i18n/booking-links';
-import { href, iaKeyFromPath, isBlogPath, isBookingPath, type IaKey } from '../i18n/route-registry';
-import { blogPublic } from '../i18n/site-features';
+import { href, iaKeyFromPath, isBlogPath, isBookingPath, isCorporalPath, type IaKey } from '../i18n/route-registry';
+import { blogPublic, corporalPublic } from '../i18n/site-features';
 import '../styles/app.css';
 
 interface Props {
@@ -25,6 +25,8 @@ interface Props {
 const { lang, title, description, ogImage, shell = 'default' } = Astro.props;
 const footerLegal = legalFooterLabels(lang);
 const footerNote = legalFooterPublicationNote(lang);
+const studioCredit = footerStudioCredit(lang);
+const studioUrl = import.meta.env.PUBLIC_STUDIO_URL?.trim();
 
 const pathname = Astro.url.pathname.replace(/\/+$/, '') || '/';
 const parts = pathname.split('/').filter(Boolean);
@@ -70,7 +72,11 @@ function ogLocale(code: Locale): string {
 
 const bookingRoute = isBookingPath(pathname);
 const blogRoute = isBlogPath(pathname);
-const robots = bookingRoute || (!blogPublic && blogRoute) ? 'noindex,follow' : undefined;
+const corporalRoute = isCorporalPath(pathname);
+const robots =
+	bookingRoute || (!blogPublic && blogRoute) || (!corporalPublic && corporalRoute)
+		? 'noindex,follow'
+		: undefined;
 const ogDefault = ogImage ?? new URL('/og-placeholder.svg', siteRoot).href;
 
 const bookingCta = resolveBookingCta(lang);
@@ -174,6 +180,18 @@ const langPickerItems = locales.map((code) => ({
 					<a href={`/${lang}/aviso-legal/`}>{footerLegal.legalNotice}</a>
 				</nav>
 				<p class="site-footer__note">{footerNote}</p>
+				<p class="site-footer__credit">
+					{studioCredit.lead}
+					{
+						studioUrl ? (
+							<a href={studioUrl} rel="noopener noreferrer" target="_blank">
+								{studioCredit.name}
+							</a>
+						) : (
+							<span>{studioCredit.name}</span>
+						)
+					}
+				</p>
 			</div>
 		</footer>
 		<script is:inline>
