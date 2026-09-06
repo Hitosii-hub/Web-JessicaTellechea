@@ -6,7 +6,7 @@ Public routes are **locale-first**: `/{es|en|ca|fr}/…` with a **per-locale seg
 
 - `/{lang}/` — Home.
 - Facial pillar: `/es/facial/`, `/en/facial/`, `/ca/facial/`, `/fr/visage/`.
-- Corporal pillar: `/es/corporal/`, `/en/body/`, `/ca/corporal/`, `/fr/corporel/`.
+- Corporal pillar: `/es/medicina-estetica-corporal-barcelona/`, … (deferred at launch: `noindex`, excluded from primary nav and sitemap; enable via `src/i18n/site-features.ts`).
 - Capilar pillar: `/es/capilar/`, `/en/hair/`, `/ca/capillar/`, `/fr/capillaire/`.
 - Trust: `/es/criterio-medico/`, `/en/medical-criteria/`, `/ca/criteri-medic/`, `/fr/critere-medical/`.
 - Blog index: `/{lang}/blog/` (deferred at launch: `noindex`, excluded from primary nav and sitemap; enable via `src/i18n/site-features.ts`).
@@ -50,6 +50,7 @@ Public routes are **locale-first**: `/{es|en|ca|fr}/…` with a **per-locale seg
 - Booking route must be reachable from CTA surfaces and operational flows.
 - Booking route is intentionally excluded from main navigation to keep trust-first structure clean.
 - Blog routes remain built in the repo but are excluded from primary nav and sitemap until `blogPublic` is enabled (`src/i18n/site-features.ts`); pages use `noindex` while deferred.
+- Corporal pillar routes remain built but are excluded from primary nav and sitemap until `corporalPublic` is enabled (`src/i18n/site-features.ts`); pages use `noindex` while deferred. Home specialties omit the corporal card when deferred.
 
 ## Naming Normalization Decisions
 

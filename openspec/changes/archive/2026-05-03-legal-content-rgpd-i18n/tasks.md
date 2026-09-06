@@ -20,7 +20,7 @@
 
 ## Phase 3 Banner cookies y layout
 
-- [x] 3.1 Crear `src/components/CookieConsent.tsx` (Preact): copy primera capa (Aceptar / Rechazar / Configurar), i18n segun prop `lang`, persistencia `localStorage` clave versionada `webaj_cookie_consent_v1`, panel segunda capa o enlace ancla a politica.
+- [x] 3.1 Crear `src/components/CookieConsent.tsx` (Preact): copy primera capa (Aceptar / Rechazar / Configurar), i18n segun prop `lang`, persistencia `localStorage` clave versionada `webjt_cookie_consent_v1`, panel segunda capa o enlace ancla a politica.
 - [x] 3.2 Registrar isla en `src/layouts/BaseLayout.astro` (`client:load`, prop `lang`); una sola instancia por pagina.
 - [x] 3.3 Anadir estilos en `src/styles/global.css` (banner fijo/accesible, foco teclado, contraste, no bloquear interaccion legal obligatoria).
 - [x] 3.4 Crear `src/i18n/legal-nav.ts` (o equivalente) con etiquetas footer; sustituir ternarios de enlaces legales en `BaseLayout`; actualizar o retirar `site-footer__note` de borrador segun criterio producto.

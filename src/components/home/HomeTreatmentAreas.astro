@@ -2,6 +2,7 @@
 import type { Locale } from '../../i18n/config';
 import { homeContent } from '../../i18n/home-content';
 import { href, type IaKey } from '../../i18n/route-registry';
+import { corporalPublic } from '../../i18n/site-features';
 import Heading from '../ui/Heading.astro';
 
 interface Props {
@@ -11,7 +12,9 @@ interface Props {
 const { lang } = Astro.props;
 const c = homeContent[lang].specialties;
 
-const pillars: IaKey[] = ['facial', 'corporal', 'capilar'];
+const allPillars: IaKey[] = ['facial', 'corporal', 'capilar'];
+const visiblePillars = allPillars.filter((key) => key !== 'corporal' || corporalPublic);
+const visibleCards = c.cards.filter((_, index) => visiblePillars.includes(allPillars[index]));
 ---
 
 <section class="home-specialties">
@@ -21,8 +24,8 @@ const pillars: IaKey[] = ['facial', 'corporal', 'capilar'];
 		</div>
 		<div class="home-specialties__grid">
 			{
-				c.cards.map((card, index) => (
-					<a class="home-specialties__card" href={href(lang, pillars[index])}>
+				visibleCards.map((card, index) => (
+					<a class="home-specialties__card" href={href(lang, visiblePillars[index])}>
 						<div class="home-specialties__visual">
 							<img
 								class="home-specialties__image"
