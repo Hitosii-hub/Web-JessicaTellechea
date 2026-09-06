@@ -33,3 +33,25 @@ export function footerStudioCredit(lang: Locale): { lead: string; name: string }
 	};
 	return map[lang];
 }
+
+/** Etiqueta aria del bloque social del pie (v1: solo Instagram). */
+export function footerSocialNavLabel(lang: Locale): string {
+	const map: Record<Locale, string> = {
+		es: 'Redes sociales',
+		en: 'Social media',
+		ca: 'Xarxes socials',
+		fr: 'Réseaux sociaux',
+	};
+	return map[lang];
+}
+
+/** Nombre accesible del enlace Instagram en el pie. */
+export function footerInstagramAriaLabel(lang: Locale): string {
+	const map: Record<Locale, string> = {
+		es: 'Instagram de la Dra. Jessica Tellechea (se abre en una pestaña nueva)',
+		en: 'Dr Jessica Tellechea on Instagram (opens in a new tab)',
+		ca: 'Instagram de la Dra. Jessica Tellechea (s\'obre en una pestanya nova)',
+		fr: 'Instagram de la Dre Jessica Tellechea (s\'ouvre dans un nouvel onglet)',
+	};
+	return map[lang];
+}

@@ -253,6 +253,95 @@
 	margin: 0 auto;
 }
 
+.site-footer__top {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-lg);
+	margin-bottom: var(--space-lg);
+	padding-bottom: var(--space-lg);
+	border-bottom: 1px solid color-mix(in srgb, var(--color-on-accent) 14%, transparent);
+}
+
+.site-footer__social-block {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-sm);
+}
+
+.site-footer__social-title {
+	margin: 0;
+	font-family: var(--font-sans-ui);
+	font-size: 0.6875rem;
+	font-weight: 600;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: color-mix(in srgb, var(--color-on-accent) 58%, transparent);
+}
+
+.site-footer__social-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.55rem;
+	width: fit-content;
+	padding: 0.45rem 0;
+	font-family: var(--font-sans-ui);
+	font-size: 0.8125rem;
+	font-weight: 500;
+	color: color-mix(in srgb, var(--color-on-accent) 88%, transparent);
+	text-decoration: none;
+	transition: color var(--duration-fast) var(--ease-standard);
+}
+
+.site-footer__social-link:hover {
+	color: var(--color-champagne);
+}
+
+.site-footer__social-icon {
+	font-size: 1.05rem;
+	line-height: 1;
+}
+
+.site-footer__social-text {
+	letter-spacing: 0.02em;
+}
+
+.site-footer__bottom {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-sm);
+}
+
+@media (min-width: 768px) {
+	.site-footer__top {
+		flex-direction: row;
+		align-items: flex-end;
+		justify-content: space-between;
+		gap: var(--space-xl);
+	}
+
+	.site-footer__legal {
+		justify-content: flex-end;
+		margin-bottom: 0;
+	}
+
+	.site-footer__bottom {
+		flex-direction: row;
+		align-items: flex-end;
+		justify-content: space-between;
+		gap: var(--space-lg);
+	}
+
+	.site-footer__note {
+		max-width: min(36rem, 55%);
+	}
+
+	.site-footer__credit {
+		margin-top: 0;
+		text-align: end;
+		flex-shrink: 0;
+	}
+}
+
 .site-footer__legal {
 	display: flex;
 	flex-wrap: wrap;
@@ -281,7 +370,7 @@
 }
 
 .site-footer__credit {
-	margin: var(--space-sm) 0 0;
+	margin: 0;
 	max-width: var(--max-width-wide);
 	font-family: var(--font-sans-ui);
 	font-size: 0.6875rem;

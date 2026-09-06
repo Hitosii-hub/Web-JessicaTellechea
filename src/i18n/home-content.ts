@@ -7,6 +7,9 @@ export type HomeContent = {
 		supporting: string;
 		ctaPrimary: string;
 		ctaSecondary: string;
+		instagramLabel: string;
+		instagramAriaLabel: string;
+		instagramPortraitAriaLabel: string;
 	};
 	manifest: { h2: string; body: string };
 	process: {
@@ -39,6 +42,9 @@ const es: HomeContent = {
 		supporting: 'Resultados naturales. Diagnóstico honesto. Seguimiento real.',
 		ctaPrimary: 'SOLICITAR VALORACIÓN',
 		ctaSecondary: 'CONOCE EL CRITERIO MÉDICO',
+		instagramLabel: 'Instagram',
+		instagramAriaLabel: 'Instagram de la Dra. Jessica Tellechea (se abre en una pestaña nueva)',
+		instagramPortraitAriaLabel: 'Ver el perfil de Instagram de la Dra. Jessica Tellechea',
 	},
 	manifest: {
 		h2: 'Cuido la armonía. Respeto la identidad.',
@@ -127,6 +133,9 @@ const en: HomeContent = {
 		supporting: 'Natural outcomes. Honest diagnosis. Real follow-up.',
 		ctaPrimary: 'SOLICITAR VALORACIÓN',
 		ctaSecondary: 'EXPLORE THE MEDICAL CRITERIA',
+		instagramLabel: 'Instagram',
+		instagramAriaLabel: 'Dr Jessica Tellechea on Instagram (opens in a new tab)',
+		instagramPortraitAriaLabel: 'View Dr Jessica Tellechea on Instagram',
 	},
 	manifest: {
 		h2: 'I preserve harmony. I respect identity.',
@@ -216,6 +225,9 @@ const ca: HomeContent = {
 		subtitle: 'Medicina estètica que respecta la teva identitat',
 		supporting: 'Resultats naturals. Diagnòstic honest. Seguiment real.',
 		ctaSecondary: 'CONEIX EL CRITERI MÈDIC',
+		instagramLabel: 'Instagram',
+		instagramAriaLabel: 'Instagram de la Dra. Jessica Tellechea (s\'obre en una pestanya nova)',
+		instagramPortraitAriaLabel: 'Veure el perfil d\'Instagram de la Dra. Jessica Tellechea',
 	},
 	manifest: {
 		h2: 'Cuido l’harmonia. Respecto la identitat.',
@@ -305,6 +317,9 @@ const fr: HomeContent = {
 		subtitle: 'Une médecine esthétique qui respecte votre identité',
 		supporting: 'Des résultats naturels. Un diagnostic honnête. Un suivi réel.',
 		ctaSecondary: 'DÉCOUVREZ LE CRITÈRE MÉDICAL',
+		instagramLabel: 'Instagram',
+		instagramAriaLabel: 'Instagram de la Dre Jessica Tellechea (s\'ouvre dans un nouvel onglet)',
+		instagramPortraitAriaLabel: 'Voir le profil Instagram de la Dre Jessica Tellechea',
 	},
 	manifest: {
 		h2: 'Je préserve l’harmonie. Je respecte l’identité.',
