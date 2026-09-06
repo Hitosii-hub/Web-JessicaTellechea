@@ -139,6 +139,11 @@ const spanishCapilarPageContent: CapilarPageContent = {
 				title: 'Carboxiterapia Capilar',
 				body: 'Mejora de la microcirculación mediante la aplicación de CO2 medicinal, facilitando la llegada de nutrientes.',
 			},
+			{
+				title: 'Transplante Capilar',
+				body:
+					'Reposición de densidad mediante extracción e implantación de folículos bajo criterio médico, con valoración previa y plan personalizado.',
+			},
 		],
 	},
 	process: {
@@ -269,6 +274,11 @@ export const capilarPageContent: Record<Locale, CapilarPageContent> = {
 					title: 'Capilar Carboxytherapy',
 					body: 'Improved microcirculation through medical CO2 application, facilitating nutrient delivery.',
 				},
+				{
+					title: 'Hair Transplant',
+					body:
+						'Density restoration through follicle extraction and implantation under medical criteria, with prior assessment and a personalised plan.',
+				},
 			],
 		},
 		process: {
@@ -396,6 +406,11 @@ export const capilarPageContent: Record<Locale, CapilarPageContent> = {
 					title: 'Carboxiteràpia capil·lar',
 					body: 'Millora de la microcirculació mitjançant l aplicació de CO2 medicinal, facilitant l arribada de nutrients.',
 				},
+				{
+					title: 'Trasplantament capil·lar',
+					body:
+						'Reposició de densitat mitjançant extracció i implantació de fol·licles sota criteri mèdic, amb valoració prèvia i pla personalitzat.',
+				},
 			],
 		},
 		process: {
@@ -522,6 +537,11 @@ export const capilarPageContent: Record<Locale, CapilarPageContent> = {
 				{
 					title: 'Carboxytherapie capillaire',
 					body: 'Amelioration de la microcirculation par application de CO2 medical, facilitant l apport en nutriments.',
+				},
+				{
+					title: 'Greffe capillaire',
+					body:
+						'Restauration de la densite par extraction et implantation de follicules sous critere medical, avec evaluation prealable et plan personnalise.',
 				},
 			],
 		},
