@@ -136,7 +136,7 @@ const spanishCapilarPageContent: CapilarPageContent = {
 					'Utilización de los factores de crecimiento propios del paciente para regenerar tejidos y potenciar la vascularización.',
 			},
 			{
-				title: 'Carboxiterapia Foliar',
+				title: 'Carboxiterapia Capilar',
 				body: 'Mejora de la microcirculación mediante la aplicación de CO2 medicinal, facilitando la llegada de nutrientes.',
 			},
 		],
@@ -266,7 +266,7 @@ export const capilarPageContent: Record<Locale, CapilarPageContent> = {
 					body: 'Use of the patient\'s own growth factors to regenerate tissue and enhance vascularization.',
 				},
 				{
-					title: 'Foliar Carboxytherapy',
+					title: 'Capilar Carboxytherapy',
 					body: 'Improved microcirculation through medical CO2 application, facilitating nutrient delivery.',
 				},
 			],
@@ -393,7 +393,7 @@ export const capilarPageContent: Record<Locale, CapilarPageContent> = {
 					body: 'Utilització dels factors de creixement propis del pacient per regenerar teixits i potenciar la vascularització.',
 				},
 				{
-					title: 'Carboxiteràpia foliar',
+					title: 'Carboxiteràpia capil·lar',
 					body: 'Millora de la microcirculació mitjançant l aplicació de CO2 medicinal, facilitant l arribada de nutrients.',
 				},
 			],
@@ -520,7 +520,7 @@ export const capilarPageContent: Record<Locale, CapilarPageContent> = {
 					body: 'Utilisation des facteurs de croissance du patient pour regenerer les tissus et renforcer la vascularisation.',
 				},
 				{
-					title: 'Carboxytherapie folliculaire',
+					title: 'Carboxytherapie capillaire',
 					body: 'Amelioration de la microcirculation par application de CO2 medical, facilitant l apport en nutriments.',
 				},
 			],
