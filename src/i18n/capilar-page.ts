@@ -123,7 +123,7 @@ const spanishCapilarPageContent: CapilarPageContent = {
 		},
 	  ],
 	treatments: {
-		title: 'Protocolos clínicos.',
+		title: 'Tratamientos médicos.',
 		items: [
 			{
 				title: 'Mesoterapia Capilar Médica',
@@ -255,7 +255,7 @@ export const capilarPageContent: Record<Locale, CapilarPageContent> = {
 			},
 		],
 		treatments: {
-			title: 'Clinical protocols.',
+			title: 'Medical treatments.',
 			items: [
 				{
 					title: 'Medical Hair Mesotherapy',
@@ -382,7 +382,7 @@ export const capilarPageContent: Record<Locale, CapilarPageContent> = {
 			},
 		],
 		treatments: {
-			title: 'Protocols clínics.',
+			title: 'Tractaments mèdics.',
 			items: [
 				{
 					title: 'Mesoteràpia capil·lar mèdica',
@@ -509,7 +509,7 @@ export const capilarPageContent: Record<Locale, CapilarPageContent> = {
 			},
 		],
 		treatments: {
-			title: 'Protocoles cliniques.',
+			title: 'Traitements médicaux.',
 			items: [
 				{
 					title: 'Mesotherapie capillaire medicale',
