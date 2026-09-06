@@ -22,7 +22,7 @@ const visibleCards = c.cards.filter((_, index) => visiblePillars.includes(allPil
 		<div class="home-specialties__head">
 			<Heading level={2} serif>{c.h2}</Heading>
 		</div>
-		<div class="home-specialties__grid">
+		<div class="home-specialties__grid" data-pillar-count={visiblePillars.length}>
 			{
 				visibleCards.map((card, index) => (
 					<a class="home-specialties__card" href={href(lang, visiblePillars[index])}>

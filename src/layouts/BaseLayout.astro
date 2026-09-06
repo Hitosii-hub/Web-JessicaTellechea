@@ -5,7 +5,8 @@ import LanguagePicker from '../components/LanguagePicker';
 import PrimaryNav from '../components/PrimaryNav.astro';
 import { locales, localeLabels, localeRegionLine, type Locale } from '../i18n/config';
 import { languageModalCopy } from '../i18n/language-modal';
-import { legalFooterLabels, legalFooterPublicationNote, footerStudioCredit } from '../i18n/legal-nav';
+import { legalFooterLabels, legalFooterPublicationNote, footerStudioCredit, footerSocialNavLabel, footerInstagramAriaLabel } from '../i18n/legal-nav';
+import { resolveClinicInstagram } from '../i18n/clinic-links';
 import { localeEquivalentHref } from '../i18n/locale-hrefs';
 import { headerBookingCta } from '../i18n/nav';
 import { resolveBookingCta } from '../i18n/booking-links';
@@ -27,6 +28,9 @@ const footerLegal = legalFooterLabels(lang);
 const footerNote = legalFooterPublicationNote(lang);
 const studioCredit = footerStudioCredit(lang);
 const studioUrl = import.meta.env.PUBLIC_STUDIO_URL?.trim();
+const instagramUrl = resolveClinicInstagram();
+const footerSocialLabel = footerSocialNavLabel(lang);
+const footerInstagramLabel = footerInstagramAriaLabel(lang);
 
 const pathname = Astro.url.pathname.replace(/\/+$/, '') || '/';
 const parts = pathname.split('/').filter(Boolean);
@@ -174,13 +178,29 @@ const langPickerItems = locales.map((code) => ({
 		</main>
 		<footer class="site-footer">
 			<div class="site-footer__inner">
-				<nav class="site-footer__legal" aria-label="Legal">
-					<a href={`/${lang}/privacidad/`}>{footerLegal.privacy}</a>
-					<a href={`/${lang}/cookies/`}>{footerLegal.cookies}</a>
-					<a href={`/${lang}/aviso-legal/`}>{footerLegal.legalNotice}</a>
-				</nav>
-				<p class="site-footer__note">{footerNote}</p>
-				<p class="site-footer__credit">
+				<div class="site-footer__top">
+					<section class="site-footer__social-block" aria-labelledby="site-footer-social-heading">
+						<h2 id="site-footer-social-heading" class="site-footer__social-title">{footerSocialLabel}</h2>
+						<a
+							class="site-footer__social-link"
+							href={instagramUrl}
+							target="_blank"
+							rel="noopener noreferrer"
+							aria-label={footerInstagramLabel}
+						>
+							<i class="ph-thin ph-instagram-logo site-footer__social-icon" aria-hidden="true"></i>
+							<span class="site-footer__social-text">Instagram</span>
+						</a>
+					</section>
+					<nav class="site-footer__legal" aria-label="Legal">
+						<a href={`/${lang}/privacidad/`}>{footerLegal.privacy}</a>
+						<a href={`/${lang}/cookies/`}>{footerLegal.cookies}</a>
+						<a href={`/${lang}/aviso-legal/`}>{footerLegal.legalNotice}</a>
+					</nav>
+				</div>
+				<div class="site-footer__bottom">
+					<p class="site-footer__note">{footerNote}</p>
+					<p class="site-footer__credit">
 					{studioCredit.lead}
 					{
 						studioUrl ? (
@@ -191,7 +211,8 @@ const langPickerItems = locales.map((code) => ({
 							<span>{studioCredit.name}</span>
 						)
 					}
-				</p>
+					</p>
+				</div>
 			</div>
 		</footer>
 		<script is:inline>

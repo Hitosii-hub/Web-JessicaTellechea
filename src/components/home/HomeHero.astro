@@ -1,10 +1,10 @@
 ---
 import type { Locale } from '../../i18n/config';
 import { resolveBookingCta } from '../../i18n/booking-links';
+import { resolveClinicInstagram } from '../../i18n/clinic-links';
 import { homeContent } from '../../i18n/home-content';
 import { href } from '../../i18n/route-registry';
 import Heading from '../ui/Heading.astro';
-import bgUrl from '../../assets/background.webp?url';
 
 interface Props {
 	lang: Locale;
@@ -13,30 +13,69 @@ interface Props {
 const { lang } = Astro.props;
 const c = homeContent[lang].hero;
 const bookingCta = resolveBookingCta(lang);
+const instagramUrl = resolveClinicInstagram();
+
+const heroDesktopSrc = '/images/home/home-banner-doctor-desktop.png';
+const heroMobileSrc = '/images/home/home-banner-doctor-mobile.png';
 ---
 
 <section class="home-hero">
-	<div class="home-hero__media" style={`background-image: url(${bgUrl})`}>
-		<div class="home-hero__overlay" aria-hidden="true" />
-		<div class="home-hero__inner">
-			<Heading level={1} display serif class="home-hero__title">
-				{c.h1}
-			</Heading>
-			<p class="home-hero__subtitle">{c.subtitle}</p>
-			<p class="home-hero__supporting">{c.supporting}</p>
-			<div class="home-hero__actions">
-				<a
-					class="home-hero__cta-primary"
-					href={bookingCta.href}
-					target={bookingCta.external ? '_blank' : undefined}
-					rel={bookingCta.external ? 'noopener noreferrer' : undefined}
-				>
-					{c.ctaPrimary}
-				</a>
-				<a class="home-hero__cta-secondary" href={href(lang, 'trust')}>
-					{c.ctaSecondary}
-				</a>
+	<div class="home-hero__media">
+		<picture class="home-hero__picture">
+			<source media="(min-width: 900px)" srcset={heroDesktopSrc} />
+			<img
+				class="home-hero__image"
+				src={heroMobileSrc}
+				alt=""
+				width="1200"
+				height="900"
+				decoding="async"
+				fetchpriority="high"
+			/>
+		</picture>
+		<div class="home-hero__overlay" aria-hidden="true"></div>
+		<a
+			class="home-hero__portrait-link"
+			href={instagramUrl}
+			target="_blank"
+			rel="noopener noreferrer"
+			aria-label={c.instagramPortraitAriaLabel}
+		></a>
+		<div class="home-hero__layout">
+			<div class="home-hero__inner">
+				<div class="home-hero__copy">
+					<Heading level={1} display serif class="home-hero__title">
+						{c.h1}
+					</Heading>
+					<p class="home-hero__subtitle">{c.subtitle}</p>
+				</div>
+				<p class="home-hero__supporting">{c.supporting}</p>
+				<div class="home-hero__actions">
+					<a
+						class="home-hero__cta-primary"
+						href={bookingCta.href}
+						target={bookingCta.external ? '_blank' : undefined}
+						rel={bookingCta.external ? 'noopener noreferrer' : undefined}
+					>
+						{c.ctaPrimary}
+					</a>
+					<a class="home-hero__cta-secondary" href={href(lang, 'trust')}>
+						{c.ctaSecondary}
+					</a>
+				</div>
 			</div>
+		</div>
+		<div class="home-hero__social-rail">
+			<a
+				class="home-hero__instagram"
+				href={instagramUrl}
+				target="_blank"
+				rel="noopener noreferrer"
+				aria-label={c.instagramAriaLabel}
+			>
+				<i class="ph-thin ph-instagram-logo home-hero__instagram-icon" aria-hidden="true"></i>
+				<span>{c.instagramLabel}</span>
+			</a>
 		</div>
 	</div>
 </section>
