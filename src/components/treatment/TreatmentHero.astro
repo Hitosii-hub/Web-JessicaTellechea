@@ -1,0 +1,57 @@
+---
+import { href } from '../../i18n/route-registry';
+import type { Locale } from '../../i18n/config';
+import type { TreatmentPageContent } from '../../i18n/capilar-treatments/types';
+import { resolveBookingCta } from '../../i18n/booking-links';
+
+interface Props {
+	lang: Locale;
+	content: TreatmentPageContent;
+}
+
+const { lang, content } = Astro.props;
+const bookingCta = resolveBookingCta(lang);
+const heroImage = content.hero.image;
+---
+
+<section class:list={['treatment-hero', heroImage && 'treatment-hero--banner']}>
+	{
+		heroImage?.src ? (
+			<div class="treatment-hero__media" aria-hidden="true">
+				<img
+					class:list={[
+						'treatment-hero__image',
+						heroImage.tone === 'silent-luxury' && 'treatment-hero__image--silent-luxury',
+					]}
+					src={heroImage.src}
+					alt={heroImage.alt}
+					width={1280}
+					height={720}
+					loading="eager"
+					decoding="async"
+					fetchpriority="high"
+				/>
+				<div class="treatment-hero__overlay"></div>
+			</div>
+		) : null
+	}
+	<div class="treatment-container treatment-hero__inner">
+		<nav class="treatment-breadcrumb" aria-label="Breadcrumb">
+			<a class="treatment-breadcrumb__link" href={href(lang, 'capilar')}>{content.breadcrumbCapilar}</a>
+			<span class="treatment-breadcrumb__sep" aria-hidden="true">/</span>
+			<span class="treatment-breadcrumb__current" aria-current="page">{content.hero.h1}</span>
+		</nav>
+		<h1 class="treatment-hero__title">{content.hero.h1}</h1>
+		<div class="treatment-hero__actions">
+			<a
+				class="treatment-hero__primary"
+				href={bookingCta.href}
+				target={bookingCta.external ? '_blank' : undefined}
+				rel={bookingCta.external ? 'noopener noreferrer' : undefined}
+			>
+				{content.hero.primaryCta}
+			</a>
+			<a class="treatment-hero__secondary" href={href(lang, 'trust')}>{content.hero.secondaryCta}</a>
+		</div>
+	</div>
+</section>

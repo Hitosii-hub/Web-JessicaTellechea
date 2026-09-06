@@ -1,0 +1,53 @@
+---
+import type { TreatmentPageContent } from '../../i18n/capilar-treatments/types';
+
+interface Props {
+	content: TreatmentPageContent;
+}
+
+const { content: c } = Astro.props;
+---
+
+<section class="treatment-section treatment-section--precautions">
+	<div class="treatment-container treatment-centered">
+		<p class="treatment-eyebrow">{c.precautions.eyebrow}</p>
+		<h2 class="treatment-section__title">{c.precautions.title}</h2>
+		<details class="treatment-disclosure">
+			<summary class="treatment-disclosure__summary">
+				<span class="treatment-disclosure__summary-text">{c.precautions.trigger}</span>
+				<span class="treatment-disclosure__chevron" aria-hidden="true"></span>
+			</summary>
+			<div class="treatment-disclosure__panel">
+				<section class="treatment-precaution-block">
+					<h3 class="treatment-precaution-block__title">
+						<i class="ph-thin ph-file-text treatment-precaution-block__icon" aria-hidden="true"></i>
+						{c.precautions.descriptionTitle}
+					</h3>
+					<p class="treatment-prose">{c.precautions.description}</p>
+				</section>
+				<section class="treatment-precaution-block treatment-precaution-block--boxed">
+					<h3 class="treatment-precaution-block__title">
+						<span class="treatment-precaution-block__badge" aria-hidden="true">1</span>
+						{c.precautions.beforeTitle}
+					</h3>
+					<ul class="treatment-precaution-block__list">
+						{c.precautions.before.map((item) => (
+							<li>{item}</li>
+						))}
+					</ul>
+				</section>
+				<section class="treatment-precaution-block treatment-precaution-block--boxed">
+					<h3 class="treatment-precaution-block__title">
+						<span class="treatment-precaution-block__badge" aria-hidden="true">2</span>
+						{c.precautions.afterTitle}
+					</h3>
+					<ul class="treatment-precaution-block__list">
+						{c.precautions.after.map((item) => (
+							<li>{item}</li>
+						))}
+					</ul>
+				</section>
+			</div>
+		</details>
+	</div>
+</section>

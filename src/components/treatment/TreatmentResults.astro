@@ -1,0 +1,27 @@
+---
+import type { TreatmentPageContent } from '../../i18n/capilar-treatments/types';
+import BeforeAfterCarousel from '../../features/treatment/BeforeAfterCarousel';
+
+interface Props {
+	content: TreatmentPageContent;
+}
+
+const { content: c } = Astro.props;
+---
+
+<section class="treatment-section treatment-section--results">
+	<div class="treatment-container treatment-centered">
+		<p class="treatment-eyebrow">{c.results.eyebrow}</p>
+		<h2 class="treatment-section__title">{c.results.title}</h2>
+		<BeforeAfterCarousel
+			client:visible
+			slides={c.results.slides}
+			beforeLabel={c.results.beforeLabel}
+			afterLabel={c.results.afterLabel}
+			emptySlot={c.results.emptySlot}
+			dragHint={c.results.dragHint}
+			prevLabel={c.results.prevLabel}
+			nextLabel={c.results.nextLabel}
+		/>
+	</div>
+</section>

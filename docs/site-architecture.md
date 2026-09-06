@@ -8,6 +8,7 @@ Public routes are **locale-first**: `/{es|en|ca|fr}/…` with a **per-locale seg
 - Facial pillar: `/es/facial/`, `/en/facial/`, `/ca/facial/`, `/fr/visage/`.
 - Corporal pillar: `/es/medicina-estetica-corporal-barcelona/`, … (deferred at launch: `noindex`, excluded from primary nav and sitemap; enable via `src/i18n/site-features.ts`).
 - Capilar pillar: `/es/capilar/`, `/en/hair/`, `/ca/capillar/`, `/fr/capillaire/`.
+- Capilar treatment pages (nested under capilar segment): e.g. `/es/tratamiento-capilar-barcelona/mesoterapia-capilar-medica/`; four treatments × four locales; linked from capilar hub, not primary nav.
 - Trust: `/es/criterio-medico/`, `/en/medical-criteria/`, `/ca/criteri-medic/`, `/fr/critere-medical/`.
 - Blog index: `/{lang}/blog/` (deferred at launch: `noindex`, excluded from primary nav and sitemap; enable via `src/i18n/site-features.ts`).
 - Contact: `/es/contacto/`, `/en/contact/`, `/ca/contacte/`, `/fr/contact/`.

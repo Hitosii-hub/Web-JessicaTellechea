@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import TreatmentPage from '../../../components/treatment/TreatmentPage.astro';
+import type { Locale } from '../../../i18n/config';
+import { allCapilarTreatmentStaticPaths, getCapilarTreatmentContent } from '../../../i18n/capilar-treatments';
+import { capilarTreatmentKeyFromSegment, iaKeyFromPath } from '../../../i18n/route-registry';
+
+export function getStaticPaths() {
+	return allCapilarTreatmentStaticPaths().map(({ lang, segment, treatment, key }) => ({
+		params: { lang, segment, treatment },
+		props: { key },
+	}));
+}
+
+const lang = Astro.params.lang as Locale;
+const segment = Astro.params.segment as string;
+const treatmentSegment = Astro.params.treatment as string;
+const { key } = Astro.props;
+
+if (iaKeyFromPath(lang, segment) !== 'capilar') {
+	return Astro.redirect(`/${lang}/`, 302);
+}
+
+const resolvedKey = capilarTreatmentKeyFromSegment(lang, treatmentSegment);
+if (!resolvedKey || resolvedKey !== key) {
+	return Astro.redirect(`/${lang}/${segment}/`, 302);
+}
+
+const content = getCapilarTreatmentContent(key, lang);
+---
+
+<BaseLayout lang={lang} title={content.seo.title} description={content.seo.description}>
+	<TreatmentPage lang={lang} content={content} />
+</BaseLayout>
