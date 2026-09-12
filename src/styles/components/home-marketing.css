@@ -9,6 +9,8 @@
 	min-height: var(--home-marketing-hero-min-height, 90vh);
 	display: grid;
 	align-items: stretch;
+	max-width: 100%;
+	overflow-x: clip;
 }
 
 .home-hero__media {

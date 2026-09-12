@@ -216,10 +216,16 @@ const toggleId = 'site-nav-drawer-toggle';
 			left: 0;
 			right: 0;
 			bottom: 0;
+			width: 100%;
+			max-width: 100%;
 			background: var(--color-surface);
 			padding: var(--space-md);
-			transform: translateX(100%);
-			transition: transform var(--duration-normal) var(--ease-standard);
+			transform: none;
+			clip-path: inset(0 100% 0 0);
+			transition:
+				clip-path var(--duration-normal) var(--ease-standard),
+				visibility 0s linear var(--duration-normal);
+			overflow-x: hidden;
 			overflow-y: auto;
 			box-shadow: 0 -2px 24px rgb(47 46 43 / 12%);
 			visibility: hidden;
@@ -227,7 +233,10 @@ const toggleId = 'site-nav-drawer-toggle';
 		}
 
 		.primary-nav__toggle:checked ~ .primary-nav__panel {
-			transform: translateX(0);
+			clip-path: inset(0 0 0 0);
+			transition:
+				clip-path var(--duration-normal) var(--ease-standard),
+				visibility 0s linear 0s;
 			visibility: visible;
 			pointer-events: auto;
 		}
