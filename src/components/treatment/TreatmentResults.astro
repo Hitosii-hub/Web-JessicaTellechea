@@ -23,7 +23,6 @@ const { content: c } = Astro.props;
 			prevLabel={c.results.prevLabel}
 			nextLabel={c.results.nextLabel}
 		/>
-		<p class="treatment-carousel__hint">{c.results.dragHint}</p>
 		{c.results.disclaimer ? <p class="treatment-results__disclaimer">{c.results.disclaimer}</p> : null}
 	</div>
 </section>

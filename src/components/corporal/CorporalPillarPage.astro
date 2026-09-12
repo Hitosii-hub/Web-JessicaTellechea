@@ -2,8 +2,10 @@
 import type { Locale } from '../../i18n/config';
 import type { CorporalPageContent } from '../../i18n/corporal-page';
 import { resolveBookingCta } from '../../i18n/booking-links';
+import { PILLAR_TREATMENTS_SECTION_ID, pillarJumpSectionIds } from '../../i18n/pillar-navigation';
 import { href } from '../../i18n/route-registry';
 import FinalCta from '../FinalCta.astro';
+import PillarJumpNav from '../pillar/PillarJumpNav.astro';
 import Heading from '../ui/Heading.astro';
 
 interface Props {
@@ -49,6 +51,8 @@ const bookingCta = resolveBookingCta(lang);
 		</div>
 	</section>
 
+	<PillarJumpNav lang={lang} />
+
 	<section class="corporal-section corporal-section--identification">
 		<div class="corporal-container corporal-identification">
 			<div class="corporal-identification__rule" aria-hidden="true"></div>
@@ -57,7 +61,10 @@ const bookingCta = resolveBookingCta(lang);
 		</div>
 	</section>
 
-	<section class="corporal-section corporal-section--evaluation">
+	<section
+		id={pillarJumpSectionIds.approach}
+		class="corporal-section corporal-section--evaluation pillar-section-anchor"
+	>
 		<div class="corporal-container corporal-evaluation">
 			<div class="corporal-evaluation__copy">
 				<Heading level={2} serif class="corporal-section__title corporal-section__title--left">
@@ -113,7 +120,10 @@ const bookingCta = resolveBookingCta(lang);
 		</div>
 	</section>
 
-	<section class="corporal-section corporal-section--treatments">
+	<section
+		id={PILLAR_TREATMENTS_SECTION_ID}
+		class="corporal-section corporal-section--treatments pillar-section-anchor"
+	>
 		<div class="corporal-container">
 			<Heading level={2} serif class="corporal-section__title">{content.treatments.title}</Heading>
 			<div class="corporal-treatments">
@@ -161,7 +171,10 @@ const bookingCta = resolveBookingCta(lang);
 		</div>
 	</section>
 
-	<section class="corporal-section corporal-section--process">
+	<section
+		id={pillarJumpSectionIds.process}
+		class="corporal-section corporal-section--process pillar-section-anchor"
+	>
 		<div class="corporal-container">
 			<div class="corporal-process__head">
 				<p class="corporal-eyebrow">{content.process.eyebrow}</p>
@@ -197,7 +210,10 @@ const bookingCta = resolveBookingCta(lang);
 		</div>
 	</section>
 
-	<section class="corporal-section corporal-section--final-cta">
+	<section
+		id={pillarJumpSectionIds.valuation}
+		class="corporal-section corporal-section--final-cta pillar-section-anchor"
+	>
 		<div class="corporal-container">
 			<FinalCta
 				lang={lang}

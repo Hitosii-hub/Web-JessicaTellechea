@@ -25,6 +25,16 @@ interface Props {
 	nextLabel: string;
 }
 
+const DESKTOP_MAX_COLUMNS = 3;
+
+function desktopWindowPairs(pairs: ComparePair[], startIndex: number): ComparePair[] {
+	if (pairs.length <= DESKTOP_MAX_COLUMNS) return pairs;
+	return Array.from(
+		{ length: DESKTOP_MAX_COLUMNS },
+		(_, column) => pairs[(startIndex + column) % pairs.length],
+	);
+}
+
 function CompareCell({
 	pair,
 	beforeLabel,
@@ -145,11 +155,27 @@ export default function BeforeAfterCarousel({
 }: Props) {
 	const [slideIndex, setSlideIndex] = useState(0);
 	const [pairIndex, setPairIndex] = useState(0);
+	const [desktopStartIndex, setDesktopStartIndex] = useState(0);
 	const safeSlides = slides.length > 0 ? slides : [{ pairs: [null, null, null] }];
 	const slide = safeSlides[slideIndex] ?? safeSlides[0];
 	const filledPairs = slide.pairs.filter((pair): pair is ComparePair => pair !== null);
 	const safePairIndex = Math.min(pairIndex, Math.max(0, filledPairs.length - 1));
 	const activePair = filledPairs[safePairIndex] ?? null;
+	const desktopCarouselActive = filledPairs.length > DESKTOP_MAX_COLUMNS;
+	const safeDesktopStartIndex =
+		filledPairs.length > 0 ? ((desktopStartIndex % filledPairs.length) + filledPairs.length) % filledPairs.length : 0;
+	const visibleDesktopPairs = desktopWindowPairs(filledPairs, safeDesktopStartIndex);
+	const desktopVisibleCount = desktopCarouselActive
+		? DESKTOP_MAX_COLUMNS
+		: Math.max(1, visibleDesktopPairs.length);
+
+	const advanceDesktop = (delta: number) => {
+		if (filledPairs.length <= DESKTOP_MAX_COLUMNS) return;
+		setDesktopStartIndex((value) => {
+			const length = filledPairs.length;
+			return (((value + delta) % length) + length) % length;
+		});
+	};
 
 	return (
 		<div class="treatment-carousel">
@@ -162,42 +188,29 @@ export default function BeforeAfterCarousel({
 					emptySlot={emptySlot}
 					dragHint={dragHint}
 				/>
-				{filledPairs.length > 1 ? (
-					<div class="treatment-carousel__controls treatment-carousel__controls--center">
-						<button
-							type="button"
-							class="treatment-carousel__btn"
-							disabled={safePairIndex === 0}
-							onClick={() => setPairIndex((value) => Math.max(0, value - 1))}
-						>
-							{prevLabel}
-						</button>
-						<span class="treatment-carousel__counter" aria-live="polite">
-							{safePairIndex + 1} / {filledPairs.length}
-						</span>
-						<button
-							type="button"
-							class="treatment-carousel__btn"
-							disabled={safePairIndex >= filledPairs.length - 1}
-							onClick={() => setPairIndex((value) => Math.min(filledPairs.length - 1, value + 1))}
-						>
-							{nextLabel}
-						</button>
-					</div>
-				) : null}
 			</div>
-			<div class="treatment-carousel__grid">
-				{filledPairs.length > 0 ? (
-					filledPairs.map((pair, cellIndex) => (
+			<div
+				class="treatment-carousel__grid"
+				data-visible-count={desktopVisibleCount}
+				data-carousel-infinite={desktopCarouselActive ? 'true' : undefined}
+			>
+				{visibleDesktopPairs.length > 0 ? (
+					visibleDesktopPairs.map((pair, cellIndex) => {
+						const pairKey =
+							filledPairs.length > 0
+								? (safeDesktopStartIndex + cellIndex) % filledPairs.length
+								: cellIndex;
+						return (
 						<CompareCell
-							key={cellIndex}
+							key={pairKey}
 							pair={pair}
 							beforeLabel={beforeLabel}
 							afterLabel={afterLabel}
 							emptySlot={emptySlot}
 							dragHint={dragHint}
 						/>
-					))
+						);
+					})
 				) : (
 					<CompareCell
 						pair={null}
@@ -208,6 +221,48 @@ export default function BeforeAfterCarousel({
 					/>
 				)}
 			</div>
+			<p class="treatment-carousel__hint">{dragHint}</p>
+			{filledPairs.length > 1 ? (
+				<div class="treatment-carousel__controls treatment-carousel__controls--center treatment-carousel__controls--mobile">
+					<button
+						type="button"
+						class="treatment-carousel__btn"
+						disabled={safePairIndex === 0}
+						onClick={() => setPairIndex((value) => Math.max(0, value - 1))}
+					>
+						{prevLabel}
+					</button>
+					<span class="treatment-carousel__counter" aria-live="polite">
+						{safePairIndex + 1} / {filledPairs.length}
+					</span>
+					<button
+						type="button"
+						class="treatment-carousel__btn"
+						disabled={safePairIndex >= filledPairs.length - 1}
+						onClick={() => setPairIndex((value) => Math.min(filledPairs.length - 1, value + 1))}
+					>
+						{nextLabel}
+					</button>
+				</div>
+			) : null}
+			{desktopCarouselActive ? (
+				<div class="treatment-carousel__controls treatment-carousel__controls--desktop">
+					<button
+						type="button"
+						class="treatment-carousel__btn"
+						onClick={() => advanceDesktop(-1)}
+					>
+						{prevLabel}
+					</button>
+					<button
+						type="button"
+						class="treatment-carousel__btn"
+						onClick={() => advanceDesktop(1)}
+					>
+						{nextLabel}
+					</button>
+				</div>
+			) : null}
 			{safeSlides.length > 1 ? (
 				<div class="treatment-carousel__controls treatment-carousel__controls--slides">
 					<button
@@ -217,6 +272,7 @@ export default function BeforeAfterCarousel({
 						onClick={() => {
 							setSlideIndex((value) => Math.max(0, value - 1));
 							setPairIndex(0);
+							setDesktopStartIndex(0);
 						}}
 					>
 						{prevLabel}
@@ -228,6 +284,7 @@ export default function BeforeAfterCarousel({
 						onClick={() => {
 							setSlideIndex((value) => Math.min(safeSlides.length - 1, value + 1));
 							setPairIndex(0);
+							setDesktopStartIndex(0);
 						}}
 					>
 						{nextLabel}

@@ -2,8 +2,10 @@
 import type { Locale } from '../../i18n/config';
 import type { CapilarPageContent } from '../../i18n/capilar-page';
 import { resolveBookingCta } from '../../i18n/booking-links';
+import { PILLAR_TREATMENTS_SECTION_ID, pillarJumpSectionIds } from '../../i18n/pillar-navigation';
 import { href, hrefCapilarTreatment } from '../../i18n/route-registry';
 import FinalCta from '../FinalCta.astro';
+import PillarJumpNav from '../pillar/PillarJumpNav.astro';
 import Heading from '../ui/Heading.astro';
 
 interface Props {
@@ -47,6 +49,8 @@ const bookingCta = resolveBookingCta(lang);
 		</div>
 	</section>
 
+	<PillarJumpNav lang={lang} />
+
 	<section class="capilar-section capilar-section--identification">
 		<div class="capilar-container capilar-identification">
 			<div class="capilar-identification__rule" aria-hidden="true"></div>
@@ -59,7 +63,10 @@ const bookingCta = resolveBookingCta(lang);
 		</div>
 	</section>
 
-	<section class="capilar-section capilar-section--diagnosis">
+	<section
+		id={pillarJumpSectionIds.approach}
+		class="capilar-section capilar-section--diagnosis pillar-section-anchor"
+	>
 		<div class="capilar-texture" aria-hidden="true"></div>
 		<div class="capilar-container capilar-diagnosis">
 			<div class="capilar-diagnosis__copy">
@@ -101,7 +108,10 @@ const bookingCta = resolveBookingCta(lang);
 		</div>
 	</section>
 
-	<section class="capilar-section capilar-section--treatments">
+	<section
+		id={PILLAR_TREATMENTS_SECTION_ID}
+		class="capilar-section capilar-section--treatments pillar-section-anchor"
+	>
 		<div class="capilar-container">
 			<div class="capilar-treatments">
 				<div class="capilar-treatments__head">
@@ -147,7 +157,7 @@ const bookingCta = resolveBookingCta(lang);
 		</div>
 	</section>
 
-	<section class="capilar-section capilar-section--process">
+	<section id={pillarJumpSectionIds.process} class="capilar-section capilar-section--process pillar-section-anchor">
 		<div class="capilar-container">
 			<Heading level={2} serif class="capilar-section__title">{content.process.title}</Heading>
 			<ol class="capilar-process">
@@ -195,7 +205,10 @@ const bookingCta = resolveBookingCta(lang);
 		</div>
 	</section>
 
-	<section class="capilar-section capilar-section--final-cta">
+	<section
+		id={pillarJumpSectionIds.valuation}
+		class="capilar-section capilar-section--final-cta pillar-section-anchor"
+	>
 		<div class="capilar-container">
 			<FinalCta
 				lang={lang}

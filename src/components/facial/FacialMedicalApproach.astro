@@ -7,12 +7,14 @@ interface Props {
   body: string[];
   imageSrc: string;
   imageAlt: string;
+  id?: string;
+  class?: string;
 }
 
-const { eyebrow, title, body, imageSrc, imageAlt } = Astro.props;
+const { eyebrow, title, body, imageSrc, imageAlt, id, class: className } = Astro.props;
 ---
 
-<section class="facial-section facial-section--medical-approach">
+<section id={id} class:list={['facial-section', 'facial-section--medical-approach', className]}>
   <div class="facial-container facial-medical-approach">
     <div class="facial-medical-approach__content">
       <p class="facial-eyebrow facial-eyebrow--left">{eyebrow}</p>

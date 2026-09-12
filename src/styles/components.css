@@ -8,6 +8,7 @@
 @import './components/facial-pillar.css' layer(components);
 @import './components/corporal-pillar.css' layer(components);
 @import './components/capilar-pillar.css' layer(components);
+@import './components/pillar-jump-nav.css' layer(components);
 @import './components/treatment-page.css' layer(components);
 @import './components/legal-prose.css' layer(components);
 @import './components/cookie-consent.css' layer(components);

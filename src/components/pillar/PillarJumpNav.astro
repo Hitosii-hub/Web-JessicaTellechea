@@ -1,0 +1,39 @@
+---
+import type { Locale } from '../../i18n/config';
+import {
+	PILLAR_TREATMENTS_SECTION_ID,
+	pillarJumpLinks,
+	pillarJumpNavAriaLabel,
+	pillarTreatmentsLinkLabel,
+} from '../../i18n/pillar-navigation';
+import PillarAnchorScroll from './PillarAnchorScroll.astro';
+
+interface Props {
+	lang: Locale;
+}
+
+const { lang } = Astro.props;
+const links = pillarJumpLinks(lang);
+---
+
+<PillarAnchorScroll />
+
+<nav class="pillar-jump-nav pillar-jump-nav--mobile" aria-label={pillarTreatmentsLinkLabel[lang]}>
+	<a class="pillar-jump-nav__link" href={`#${PILLAR_TREATMENTS_SECTION_ID}`}>
+		{pillarTreatmentsLinkLabel[lang]}
+	</a>
+</nav>
+
+<nav class="pillar-jump-nav pillar-jump-nav--desktop" aria-label={pillarJumpNavAriaLabel[lang]}>
+	<ol class="pillar-jump-nav__list">
+		{
+			links.map((link) => (
+				<li class="pillar-jump-nav__item">
+					<a class="pillar-jump-nav__link" href={`#${link.id}`}>
+						{link.label}
+					</a>
+				</li>
+			))
+		}
+	</ol>
+</nav>

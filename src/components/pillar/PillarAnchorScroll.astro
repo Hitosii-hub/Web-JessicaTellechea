@@ -1,0 +1,66 @@
+---
+/** Smooth in-page scroll for pillar hero + jump-nav anchor links. */
+---
+
+<script>
+	function pillarScrollOffset(): number {
+		const root = document.documentElement;
+		const headerRaw = getComputedStyle(root).getPropertyValue('--site-header-min-height').trim();
+		const headerPx = Number.parseFloat(headerRaw) || 72;
+		const jumpNavs = document.querySelectorAll('.pillar-jump-nav');
+		let jumpNavHeight = 0;
+		jumpNavs.forEach((nav) => {
+			if (nav instanceof HTMLElement && getComputedStyle(nav).display !== 'none') {
+				jumpNavHeight = Math.max(jumpNavHeight, nav.getBoundingClientRect().height);
+			}
+		});
+		return headerPx + jumpNavHeight + 12;
+	}
+
+	function easeOutQuad(progress: number): number {
+		return 1 - (1 - progress) ** 2;
+	}
+
+	function smoothScrollToElement(target: HTMLElement): void {
+		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+			const top = target.getBoundingClientRect().top + window.scrollY - pillarScrollOffset();
+			window.scrollTo({ top, left: 0 });
+			return;
+		}
+
+		const start = window.scrollY;
+		const destination = target.getBoundingClientRect().top + window.scrollY - pillarScrollOffset();
+		const distance = destination - start;
+		const duration = Math.min(680, Math.max(380, Math.abs(distance) * 0.38));
+		let startTime: number | null = null;
+
+		function step(now: number): void {
+			if (startTime === null) startTime = now;
+			const elapsed = now - startTime;
+			const progress = Math.min(elapsed / duration, 1);
+			window.scrollTo({ top: start + distance * easeOutQuad(progress), left: 0 });
+			if (progress < 1) requestAnimationFrame(step);
+		}
+
+		requestAnimationFrame(step);
+	}
+
+	function isPillarAnchorLink(link: HTMLAnchorElement): boolean {
+		return link.classList.contains('pillar-jump-nav__link');
+	}
+
+	document.addEventListener('click', (event) => {
+		const link = (event.target as Element | null)?.closest('a[href^="#"]');
+		if (!(link instanceof HTMLAnchorElement) || !isPillarAnchorLink(link)) return;
+
+		const id = link.getAttribute('href')?.slice(1);
+		if (!id) return;
+
+		const target = document.getElementById(id);
+		if (!target) return;
+
+		event.preventDefault();
+		smoothScrollToElement(target);
+		history.pushState(null, '', `#${id}`);
+	});
+</script>
