@@ -10,6 +10,8 @@ import FacialProcess from './FacialProcess.astro';
 import FacialServices from './FacialServices.astro';
 import FacialTrust from './FacialTrust.astro';
 import { resolveBookingCta } from '../../i18n/booking-links';
+import { pillarJumpSectionIds } from '../../i18n/pillar-navigation';
+import PillarJumpNav from '../pillar/PillarJumpNav.astro';
 
 interface Props {
   lang: Locale;
@@ -32,8 +34,11 @@ const bookingCta = resolveBookingCta(lang);
     imageSrc={content.hero.imageSrc}
     imageAlt={content.hero.imageAlt}
   />
+  <PillarJumpNav lang={lang} />
   <FacialInsight title={content.insight.title} body={content.insight.body} />
   <FacialMedicalApproach
+    id={pillarJumpSectionIds.approach}
+    class="pillar-section-anchor"
     eyebrow={content.medicalApproach.eyebrow}
     title={content.medicalApproach.title}
     body={content.medicalApproach.body}
@@ -41,10 +46,23 @@ const bookingCta = resolveBookingCta(lang);
     imageAlt={content.medicalApproach.imageAlt}
   />
   <FacialBenefits title={content.benefits.title} items={content.benefits.items} />
-  <FacialServices groups={content.services.groups} images={content.services.images} />
-  <FacialProcess eyebrow={content.process.eyebrow} steps={content.process.steps} />
+  <FacialServices
+    id={pillarJumpSectionIds.treatments}
+    class="pillar-section-anchor"
+    groups={content.services.groups}
+    images={content.services.images}
+  />
+  <FacialProcess
+    id={pillarJumpSectionIds.process}
+    class="pillar-section-anchor"
+    eyebrow={content.process.eyebrow}
+    steps={content.process.steps}
+  />
   <FacialTrust points={content.trust.points} />
-  <section class="facial-section facial-section--final-cta">
+  <section
+    id={pillarJumpSectionIds.valuation}
+    class="facial-section facial-section--final-cta pillar-section-anchor"
+  >
     <div class="facial-container">
       <FinalCta
         lang={lang}

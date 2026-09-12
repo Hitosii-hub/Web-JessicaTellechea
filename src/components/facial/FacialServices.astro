@@ -14,12 +14,14 @@ interface ServiceImage {
 interface Props {
   groups: ServiceGroup[];
   images: ServiceImage[];
+  id?: string;
+  class?: string;
 }
 
-const { groups, images } = Astro.props;
+const { groups, images, id, class: className } = Astro.props;
 ---
 
-<section class="facial-section facial-section--services">
+<section id={id} class:list={['facial-section', 'facial-section--services', className]}>
   <div class="facial-container">
     <div class="facial-services">
       {

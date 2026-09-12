@@ -2,12 +2,14 @@
 interface Props {
   eyebrow: string;
   steps: { title: string; body: string }[];
+  id?: string;
+  class?: string;
 }
 
-const { eyebrow, steps } = Astro.props;
+const { eyebrow, steps, id, class: className } = Astro.props;
 ---
 
-<section class="facial-section facial-section--process">
+<section id={id} class:list={['facial-section', 'facial-section--process', className]}>
   <div class="facial-container">
     <p class="facial-eyebrow facial-eyebrow--center">{eyebrow}</p>
     <ol class="facial-process">
