@@ -187,6 +187,10 @@
             <button id="rotateRight" type="button" title="Atajo: Shift+]">+1°</button>
             <button id="rotateRightFine" type="button" title="Atajo: ]">+0,5°</button>
           </div>
+          <div class="row row--compact" style="margin-top: 0.45rem">
+            <button id="rotateLeft45" type="button" title="Atajo: Alt+[">−45°</button>
+            <button id="rotateRight45" type="button" title="Atajo: Alt+]">+45°</button>
+          </div>
         </label>
         <label>
           Opacidad capa Antes (<span id="opacityVal">50</span>%)
@@ -260,6 +264,8 @@
         rotateReset: document.getElementById('rotateReset'),
         rotateRight: document.getElementById('rotateRight'),
         rotateRightFine: document.getElementById('rotateRightFine'),
+        rotateLeft45: document.getElementById('rotateLeft45'),
+        rotateRight45: document.getElementById('rotateRight45'),
         opacity: document.getElementById('opacity'),
         opacityVal: document.getElementById('opacityVal'),
         outW: document.getElementById('outW'),
@@ -428,6 +434,8 @@
       });
       els.rotateRight.addEventListener('click', () => nudgeRotation(1));
       els.rotateRightFine.addEventListener('click', () => nudgeRotation(0.5));
+      els.rotateLeft45.addEventListener('click', () => nudgeRotation(-45));
+      els.rotateRight45.addEventListener('click', () => nudgeRotation(45));
 
       els.opacity.addEventListener('input', () => {
         els.opacityVal.textContent = els.opacity.value;
@@ -554,10 +562,12 @@
         if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
         if (e.key === '[') {
           e.preventDefault();
-          nudgeRotation(e.shiftKey ? -1 : -0.5);
+          if (e.altKey) nudgeRotation(-45);
+          else nudgeRotation(e.shiftKey ? -1 : -0.5);
         } else if (e.key === ']') {
           e.preventDefault();
-          nudgeRotation(e.shiftKey ? 1 : 0.5);
+          if (e.altKey) nudgeRotation(45);
+          else nudgeRotation(e.shiftKey ? 1 : 0.5);
         }
       });
 
