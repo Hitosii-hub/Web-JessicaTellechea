@@ -2,6 +2,17 @@ import { buildTreatmentContent } from './build-content';
 import type { TreatmentContentParts } from './build-content';
 import type { CapilarTreatmentContentMap } from './types';
 
+const transplantBeforeAfterSrc = [
+	{
+		before: '/images/capilar/transplant/before-after-before-injerto1.jpg',
+		after: '/images/capilar/transplant/before-after-after-intjerto-1.jpg',
+	},
+	{
+		before: '/images/capilar/transplant/before-after-before-intjerto-2.jpg',
+		after: '/images/capilar/transplant/before-after-after-intjerto-2.jpg',
+	},
+] as const;
+
 const esParts: TreatmentContentParts = {
 	seo: {
 		title: 'Transplante capilar en Barcelona y Tarragona | Dra. Jessica Tellechea',
@@ -96,16 +107,26 @@ const esParts: TreatmentContentParts = {
 		},
 		beforeAfter: {
 			before: {
+				src: transplantBeforeAfterSrc[0].before,
 				alt: 'Línea frontal con retroceso antes de transplante capilar',
-				recraftPrompt:
-					'Clinical frontal photograph, male hairline with visible recession and temporal thinning, neutral clinical background, even medical lighting, before hair transplant documentary reference, no text, no logos, photorealistic',
 			},
 			after: {
+				src: transplantBeforeAfterSrc[0].after,
 				alt: 'Mejora de línea frontal tras transplante capilar médico',
-				recraftPrompt:
-					'Clinical frontal photograph, same male hairline with natural modest improvement after medical hair transplant, realistic density not exaggerated, neutral clinical background, even medical lighting, after-treatment reference, no text, no logos, photorealistic',
 			},
 		},
+		beforeAfterExtra: [
+			{
+				before: {
+					src: transplantBeforeAfterSrc[1].before,
+					alt: 'Coronilla con adelgazamiento visible antes de transplante capilar',
+				},
+				after: {
+					src: transplantBeforeAfterSrc[1].after,
+					alt: 'Recuperación de densidad en coronilla tras transplante capilar médico',
+				},
+			},
+		],
 	},
 };
 
@@ -203,14 +224,26 @@ const enParts: TreatmentContentParts = {
 		},
 		beforeAfter: {
 			before: {
+				src: transplantBeforeAfterSrc[0].before,
 				alt: 'Receding hairline before hair transplant',
-				recraftPrompt: esParts.images.beforeAfter!.before.recraftPrompt,
 			},
 			after: {
+				src: transplantBeforeAfterSrc[0].after,
 				alt: 'Improved hairline after medical hair transplant',
-				recraftPrompt: esParts.images.beforeAfter!.after.recraftPrompt,
 			},
 		},
+		beforeAfterExtra: [
+			{
+				before: {
+					src: esParts.images.beforeAfterExtra![0].before.src,
+					alt: 'Visible crown thinning before hair transplant',
+				},
+				after: {
+					src: esParts.images.beforeAfterExtra![0].after.src,
+					alt: 'Restored crown density after medical hair transplant',
+				},
+			},
+		],
 	},
 };
 
@@ -308,14 +341,26 @@ const caParts: TreatmentContentParts = {
 		},
 		beforeAfter: {
 			before: {
+				src: transplantBeforeAfterSrc[0].before,
 				alt: 'Línia frontal amb retrocés abans de transplant capil·lar',
-				recraftPrompt: esParts.images.beforeAfter!.before.recraftPrompt,
 			},
 			after: {
+				src: transplantBeforeAfterSrc[0].after,
 				alt: 'Millora de línia frontal després de transplant capil·lar mèdic',
-				recraftPrompt: esParts.images.beforeAfter!.after.recraftPrompt,
 			},
 		},
+		beforeAfterExtra: [
+			{
+				before: {
+					src: esParts.images.beforeAfterExtra![0].before.src,
+					alt: 'Coronilla amb afinament visible abans de transplant capil·lar',
+				},
+				after: {
+					src: esParts.images.beforeAfterExtra![0].after.src,
+					alt: 'Recuperació de densitat a la coronilla després de transplant capil·lar mèdic',
+				},
+			},
+		],
 	},
 };
 
@@ -413,14 +458,26 @@ const frParts: TreatmentContentParts = {
 		},
 		beforeAfter: {
 			before: {
+				src: transplantBeforeAfterSrc[0].before,
 				alt: 'Ligne frontale avec recul avant greffe capillaire',
-				recraftPrompt: esParts.images.beforeAfter!.before.recraftPrompt,
 			},
 			after: {
+				src: transplantBeforeAfterSrc[0].after,
 				alt: 'Amélioration de la ligne frontale après greffe capillaire médicale',
-				recraftPrompt: esParts.images.beforeAfter!.after.recraftPrompt,
 			},
 		},
+		beforeAfterExtra: [
+			{
+				before: {
+					src: esParts.images.beforeAfterExtra![0].before.src,
+					alt: 'Vertex avec amincissement visible avant greffe capillaire',
+				},
+				after: {
+					src: esParts.images.beforeAfterExtra![0].after.src,
+					alt: 'Densité restaurée au vertex après greffe capillaire médicale',
+				},
+			},
+		],
 	},
 };
 
