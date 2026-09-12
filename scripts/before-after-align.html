@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Before/After — alineación manual</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f4f1ec;
+        --panel: #fff;
+        --ink: #1c1917;
+        --muted: #78716c;
+        --line: #e7e5e4;
+        --accent: #6b5344;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font: 14px/1.45 system-ui, sans-serif;
+        color: var(--ink);
+        background: var(--bg);
+      }
+      .layout {
+        display: grid;
+        grid-template-columns: minmax(280px, 340px) 1fr;
+        min-height: 100vh;
+      }
+      aside {
+        padding: 1.25rem;
+        background: var(--panel);
+        border-right: 1px solid var(--line);
+      }
+      main {
+        padding: 1.25rem;
+        display: grid;
+        place-items: center;
+      }
+      h1 {
+        margin: 0 0 0.25rem;
+        font-size: 1.05rem;
+      }
+      .hint {
+        margin: 0 0 1rem;
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+      label {
+        display: grid;
+        gap: 0.35rem;
+        margin-bottom: 0.85rem;
+        font-size: 0.82rem;
+      }
+      input[type='file'],
+      input[type='number'],
+      select {
+        width: 100%;
+        padding: 0.45rem 0.55rem;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+      }
+      input[type='range'] {
+        width: 100%;
+      }
+      .row {
+        display: flex;
+        gap: 0.5rem;
+      }
+      .row > * {
+        flex: 1;
+      }
+      .row--compact button {
+        padding: 0.45rem 0.35rem;
+        font-size: 0.82rem;
+      }
+      button {
+        width: 100%;
+        padding: 0.55rem 0.75rem;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+        cursor: pointer;
+      }
+      button.primary {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #fff;
+      }
+      button:disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
+      }
+      .seg {
+        display: flex;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        overflow: hidden;
+        margin-bottom: 0.85rem;
+      }
+      .seg button {
+        border: 0;
+        border-radius: 0;
+        background: #fafaf9;
+      }
+      .seg button.active {
+        background: var(--accent);
+        color: #fff;
+      }
+      .stage-wrap {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 0.75rem;
+        box-shadow: 0 8px 24px rgb(0 0 0 / 6%);
+      }
+      canvas {
+        display: block;
+        max-width: min(92vw, 480px);
+        height: auto;
+        cursor: grab;
+        touch-action: none;
+        background: #fff;
+      }
+      canvas.dragging {
+        cursor: grabbing;
+      }
+      .steps {
+        margin: 0 0 1rem;
+        padding-left: 1.1rem;
+        color: var(--muted);
+        font-size: 0.82rem;
+      }
+      .steps li + li {
+        margin-top: 0.25rem;
+      }
+      hr {
+        border: 0;
+        border-top: 1px solid var(--line);
+        margin: 1rem 0;
+      }
+      @media (max-width: 820px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout">
+      <aside>
+        <h1>Alineación before/after</h1>
+        <p class="hint">Herramienta local, un solo archivo. Sin subir nada a internet.</p>
+        <ol class="steps">
+          <li>Carga <strong>Antes</strong> y <strong>Después</strong>.</li>
+          <li>Ajusta la imagen <strong>Antes</strong> (encuadre de referencia).</li>
+          <li>Cambia a <strong>Después</strong> y alinea con la capa semitransparente.</li>
+          <li>Descarga el par ya recortado al mismo tamaño.</li>
+        </ol>
+
+        <label>
+          Imagen ANTES
+          <input id="beforeFile" type="file" accept="image/*" />
+        </label>
+        <label>
+          Imagen DESPUÉS
+          <input id="afterFile" type="file" accept="image/*" />
+        </label>
+
+        <div class="seg" role="tablist" aria-label="Capa activa">
+          <button id="editBefore" type="button" class="active">Editar Antes</button>
+          <button id="editAfter" type="button">Editar Después</button>
+        </div>
+
+        <label>
+          Escala (<span id="scaleVal">100</span>%)
+          <input id="scale" type="range" min="20" max="300" value="100" />
+        </label>
+        <label>
+          Rotación (<span id="rotateVal">0</span>°)
+          <div class="row row--compact">
+            <button id="rotateLeftFine" type="button" title="Atajo: [">−0,5°</button>
+            <button id="rotateLeft" type="button" title="Atajo: Shift+[">−1°</button>
+            <button id="rotateReset" type="button">0°</button>
+            <button id="rotateRight" type="button" title="Atajo: Shift+]">+1°</button>
+            <button id="rotateRightFine" type="button" title="Atajo: ]">+0,5°</button>
+          </div>
+        </label>
+        <label>
+          Opacidad capa Antes (<span id="opacityVal">50</span>%)
+          <input id="opacity" type="range" min="0" max="100" value="50" />
+        </label>
+
+        <div class="row">
+          <button id="resetLayer" type="button">Centrar capa</button>
+          <button id="resetAll" type="button">Reiniciar todo</button>
+        </div>
+
+        <hr />
+
+        <div class="row">
+          <label>
+            Ancho salida
+            <input id="outW" type="number" min="320" max="2400" step="10" value="960" />
+          </label>
+          <label>
+            Alto salida
+            <input id="outH" type="number" min="320" max="3200" step="10" value="1200" />
+          </label>
+        </div>
+
+        <label style="margin-top: 0.5rem">
+          Calidad JPEG (<span id="qualityVal">92</span>%)
+          <input id="quality" type="range" min="70" max="100" value="92" />
+        </label>
+
+        <hr />
+
+        <button id="saveBefore" class="primary" type="button" disabled>Descargar before.jpg</button>
+        <button id="saveAfter" class="primary" type="button" disabled style="margin-top: 0.5rem">
+          Descargar after.jpg
+        </button>
+        <button id="saveBoth" type="button" disabled style="margin-top: 0.5rem">Descargar ambas</button>
+      </aside>
+
+      <main>
+        <div class="stage-wrap">
+          <canvas id="stage" width="960" height="1200" aria-label="Vista previa"></canvas>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      const state = {
+        before: null,
+        after: null,
+        active: 'before',
+        dragging: false,
+        lastX: 0,
+        lastY: 0,
+        layers: {
+          before: { x: 0, y: 0, scale: 1, rotation: 0 },
+          after: { x: 0, y: 0, scale: 1, rotation: 0 },
+        },
+      };
+
+      const els = {
+        stage: document.getElementById('stage'),
+        beforeFile: document.getElementById('beforeFile'),
+        afterFile: document.getElementById('afterFile'),
+        editBefore: document.getElementById('editBefore'),
+        editAfter: document.getElementById('editAfter'),
+        scale: document.getElementById('scale'),
+        scaleVal: document.getElementById('scaleVal'),
+        rotateVal: document.getElementById('rotateVal'),
+        rotateLeftFine: document.getElementById('rotateLeftFine'),
+        rotateLeft: document.getElementById('rotateLeft'),
+        rotateReset: document.getElementById('rotateReset'),
+        rotateRight: document.getElementById('rotateRight'),
+        rotateRightFine: document.getElementById('rotateRightFine'),
+        opacity: document.getElementById('opacity'),
+        opacityVal: document.getElementById('opacityVal'),
+        outW: document.getElementById('outW'),
+        outH: document.getElementById('outH'),
+        quality: document.getElementById('quality'),
+        qualityVal: document.getElementById('qualityVal'),
+        resetLayer: document.getElementById('resetLayer'),
+        resetAll: document.getElementById('resetAll'),
+        saveBefore: document.getElementById('saveBefore'),
+        saveAfter: document.getElementById('saveAfter'),
+        saveBoth: document.getElementById('saveBoth'),
+      };
+
+      const ctx = els.stage.getContext('2d');
+
+      function fitLayer(img, layer) {
+        const w = Number(els.outW.value) || 960;
+        const h = Number(els.outH.value) || 1200;
+        const cover = Math.max(w / img.width, h / img.height);
+        layer.scale = cover;
+        layer.rotation = 0;
+        layer.x = (w - img.width * cover) / 2;
+        layer.y = (h - img.height * cover) / 2;
+      }
+
+      function loadImage(file, key) {
+        return new Promise((resolve, reject) => {
+          const url = URL.createObjectURL(file);
+          const img = new Image();
+          img.onload = () => {
+            URL.revokeObjectURL(url);
+            state[key] = img;
+            fitLayer(img, state.layers[key]);
+            resolve();
+          };
+          img.onerror = reject;
+          img.src = url;
+        });
+      }
+
+      function resizeStage() {
+        const w = Number(els.outW.value) || 960;
+        const h = Number(els.outH.value) || 1200;
+        els.stage.width = w;
+        els.stage.height = h;
+      }
+
+      function activeLayer() {
+        return state.layers[state.active];
+      }
+
+      function syncScaleUi() {
+        const pct = Math.round(activeLayer().scale * 100);
+        els.scale.value = String(Math.min(300, Math.max(20, pct)));
+        els.scaleVal.textContent = els.scale.value;
+      }
+
+      function syncRotateUi() {
+        const deg = activeLayer().rotation;
+        els.rotateVal.textContent = deg % 1 === 0 ? String(deg) : deg.toFixed(1);
+      }
+
+      function nudgeRotation(delta) {
+        activeLayer().rotation = Math.round((activeLayer().rotation + delta) * 10) / 10;
+        syncRotateUi();
+        render();
+      }
+
+      function drawImageLayerOn(targetCtx, img, layer, alpha = 1) {
+        if (!img) return;
+        const w = img.width * layer.scale;
+        const h = img.height * layer.scale;
+        const cx = layer.x + w / 2;
+        const cy = layer.y + h / 2;
+        targetCtx.save();
+        targetCtx.globalAlpha = alpha;
+        targetCtx.translate(cx, cy);
+        targetCtx.rotate((layer.rotation * Math.PI) / 180);
+        targetCtx.drawImage(img, -w / 2, -h / 2, w, h);
+        targetCtx.restore();
+      }
+
+      function drawImageLayer(img, layer, alpha = 1) {
+        drawImageLayerOn(ctx, img, layer, alpha);
+      }
+
+      function render() {
+        const w = els.stage.width;
+        const h = els.stage.height;
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, w, h);
+        drawImageLayer(state.after, state.layers.after, 1);
+        const opacity = Number(els.opacity.value) / 100;
+        drawImageLayer(state.before, state.layers.before, opacity);
+        const ready = Boolean(state.before && state.after);
+        els.saveBefore.disabled = !ready;
+        els.saveAfter.disabled = !ready;
+        els.saveBoth.disabled = !ready;
+      }
+
+      function setActive(layer) {
+        state.active = layer;
+        els.editBefore.classList.toggle('active', layer === 'before');
+        els.editAfter.classList.toggle('active', layer === 'after');
+        syncScaleUi();
+        syncRotateUi();
+        render();
+      }
+
+      function exportLayer(key, filename) {
+        const w = els.stage.width;
+        const h = els.stage.height;
+        const off = document.createElement('canvas');
+        off.width = w;
+        off.height = h;
+        const offCtx = off.getContext('2d');
+        offCtx.fillStyle = '#ffffff';
+        offCtx.fillRect(0, 0, w, h);
+        const img = state[key];
+        const layer = state.layers[key];
+        drawImageLayerOn(offCtx, img, layer, 1);
+        const q = Number(els.quality.value) / 100;
+        off.toBlob(
+          (blob) => {
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = filename;
+            a.click();
+            URL.revokeObjectURL(a.href);
+          },
+          'image/jpeg',
+          q,
+        );
+      }
+
+      els.beforeFile.addEventListener('change', async (e) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+        await loadImage(file, 'before');
+        setActive('before');
+        render();
+      });
+
+      els.afterFile.addEventListener('change', async (e) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+        await loadImage(file, 'after');
+        render();
+      });
+
+      els.editBefore.addEventListener('click', () => setActive('before'));
+      els.editAfter.addEventListener('click', () => setActive('after'));
+
+      els.scale.addEventListener('input', () => {
+        activeLayer().scale = Number(els.scale.value) / 100;
+        els.scaleVal.textContent = els.scale.value;
+        render();
+      });
+
+      els.rotateLeftFine.addEventListener('click', () => nudgeRotation(-0.5));
+      els.rotateLeft.addEventListener('click', () => nudgeRotation(-1));
+      els.rotateReset.addEventListener('click', () => {
+        activeLayer().rotation = 0;
+        syncRotateUi();
+        render();
+      });
+      els.rotateRight.addEventListener('click', () => nudgeRotation(1));
+      els.rotateRightFine.addEventListener('click', () => nudgeRotation(0.5));
+
+      els.opacity.addEventListener('input', () => {
+        els.opacityVal.textContent = els.opacity.value;
+        render();
+      });
+
+      els.quality.addEventListener('input', () => {
+        els.qualityVal.textContent = els.quality.value;
+      });
+
+      els.outW.addEventListener('change', () => {
+        resizeStage();
+        if (state.before) fitLayer(state.before, state.layers.before);
+        if (state.after) fitLayer(state.after, state.layers.after);
+        syncScaleUi();
+        syncRotateUi();
+        render();
+      });
+      els.outH.addEventListener('change', () => {
+        resizeStage();
+        if (state.before) fitLayer(state.before, state.layers.before);
+        if (state.after) fitLayer(state.after, state.layers.after);
+        syncScaleUi();
+        syncRotateUi();
+        render();
+      });
+
+      els.resetLayer.addEventListener('click', () => {
+        const img = state[state.active];
+        if (!img) return;
+        fitLayer(img, activeLayer());
+        syncScaleUi();
+        syncRotateUi();
+        render();
+      });
+
+      els.resetAll.addEventListener('click', () => {
+        if (state.before) fitLayer(state.before, state.layers.before);
+        if (state.after) fitLayer(state.after, state.layers.after);
+        setActive('before');
+        render();
+      });
+
+      els.saveBefore.addEventListener('click', () => exportLayer('before', 'before-after-before.jpg'));
+      els.saveAfter.addEventListener('click', () => exportLayer('after', 'before-after-after.jpg'));
+      els.saveBoth.addEventListener('click', () => {
+        exportLayer('before', 'before-after-before.jpg');
+        exportLayer('after', 'before-after-after.jpg');
+      });
+
+      function pointerDown(x, y) {
+        state.dragging = true;
+        state.lastX = x;
+        state.lastY = y;
+        els.stage.classList.add('dragging');
+      }
+
+      function pointerMove(x, y) {
+        if (!state.dragging) return;
+        const layer = activeLayer();
+        layer.x += x - state.lastX;
+        layer.y += y - state.lastY;
+        state.lastX = x;
+        state.lastY = y;
+        render();
+      }
+
+      function pointerUp() {
+        state.dragging = false;
+        els.stage.classList.remove('dragging');
+      }
+
+      els.stage.addEventListener('mousedown', (e) => pointerDown(e.offsetX, e.offsetY));
+      window.addEventListener('mousemove', (e) => {
+        if (!state.dragging) return;
+        const rect = els.stage.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * els.stage.width;
+        const y = ((e.clientY - rect.top) / rect.height) * els.stage.height;
+        pointerMove(x, y);
+      });
+      window.addEventListener('mouseup', pointerUp);
+
+      els.stage.addEventListener(
+        'wheel',
+        (e) => {
+          e.preventDefault();
+          const layer = activeLayer();
+          const delta = e.deltaY > 0 ? -0.02 : 0.02;
+          layer.scale = Math.min(3, Math.max(0.2, layer.scale + delta));
+          syncScaleUi();
+          render();
+        },
+        { passive: false },
+      );
+
+      els.stage.addEventListener(
+        'touchstart',
+        (e) => {
+          const t = e.touches[0];
+          const rect = els.stage.getBoundingClientRect();
+          pointerDown(
+            ((t.clientX - rect.left) / rect.width) * els.stage.width,
+            ((t.clientY - rect.top) / rect.height) * els.stage.height,
+          );
+        },
+        { passive: true },
+      );
+      els.stage.addEventListener(
+        'touchmove',
+        (e) => {
+          e.preventDefault();
+          const t = e.touches[0];
+          const rect = els.stage.getBoundingClientRect();
+          pointerMove(
+            ((t.clientX - rect.left) / rect.width) * els.stage.width,
+            ((t.clientY - rect.top) / rect.height) * els.stage.height,
+          );
+        },
+        { passive: false },
+      );
+      els.stage.addEventListener('touchend', pointerUp);
+
+      window.addEventListener('keydown', (e) => {
+        if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+        if (e.key === '[') {
+          e.preventDefault();
+          nudgeRotation(e.shiftKey ? -1 : -0.5);
+        } else if (e.key === ']') {
+          e.preventDefault();
+          nudgeRotation(e.shiftKey ? 1 : 0.5);
+        }
+      });
+
+      syncRotateUi();
+      render();
+    </script>
+  </body>
+</html>

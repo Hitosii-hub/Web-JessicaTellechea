@@ -12,6 +12,8 @@
     "check": "node --max-old-space-size=8192 ./node_modules/astro/bin/astro.mjs check",
     "lint:encoding": "node scripts/check-utf8.mjs",
     "verify:routes": "node scripts/verify-route-registry.mjs",
+    "align:before-after": "python scripts/align-before-after.py",
+    "align:manual": "python -m http.server 8765 --directory scripts",
     "astro": "astro"
   },
   "dependencies": {

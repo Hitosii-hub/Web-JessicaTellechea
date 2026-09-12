@@ -84,8 +84,36 @@ Run from the project root (after `npm install`):
 | `npm run build`           | Production build to `./dist/`                    |
 | `npm run preview`         | Preview the production build locally             |
 | `npm run check`           | Astro + TypeScript diagnostics (`astro check`)   |
+| `npm run verify:routes`   | Slug matrix sanity check                         |
+| `npm run lint:encoding`   | UTF-8 check on text files                        |
 | `npm run astro ...`       | CLI: `astro add`, `astro check`, etc.            |
 | `npm run astro -- --help` | Astro CLI help                                   |
+
+### Before/after treatment images
+
+Dos opciones (mismo destino: `before-after-before.jpg` + `before-after-after.jpg` en `public/images/capilar/...`):
+
+**A) Manual (recomendado si el automático no convence)** — un solo HTML, sin dependencias:
+
+```sh
+npm run align:manual
+```
+
+Abre [http://localhost:8765/before-after-align.html](http://localhost:8765/before-after-align.html). Carga las dos fotos, ajusta **Antes** (encuadre), alinea **Después** con la capa semitransparente (arrastrar, escala, rotación ±0,5°/±1° o teclas `[` `]`) y descarga el par. Todo local.
+
+También puedes abrir directamente `scripts/before-after-align.html` en el navegador (doble clic).
+
+**B) Automático** — Python + OpenCV:
+
+```sh
+npm run align:before-after -- \
+  --before ruta/antes.jpg \
+  --after ruta/despues.jpg \
+  --out-before public/images/capilar/meso/before-after-before.jpg \
+  --out-after public/images/capilar/meso/before-after-after.jpg
+```
+
+Opcional: `--debug ruta/blend-debug.jpg` (mezcla 50/50); `--y-bottom-pct 46`; `--keep-top-pct 0.64`. Script: `scripts/align-before-after.py`.
 
 ### Locales and `/` redirect
 

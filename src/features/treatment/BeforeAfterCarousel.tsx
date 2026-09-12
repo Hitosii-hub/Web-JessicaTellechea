@@ -130,7 +130,6 @@ function CompareCell({
 					</span>
 				</div>
 			</div>
-			<p class="treatment-compare__hint">{dragHint}</p>
 		</div>
 	);
 }
@@ -144,41 +143,92 @@ export default function BeforeAfterCarousel({
 	prevLabel,
 	nextLabel,
 }: Props) {
-	const [index, setIndex] = useState(0);
+	const [slideIndex, setSlideIndex] = useState(0);
+	const [pairIndex, setPairIndex] = useState(0);
 	const safeSlides = slides.length > 0 ? slides : [{ pairs: [null, null, null] }];
-	const slide = safeSlides[index] ?? safeSlides[0];
-	const pairs: (ComparePair | null)[] = [...slide.pairs];
-	while (pairs.length < 3) pairs.push(null);
+	const slide = safeSlides[slideIndex] ?? safeSlides[0];
+	const filledPairs = slide.pairs.filter((pair): pair is ComparePair => pair !== null);
+	const safePairIndex = Math.min(pairIndex, Math.max(0, filledPairs.length - 1));
+	const activePair = filledPairs[safePairIndex] ?? null;
 
 	return (
 		<div class="treatment-carousel">
+			<div class="treatment-carousel__mobile">
+				<CompareCell
+					key={safePairIndex}
+					pair={activePair}
+					beforeLabel={beforeLabel}
+					afterLabel={afterLabel}
+					emptySlot={emptySlot}
+					dragHint={dragHint}
+				/>
+				{filledPairs.length > 1 ? (
+					<div class="treatment-carousel__controls treatment-carousel__controls--center">
+						<button
+							type="button"
+							class="treatment-carousel__btn"
+							disabled={safePairIndex === 0}
+							onClick={() => setPairIndex((value) => Math.max(0, value - 1))}
+						>
+							{prevLabel}
+						</button>
+						<span class="treatment-carousel__counter" aria-live="polite">
+							{safePairIndex + 1} / {filledPairs.length}
+						</span>
+						<button
+							type="button"
+							class="treatment-carousel__btn"
+							disabled={safePairIndex >= filledPairs.length - 1}
+							onClick={() => setPairIndex((value) => Math.min(filledPairs.length - 1, value + 1))}
+						>
+							{nextLabel}
+						</button>
+					</div>
+				) : null}
+			</div>
 			<div class="treatment-carousel__grid">
-				{pairs.slice(0, 3).map((pair, cellIndex) => (
+				{filledPairs.length > 0 ? (
+					filledPairs.map((pair, cellIndex) => (
+						<CompareCell
+							key={cellIndex}
+							pair={pair}
+							beforeLabel={beforeLabel}
+							afterLabel={afterLabel}
+							emptySlot={emptySlot}
+							dragHint={dragHint}
+						/>
+					))
+				) : (
 					<CompareCell
-						key={cellIndex}
-						pair={pair}
+						pair={null}
 						beforeLabel={beforeLabel}
 						afterLabel={afterLabel}
 						emptySlot={emptySlot}
 						dragHint={dragHint}
 					/>
-				))}
+				)}
 			</div>
 			{safeSlides.length > 1 ? (
-				<div class="treatment-carousel__controls">
+				<div class="treatment-carousel__controls treatment-carousel__controls--slides">
 					<button
 						type="button"
 						class="treatment-carousel__btn"
-						disabled={index === 0}
-						onClick={() => setIndex((value) => Math.max(0, value - 1))}
+						disabled={slideIndex === 0}
+						onClick={() => {
+							setSlideIndex((value) => Math.max(0, value - 1));
+							setPairIndex(0);
+						}}
 					>
 						{prevLabel}
 					</button>
 					<button
 						type="button"
 						class="treatment-carousel__btn"
-						disabled={index >= safeSlides.length - 1}
-						onClick={() => setIndex((value) => Math.min(safeSlides.length - 1, value + 1))}
+						disabled={slideIndex >= safeSlides.length - 1}
+						onClick={() => {
+							setSlideIndex((value) => Math.min(safeSlides.length - 1, value + 1));
+							setPairIndex(0);
+						}}
 					>
 						{nextLabel}
 					</button>

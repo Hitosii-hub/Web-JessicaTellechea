@@ -14,12 +14,14 @@ export interface TreatmentContentParts {
 	precautionsBefore: string[];
 	precautionsAfter: string[];
 	faq: { q: string; a: string }[];
+	resultsDisclaimer?: string;
 	images: {
 		hero?: TreatmentImageSlot;
 		about: TreatmentImageSlot;
 		how: TreatmentImageSlot;
 		postCare: TreatmentImageSlot;
 		beforeAfter?: { before: TreatmentImageSlot; after: TreatmentImageSlot };
+		beforeAfterExtra?: { before: TreatmentImageSlot; after: TreatmentImageSlot }[];
 	};
 }
 
@@ -28,13 +30,20 @@ export function buildTreatmentContent(
 	parts: TreatmentContentParts,
 ): TreatmentPageContent {
 	const ui = treatmentUiLabels[locale];
-	const emptySlide: BeforeAfterSlide = { pairs: [null, null, null] };
+	const maxPairsPerSlide = 4;
+	const emptySlide: BeforeAfterSlide = {
+		pairs: Array.from({ length: maxPairsPerSlide }, () => null),
+	};
 	const slides: BeforeAfterSlide[] = [emptySlide];
 
-	if (parts.images.beforeAfter) {
-		slides[0] = {
-			pairs: [{ before: parts.images.beforeAfter.before, after: parts.images.beforeAfter.after }, null, null],
-		};
+	if (parts.images.beforeAfter || parts.images.beforeAfterExtra?.length) {
+		const allPairs = [
+			parts.images.beforeAfter ?? null,
+			...(parts.images.beforeAfterExtra ?? []),
+		].filter((pair): pair is NonNullable<typeof pair> => pair !== null);
+		const pairs: BeforeAfterSlide['pairs'] = allPairs.slice(0, maxPairsPerSlide);
+		while (pairs.length < maxPairsPerSlide) pairs.push(null);
+		slides[0] = { pairs };
 	}
 
 	return {
@@ -85,6 +94,7 @@ export function buildTreatmentContent(
 			afterLabel: ui.afterLabel,
 			emptySlot: ui.emptySlot,
 			dragHint: ui.dragHint,
+			...(parts.resultsDisclaimer ? { disclaimer: parts.resultsDisclaimer } : {}),
 			prevLabel: ui.prevLabel,
 			nextLabel: ui.nextLabel,
 			slides,

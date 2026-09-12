@@ -1,8 +1,10 @@
 import { buildTreatmentContent } from './build-content';
 import type { TreatmentContentParts } from './build-content';
+import { clinicalBeforeAfterSrc, clinicalResultsDisclaimer } from './clinical-before-after-src';
 import type { CapilarTreatmentContentMap } from './types';
 
 const esParts: TreatmentContentParts = {
+	resultsDisclaimer: clinicalResultsDisclaimer.es,
 	seo: {
 		title: 'PRP capilar en Barcelona y Tarragona | Dra. Jessica Tellechea',
 		description:
@@ -97,20 +99,41 @@ const esParts: TreatmentContentParts = {
 		},
 		beforeAfter: {
 			before: {
-				alt: 'Zona frontal con adelgazamiento capilar antes de PRP',
-				recraftPrompt:
-					'Clinical top-down photograph, female hairline and frontal scalp with visible thinning and miniaturized hairs, neutral background, even medical lighting, before-treatment documentary reference, no text, no logos, photorealistic',
+				src: clinicalBeforeAfterSrc[0].before,
+				alt: 'Cuero cabelludo con adelgazamiento difuso antes de PRP capilar',
 			},
 			after: {
-				alt: 'Mejora capilar moderada tras PRP médico',
-				recraftPrompt:
-					'Clinical top-down photograph, same female hairline and frontal scalp with modest density improvement and stronger hair shafts, neutral background, even medical lighting, realistic subtle after-treatment reference, no text, no logos, photorealistic',
+				src: clinicalBeforeAfterSrc[0].after,
+				alt: 'Mejora de densidad capilar tras PRP médico',
 			},
 		},
+		beforeAfterExtra: [
+			{
+				before: {
+					src: clinicalBeforeAfterSrc[1].before,
+					alt: 'Coronilla con adelgazamiento visible antes de PRP capilar',
+				},
+				after: {
+					src: clinicalBeforeAfterSrc[1].after,
+					alt: 'Mayor cobertura capilar en coronilla tras PRP médico',
+				},
+			},
+			{
+				before: {
+					src: clinicalBeforeAfterSrc[2].before,
+					alt: 'Cuero cabelludo con adelgazamiento en coronilla antes de PRP capilar',
+				},
+				after: {
+					src: clinicalBeforeAfterSrc[2].after,
+					alt: 'Recuperación de densidad en coronilla tras PRP médico',
+				},
+			},
+		],
 	},
 };
 
 const enParts: TreatmentContentParts = {
+	resultsDisclaimer: clinicalResultsDisclaimer.en,
 	seo: {
 		title: 'Capillary PRP in Barcelona and Tarragona | Dr Jessica Tellechea',
 		description:
@@ -205,18 +228,41 @@ const enParts: TreatmentContentParts = {
 		},
 		beforeAfter: {
 			before: {
-				alt: 'Frontal area with hair thinning before PRP',
-				recraftPrompt: esParts.images.beforeAfter!.before.recraftPrompt,
+				src: esParts.images.beforeAfter!.before.src,
+				alt: 'Scalp with diffuse thinning before capillary PRP',
 			},
 			after: {
-				alt: 'Moderate hair improvement after medical PRP',
-				recraftPrompt: esParts.images.beforeAfter!.after.recraftPrompt,
+				src: esParts.images.beforeAfter!.after.src,
+				alt: 'Improved hair density after medical PRP',
 			},
 		},
+		beforeAfterExtra: [
+			{
+				before: {
+					src: esParts.images.beforeAfterExtra![0].before.src,
+					alt: 'Visible crown thinning before capillary PRP',
+				},
+				after: {
+					src: esParts.images.beforeAfterExtra![0].after.src,
+					alt: 'Improved crown coverage after medical PRP',
+				},
+			},
+			{
+				before: {
+					src: esParts.images.beforeAfterExtra![1].before.src,
+					alt: 'Scalp with crown thinning before capillary PRP',
+				},
+				after: {
+					src: esParts.images.beforeAfterExtra![1].after.src,
+					alt: 'Restored crown density after medical PRP',
+				},
+			},
+		],
 	},
 };
 
 const caParts: TreatmentContentParts = {
+	resultsDisclaimer: clinicalResultsDisclaimer.ca,
 	seo: {
 		title: 'PRP capil·lar a Barcelona i Tarragona | Dra. Jessica Tellechea',
 		description:
@@ -311,18 +357,41 @@ const caParts: TreatmentContentParts = {
 		},
 		beforeAfter: {
 			before: {
-				alt: 'Zona frontal amb aprimament capil·lar abans de PRP',
-				recraftPrompt: esParts.images.beforeAfter!.before.recraftPrompt,
+				src: esParts.images.beforeAfter!.before.src,
+				alt: 'Cuir cabellut amb aprimament difús abans de PRP capil·lar',
 			},
 			after: {
-				alt: 'Millora capil·lar moderada després de PRP mèdic',
-				recraftPrompt: esParts.images.beforeAfter!.after.recraftPrompt,
+				src: esParts.images.beforeAfter!.after.src,
+				alt: 'Millora de densitat capil·lar després de PRP mèdic',
 			},
 		},
+		beforeAfterExtra: [
+			{
+				before: {
+					src: esParts.images.beforeAfterExtra![0].before.src,
+					alt: 'Coronilla amb aprimament visible abans de PRP capil·lar',
+				},
+				after: {
+					src: esParts.images.beforeAfterExtra![0].after.src,
+					alt: 'Major cobertura capil·lar a la coronilla després de PRP mèdic',
+				},
+			},
+			{
+				before: {
+					src: esParts.images.beforeAfterExtra![1].before.src,
+					alt: 'Cuir cabellut amb aprimament a la coronilla abans de PRP capil·lar',
+				},
+				after: {
+					src: esParts.images.beforeAfterExtra![1].after.src,
+					alt: 'Recuperació de densitat a la coronilla després de PRP mèdic',
+				},
+			},
+		],
 	},
 };
 
 const frParts: TreatmentContentParts = {
+	resultsDisclaimer: clinicalResultsDisclaimer.fr,
 	seo: {
 		title: 'PRP capillaire à Barcelone et Tarragone | Dre Jessica Tellechea',
 		description:
@@ -417,14 +486,36 @@ const frParts: TreatmentContentParts = {
 		},
 		beforeAfter: {
 			before: {
-				alt: 'Zone frontale avec amincissement capillaire avant PRP',
-				recraftPrompt: esParts.images.beforeAfter!.before.recraftPrompt,
+				src: esParts.images.beforeAfter!.before.src,
+				alt: 'Cuir chevelu avec amincissement diffus avant PRP capillaire',
 			},
 			after: {
-				alt: 'Amélioration capillaire modérée après PRP médical',
-				recraftPrompt: esParts.images.beforeAfter!.after.recraftPrompt,
+				src: esParts.images.beforeAfter!.after.src,
+				alt: 'Amélioration de la densité capillaire après PRP médical',
 			},
 		},
+		beforeAfterExtra: [
+			{
+				before: {
+					src: esParts.images.beforeAfterExtra![0].before.src,
+					alt: 'Couronne avec amincissement visible avant PRP capillaire',
+				},
+				after: {
+					src: esParts.images.beforeAfterExtra![0].after.src,
+					alt: 'Meilleure couverture capillaire à la couronne après PRP médical',
+				},
+			},
+			{
+				before: {
+					src: esParts.images.beforeAfterExtra![1].before.src,
+					alt: 'Cuir chevelu avec amincissement à la couronne avant PRP capillaire',
+				},
+				after: {
+					src: esParts.images.beforeAfterExtra![1].after.src,
+					alt: 'Densité retrouvée à la couronne après PRP médical',
+				},
+			},
+		],
 	},
 };
 
