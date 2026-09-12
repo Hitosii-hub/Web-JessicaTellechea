@@ -1,8 +1,10 @@
 import { buildTreatmentContent } from './build-content';
 import type { TreatmentContentParts } from './build-content';
+import { clinicalBeforeAfterSrc, clinicalResultsDisclaimer } from './clinical-before-after-src';
 import type { CapilarTreatmentContentMap } from './types';
 
 const esParts: TreatmentContentParts = {
+	resultsDisclaimer: clinicalResultsDisclaimer.es,
 	seo: {
 		title: 'Carboxiterapia capilar en Barcelona y Tarragona | Dra. Jessica Tellechea',
 		description:
@@ -94,20 +96,41 @@ const esParts: TreatmentContentParts = {
 		},
 		beforeAfter: {
 			before: {
-				alt: 'Cuero cabelludo con baja densidad antes de carboxiterapia',
-				recraftPrompt:
-					'Clinical top-down photograph, female scalp vertex with reduced density and visible scalp show-through, neutral medical background, even lighting, before-treatment reference, no text, no logos, photorealistic',
+				src: clinicalBeforeAfterSrc[0].before,
+				alt: 'Cuero cabelludo con adelgazamiento difuso antes de carboxiterapia capilar',
 			},
 			after: {
-				alt: 'Mejora moderada de densidad tras carboxiterapia capilar',
-				recraftPrompt:
-					'Clinical top-down photograph, same female scalp vertex with modest improved coverage and healthier hair appearance, neutral medical background, even lighting, realistic subtle after-treatment reference, no text, no logos, photorealistic',
+				src: clinicalBeforeAfterSrc[0].after,
+				alt: 'Mejora de densidad capilar tras carboxiterapia médica',
 			},
 		},
+		beforeAfterExtra: [
+			{
+				before: {
+					src: clinicalBeforeAfterSrc[1].before,
+					alt: 'Coronilla con adelgazamiento visible antes de carboxiterapia capilar',
+				},
+				after: {
+					src: clinicalBeforeAfterSrc[1].after,
+					alt: 'Mayor cobertura capilar en coronilla tras carboxiterapia médica',
+				},
+			},
+			{
+				before: {
+					src: clinicalBeforeAfterSrc[2].before,
+					alt: 'Cuero cabelludo con adelgazamiento en coronilla antes de carboxiterapia capilar',
+				},
+				after: {
+					src: clinicalBeforeAfterSrc[2].after,
+					alt: 'Recuperación de densidad en coronilla tras carboxiterapia médica',
+				},
+			},
+		],
 	},
 };
 
 const enParts: TreatmentContentParts = {
+	resultsDisclaimer: clinicalResultsDisclaimer.en,
 	seo: {
 		title: 'Capillary carboxytherapy in Barcelona and Tarragona | Dr Jessica Tellechea',
 		description:
@@ -199,18 +222,41 @@ const enParts: TreatmentContentParts = {
 		},
 		beforeAfter: {
 			before: {
-				alt: 'Scalp with low density before carboxytherapy',
-				recraftPrompt: esParts.images.beforeAfter!.before.recraftPrompt,
+				src: esParts.images.beforeAfter!.before.src,
+				alt: 'Scalp with diffuse thinning before capillary carboxytherapy',
 			},
 			after: {
-				alt: 'Moderate density improvement after capillary carboxytherapy',
-				recraftPrompt: esParts.images.beforeAfter!.after.recraftPrompt,
+				src: esParts.images.beforeAfter!.after.src,
+				alt: 'Improved hair density after medical carboxytherapy',
 			},
 		},
+		beforeAfterExtra: [
+			{
+				before: {
+					src: esParts.images.beforeAfterExtra![0].before.src,
+					alt: 'Visible crown thinning before capillary carboxytherapy',
+				},
+				after: {
+					src: esParts.images.beforeAfterExtra![0].after.src,
+					alt: 'Improved crown coverage after medical carboxytherapy',
+				},
+			},
+			{
+				before: {
+					src: esParts.images.beforeAfterExtra![1].before.src,
+					alt: 'Scalp with crown thinning before capillary carboxytherapy',
+				},
+				after: {
+					src: esParts.images.beforeAfterExtra![1].after.src,
+					alt: 'Restored crown density after medical carboxytherapy',
+				},
+			},
+		],
 	},
 };
 
 const caParts: TreatmentContentParts = {
+	resultsDisclaimer: clinicalResultsDisclaimer.ca,
 	seo: {
 		title: 'Carboxiteràpia capil·lar a Barcelona i Tarragona | Dra. Jessica Tellechea',
 		description:
@@ -302,18 +348,41 @@ const caParts: TreatmentContentParts = {
 		},
 		beforeAfter: {
 			before: {
-				alt: 'Cuir cabellut amb baixa densitat abans de carboxiteràpia',
-				recraftPrompt: esParts.images.beforeAfter!.before.recraftPrompt,
+				src: esParts.images.beforeAfter!.before.src,
+				alt: 'Cuir cabellut amb aprimament difús abans de carboxiteràpia capil·lar',
 			},
 			after: {
-				alt: 'Millora moderada de densitat després de carboxiteràpia capil·lar',
-				recraftPrompt: esParts.images.beforeAfter!.after.recraftPrompt,
+				src: esParts.images.beforeAfter!.after.src,
+				alt: 'Millora de densitat capil·lar després de carboxiteràpia mèdica',
 			},
 		},
+		beforeAfterExtra: [
+			{
+				before: {
+					src: esParts.images.beforeAfterExtra![0].before.src,
+					alt: 'Coronilla amb aprimament visible abans de carboxiteràpia capil·lar',
+				},
+				after: {
+					src: esParts.images.beforeAfterExtra![0].after.src,
+					alt: 'Major cobertura capil·lar a la coronilla després de carboxiteràpia mèdica',
+				},
+			},
+			{
+				before: {
+					src: esParts.images.beforeAfterExtra![1].before.src,
+					alt: 'Cuir cabellut amb aprimament a la coronilla abans de carboxiteràpia capil·lar',
+				},
+				after: {
+					src: esParts.images.beforeAfterExtra![1].after.src,
+					alt: 'Recuperació de densitat a la coronilla després de carboxiteràpia mèdica',
+				},
+			},
+		],
 	},
 };
 
 const frParts: TreatmentContentParts = {
+	resultsDisclaimer: clinicalResultsDisclaimer.fr,
 	seo: {
 		title: 'Carboxythérapie capillaire à Barcelone et Tarragone | Dre Jessica Tellechea',
 		description:
@@ -405,14 +474,36 @@ const frParts: TreatmentContentParts = {
 		},
 		beforeAfter: {
 			before: {
-				alt: 'Cuir chevelu à faible densité avant carboxythérapie',
-				recraftPrompt: esParts.images.beforeAfter!.before.recraftPrompt,
+				src: esParts.images.beforeAfter!.before.src,
+				alt: 'Cuir chevelu avec amincissement diffus avant carboxythérapie capillaire',
 			},
 			after: {
-				alt: 'Amélioration modérée de densité après carboxythérapie capillaire',
-				recraftPrompt: esParts.images.beforeAfter!.after.recraftPrompt,
+				src: esParts.images.beforeAfter!.after.src,
+				alt: 'Amélioration de la densité capillaire après carboxythérapie médicale',
 			},
 		},
+		beforeAfterExtra: [
+			{
+				before: {
+					src: esParts.images.beforeAfterExtra![0].before.src,
+					alt: 'Couronne avec amincissement visible avant carboxythérapie capillaire',
+				},
+				after: {
+					src: esParts.images.beforeAfterExtra![0].after.src,
+					alt: 'Meilleure couverture capillaire à la couronne après carboxythérapie médicale',
+				},
+			},
+			{
+				before: {
+					src: esParts.images.beforeAfterExtra![1].before.src,
+					alt: 'Cuir chevelu avec amincissement à la couronne avant carboxythérapie capillaire',
+				},
+				after: {
+					src: esParts.images.beforeAfterExtra![1].after.src,
+					alt: 'Densité retrouvée à la couronne après carboxythérapie médicale',
+				},
+			},
+		],
 	},
 };
 

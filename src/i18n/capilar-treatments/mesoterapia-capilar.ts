@@ -1,8 +1,10 @@
 import { buildTreatmentContent } from './build-content';
 import type { TreatmentContentParts } from './build-content';
+import { clinicalBeforeAfterSrc, clinicalResultsDisclaimer } from './clinical-before-after-src';
 import type { CapilarTreatmentContentMap } from './types';
 
 const esParts: TreatmentContentParts = {
+	resultsDisclaimer: clinicalResultsDisclaimer.es,
 	seo: {
 		title: 'Mesoterapia capilar médica en Barcelona y Tarragona | Dra. Jessica Tellechea',
 		description:
@@ -89,20 +91,51 @@ const esParts: TreatmentContentParts = {
 		},
 		beforeAfter: {
 			before: {
+				src: clinicalBeforeAfterSrc[0].before,
 				alt: 'Cuero cabelludo con adelgazamiento difuso antes de mesoterapia capilar',
-				recraftPrompt:
-					'Clinical top-down trichoscopy-style photograph, female scalp crown with visible diffuse thinning and reduced density, neutral clinical background, even medical lighting, documentary before-treatment reference, no text, no logos, photorealistic',
 			},
 			after: {
+				src: clinicalBeforeAfterSrc[0].after,
 				alt: 'Mejora de densidad capilar tras mesoterapia médica',
-				recraftPrompt:
-					'Clinical top-down trichoscopy-style photograph, same angle female scalp crown with modest improved hair density and healthier hair shafts, neutral clinical background, even medical lighting, documentary after-treatment reference, realistic subtle improvement not exaggerated, no text, no logos, photorealistic',
 			},
 		},
+		beforeAfterExtra: [
+			{
+				before: {
+					src: clinicalBeforeAfterSrc[1].before,
+					alt: 'Coronilla con adelgazamiento visible antes de mesoterapia capilar',
+				},
+				after: {
+					src: clinicalBeforeAfterSrc[1].after,
+					alt: 'Mayor cobertura capilar en coronilla tras mesoterapia médica',
+				},
+			},
+			{
+				before: {
+					src: clinicalBeforeAfterSrc[2].before,
+					alt: 'Cuero cabelludo con adelgazamiento en coronilla antes de mesoterapia capilar',
+				},
+				after: {
+					src: clinicalBeforeAfterSrc[2].after,
+					alt: 'Recuperación de densidad en coronilla tras mesoterapia médica',
+				},
+			},
+			{
+				before: {
+					src: '/images/capilar/meso/before-after-before-3.jpg',
+					alt: 'Adelgazamiento difuso en coronilla antes de mesoterapia capilar',
+				},
+				after: {
+					src: '/images/capilar/meso/before-after-after-3.jpg',
+					alt: 'Mayor densidad capilar en coronilla tras mesoterapia médica',
+				},
+			},
+		],
 	},
 };
 
 const enParts: TreatmentContentParts = {
+	resultsDisclaimer: clinicalResultsDisclaimer.en,
 	seo: {
 		title: 'Medical capillary mesotherapy in Barcelona and Tarragona | Dr Jessica Tellechea',
 		description:
@@ -189,18 +222,51 @@ const enParts: TreatmentContentParts = {
 		},
 		beforeAfter: {
 			before: {
+				src: esParts.images.beforeAfter!.before.src,
 				alt: 'Scalp with diffuse thinning before capillary mesotherapy',
-				recraftPrompt: esParts.images.beforeAfter!.before.recraftPrompt,
 			},
 			after: {
+				src: esParts.images.beforeAfter!.after.src,
 				alt: 'Improved hair density after medical mesotherapy',
-				recraftPrompt: esParts.images.beforeAfter!.after.recraftPrompt,
 			},
 		},
+		beforeAfterExtra: [
+			{
+				before: {
+					src: esParts.images.beforeAfterExtra![0].before.src,
+					alt: 'Visible crown thinning before capillary mesotherapy',
+				},
+				after: {
+					src: esParts.images.beforeAfterExtra![0].after.src,
+					alt: 'Improved crown coverage after medical mesotherapy',
+				},
+			},
+			{
+				before: {
+					src: esParts.images.beforeAfterExtra![1].before.src,
+					alt: 'Scalp with crown thinning before capillary mesotherapy',
+				},
+				after: {
+					src: esParts.images.beforeAfterExtra![1].after.src,
+					alt: 'Restored crown density after medical mesotherapy',
+				},
+			},
+			{
+				before: {
+					src: esParts.images.beforeAfterExtra![2].before.src,
+					alt: 'Diffuse crown thinning before capillary mesotherapy',
+				},
+				after: {
+					src: esParts.images.beforeAfterExtra![2].after.src,
+					alt: 'Improved crown density after medical mesotherapy',
+				},
+			},
+		],
 	},
 };
 
 const caParts: TreatmentContentParts = {
+	resultsDisclaimer: clinicalResultsDisclaimer.ca,
 	seo: {
 		title: 'Mesoteràpia capil·lar mèdica a Barcelona i Tarragona | Dra. Jessica Tellechea',
 		description:
@@ -287,18 +353,51 @@ const caParts: TreatmentContentParts = {
 		},
 		beforeAfter: {
 			before: {
+				src: esParts.images.beforeAfter!.before.src,
 				alt: 'Cuir cabellut amb aprimament difús abans de mesoteràpia capil·lar',
-				recraftPrompt: esParts.images.beforeAfter!.before.recraftPrompt,
 			},
 			after: {
+				src: esParts.images.beforeAfter!.after.src,
 				alt: 'Millora de densitat capil·lar després de mesoteràpia mèdica',
-				recraftPrompt: esParts.images.beforeAfter!.after.recraftPrompt,
 			},
 		},
+		beforeAfterExtra: [
+			{
+				before: {
+					src: esParts.images.beforeAfterExtra![0].before.src,
+					alt: 'Coronilla amb aprimament visible abans de mesoteràpia capil·lar',
+				},
+				after: {
+					src: esParts.images.beforeAfterExtra![0].after.src,
+					alt: 'Major cobertura capil·lar a la coronilla després de mesoteràpia mèdica',
+				},
+			},
+			{
+				before: {
+					src: esParts.images.beforeAfterExtra![1].before.src,
+					alt: 'Cuir cabellut amb aprimament a la coronilla abans de mesoteràpia capil·lar',
+				},
+				after: {
+					src: esParts.images.beforeAfterExtra![1].after.src,
+					alt: 'Recuperació de densitat a la coronilla després de mesoteràpia mèdica',
+				},
+			},
+			{
+				before: {
+					src: esParts.images.beforeAfterExtra![2].before.src,
+					alt: 'Aprimament difús a la coronilla abans de mesoteràpia capil·lar',
+				},
+				after: {
+					src: esParts.images.beforeAfterExtra![2].after.src,
+					alt: 'Major densitat capil·lar a la coronilla després de mesoteràpia mèdica',
+				},
+			},
+		],
 	},
 };
 
 const frParts: TreatmentContentParts = {
+	resultsDisclaimer: clinicalResultsDisclaimer.fr,
 	seo: {
 		title: 'Mésothérapie capillaire médicale à Barcelone et Tarragone | Dre Jessica Tellechea',
 		description:
@@ -385,14 +484,46 @@ const frParts: TreatmentContentParts = {
 		},
 		beforeAfter: {
 			before: {
+				src: esParts.images.beforeAfter!.before.src,
 				alt: 'Cuir chevelu avec amincissement diffus avant mésothérapie capillaire',
-				recraftPrompt: esParts.images.beforeAfter!.before.recraftPrompt,
 			},
 			after: {
+				src: esParts.images.beforeAfter!.after.src,
 				alt: 'Amélioration de la densité capillaire après mésothérapie médicale',
-				recraftPrompt: esParts.images.beforeAfter!.after.recraftPrompt,
 			},
 		},
+		beforeAfterExtra: [
+			{
+				before: {
+					src: esParts.images.beforeAfterExtra![0].before.src,
+					alt: 'Couronne avec amincissement visible avant mésothérapie capillaire',
+				},
+				after: {
+					src: esParts.images.beforeAfterExtra![0].after.src,
+					alt: 'Meilleure couverture capillaire à la couronne après mésothérapie médicale',
+				},
+			},
+			{
+				before: {
+					src: esParts.images.beforeAfterExtra![1].before.src,
+					alt: 'Cuir chevelu avec amincissement à la couronne avant mésothérapie capillaire',
+				},
+				after: {
+					src: esParts.images.beforeAfterExtra![1].after.src,
+					alt: 'Densité retrouvée à la couronne après mésothérapie médicale',
+				},
+			},
+			{
+				before: {
+					src: esParts.images.beforeAfterExtra![2].before.src,
+					alt: 'Amincissement diffus à la couronne avant mésothérapie capillaire',
+				},
+				after: {
+					src: esParts.images.beforeAfterExtra![2].after.src,
+					alt: 'Densité capillaire accrue à la couronne après mésothérapie médicale',
+				},
+			},
+		],
 	},
 };
 

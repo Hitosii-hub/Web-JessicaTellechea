@@ -554,18 +554,35 @@
 	color: var(--color-muted);
 }
 
-.treatment-carousel__grid {
-	display: grid;
-	gap: var(--space-md);
-	grid-template-columns: 1fr;
+.treatment-carousel__mobile {
 	margin-top: var(--space-lg);
+}
+
+.treatment-carousel__grid {
+	display: none;
 }
 
 .treatment-carousel__controls {
 	display: flex;
-	justify-content: flex-end;
+	align-items: center;
 	gap: var(--space-sm);
 	margin-top: var(--space-md);
+}
+
+.treatment-carousel__controls--center {
+	justify-content: center;
+}
+
+.treatment-carousel__controls--slides {
+	display: none;
+}
+
+.treatment-carousel__counter {
+	min-width: 3rem;
+	font-family: var(--font-sans-ui);
+	font-size: 0.75rem;
+	color: var(--color-muted);
+	text-align: center;
 }
 
 .treatment-carousel__btn {
@@ -626,7 +643,7 @@
 	touch-action: none;
 }
 
-.treatment-compare__img,
+.treatment-compare__img--base,
 .treatment-compare__placeholder {
 	position: absolute;
 	inset: 0;
@@ -643,7 +660,19 @@
 }
 
 .treatment-compare__before-inner {
+	position: relative;
 	height: 100%;
+}
+
+.treatment-compare__img--before {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	max-width: none;
+	object-fit: cover;
+	object-position: center;
 }
 
 .treatment-compare__handle {
@@ -674,10 +703,20 @@
 	box-shadow: var(--shadow-sm);
 }
 
-.treatment-compare__hint {
-	margin: var(--space-xs) 0 0;
+.treatment-carousel__hint {
+	margin: var(--space-sm) 0 0;
 	font-family: var(--font-sans-ui);
 	font-size: 0.6875rem;
+	color: var(--color-muted);
+	text-align: center;
+}
+
+.treatment-results__disclaimer {
+	max-width: 42rem;
+	margin: var(--space-md) auto 0;
+	font-family: var(--font-sans-ui);
+	font-size: 0.8125rem;
+	line-height: 1.55;
 	color: var(--color-muted);
 	text-align: center;
 }
@@ -713,7 +752,19 @@
 		order: -1;
 	}
 
+	.treatment-carousel__mobile {
+		display: none;
+	}
+
 	.treatment-carousel__grid {
-		grid-template-columns: repeat(3, minmax(0, 1fr));
+		display: grid;
+		gap: var(--space-md);
+		grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+		margin-top: var(--space-lg);
+	}
+
+	.treatment-carousel__controls--slides {
+		display: flex;
+		justify-content: flex-end;
 	}
 }

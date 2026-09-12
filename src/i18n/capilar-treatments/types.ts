@@ -62,6 +62,7 @@ export interface TreatmentPageContent {
 		afterLabel: string;
 		emptySlot: string;
 		dragHint: string;
+		disclaimer?: string;
 		prevLabel: string;
 		nextLabel: string;
 		slides: BeforeAfterSlide[];
